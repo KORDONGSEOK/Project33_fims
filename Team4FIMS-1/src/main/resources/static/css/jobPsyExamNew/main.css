@@ -1,0 +1,516 @@
+@charset "utf-8";
+
+@import ("font.css");
+/* CSS Document */
+html {overflow:auto;}
+@font-face{font-family:NB;src:url(NanumBrush.eot);src:local(※),url(NanumBrush.woff) format('woff')}
+body {margin:0px;
+      padding:0px;
+	  text-align:left;
+	  overflow-x:hidden;
+}
+
+table {border:0px;
+	   padding:0px;
+	   margin:0px;
+	   border-collapse:collapse;
+	   border-spacing:0px;}
+
+td,th {padding:0;}
+
+img {border:0px;}
+ul li{padding:0;}
+
+.tit{width:100%; height:54px; background-image:url(https://www.work.go.kr/images/consltJobCarpa/jobPsyExamNew/tit_bg.gif); background-repeat:repeat-x;padding-top:10px;}
+.tit_posi {margin:0 auto;vertical-align:middle;}
+
+.tit_c {padding:0px 30px 0 30px; height:37px; background-image:url(https://www.work.go.kr/images/consltJobCarpa/jobPsyExamNew/tit_cbg.gif); background-repeat:repeat-x;text-align:center;font-weight:bold; color:#374f15;font-size:15px; vertical-align:middle;font-family:NanumGothic,'나눔고딕',ng, sans-serif;font-size:18px;}
+
+
+.tit_l {width:16px;background-image:url(https://www.work.go.kr/images/consltJobCarpa/jobPsyExamNew/tit_lbg.gif); background-repeat:no-repeat;}
+.tit_r {width:16px;background-image:url(https://www.work.go.kr/images/consltJobCarpa/jobPsyExamNew/tit_rbg.gif); background-repeat:no-repeat;}
+
+.center {margin:0 auto;}
+table.center_wrap{width:950px !important; }
+.center .center{margin:0 auto;}
+.left {text-align:left; padding-left:10px;}
+
+
+/* form */
+input,select,checkbox {vertical-align:middle;margin:0; word-spacing:-1pt; word-bredak:break-all;}
+textarea {margin:0px;padding:5px 5px;}
+select,option {height:18px;font-size:12px;font-family:dotum;}
+input.border {border:1px solid #cfd6c3;height:18px;padding:2px 0 0 2px;}
+input.radio {width:13px;height:13px;margin:0;}
+input.checkbox {width: 14px;height: 14px;margin:0;border:0;}
+input.border {border:1px solid #cfd6c3;width:140px;height:17px;padding:2px 0 0 3px;}
+
+textarea.border {border:1px solid #cfd6c3;padding:5px 5px;}
+
+.td_title {background-color:#EEEEEE; padding:5px 0px 5px 0px; font-size:14px; font-family:돋움,굴림; }
+
+
+
+#table01 {width:710px; border:#CCCCCC solid 1px;color:#666666;margin-top:3px;margin-bottom:12px;}
+#table01 tr th{border:#CCCCCC solid 1px;height:58px;background-color:#eeeeee;font-size:13px;text-align:center}
+#table01 tr td{border:#CCCCCC solid 1px;height:32px;font-size:12px;}
+#table01 tr td.f{padding-left:10px;padding-top:4px;padding-bottom:4px;line-height:20px;}
+
+
+.table01 {width:710px; border:#CCCCCC solid 1px;color:#666666;margin-top:3px;margin-bottom:12px;}
+.table01 tr th{border:#CCCCCC solid 1px;height:58px;background-color:#eeeeee;font-size:13px;text-align:center}
+.table01 tr td{border:#CCCCCC solid 1px;height:32px;font-size:12px;}
+.table01 tr td.f{padding-left:10px;padding-top:4px;padding-bottom:4px;}
+
+
+#showhide1  {width:710px;}
+
+
+
+#table02 {width:710px; border:#fff solid 1px;color:#666666;margin-top:10px;margin-bottom:12px;}
+
+#table03 {width:350px; border:#CCCCCC solid 1px;color:#666666;margin-top:3px;margin-bottom:12px;}
+#table03 tr th{border:#CCCCCC solid 1px;height:58px;background-color:#eeeeee;font-size:13px;}
+#table03 tr td{border:#CCCCCC solid 1px;height:32px;font-size:12px;}
+#table03 tr td.f{padding-left:10px;padding-top:4px;padding-bottom:4px;}
+
+/* 중장년직업심리검사 실시 화면의 요청으로 인한 font_size 1px 증가 */
+#table04 {width:710px; border:#CCCCCC solid 1px;color:#666666;margin-top:3px;margin-bottom:12px;}
+#table04 tr th{border:#CCCCCC solid 1px;height:58px;background-color:#eeeeee;font-size:14px;text-align:center}
+#table04 tr td{border:#CCCCCC solid 1px;height:32px;font-size:13px;}
+#table04 tr td.f{padding-left:10px;padding-right:10px;padding-top:4px;padding-bottom:4px;line-height:20px;}
+
+
+.table04 {width:710px; border:#CCCCCC solid 1px;color:#666666;margin-top:3px;margin-bottom:12px;}
+.table04 tr th{border:#CCCCCC solid 1px;height:58px;background-color:#eeeeee;font-size:14px;text-align:center}
+.table04 tr td{border:#CCCCCC solid 1px;height:32px;font-size:13px;}
+.table04 tr td.f{padding-left:10px;padding-right:10px;padding-top:4px;padding-bottom:4px;}
+
+
+/* 탭 */
+#tabs1 {}
+
+.tabs1_on  {font-size:12px; width:62px; height:23px;color:#FFFFFF; background-image:url(https://www.work.go.kr/images/consltJobCarpa/jobPsyExamNew/tab_on.gif);text-align:center;}
+.tabs1_off {font-size:12px; width:62px; height:23px;background-image:url(https://www.work.go.kr/images/consltJobCarpa/jobPsyExamNew/tab_off.gif);text-align:center;}
+.tabs1_off a{font-size:12px;text-align:center; color:#000000;}
+
+
+
+
+
+/* 번호부분 */
+.td_no {background-image:url(https://www.work.go.kr/images/consltJobCarpa/jobPsyExamNew/numbg.gif); background-repeat:no-repeat;background-position:center; font-size:11px; font-family:돋움,굴림; color:#FFFFFF;text-align:center; letter-spacing:-1px;font-weight:bold;}
+
+.td_no1 {background-image:url(https://www.work.go.kr/images/consltJobCarpa/jobPsyExamNew/numbg.gif);width:32px; height:30px; background-repeat:no-repeat;background-position:center; font-size:11px; font-family:돋움,굴림; color:#FFFFFF;text-align:center; letter-spacing:-1px;font-weight:bold;}
+
+
+
+
+.td_no_1 {background-color:#FFFFFF; padding:5px 3px 5px 0px; font-size:14px; font-family:돋움,굴림; color:#FFFFFF; font-weight:bold; text-align:center; letter-spacing:-1px;}
+.td_no_1_green {background-color:#F5FFD6; padding:5px 3px 5px 0px; font-size:14px; font-family:돋움,굴림; color:#FFFFFF; font-weight:bold; text-align:center; letter-spacing:-1px;}
+.td_no_2 {background-color:#FFFFFF; padding:5px 3px 5px 0px; font-size:13px; font-family:돋움,굴림; color:#FFFFFF; font-weight:bold; text-align:center; letter-spacing:-1px;}
+.td_no_2_green {background-color:#F5FFD6; padding:5px 3px 5px 0px; font-size:13px; font-family:돋움,굴림; color:#FFFFFF; font-weight:bold; text-align:center; letter-spacing:-1px;}
+
+
+/*문항바로가기*/
+.golist {
+	width:214px !important;
+	background-image:url(https://www.work.go.kr/images/consltJobCarpa/jobPsyExamNew/golist_bg.gif); background-repeat:no-repeat;padding-top:100px;padding-left:10px;}
+
+#gbtn {width:200px;height:450px;align:center;}
+.go_btn {height:34px;width:33px;background-image:url(https://www.work.go.kr/images/consltJobCarpa/jobPsyExamNew/list_bg.gif);color:#ffffff; font-size:12px; text-decoration:none; border:0; margin-right:2px;padding-left:-10px;text-align:center;overflow:visible;}
+.go_btn3 {height:34px;width:33px;background-image:url(https://www.work.go.kr/images/consltJobCarpa/jobPsyExamNew/list_bg.gif);color:#ffffff; font-size:11px; text-decoration:none; border:0; margin-right:2px;padding-left:-10px;text-align:center;overflow:visible; word-spacing:-2px;}
+.go_btn_non {height:34px;width:33px;background-image:url(/images/consltJobCarpa/jobPsyExamNew/list_bg_non.gif);color: #ffffff;font-size:12px;text-decoration:none; margin-right:2px; border:0;}
+.go_btn_non3 {height:34px;width:33px;background-image:url(/images/consltJobCarpa/jobPsyExamNew/list_bg_non.gif);color: #ffffff;font-size:11px;text-decoration:none; margin-right:2px; border:0;padding-left:-10px;text-align:center;overflow:visible; word-spacing:-2px;}
+
+ul#golist {margin-top:0px;width:100%;list-style: none;line-height:20px;height: 20px;}
+ul#golist li{display:inline;background-image:url(https://www.work.go.kr/images/consltJobCarpa/jobPsyExamNew/list_bg.gif);}
+ul#golist li a { text-decoration:none;color: #ffffff;font-size:12px;align:center;width:33px;}
+
+
+
+/* 문항부분 */
+
+.pic{padding:3px;border-color:#fff;}
+
+.org {color:#c36600;font-size:11px;}
+.gray {color:#464646;font-size:12px;line-height:20px;}
+.grayr {color:#464646;font-size:12px;line-height:20px;width:710px;}
+.green {color:#639322;font-size:12px;line-height:20px;}
+.ygreen {color:#649524;font-size:12px;font-weight:bold; line-height:20px; border:solid 1px #deefb9; background-color:#f5ffd6;width:97%;margin-top:10px;}
+.ygreenp {padding:5px 5px 5px 3px;}
+
+
+.txt001{font-size:12px; font-family:돋움,굴림;text-align:left;line-height:20px; padding-left:10px;}
+
+.td_mibble {font-size:12px; font-family:돋움,굴림; line-height:22px;}
+
+.toptext{width:100%;padding:0;margin:0 0 10px 0; border-collapse:collapse; border-spacing:0px;}
+.toptext .td01{background-image:url(/images/consltJobCarpa/jobPsyExamNew/toptext_t.gif); background-repeat:no-repeat;height:19px;}
+.toptext .td02{background-image:url(/images/consltJobCarpa/jobPsyExamNew/toptext_b.gif); background-repeat:no-repeat;height:19px;}
+
+.toptext .td03{background-image:url(/images/consltJobCarpa/jobPsyExamNew/toptext_c.gif); background-repeat:repeat-y;padding-left:40px;
+					text-align:left;
+					color:#666666;
+					font-size:13px;
+					font-weight:bold;}
+.toptext .td04{background-image:url(/images/consltJobCarpa/jobPsyExamNew/login_center.gif); background-repeat:repeat-y;padding-right:10px;}
+
+.toptext2 {width:716px;
+              padding:0;
+			  margin:5px 0 10px 0;
+			  border-collapse:collapse;
+			  border-spacing:0px;}
+.toptext2 .td01{height:19px;
+                    background-image:url(https://www.work.go.kr/images/consltJobCarpa/jobPsyExamNew/examImg/toptext_t1_a.jpg);
+                    background-repeat:no-repeat;}
+.toptext2 .td02{height:19px;
+                    background-image:url(https://www.work.go.kr/images/consltJobCarpa/jobPsyExamNew/examImg/toptext_b1_a.jpg);
+                    background-repeat:no-repeat;}
+.toptext2 .td03{background-image:url(https://www.work.go.kr/images/consltJobCarpa/jobPsyExamNew/examImg/toptext_c1_a.jpg);
+                    background-repeat:repeat-y;
+					line-height:20px;
+					padding-left:10px;
+					padding-right:10px;
+					text-align:left;
+					color:#666666;
+					font-size:14px;
+					font-weight:bold;}
+.toptext2 .td03 ul{padding-left:5px;line-height:20px;}
+.toptext2 .td03 ul li{background:url(/images/consltJobCarpa/jobPsyExamNew/icon_bul10.gif) no-repeat 10px 5px; padding:0 5px 2px 20px; line-height:20px;list-style:none;}
+.toptext2 .td04{background-image:url(/images/consltJobCarpa/jobPsyExamNew/examImg/toptext_c1_a.jpg);
+                    background-repeat:repeat-y;
+					line-height:20px;
+					padding-left:10px;
+					padding-right:10px;
+					text-align:left;
+					color:#666666;
+					font-size:15px;
+					font-weight:bold;}
+.toptext2 .td04 ul{padding-left:5px;line-height:20px;}
+.toptext2 .td04 ul li{background:url(/images/consltJobCarpa/jobPsyExamNew/icon_bul10.gif) no-repeat 10px 5px; padding:0 5px 2px 20px; line-height:20px;list-style:none;}
+
+
+.toptext4 {width:100%;
+              padding:0;
+			  margin:5px 0 10px 0;
+			  border-collapse:collapse;
+			  border-spacing:0px;}
+.toptext4 .td01{height:19px;
+                    background-image:url(/images/consltJobCarpa/jobPsyExamNew/examImg/toptext_t1.gif);
+                    background-repeat:no-repeat;}
+.toptext4 .td02{height:19px;
+                    background-image:url(/images/consltJobCarpa/jobPsyExamNew/examImg/toptext_b1.gif);
+                    background-repeat:no-repeat;}
+.toptext4 .td03{background-image:url(/images/consltJobCarpa/jobPsyExamNew/examImg/toptext_c1.gif);
+                    background-repeat:repeat-y;
+					line-height:20px;
+					padding-left:10px;
+					padding-right:20px;
+					text-align:left;
+					color:#666666;
+					font-size:14px;
+					font-weight:bold;}
+.toptext4 .td03 ul{padding-left:5px;line-height:20px;}
+.toptext4 .td03 ul li{background:url(/images/consltJobCarpa/jobPsyExamNew/icon_bul10.gif) no-repeat 10px 5px; padding:0 5px 2px 20px; line-height:20px;list-style:none;}
+
+
+div.npoptop1 {background:url(/images/consltJobCarpa/jobPsyExamNew/bg_njobtop.gif) no-repeat 0 top; padding:4px 0 10px 0; width:716px; margin:0 0 10px !important;}
+div.npopbot1 {background:url(/images/consltJobCarpa/jobPsyExamNew/bg_njobbot.gif) no-repeat 0 bottom; padding-top:4px}
+div.npopbody1 {border-right:1px solid #d7d7d7; border-left:1px solid #d7d7d7; background-color:#fefefe; padding:10px 0 5px 10px; width:700px;}
+
+
+
+
+.toptext ul li{font-size:14px; font-family:돋움,굴림; line-height:21px;list-style:none;margin-left:-15px;margin-right:40px;}
+
+
+.toptext1{width:100%;padding:0;margin:0 0 10px 0; border-collapse:collapse; border-spacing:0px;}
+.toptext1 .td01{background-image:url(/images/consltJobCarpa/jobPsyExamNew/toptext_t.gif); background-repeat:no-repeat;height:19px;}
+.toptext1 .td02{background-image:url(/images/consltJobCarpa/jobPsyExamNew/toptext_b.gif); background-repeat:no-repeat;height:19px;}
+.toptext1 .td03{background-image:url(/images/consltJobCarpa/jobPsyExamNew/toptext_c.gif); background-repeat:repeat-y;padding-right:10px;}
+
+.toptext1 ul li{font-size:12px; font-family:돋움,굴림; line-height:21px;margin-left:-15px;margin-right:40px; list-style-image url(/images/consltJobCarpa/jobPsyExamNew/bullet01.gif); list-style-position:inside; list-style:none; }
+
+.td_mibble01 {padding:5px 20px 5px 40px; font-size:12px; font-family:돋움,굴림; line-height:20px; font-weight:bold;color:#333333;letter-spacing:-1px;}
+
+
+.td_mibble01 ul li{font-size:15px; font-family:NanumGothic,'나눔고딕',ng, sans-serif;line-height:23px;  margin-left:-15px;margin-right:40px; list-style:none; margin-top:10px;}
+
+
+.td_mibble02 {padding:5px 0px 5px 0px;
+			  line-height:20px;
+			  font-size:12px;
+			  font-weight:bold;
+			  color:#333333;
+			  letter-spacing:-1px;}
+
+.td_mibble03 {padding:5px 20px 5px 40px; font-size:13px; font-family:돋움,굴림; line-height:20px; font-weight:bold;color:#333333;letter-spacing:-1px;}
+
+
+.td_mibble03 ul li{font-size:16px; font-family:NanumGothic,'나눔고딕',ng, sans-serif;line-height:23px;  margin-left:-15px;margin-right:40px; list-style:none; margin-top:10px;}
+
+
+.td_mibble04 {padding:5px 0px 5px 0px;
+			  line-height:20px;
+			  font-size:13px;
+			  font-weight:bold;
+			  color:#333333;
+			  letter-spacing:-1px;}
+
+
+
+
+.stit_c {padding:0px 10px 0 10px;
+         height:35px;
+		 background-image:url(/images/consltJobCarpa/jobPsyExamNew/stit_cbg.gif);
+		 background-repeat:repeat-x;
+		 text-align:center;
+		 font-weight:bold;
+		 color:#374f15;
+		 font-size:12px;
+		 vertical-align:middle;
+		 color:#fff;}
+.stit_l {width:14px;
+         background-image:url(/images/consltJobCarpa/jobPsyExamNew/stit_lbg.gif);
+		 background-repeat:no-repeat;}
+.stit_r {width:14px;
+         background-image:url(/images/consltJobCarpa/jobPsyExamNew/stit_rbg.gif);
+		 background-repeat:no-repeat;}
+
+
+
+.td_mibble_green {background-color:#F5FFD6; padding:5px 0px 5px 10px; font-size:14px; font-family:돋움,굴림;}
+
+a {text-decoration: none;}
+.sbtn_l {width:16px;background-image:url(/images/consltJobCarpa/jobPsyExamNew/sbtn_lbg.gif); background-repeat:no-repeat;}
+.sbtn_c {padding:0px 10px 0 10px; height:31px; background-image:url(/images/consltJobCarpa/jobPsyExamNew/sbtn_cbg.gif); background-repeat:repeat-x;text-align:center;font-weight:bold;font-size:12px; vertical-align:middle;color:#fff;}
+.sbtn_r {width:16px;background-image:url(/images/consltJobCarpa/jobPsyExamNew/sbtn_rbg.gif); background-repeat:no-repeat;}
+
+
+.sbtnf_l {width:16px;background-image:url(/images/consltJobCarpa/jobPsyExamNew/sbtnf_lbg.gif); background-repeat:no-repeat;}
+.sbtnf_c {padding:0px 3px 0 3px; height:31px; width:55px; background-image:url(/images/consltJobCarpa/jobPsyExamNew/sbtnf_cbg.gif); background-repeat:repeat-x;text-align:center;font-weight:bold;font-size:12px; vertical-align:middle;color:#fff;}
+.sbtnf_r {width:16px;background-image:url(/images/consltJobCarpa/jobPsyExamNew/sbtnf_rbg.gif); background-repeat:no-repeat;}
+
+
+
+.sbtn_n {display:inline-block;width:16px;background-image:url(/images/consltJobCarpa/jobPsyExamNew/sbtn_lbg.gif); background-repeat:no-repeat;}
+.sbtn_p {padding:0px 10px 0 10px; height:31px; width:50px; background-image:url(/images/consltJobCarpa/jobPsyExamNew/sbtn_cbg.gif); background-repeat:repeat-x;text-align:center;font-weight:bold;font-size:12px; vertical-align:middle;color:#fff;}
+
+
+.pbtn_l {width:29px;background-image:url(/images/consltJobCarpa/jobPsyExamNew/pbtn_lbg.gif); background-repeat:no-repeat;}
+.pbtn_c {height:31px; width:63px; background-image:url(/images/consltJobCarpa/jobPsyExamNew/pbtn_cbg.gif); background-repeat:no-repeat;text-align:center;font-weight:bold;color:#fff;font-size:12px; vertical-align:middle;}
+.pbtn_c4 {height:31px; width:63px; background-image:url(/images/consltJobCarpa/jobPsyExamNew/pbtn_cbg.gif); background-repeat:no-repeat;text-align:left;font-weight:bold;color:#fff;font-size:12px; vertical-align:middle;}
+
+
+.nbtn_r {width:29px;background-image:url(/images/consltJobCarpa/jobPsyExamNew/nbtn_rbg.gif); background-repeat:no-repeat;}
+.nbtn_c {height:31px; width:63px; background-image:url(/images/consltJobCarpa/jobPsyExamNew/nbtn_cbg.gif); background-repeat:no-repeat;text-align:center;font-weight:bold;font-size:12px; vertical-align:middle;color:#fff;}
+.nbtn_c4 {height:31px; width:63px; background-image:url(/images/consltJobCarpa/jobPsyExamNew/nbtn_cbg.gif); background-repeat:no-repeat;text-align:right;font-weight:bold;font-size:12px; vertical-align:middle;color:#fff;}
+
+
+
+.pbtng_l {width:29px;background-image:url(/images/consltJobCarpa/jobPsyExamNew/pbtng_lbg.gif); background-repeat:no-repeat;}
+.pbtng_c {height:31px; width:63px; background-image:url(/images/consltJobCarpa/jobPsyExamNew/pbtng_cbg.gif); background-repeat:no-repeat;text-align:center;font-weight:bold;color:#fff;font-size:12px; vertical-align:middle;}
+.pbtng_c4 {height:31px; width:63px; background-image:url(/images/consltJobCarpa/jobPsyExamNew/pbtng_cbg.gif); background-repeat:no-repeat;text-align:left;font-weight:bold;color:#fff;font-size:12px; vertical-align:middle;}
+
+
+
+.nbtng_r {width:29px;background-image:url(/images/consltJobCarpa/jobPsyExamNew/nbtng_rbg.gif); background-repeat:no-repeat;}
+.nbtng_c {height:31px; width:63px; background-image:url(/images/consltJobCarpa/jobPsyExamNew/nbtng_cbg.gif); background-repeat:no-repeat;text-align:center;font-weight:bold;font-size:12px; vertical-align:middle;color:#fff;}
+.nbtng_c4 {height:31px; width:63px; background-image:url(/images/consltJobCarpa/jobPsyExamNew/nbtng_cbg.gif); background-repeat:no-repeat;text-align:right;font-weight:bold;font-size:12px; vertical-align:middle;color:#fff;}
+
+
+
+/* 라디오버튼부분 */
+.td_mibble_radio {font-size:14px; font-family:돋움,굴림;text-align:center;}
+.td_mibble_radio_green {background-color:#F5FFD6; padding:5px 0px 5px 0px; font-size:14px; font-family:돋움,굴림;}
+.td_left_radio {font-size:12px; font-family:돋움,굴림;text-align:left; padding-left:10px;}
+
+
+
+
+
+
+/* 설문부분 */
+.td_qust_depth1 {padding:5px 0px 5px 0px; font-size:14px; font-family:돋움,굴림; }
+.td_qust_depth2 {padding:10px 0px 5px 12px; font-size:14px; font-family:돋움,굴림;}
+.td_qust_depth3 {padding:0px 0px 5px 25px; font-size:14px; font-family:돋움,굴림; color:#666666}
+.input_box_readOnly {BORDER:1px solid #CCCCCC; text-align:center; color:#666666; font-size:13px; padding:3px 0px 0px 0px;}
+.td_example {padding:5px 0px 5px 0px; font-size:12px; background-color:#EEFFC4;}
+.td_example2 {padding:0px 0px 0px 0px; font-size:11px; background-color:#EEFFC4;word-spacing:-1px;}
+
+
+
+ul.coundesc {padding:0px; }
+ul.coundesc li {background:url(/images/consltJobCarpa/jobPsyExamNew/icon_star.gif) no-repeat 0 1px; padding:0 0 5px 12px; color:#CB7B04; font-size:12px; list-style:none;}
+
+/* 검사시작 버튼new6-*/
+.exbtn{position:relative;*zoom:1;}
+.exbtn:after{content:"";clear:both;display:block;}
+.exbtn li{position:relative;float:left;display:inline;background:url('/images/consltJobCarpa/jobPsyExamNew/examImg/btn_3_.jpg') no-repeat;text-align:center;padding-right:10px;}
+.exbtn li img{position:absolute;top:10px;right:5px;}
+.exbtn li.none{padding-right:0;}
+.exbtn li a{color:#fff;line-height:30px;font-weight:bold;font-size:13px;display:block;width:80px; height:29px;text-decoration:none;}
+.exbtn li:hover{color:#fff;background:url('/images/consltJobCarpa/jobPsyExamNew/examImg/btn_3.jpg') no-repeat;}
+/*끝*/
+.toptext_a716{width:716px;
+              padding:0;
+			  margin:5px 0 10px 0;
+			  border-collapse:collapse;
+			  border-spacing:0px;}
+.toptext_a716 .td01{height:19px;
+                    background-image:url(/images/consltJobCarpa/jobPsyExamNew/examImg/toptext_t1_a.jpg);
+                    background-repeat:no-repeat;}
+.toptext_a716 .td02{height:19px;
+                    background-image:url(/images/consltJobCarpa/jobPsyExamNew/examImg/toptext_b1_a.jpg);
+                    background-repeat:no-repeat;}
+.toptext_a716 .td03{background-image:url(/images/consltJobCarpa/jobPsyExamNew/examImg/toptext_c1_a.jpg);
+                    background-repeat:repeat-y;
+					line-height:20px;
+					padding-left:10px;
+					padding-right:10px;
+					text-align:left;
+					color:#666666;
+					font-size:14px;
+					font-weight:bold; }
+.toptext_a716 .td03_center{background-image:url(/images/consltJobCarpa/jobPsyExamNew/examImg/toptext_c1_a.jpg);
+                           background-repeat:repeat-y;
+						   line-height:20px;
+						   padding-left:10px;
+						   padding-right:10px;
+						   text-align:center;
+						   color:#666666;
+						   font-size:14px; }
+div,p,form,fileset,ul,ol,dl,li,dt,dd {
+	margin:0;
+	padding:0;
+}
+ul,ol {list-style:none;margin:0px;}
+
+/* 이전다음으로 버튼new3-*/
+.navbtn{position:relative;*zoom:1;}
+.navbtn:after{content:"";clear:both;display:block;}
+.navbtn li{position:relative;float:left;display:inline;background:url('/images/consltJobCarpa/jobPsyExamNew/examImg/btn_3.jpg') no-repeat;text-align:center;padding-right:10px;}
+.navbtn li img{position:absolute;top:10px;right:5px;}
+.navbtn li.none{padding-right:0;}
+.navbtn li a{color:#fff;line-height:30px;font-weight:bold;font-size:13px;display:block;width:80px; height:29px;text-decoration:none;}
+.navbtn li:hover{color:#fff;background:url('/images/consltJobCarpa/jobPsyExamNew/examImg/btn_3_.jpg') no-repeat;}
+/*끝*/
+body, th, td, option, textarea, form, input, div, li {
+	font-family:Dotum, "돋움", sans-serif;
+}
+/* 처음으로 버튼new2-*/
+.startbtn{position:relative;*zoom:1;}
+.startbtn:after{content:"";clear:both;display:block;}
+.startbtn li{position:relative;float:left;display:inline;background:url('/images/consltJobCarpa/jobPsyExamNew/examImg/btn_2.jpg') no-repeat;text-align:center;padding-right:10px;}
+.startbtn li img{position:absolute;top:10px;right:5px;}
+.startbtn li.none{padding-right:0;}
+.startbtn li a{color:#fff;line-height:30px;font-weight:bold;font-size:13px;display:block;width:80px; height:29px;text-decoration:none;}
+.startbtn li:hover{color:#fff;background:url('/images/consltJobCarpa/jobPsyExamNew/examImg/btn_2_.jpg') no-repeat;}
+/*끝*/
+/* 초록큰버튼new1*/
+.menu{position:relative;*zoom:1;}
+.menu:after{content:"";clear:both;display:block;}
+.menu li{position:relative;float:left;display:inline;background:url('/images/consltJobCarpa/jobPsyExamNew/examImg/btn_1.gif') no-repeat;text-align:center;padding-right:30px;}
+.menu li img{position:absolute;top:10px;right:5px;}
+.menu li.none{padding-right:0;}
+.menu li a{color:#fff;line-height:55px;font-weight:bold;font-size:16px;display:block;width:135px; height:55px;text-decoration:none;}
+.menu li:hover{color:#fc4606;background:url('/images/consltJobCarpa/jobPsyExamNew/examImg/btn_1_.gif') no-repeat;}
+/*끝*/
+
+h1{ color: #339900;
+	clear:both;
+	display:block;
+	width:100%;
+	font:bold 15px;
+	line-height:100%;
+	letter-spacing:-1px;
+	padding:0 0 5px 5px;
+	margin:20px 0 10px 0;
+	border-bottom:2px solid #666666;
+}
+.agreen_790 {color:#649524;
+             font-size:12px;
+			 font-weight:bold;
+			 line-height:20px;
+			 border:solid 1px #deefb9;
+			 background-color:#f5ffd6;
+			 width:790px;
+			 height:408px;
+			 margin-top:10px;
+			 margin:0 auto;}
+.agreenp_790_a {padding:10px 10px 0px 10px;
+                text-align:center;
+				font-size:15px;}
+.agreenp_790 {padding:10px 10px 10px 10px;
+              text-align:center;}
+
+
+.bg_adult{width:950px;
+		  height:331px;
+		  background-image:url('/images/consltJobCarpa/jobPsyExamNew/examImg/adult_100.jpg');
+		  background-repeat:no-repeat;
+		  background-position:right top;
+		  padding-left:100px;
+		  font-size:50px;
+		  font-family:'나눔손글씨 붓', NB, Cursive;
+		  font-weight:bold;
+		  color:#009900;}
+.bg_sales{width:400px;
+		  height:271px;
+		  background-image:url('/images/consltJobCarpa/jobPsyExamNew/examImg/sales_100.gif');
+		  background-repeat:no-repeat;
+		  background-position:right top;
+		  padding-left:100px;
+		  font-size:50px;
+		  font-family:'나눔손글씨 붓', NB, Cursive;
+		  font-weight:bold;
+		  color:#009900;}
+.bg_it{width:950px;
+       height:331px;
+       padding-left:100px;
+       background-image:url('/images/consltJobCarpa/jobPsyExamNew/examImg/it_0.jpg');
+	   background-repeat:no-repeat;
+	   background-position:right top;
+	   font-size:50px;
+	   font-family:'나눔손글씨 붓', NB, Cursive;
+	   font-weight:bold;
+	   color:#009900;}
+.bg_tree{width:950px;
+		  height:290px;
+		  padding-left:150px;
+		  font-size:50px;
+		  font-family:'나눔손글씨 붓', NB, Cursive;
+		  font-weight:bold;
+		  color:#009900;}
+.bg_high{width:950px;
+		  height:220px;
+		  background-repeat:no-repeat;
+		  background-position:right top;
+		  padding-left:100px;
+		  font-size:50px;
+		  font-family:'나눔손글씨 붓', NB, Cursive;
+		  font-weight:bold;
+		  color:#009900;}
+
+/* 청소년 직업흥미검사 추가(20170109) */
+.info_jobExam {padding:110px 0 150px; margin-top:-10px; width:100%; background:#f2f9f0}
+.info_jobExam * {font-family:NanumGothicBold; font-weight:normal}
+.info_jobExam .qus_box {margin:0 auto; width:634px}
+.info_jobExam .qus_box.first {padding-bottom:459px; background:url(/images/consltJobCarpa/jobPsyExamNew/bg_youthInfo.gif) center 123px no-repeat}
+.info_jobExam .qus_box .title {display:block; margin-bottom:9px; padding-left:20px; background:url(/images/consltJobCarpa/jobPsyExamNew/bul_cir_bk.png) 0 5px no-repeat; color:#35312e; font-size:15px}
+.info_jobExam .qus_box .sub_txt {margin-left:20px; color:#007c2f; font-size:15px}
+.info_jobExam .tbl_qus {margin-top:20px; width:100%; border:1px solid #999}
+.info_jobExam .tbl_qus caption {display:none; width:0; height:0}
+.info_jobExam .tbl_qus th, .info_jobExam .tbl_qus td {padding:18px 0 22px 20px; border-top:1px solid #ddd; color:#333; font-size:13px}
+.info_jobExam .tbl_qus th.bt_non, .info_jobExam .tbl_qus td.bt_non {border-top:none}
+.info_jobExam .tbl_qus th {padding-left:28px; background:#f9f9f9;font-size:14px}
+.info_jobExam .tbl_qus td {background:#fff}
+.info_jobExam .tbl_qus td label {margin-right:50px; margin-left:5px}
+.info_jobExam .tbl_qus td select {padding-left:9px; height:32px; border:1px solid #ddd; font-size:13px; color:#333; font-family:NanumGothic}
+.info_jobExam .tbl_qus td input {padding-left:9px; height:28px; line-height:28px; border:1px solid #ddd; font-size:13px; color:#999; font-family:NanumGothic}
+.info_jobExam .tbl_qus td input[type=radio] {border:none}
+.info_jobExam .btn_start {margin-top:30px; text-align:center}
+.info_jobExam .btn_start a {display:inline-block; padding:0 43px 0 46px; height:37px; line-height:37px; background:#6a9f4d; font-size:14px; color:#fff; font-family:NanumGothic;}
+.info_jobExam .info_guide {margin-top:50px; padding:11px 0 10px 73px; width:561px; background:#777 url(/images/consltJobCarpa/jobPsyExamNew/bg_infoGuide.gif) 12px center no-repeat}
+.info_jobExam .info_guide p {line-height:19px; font-size:13px; color:#fff}

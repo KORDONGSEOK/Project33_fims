@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" >
+      
+      <div id="header" class="col-xs-12" th:fragment="adminHeaderFragment">
+            <nav class="navbar">
+    <div class="container">
+        <div class="navbar-inner">
+
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/adminview/adminMainView">!Godomall5</a>
+                <span class="standard"></span>
+                                                    
+            </div>
+
+            <div class="gnb">
+                <ul class="list-inline">
+                    <li class="no-bar">
+                        <div class="dropdown">
+                            <!--js-btn-layer-sub-menu-->
+                            <a href="#" class="dropdown-toggle gnb-idinfo" id="headerSubMenuManager" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+                                <span>#전체관리자</span>님 (
+                                <span>#freeadm</span>
+                                ) </a>
+                            <ul class="dropdown-menu gnb-dropdown-menu" aria-labelledby="headerSubMenuManager">
+                                <li class="dropdown-item"><a href="#">#운영자정보</a></li>
+                                <li class="dropdown-item"><a href="#">#로그아웃</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="pos-r no-bar">
+                        <a href="javascript:Schedule.addToday()" class="schedule-a"> <img src="https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_bell.png" style="margin-right: 6px;">
+                                                    </a>
+                    </li>
+                    <li class="no-bar">
+                        <span class="dropdown" style="margin: 0; padding: 0;">
+                                                            <a href="/" class="dropdown-toggle gnb-myshop" id="headerMyShop" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">#내쇼핑몰</a>
+                                <ul class="dropdown-menu gnb-dropdown-menu" aria-labelledby="headerMyShop">
+                                                                    <li class="dropdown-item"><a href="#" target="_blank"><span class="flag flag-16 flag-kr"></span> #기준몰</a></li>
+                                                                    <li class="dropdown-item"><a href="#" target="_blank"><span class="flag flag-16 flag-us"></span> #영문몰</a></li>
+                                                                    <li class="dropdown-item"><a href="#" target="_blank"><span class="flag flag-16 flag-cn"></span> #중문몰</a></li>
+                                                                    <li class="dropdown-item"><a href="#" target="_blank"><span class="flag flag-16 flag-jp"></span> #일문몰</a></li>
+                                                            </ul>
+                                                    </span>
+                                                <span style="margin: 0; padding: 0;">
+                            <a href="/" target="_blank" class="gnb-myshop text-red">!축제홈페이지</a>
+                        </span>
+                        <span style="margin: 0; padding: 0;">
+                            <a href="#" class="gnb-myshop pdr0">#마켓연동</a>
+                        </span>
+                                            </li>
+                                        <li class="no-bar new">
+                        <div class="dropdown gnb-orderinfo" id="dropDownOrderPresentation">
+                            <a href="#" class="dropdown-toggle dropdown-toggle-arr" id="headerSubMenuOrderPresentation" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+                                <span class="js-oder-count-new display-none">
+                                    <img src="https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_new.png" width="14">
+                                </span>
+                                주문현황
+                            </a>
+                            <ul class="dropdown-menu gnb-dropdown-menu" aria-labelledby="headerSubMenuOrderPresentation">
+                                <li class="dropdown-head">#주문상태설정
+                                    <div class="pull-right">
+                                        <a href="#" class="js-setting-order" data-role="orderPresentation"> <img src="https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_gear.png" alt=""> </a>
+                                    </div>
+                                </li>
+                                <li class="dropdown-noitem">조회할 주문상태를<br>선택해주세요.</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="devide"></li>
+                                        <li class="no-bar">
+                        <div class="dropdown gnb-favorite" id="dropDownFavoriteMenu">
+                            <a href="#" class="dropdown-toggle dropdown-toggle-arr" id="headerSubMenuFavoriteMenu" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false"> 자주쓰는메뉴 </a>
+                            <ul class="dropdown-menu gnb-dropdown-menu" aria-labelledby="headerSubMenuFavoriteMenu">
+                                <li class="dropdown-head">#메뉴설정
+                                    <div class="pull-right">
+                                        <a href="#" class="js-setting-favorite-menu"> <img src="https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_gear.png" alt=""> </a>
+                                    </div>
+                                </li>
+                                <li class="dropdown-noitem">자주쓰는 메뉴를<br>설정해주세요.</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="devide"></li>
+                    <li class="no-bar">
+                        <div class="dropdown gnb-btn-more">
+                            <a href="#" class="dropdown-toggle dropdown-toggle-arr" id="headerSubMenuMore" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">#더보기</a>
+                            <ul class="dropdown-menu gnb-dropdown-menu" aria-labelledby="headerSubMenuMore">
+                                <li class="dropdown-item"><a href="#" target="_blank" class="pdr0">#마이고도</a></li><li class="dropdown-item"><a href="#" target="_blank" class="pdr0">#매뉴얼</a></li>
+                                <li class="dropdown-item"><a href="#" class="pdr0">#사이트맵</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                                        <li class="no-bar">
+                        <div class="form-inline gnb-search">
+                            <div class="gnb-search-head">
+                                                                    <select id="headerSearchType" name="headerSearchType" class="header-select">
+                                        <option value="menu">메뉴</option>
+                                        <option value="member">회원</option>
+                                    </select>
+                                                            </div>
+                            <div class="gnb-search-body">
+                                <span class="icon-magni"><img src="https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/ico_search_btn.png" alt=""></span>
+                                <input type="text" id="headerSearchKeyword" class="form-control" name="headerSearchKeyword" placeholder="메뉴검색"/>
+                                <div class="gnb-search-hint form-inline display-none">
+                                    <select class="form-control multiple-select" size="5" id="headerSearchMenuList" style="height:100px;"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<a href="#" class="js-btn-layer-search-member pdr0 ">회원검색</a>-->
+                    </li>
+                    <!-- 스타일 안보임 처리 : 컨트롤러 제거는 하지 않음. 직접 URL 입력시 접속됨 -->
+                    <!-- <li><a href="../bootstrap/index" style="color:yellow;" target="_blank">스타일</a></li>-->
+                </ul>
+            </div>
+        </div>
+
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav reform">
+                                            <li class="">
+                                <a href="#" id="menu_policy"
+                                   style="width:89.615384615385px;">#기본설정</a>
+                            </li>
+                                                        <li class="">
+                                <a href="#" id="menu_goods"
+                                   style="width:89.615384615385px;">#상품</a>
+                            </li>
+                                                        <li class="">
+                                <a href="#" id="menu_order"
+                                   style="width:89.615384615385px;">#주문/배송</a>
+                            </li>
+                                                        <li class="">
+                                <a href="/adminview/member/memberList" id="menu_member"
+                                   style="width:89.615384615385px;">!회원</a>
+                            </li>
+                                                        <li class="">
+                                <a href="#" id="menu_board"
+                                   style="width:89.615384615385px;">#게시판</a>
+                            </li>
+                                                        <li class="">
+                                <a href="#" id="menu_promotion"
+                                   style="width:89.615384615385px;">#프로모션</a>
+                            </li>
+                                                        <li class="">
+                                <a href="#" id="menu_design"
+                                   style="width:89.615384615385px;">#디자인</a>
+                            </li>
+                                                        <li class="">
+                                <a href="#" id="menu_service"
+                                   style="width:89.615384615385px;">#부가서비스</a>
+                            </li>
+                                                        <li class="">
+                                <a href="#" id="menu_marketing"
+                                   style="width:89.615384615385px;">#마케팅</a>
+                            </li>
+                                                        <li class="">
+                                <a href="#" id="menu_mobile"
+                                   style="width:89.615384615385px;">#모바일샵</a>
+                            </li>
+                                                        <li class="">
+                                <a href="#" id="menu_scm"
+                                   style="width:89.615384615385px;">#공급사</a>
+                            </li>
+                                                        <li class="">
+                                <a href="#" id="menu_statistics"
+                                   style="width:89.615384615385px;">#통계</a>
+                            </li>
+                                                        <li class="">
+                                <a href="#" id="menu_myapp"
+                                   style="width:89.615384615385px;">#모바일앱</a>
+                            </li>
+                                        </ul>
+        </div><!-- /.navbar-collapse -->
+
+    </div>
+</nav>
+
+<ol class="breadcrumb text-small clearfix">
+                <li>!회원</li>
+                        <li>!회원 관리</li>
+                        <li>!회원 리스트</li>
+            </ol>
+
+<!-- 고도 사이트로 이동 시작 -->
+<form name="frmGotoGodomall" action="" method="post">
+    <input type="hidden" name="pageKey" value="321783">
+    <input type="hidden" name="sno" value="321783">
+    <input type="hidden" name="mode" value="">
+</form>
+<!-- 고도 사이트로 이동 끝 -->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var gd_main_layer = {
+            presentation: {id: "presentation", selector: "#layerPresentation", title: "주요현황 조회설정"},
+            order_presentation: {id: "orderPresentation", get_id: "getOrderPresentation", title: "주문현황 조회설정"},
+            order_setting: {id: "orderSetting", title: "주문관리 조회설정"},
+            favorite_menu: {id: "favoriteMenu", get_id: "getFavoriteMenu", selector: "#layerFavorite", title: "자주쓰는 메뉴 설정"}
+        };
+        var _bootstrap_dialog = BootstrapDialog;
+
+        $('#dropDownFavoriteMenu').on('show.bs.dropdown', function () {
+            var dropdown_container = $(this);
+            var dropdown_menu = dropdown_container.find('.dropdown-menu');
+            $.ajax('../base/main_setting_ps.php', {
+                method: "post",
+                data: {mode: gd_main_layer.favorite_menu.get_id},
+                global_complete: false,
+                success: function () {
+                    if (arguments[0].success === 'OK') {
+                        var result = arguments[0].result;
+                        if (result.length > 0) {
+                            var html = [];
+                            $.each(result, function (idx, item) {
+                                var menuName = 'none';
+                                var menuLink = '';
+                                if (typeof item.tName === 'string') {
+                                    menuName = item.tName;
+                                } else if (typeof item.sName === 'string') {
+                                    menuName = item.sName;
+                                } else if (typeof item.fName === 'string') {
+                                    menuName = item.fName;
+                                }
+                                if (typeof item.tUrl === 'string') {
+                                    menuLink = '/' + item.tUrl;
+                                } else if (typeof item.sUrl === 'string') {
+                                    menuLink = '/' + item.sUrl;
+                                } else {
+                                    menuLink = '/index.php';
+                                }
+                                if (typeof item.fCode === 'string') {
+                                    menuLink = item.fCode + menuLink;
+                                }
+                                // html.push('<li role="separator" class="divider"></li>');
+                                html.push('<li class="dropdown-item"><a href="../' + menuLink + '">' + menuName + '</a></li>');
+                            });
+                            dropdown_menu.find('li:gt(0)').remove();
+                            dropdown_menu.append(html.join(''));
+                        } else {
+                            if (dropdown_menu.find('.dropdown-noitem').length == 0) {
+                                dropdown_menu.find('li:gt(0)').remove();
+                                dropdown_menu.append('<li class="dropdown-noitem">자주쓰는 메뉴를<br>설정해주세요.</li>');
+                            }
+                        }
+                    } else {
+                        console.log(arguments);
+                    }
+                }
+            });
+        });
+
+        $('#dropDownOrderPresentation').on('show.bs.dropdown', function () {
+            var dropdown_container = $(this);
+            $.ajax('../base/main_setting_ps.php', {
+                method: "post",
+                data: {mode: gd_main_layer.order_presentation.get_id},
+                global_complete: false,
+                success: function () {
+                    if (arguments[0].success === 'OK') {
+                        var result = arguments[0].result;
+                        if (result.length > 0) {
+                            var html = [];
+                            $.each(result, function (idx, item) {
+                                // html.push('<li role="separator" class="divider"></li>');
+                                html.push('<li class="dropdown-item"><a href="' + item.link + '">' + item.name + '<span class="dropdown-item-val"><span class="text-red">' + item.count + '</span>건</span></a></li>');
+                            });
+                            var dropdown_menu = dropdown_container.find('.dropdown-menu');
+                            dropdown_menu.find('li:gt(0)').remove();
+                            dropdown_menu.append(html.join(''));
+                        }
+                    } else {
+                        console.log(arguments);
+                    }
+                }
+            });
+        });
+
+        $('.js-setting-presentation').click(function () {
+            $.post('/share/layer_presentation_setting.php', {mode: gd_main_layer.presentation.id}, function (data) {
+                var options = {title: gd_main_layer.presentation.title, message: $(data), size: _bootstrap_dialog.SIZE_WIDE};
+                _bootstrap_dialog.show(options);
+            });
+        });
+
+        $('.js-setting-cs').bind('click', function () {
+            $.post('/share/layer_cs_setting.php', null, function (data) {
+                _bootstrap_dialog.show({
+                    title: '문의/답변관리 조회설정 ',
+                    message: $(data)
+                });
+            });
+        });
+
+        $('.js-setting-order').bind('click', function () {
+            var layer_id = this.dataset.role;
+            var title = (layer_id === gd_main_layer.order_presentation.id) ? gd_main_layer.order_presentation.title : gd_main_layer.order_setting.title;
+            $.post('../base/layer_order_setting.php', {mode: layer_id}, function (data) {
+                var options = {title: title, message: $(data)};
+                _bootstrap_dialog.show(options);
+            });
+        });
+
+        $('.js-setting-favorite-menu').bind('click', function () {
+            $.post('/share/layer_favorite_menu.php', {mode: gd_main_layer.favorite_menu.id}, function (data) {
+                var options = {title: gd_main_layer.favorite_menu.title, message: $(data), size: _bootstrap_dialog.SIZE_WIDE};
+                _bootstrap_dialog.show(options);
+            });
+        });
+
+        $('#headerSearchType').change(function () {
+            if (this.value === 'member') {
+                layer_member_search();
+                document.getElementById('headerSearchType').options[0].selected = true;
+            }
+        });
+
+        $('#headerSearchKeyword').keyup(function (e) {
+            if (e.keyCode === 13 && this.value.length > 1) {
+                $.ajax('../base/main_setting_ps.php', {
+                    method: "post",
+                    global_complete: false,
+                    data: {mode: "searchMenu", keyword: this.value},
+                    success: function () {
+                        var result = arguments[0].result;
+                        var optionHtml = [];
+                        $.each(result, function (idx, item) {
+                            var link = '../' + item.fCode + '/' + item.tUrl;
+                            optionHtml.push('<option value="' + link + '">' + item.tName + '</option>');
+                        });
+                        var $headerSearchMenuList = $('#headerSearchMenuList');
+                        $headerSearchMenuList.closest('div').removeClass('display-none');
+                        $headerSearchMenuList.find('option').remove();
+                        if (optionHtml.length == 0) {
+                            $headerSearchMenuList.append('<option>검색된 메뉴가 없습니다.</option>');
+                        } else {
+                            $headerSearchMenuList.append(optionHtml.join(''));
+                        }
+                    }
+                });
+            }
+        });
+
+        $('#headerSearchMenuList').on('click', function () {
+            location.href = this.value;
+        });
+
+        $(window).click(function () {
+            var $headerSearchMenuList = $('#headerSearchMenuList').closest('div');
+            if ($headerSearchMenuList.hasClass('display-none') === false) {
+                $headerSearchMenuList.addClass('display-none');
+            }
+        });
+
+        $('.endDatetime').datetimepicker().on('dp.show', function (e) {
+            var dateNow = new Date();
+            $(this).children().val(moment(dateNow).hours(23).minutes(59).format("YYYY-MM-DD HH:mm"));
+        });
+    });
+</script>
+            <div id="panel_popupPanel"></div>
+        </div>
+      
+      
+
+</html>

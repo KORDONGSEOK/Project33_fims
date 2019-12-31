@@ -1,0 +1,23 @@
+https://www.work.go.kr/images/consltJobCarpa/jobPsyExamNew/bg_tree.gif
+https://www.work.go.kr/images/consltJobCarpa/jobPsyExamNew/golist_bg.gif
+https://www.work.go.kr/images/consltJobCarpa/jobPsyExamNew/icon_bul10.gif
+https://www.work.go.kr/images/consltJobCarpa/jobPsyExamNew/list_bg.gif
+https://www.work.go.kr/images/consltJobCarpa/jobPsyExamNew/logo.jpg
+https://www.work.go.kr/images/consltJobCarpa/jobPsyExamNew/nbtn_cbg.gif
+https://www.work.go.kr/images/consltJobCarpa/jobPsyExamNew/nbtn_rbg.gif
+https://www.work.go.kr/images/consltJobCarpa/jobPsyExamNew/numbg.gif
+https://www.work.go.kr/images/consltJobCarpa/jobPsyExamNew/sbtn_cbg.gif
+https://www.work.go.kr/images/consltJobCarpa/jobPsyExamNew/sbtn_lbg.gif
+https://www.work.go.kr/images/consltJobCarpa/jobPsyExamNew/sbtn_rbg.gif
+https://www.work.go.kr/images/consltJobCarpa/jobPsyExamNew/tab_off.gif
+https://www.work.go.kr/images/consltJobCarpa/jobPsyExamNew/tab_on.gif
+https://www.work.go.kr/images/consltJobCarpa/jobPsyExamNew/tit_bg.gif
+https://www.work.go.kr/images/consltJobCarpa/jobPsyExamNew/tit_cbg.gif
+https://www.work.go.kr/images/consltJobCarpa/jobPsyExamNew/tit_lbg.gif
+https://www.work.go.kr/images/consltJobCarpa/jobPsyExamNew/tit_rbg.gif
+
+
+---examImg Æú´õ³» ---
+https://www.work.go.kr/images/consltJobCarpa/jobPsyExamNew/examImg/toptext_b1_a.jpg
+https://www.work.go.kr/images/consltJobCarpa/jobPsyExamNew/examImg/toptext_c1_a.jpg
+https://www.work.go.kr/images/consltJobCarpa/jobPsyExamNew/examImg/toptext_t1_a.jpg

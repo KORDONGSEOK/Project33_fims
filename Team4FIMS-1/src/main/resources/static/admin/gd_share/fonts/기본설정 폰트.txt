@@ -1,0 +1,3 @@
+https://gdadmin.plus.godomall.com:14003/admin/gd_share/fonts/glyphicons-halflings-regular.ttf
+https://gdadmin.plus.godomall.com:14003/admin/gd_share/fonts/glyphicons-halflings-regular.woff
+https://gdadmin.plus.godomall.com:14003/admin/gd_share/fonts/glyphicons-halflings-regular.woff2

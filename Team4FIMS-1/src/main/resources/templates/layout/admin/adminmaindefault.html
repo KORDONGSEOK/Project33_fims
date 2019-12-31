@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="ko">
+
+<head th:replace="fragments/admin/adminhead :: adminHeadFragment"></head>
+
+<body class="base index layout-fluid menu-no-border breadcrumb-no-header">
+	<div id="container-wrap" class="container-fluid pd0">
+		<div id="container" class="row">
+			<div id="header" class="col-xs-12" th:replace="fragments/admin/adminheader :: adminHeaderFragment"></div>
+	
+			<div id="content-wrap" >
+				
+		
+				<th:block layout:fragment="adminMainContents"></th:block>
+					
+					
+			</div>
+			<div id="footer" class="col-xs-12" th:replace="fragments/admin/adminfooter :: adminFooterFragment"></div>
+			<th:block th:include="fragments/admin/adminfootermain2"></th:block>
+			<th:block th:include="fragments/admin/adminfooterlast"></th:block>
+		</div>
+	</div>
+	
+	<div id="panel_noticePanel"></div>
+	
+	<iframe name="ifrmProcess" src="/blank.php" width="100%" height="200" class="display-none"></iframe>
+	<script type="text/javascript">
+	    $(function() {
+	        adminPanelApiAjax('base', 'index', 'index');
+	    });
+	</script>	
+</body>
+
+
+</html>

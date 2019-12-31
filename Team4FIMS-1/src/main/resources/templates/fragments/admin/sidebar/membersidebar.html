@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" >
+
+        <div id="content-wrap" >
+            <div id="menu">
+                <!-- close/open -->
+<div class="js-adminmenu-toggle"></div>
+<div class="js-listgroup-toggle"></div>
+<!-- //close/open -->
+<div class="menu-header member">
+    <h2>회원</h2>
+</div>
+<div class="panel " th:fragment="adminLeftmenuFragment">
+                    <div class="panel-heading menu-icon-minus ">!회원 관리</div>
+                <ul class="list-group">                    
+                						<li class="list-group-item ">
+                        <a href="/adminview/member/memberList">!회원 리스트</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="/adminview/member/memberRegister">!회원 등록</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="/adminview/member/excelMemberUp">!회원 엑셀 업로드</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="/adminview/member/memberJoinPolicy">!회원 가입 정책 관리</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="/adminview/member/memberJoinItem">!회원 가입 항목 관리</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="/adminview/member/memberGrade">!회원 등급 관리</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="/adminview/member/memberGradeAppraisal">!회원등급 평가방법 설정</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="/adminview/member/memberBatchApprovalModify">!가입승인/등급변경</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="/adminview/member/memberDataEvent">!회원정보 이벤트</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="/adminview/member/memberJoinEvent">!회원가입 이벤트</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="/adminview/member/memberSleepPolicy">!휴면 회원 정책</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="/adminview/member/memberSleep">!휴면 회원 관리</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="/adminview/member/memberWithdraw">!회원 탈퇴 / 삭제 관리</a>                     </li>
+                    </ul>                <div class="panel-heading menu-icon-minus ">#간편 로그인</div>
+                <ul class="list-group">                    <li class="list-group-item ">
+                        <a href="#">#페이코 아이디 로그인 설정</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="#">#페이스북 아이디 로그인 설정</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="#">#네이버 아이디 로그인 설정</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="#">#카카오 아이디 로그인 설정</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="#">#위메프 아이디 로그인 설정</a>                     </li>
+                    </ul>                <div class="panel-heading menu-icon-minus ">#마일리지 / 예치금 관리</div>
+                <ul class="list-group">                    <li class="list-group-item ">
+                        <a href="#">#마일리지 기본 설정</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="#">#마일리지 사용 설정</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="#">#마일리지 지급 설정</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="#">#마일리지 지급/차감</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="#">#예치금 설정</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="#">#예치금 지급/차감</a>                     </li>
+                    </ul>                <div class="panel-heading menu-icon-minus ">#메일 관리</div>
+                <ul class="list-group">                    <li class="list-group-item ">
+                        <a href="#">#이메일 마케팅</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="#">#파워 메일 설정</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="#">#파워 메일 발송</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="#">#개별/전체 메일 발송</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="#">#자동 메일 설정</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="#">#메일 발송 내역 보기</a>                     </li>
+                    </ul>                <div class="panel-heading menu-icon-minus ">#SMS 관리</div>
+                <ul class="list-group">                    <li class="list-group-item ">
+                        <a href="#">#SMS 설정</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="#">#개별/전체 SMS 발송</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="#">#SMS 발송 내역 보기</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="#">#SMS 포인트 충전</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="#">#080 수신거부 설정</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="#">#080 수신거부 리스트</a>                     </li>
+                    </ul>                <div class="panel-heading menu-icon-minus ">#카카오 알림톡</div>
+                <ul class="list-group">                    <li class="list-group-item ">
+                        <a href="#">#카카오 알림톡 설정</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="#">#카카오 알림톡 템플릿 설정</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="#">#카카오 알림톡 발송 내역 보기</a>                     </li>
+                        </ul>
+    </div>
+            </div>
+            
+        </div>
+
+
+</html>

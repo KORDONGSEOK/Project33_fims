@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/admin/adminmaindefault}">
+
+<th:block layout:fragment="adminMainContents">
+
+
+<div class="container-fluid pd0">
+                <div id="content" class="row">
+                    <div class="col-xs-12">
+                        <script type="text/javascript">
+    var isVisibleMemo = 'y';
+    var viewAuth = 'all';
+    var main_setting = {"memo":{"self":{"isVisible":"y","viewAuth":"all"}}};
+</script>
+<link type="text/css" href="/admin/gd_share/script/slider/slick/slick.css" rel="stylesheet"/>
+<script type="text/javascript" src="/admin/gd_share/script/slider/slick/slick.js"></script>
+<script type="text/javascript" src="/admin/gd_share/script/main.js" charset="utf-8"></script>
+
+<!-- 쇼핑몰 서비스 정보 내용 시작 -->
+<div class="row main-layout main-header reform mgt-33">
+    <div class="wrap">
+        <div class="layout-left">
+            <h1>
+                <a href="../policy/base_info.php">고도:체험샵</a> <a href="../policy/base_info.php">
+                    <small>godomall5.com</small>
+                </a>
+            </h1>
+        </div>
+                    <div class="layout-right text-right">
+                <ul class="mall-info-cnt list-inline">
+                    <li class="disk-space">
+                        <span class="disk-space-check disk-storage"></span>
+                        <button type="button" class="btn btn-gray btn-xs btn_react_disk">갱신</button>
+                        <button type="button" onclick="gotoGodomall('disk');" class="btn btn-gray btn-xs">추가</button>
+                    </li>
+                    <li class="sms-cnt pdlr30">
+                        <strong>SMS</strong>
+                        <strong class="text-danger">0.0 포인트</strong>
+                        <a href="../member/sms_charge.php" class="btn btn-gray btn-xs">충전</a>
+                    </li>
+                </ul>
+            </div>
+            </div>
+</div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // 계정용량
+            $('.disk-space-check').disk_space();
+
+            $('.btn_react_disk').click(function () {
+                $('.disk-space-check').disk_space('react');
+            }).css('cursor', 'pointer');
+        });
+
+        /*
+         * 계정용량
+         */
+        $.fn.disk_space = function (mode) {
+            var obj = $(this);
+            obj.html('<img src="/admin/gd_share/img/icon_loading2.gif" alt="로딩중" width="34" class="middle" />');
+            $.post('https://gdadmin.plus.godomall.com:14003/base/disk_space.php', {'mode': mode}, function (data) {
+                if (data == '') {
+                    obj.empty();
+                    return;
+                }
+                var diskData = data;
+                var diskHtml = [];
+                if (diskData.supplyDisk == '') {
+                    diskHtml.push('<strong class="pdr15">' + diskData.diskTitle + '</strong><span class="si_disk"><strong class="text-danger">' + diskData.usedDisk + '</strong></span>');
+                } else if (typeof diskData.usedPer !== 'undefined') {
+                    diskHtml.push('<span class="storage-title">' + diskData.diskTitle + '</span>');
+                    diskHtml.push('<span class="disk-progressbar"><span class="disk-guage" style="width:' + diskData.usedPer + '%;"></span></span>');
+                    diskHtml.push('<span class="storage-val"><span class="c-gdred"><b>' + diskData.usedDisk + ' </b> </span> <span class="bar"> / </span> <span>' + diskData.supplyDisk + '</span></span>');
+                    if (diskData.usedPer == '100') {
+                        var message = '쇼핑몰 제공용량이 초과되었습니다. <span class="c-gdred">초과 상태로 3일 경과 시, 전체 관리자 로그인이 차단</span>됩니다.<br /><br />- 초과시점 : <span class="c-gdred">' + diskData.fullDate + '</span><br />- 잔여용량 확보 방법 안내<br />1. 불필요한 용량 정리<br />2. 디스크 용량 추가';
+                        var btnText = {};
+                        btnText.cancelLabel = '자세히보기';
+                        btnText.confirmLabel = '확인';
+                        dialog_confirm(message, function(result) {
+                            if (result) {
+                                layer_close();
+                            } else {
+                                window.open('https://www.godo.co.kr/customer/faq-list.gd?refcd=52#753', '_blank');
+                            }
+                        }, '경고', btnText);
+                    }
+                }
+                obj.html(diskHtml.join(''));
+            });
+        };
+    </script>
+<!-- 쇼핑몰 서비스 정보 내용 끝 -->
+
+<div class="main-layout main-content reform">
+    <div class="content-main">
+        <div class="row">
+            <div class="col-xs-8">
+                <!-- 주문 관리 내용 시작 -->
+                <!-- 주문관리 -->
+<div class="main-section order-management">
+    <div class="table-title btm-line">
+        <span class="gd-help-manual">주문관리</span>
+        <div class="pull-right"><a href="#" class="btn btn-icon-setting btn-sm btn-white js-setting-order" data-role="orderSetting">세팅</a></div>
+    </div>
+
+    <div class="main-section-inner">
+
+                    <ol class="content order list-unstyled reform"><li class="active"><a href="/order/order_list_order.php?treatDate[]=2019-12-24&treatDate[]=2019-12-31&view=orderGoods&detailSearch=y&searchFl=y&orderStatus[]=o1"><span class="status">입금대기</span><div class="order-list-val">1</div></a></li><li class="active"><a href="/order/order_list_pay.php?treatDate[]=2019-12-24&treatDate[]=2019-12-31&view=orderGoods&detailSearch=y&searchFl=y&orderStatus[]=p1"><span class="status">결제완료</span><div class="order-list-val">1</div></a></li><li class=""><a href="/order/order_list_goods.php?treatDate[]=2019-12-24&treatDate[]=2019-12-31&view=orderGoods&detailSearch=y&searchFl=y&orderStatus[]=g1"><span class="status">상품준비중</span><div class="order-list-val">0</div></a></li><li class=""><a href="/order/order_list_delivery.php?treatDate[]=2019-12-24&treatDate[]=2019-12-31&view=orderGoods&detailSearch=y&searchFl=y&orderStatus[]=d1"><span class="status">배송중</span><div class="order-list-val">0</div></a></li></ol><ol class="content order list-unstyled reform"><li class=""><a href="/order/order_list_delivery_ok.php?treatDate[]=2019-12-24&treatDate[]=2019-12-31&view=orderGoods&detailSearch=y&searchFl=y&orderStatus[]=d2"><span class="status">배송완료</span><div class="order-list-val">0</div></a></li><li class=""><a href="/order/order_list_settle.php?treatDate[]=2019-12-24&treatDate[]=2019-12-31&view=orderGoods&detailSearch=y&searchFl=y&orderStatus[]=s1"><span class="status">구매확정</span><div class="order-list-val">0</div></a></li><li class=""><a href="/order/order_list_refund.php?treatDate[]=2019-12-24&treatDate[]=2019-12-31&view=orderGoods&detailSearch=y&searchFl=y&orderStatus[]=r1"><span class="status">환불접수</span><div class="order-list-val">0</div></a></li><li class=""><a href="/order/order_list_exchange.php?treatDate[]=2019-12-24&treatDate[]=2019-12-31&view=orderGoods&detailSearch=y&searchFl=y&orderStatus[]=e1"><span class="status">교환접수</span><div class="order-list-val">0</div></a></li></ol>            </div>
+    <div class="clear-both"></div>
+</div>
+                <!-- 주문 관리 내용 끝 -->
+            </div>
+            <div class="col-xs-4">
+                <!-- 문의 / 답변 관리 내용 시작 -->
+                <div class="main-section">
+    <div class="table-title btm-line">
+        <span class="gd-help-manual">문의/답변관리</span>
+        <div class="pull-right"><a href="#" class="btn btn-icon-setting btn-sm btn-white js-setting-cs">세팅</a></div>
+    </div>
+    <div class="qa-board-box reform">
+        <ol class="content list-unstyled reform"><li><a href="../board/article_list.php?bdId=goodsreview&searchDateFl=regDt&rangDate[]=2019-12-25&rangDate[]=2019-12-31&searchPeriod=6">상품후기<span class="qa-board-val"><b class="c-gdred">4</b>건</span></a></li><li><a href="../board/article_list.php?bdId=goodsqa&searchDateFl=regDt&rangDate[]=2019-12-25&rangDate[]=2019-12-31&searchPeriod=6">상품문의<span class="qa-board-val"><b class="c-gdred">0</b>/0건</span></a></li><li><a href="../board/article_list.php?bdId=qa&searchDateFl=regDt&rangDate[]=2019-12-25&rangDate[]=2019-12-31&searchPeriod=6">1:1문의<span class="qa-board-val"><b class="c-gdred">0</b>/0건</span></a></li><li><a href="../scm/scm_board_list.php?searchDate[]=2019-12-25&searchDate[]=2019-12-31&searchPeriod=6">공급사문의<span class="qa-board-val"><b class="c-gdred">0</b>건</span></a></li></ol>    </div>
+</div>
+                <!-- 문의 / 답변 관리 내용 끝 -->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-6">
+                <!-- 공지사항 / godo:플러스샵 -->
+                <div class="main-section">
+                    <div class="table-title">
+                        <span class="">공지사항</span>
+                        <div class="pull-right">
+                            <div id="panel_link_noticeLink" class="pull-right more-view">
+                            	<a href="https://www.godo.co.kr/customer/board-list.gd?type=notice" target="_blank" class="btn btn-sm btn-link">더보기</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="board-list-newest content list-unstyled reform" id="panel_board_noticeAPI">
+						<li>
+							<a href="http://godo.co.kr/news/notice_view.php?board_idx=1793" target="_blank">연말연시 고객센터 운영시간 안내 (12/31 ~1/1) <img src="https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_new.png" alert="NEW" class="img-fix"></a>
+							<span>2019-12-30</span>
+						</li>
+						<li>
+							<a href="http://godo.co.kr/news/notice_view.php?board_idx=1791" target="_blank">COM, KR, CO.KR, NET, SHOP 도메인 시스템 점검 (12/2</a>
+							<span>2019-12-23</span>
+						</li>
+						<li>
+							<a href="http://godo.co.kr/news/notice_view.php?board_idx=1790" target="_blank">[보안] 고도몰5 보안 패치 작업 사전 안내 (12/23)</a>
+							<span>2019-12-13</span>
+						</li>
+						<li>
+							<a href="http://godo.co.kr/news/notice_view.php?board_idx=1789" target="_blank">IDC 서비스 품질 향상 및 시스템 안정화 작업 안내 (1</a>
+							<span>2019-12-12</span>
+						</li>                
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <!-- 패치&업그레이드 -->
+                <div class="main-section">
+                    <div class="table-title">
+                        <span class="">패치&업그레이드</span>
+                        <div class="pull-right">
+                            <div id="panel_link_patchLink" class="pull-right more-view">
+                            	<a href="https://www.godo.co.kr/customer/patch-list.gd" target="_blank" class="btn btn-sm btn-link">더보기</a>
+                            </div>
+                        </div>
+                    </div>
+                    <ol class="board-list-newest content list-unstyled reform" id="panel_board_patchAPI">
+						<li>
+							<a href="http://godo.co.kr/customer_center/patch.php?sno=3720" target="_blank">[12월 3차] SMS 보안인증 범위 개선 건 외 일부 기능 </a>
+							<span>2019-12-18</span>
+						</li>
+						<li>
+							<a href="http://godo.co.kr/customer_center/patch.php?sno=3719" target="_blank">[플러스샵 앱] 회원가입 이벤트</a>
+							<span>2019-12-18</span>
+						</li>
+						<li>
+							<a href="http://godo.co.kr/customer_center/patch.php?sno=3718" target="_blank">분리형 옵션 이용 시 품절된 옵션은 선택되지 않도록 </a>
+							<span>2019-12-18</span>
+						</li>
+						<li>
+							<a href="http://godo.co.kr/customer_center/patch.php?sno=3716" target="_blank">[12월 2차] 추천인 등록 마일리지 지급 횟수 개선 건 </a>
+							<span>2019-12-11</span>
+						</li>                       
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- 관리자 메인 배너 시작 -->
+			<div class="main-section">
+            <div id="panel_banner_mainTop" class="content-main-banner"><a href="http://gongji.godo.co.kr/userinterface/season5/bannerStatistics.php?idx=1&amp;area=top&amp;src=%2F%2Fwww.godo.co.kr%2Fcommon%2Fimg.banner%2F201912%2F120311114496.png&amp;href=https%3A%2F%2Fwww.godo.co.kr%2Fechost%2Fpower%2Fadd%2Fmember%2Fdb-insurance-intro.gd&amp;title=%B0%B3%C0%CE%C1%A4%BA%B8%BA%B8%C8%A3%B9%E8%BB%F3%C3%A5%C0%D3%BA%B8%C7%E8" target="_blank"><img src="//www.godo.co.kr/common/img.banner/201912/120311114496.png" alt="개인정보보호배상책임보험"></a><a href="http://gongji.godo.co.kr/userinterface/season5/bannerStatistics.php?idx=2&amp;area=top&amp;src=%2F%2Fwww.godo.co.kr%2Fcommon%2Fimg.banner%2F201912%2F121211074605.png&amp;href=https%3A%2F%2Fwww.godo.co.kr%2Fechost%2Fpower%2Fadd%2Fmember%2Fnicekeeper-intro.gd&amp;title=NICE%B0%ED%B0%B4%C1%F6%C5%B0%B9%CC" target="_blank"><img src="//www.godo.co.kr/common/img.banner/201912/121211074605.png" alt="NICE고객지키미"></a>
+				<!-- img 태그에 GET으로 데이터 전송 -->
+			<img src="https://dw2.godo.co.kr/api/v1/banner/load.php?sno=321783&amp;kind=s5&amp;url=/base/index.php&amp;banners=%5B%7B%22code%22%3A%22top%22%2C%22url%22%3A%22%5C%2F%5C%2Fwww.godo.co.kr%5C%2Fcommon%5C%2Fimg.banner%5C%2F201912%5C%2F120311114496.png%22%2C%22index%22%3A1%2C%22title%22%3A%22%5Cuac1c%5Cuc778%5Cuc815%5Cubcf4%5Cubcf4%5Cud638%5Cubc30%5Cuc0c1%5Cucc45%5Cuc784%5Cubcf4%5Cud5d8%22%7D%2C%7B%22code%22%3A%22top%22%2C%22url%22%3A%22%5C%2F%5C%2Fwww.godo.co.kr%5C%2Fcommon%5C%2Fimg.banner%5C%2F201912%5C%2F121211074605.png%22%2C%22index%22%3A2%2C%22title%22%3A%22NICE%5Cuace0%5Cuac1d%5Cuc9c0%5Cud0a4%5Cubbf8%22%7D%2C%7B%22code%22%3A%22bottom%22%2C%22url%22%3A%22%5C%2F201602%5C%2Fbn_main02.jpg%22%2C%22index%22%3A1%2C%22title%22%3A%22%5Cub354%5Cubbf8%22%7D%2C%7B%22code%22%3A%22middle%22%2C%22url%22%3A%22%5C%2F201610%5C%2Fbanner320x80.png%22%2C%22index%22%3A1%2C%22title%22%3A%22%5Cuc0ac%5Cuc6a9%5Cuc790+%5Cuac00%5Cuc774%5Cub4dc%22%7D%2C%7B%22code%22%3A%22side%22%2C%22url%22%3A%22%5C%2F%5C%2Fimg.godo.co.kr%5C%2Fgongji%5C%2Fs5%5C%2F201711%5C%2Fbtn_transfer.png%22%2C%22index%22%3A1%2C%22title%22%3A%22Pro%5Cub85c+%5Cuc774%5Cuc804%5Cud558%5Cuae30%22%7D%2C%7B%22code%22%3A%22side%22%2C%22url%22%3A%22%5C%2F%5C%2Fimg.godo.co.kr%5C%2Fgongji%5C%2Fs5%5C%2F201711%5C%2Fbtn_guide.png%22%2C%22index%22%3A2%2C%22title%22%3A%22%5Cub098%5Cub97c+%5Cuc704%5Cud55c+%5Cuc774%5Cuc6a9%5Cuac00%5Cuc774%5Cub4dc%22%7D%2C%7B%22code%22%3A%22side%22%2C%22url%22%3A%22%5C%2F%5C%2Fimg.godo.co.kr%5C%2Fgongji%5C%2Fs5%5C%2F201711%5C%2Fbtn_down.png%22%2C%22index%22%3A3%2C%22title%22%3A%22%5Cuad00%5Cub9ac%5Cuc790+APP+%5Cub2e4%5Cuc6b4%5Cub85c%5Cub4dc%22%7D%2C%7B%22code%22%3A%22side%22%2C%22url%22%3A%22%5C%2F%5C%2Fwww.godo.co.kr%5C%2Fcommon%5C%2Fimg.banner%5C%2F201906%5C%2F062115240018.png%22%2C%22index%22%3A4%2C%22title%22%3A%22%5Cub124%5Cuc774%5Cubc84%5Cud398%5Cuc774+%5Cuac04%5Cud3b8%5Cuacb0%5Cuc81c%22%7D%5D" style="width: 1px; height: 1px; opacity: 0;"></div>
+        </div>
+        <!-- 관리자 메인 배너 끝 -->
+
+        <!-- 중앙 현황판 내용 시작 -->
+        <!-- <iframe name="mainStatistics" src="./main_statistics.php" class="main-statistics pd0 mg0" scrolling="no" frameborder="0"></iframe> -->
+				<div class="main-statistics main-content reform mg0 pd0">
+				    <div class="content-main">
+				        <div class="main-section" id="presentationSection">
+				            <div class="table-title">
+				                <span class="">주요현황</span>
+				                <div class="pull-right more-view">
+				                    <a href="#" class="btn btn-icon-refresh btn-sm btn-white js-real-update">새로고침</a>
+				                    <a href="#" class="btn btn-icon-setting btn-sm btn-white js-setting-presentation">세팅</a>
+				                </div>
+				            </div>
+				            <div class="statics-box reform">
+				                <div class="nav-tabs-top">
+				                    <ul class="nav nav-tabs tab-fluid-5" role="tablist" id="presentationMainTab" data-period="7">
+				                                                <li role="presentation" class="active" data-name="sales">
+				                            <a href="#tab-type1-id1" role="tab" data-toggle="tab">매출 <img class="js-period-icon" src="/admin/gd_share/img/main_statistics/ico_7days_on.png">
+				                                <div class="count">0원</div>
+				                            </a>
+				                        </li>
+				                                                                        <li role="presentation" class="" data-name="order">
+				                            <a href="#tab-type1-id2" role="tab" data-toggle="tab">주문 <img class="js-period-icon" src="/admin/gd_share/img/main_statistics/ico_7days_off.png">
+				                                <div class="count">0건</div>
+				                            </a>
+				                        </li>
+				                                                                                                        <li role="presentation" class="" data-name="visit">
+				                                <a href="#tab-type1-id3" role="tab" data-toggle="tab">방문자 <img class="js-period-icon" src="/admin/gd_share/img/main_statistics/ico_7days_off.png">
+				                                    <div class="count">1명</div>
+				                                </a>
+				                            </li>
+				                                                                                    <li role="presentation" class="" data-name="member">
+				                                <a href="#tab-type1-id4" role="tab" data-toggle="tab">신규회원 <img class="js-period-icon" src="/admin/gd_share/img/main_statistics/ico_7days_off.png">
+				                                    <div class="count">0명</div>
+				                                </a>
+				                            </li>
+				                                                                        </ul>
+				                </div>
+				                <div class="tab-content">
+				                    <div role="tab-type1-id1" class="main-tab-pane tab-pane fade in active" id="tab-type1-id1">
+				                        <div class="pos-r">
+				                            <div class="nav-pills-sub">
+				                                <ul class="gd5-tabnav" role="tablist">
+				                                                                        <li role="presentation" class="active">
+				                                        <a href="#sales-sub-tab1" role="tab" data-toggle="tab" data-mode="salesTotal" data-link="sales_day">매출현황</a>
+				                                    </li>
+				                                    <li role="presentation">
+				                                        <a href="#sales-sub-tab2" role="tab" data-toggle="tab" data-mode="salesGoods" data-link="goods_sale_rank">상품판매순위</a>
+				                                    </li>
+				                                                                    </ul>
+				                            </div>
+				                            <div class="nav-pills-check">
+				                                데이터 노출형태 :
+				                                <select name="deviceFl" class="js-device">
+				                                    <option value="all">통합</option>
+				                                    <option value="pc">PC</option>
+				                                    <option value="mobile">모바일</option>
+				                                    <option value="write">수기</option>
+				                                </select>
+				                            </div>
+				                            <div class="nav-pills-option">
+				                                <a href="../statistics/sales_day.php" target="_top" class="btn btn-sm btn-link">더보기</a>
+				                            </div>
+				                        </div>
+				                        <div>
+				                            <div class="tab-content">
+				                                <div class="tab-pane fade in active" role="sales-sub-tab1" id="sales-sub-tab1">
+				                                    <div class="row row-pd10">
+				                                        <div class="col-xs-6 col">
+				                                            <table class="table table-rows table-fixed text-center">
+				                                                <colgroup>
+				                                                    <col>
+				                                                    <col>
+				                                                    <col>
+				                                                    <col>
+				                                                </colgroup>
+				                                                <thead>
+				                                                <tr>
+				                                                    <th>날짜</th>
+				                                                    <th>매출금액</th>
+				                                                    <th>판매금액</th>
+				                                                    <th>환불금액</th>
+				                                                </tr>
+				                                                </thead>
+				                                                <tbody><tr class=""><td class=""><span class="font-date">12/25</span></td><td class="bold font-num ta-r"><span class="js-mark">0</span></td><td class=" font-num ta-r"><span class="js-mark">0</span></td><td class=" font-num ta-r"><span class="js-mark">0</span></td></tr><tr class=""><td class=""><span class="font-date">12/26</span></td><td class="bold font-num ta-r"><span class="js-mark">0</span></td><td class=" font-num ta-r"><span class="js-mark">0</span></td><td class=" font-num ta-r"><span class="js-mark">0</span></td></tr><tr class=""><td class=""><span class="font-date">12/27</span></td><td class="bold font-num ta-r"><span class="js-mark">0</span></td><td class=" font-num ta-r"><span class="js-mark">0</span></td><td class=" font-num ta-r"><span class="js-mark">0</span></td></tr><tr class=""><td class=""><span class="font-date">12/28</span></td><td class="bold font-num ta-r"><span class="js-mark">0</span></td><td class=" font-num ta-r"><span class="js-mark">0</span></td><td class=" font-num ta-r"><span class="js-mark">0</span></td></tr><tr class=""><td class=""><span class="font-date">12/29</span></td><td class="bold font-num ta-r"><span class="js-mark">0</span></td><td class=" font-num ta-r"><span class="js-mark">0</span></td><td class=" font-num ta-r"><span class="js-mark">0</span></td></tr><tr class=""><td class=""><span class="font-date">12/30</span></td><td class="bold font-num ta-r"><span class="js-mark">0</span></td><td class=" font-num ta-r"><span class="js-mark">0</span></td><td class=" font-num ta-r"><span class="js-mark">0</span></td></tr><tr class="highlight today-background"><td class="bold"><span class="font-date">12/31</span></td><td class="bold font-num ta-r"><span class="js-mark">0</span></td><td class=" font-num ta-r"><span class="js-mark">0</span></td><td class=" font-num ta-r"><span class="js-mark">0</span></td></tr><tr class="active"><td>7일합계</td><td class="font-num ta-r">0</td><td class="font-num ta-r">0</td><td class="font-num ta-r">0</td></tr><tr class="active"><td>15일합계</td><td class="font-num ta-r">0</td><td class="font-num ta-r">0</td><td class="font-num ta-r">0</td></tr><tr class="active"><td>30일합계</td><td class="font-num ta-r">0</td><td class="font-num ta-r">0</td><td class="font-num ta-r">0</td></tr></tbody>
+				                                            </table>
+				                                        </div>
+				                                        <div class="col-xs-6 col">
+				                                            <div class="graph bdtype" style="overflow: hidden;"><div class="tui-line-chart tui-chart" style="width: 320px; height: 343px; background: rgb(255, 255, 255); font-family: Verdana;"><div class="tui-chart-series-custom-event-area" style="width: 293px; height: 256px; top: 20px; left: 27px;"></div><div class="tui-chart-plot-area" style="width: 274px; height: 237px; top: 30px; left: 36px; background: rgb(255, 255, 255);"><div class="tui-chart-plot-line horizontal" style="bottom:79px;width:274px;background-color:#dddddd"></div><div class="tui-chart-plot-line horizontal" style="bottom:157px;width:274px;background-color:#dddddd"></div><div class="tui-chart-plot-line horizontal" style="bottom:236px;width:274px;background-color:#dddddd"></div></div><div class="tui-chart-axis-area vertical " style="width: 27px; height: 237px; top: 30px; left: 10px;"><div class="tui-chart-label-area" style="font-size: 12px; font-family: Verdana; color: rgb(0, 0, 0); width: 17px; top: 7px;"><div class="tui-chart-label" style="bottom:0px"><span>0</span></div><div class="tui-chart-label" style="bottom:79px"><span>2</span></div><div class="tui-chart-label" style="bottom:157px"><span>4</span></div><div class="tui-chart-label" style="bottom:236px"><span>6</span></div></div></div><div class="tui-chart-axis-area horizontal " style="width: 274px; height: 32px; top: 266px; left: 36px;"><div class="tui-chart-tick-area" style="border-top-color: rgb(0, 0, 0);"><div class="tui-chart-tick" style="background-color:#000000;left: 0px"></div><div class="tui-chart-tick" style="background-color:#000000;left: 46px"></div><div class="tui-chart-tick" style="background-color:#000000;left: 91px"></div><div class="tui-chart-tick" style="background-color:#000000;left: 137px"></div><div class="tui-chart-tick" style="background-color:#000000;left: 182px"></div><div class="tui-chart-tick" style="background-color:#000000;left: 228px"></div><div class="tui-chart-tick" style="background-color:#000000;left: 273px"></div></div><div class="tui-chart-label-area" style="font-size: 10px; font-family: Verdana; color: rgb(0, 0, 0); left: -23px;"><div class="tui-chart-label" style="width:46px;left:0px"><span>12/25</span></div><div class="tui-chart-label" style="width:46px;left:46px"><span>12/26</span></div><div class="tui-chart-label" style="width:46px;left:91px"><span>12/27</span></div><div class="tui-chart-label" style="width:46px;left:137px"><span>12/28</span></div><div class="tui-chart-label" style="width:46px;left:182px"><span>12/29</span></div><div class="tui-chart-label" style="width:46px;left:228px"><span>12/30</span></div><div class="tui-chart-label" style="width:46px;left:273px"><span>12/31</span></div></div></div><div class="tui-chart-legend-area horizontal" style="top: 298px; left: 53.5px; font-size: 12px; font-family: Verdana; color: rgb(0, 0, 0);"><div class="tui-chart-legend" style="height:20px"><div class="tui-chart-legend-checkbox-area"><input class="tui-chart-legend-checkbox" type="checkbox" value="0" checked=""></div><div class="tui-chart-legend-rect line" style="background-color:#ff0000;margin-top:8px"></div><div class="tui-chart-legend-label" style="height:16px;width:34px" data-index="0">매출</div></div><div class="tui-chart-legend" style="height:20px"><div class="tui-chart-legend-checkbox-area"><input class="tui-chart-legend-checkbox" type="checkbox" value="1" checked=""></div><div class="tui-chart-legend-rect line" style="background-color:#f4bf75;margin-top:8px"></div><div class="tui-chart-legend-label" style="height:16px;width:34px" data-index="1">판매</div></div><div class="tui-chart-legend" style="height:20px"><div class="tui-chart-legend-checkbox-area"><input class="tui-chart-legend-checkbox" type="checkbox" value="2" checked=""></div><div class="tui-chart-legend-rect line" style="background-color:#009900;margin-top:8px"></div><div class="tui-chart-legend-label" style="height:16px;width:34px" data-index="2">환불</div></div></div><div class="tui-chart-series-area" style="width: 293px; height: 256px; top: 20px; left: 27px;"><svg height="256" version="1.1" width="293" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="overflow: hidden; position: relative;"><desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with Raphaël 2.1.2</desc><defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs><path fill="none" stroke="#ff0000" d="M9,246L55.5,246L101,246L146.5,246L192,246L237.5,246L283,246" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><path fill="none" stroke="#f4bf75" d="M9,246L55.5,246L101,246L146.5,246L192,246L237.5,246L283,246" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><path fill="none" stroke="#009900" d="M9,246L55.5,246L101,246L146.5,246L192,246L237.5,246L283,246" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path><path fill="none" stroke="#ffffff" d="M9.5,256" stroke-width="1" stroke-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); stroke-opacity: 0;"></path><circle cx="0" cy="0" r="7" fill="#ffffff" stroke="#000" fill-opacity="0" stroke-opacity="0" stroke-width="2" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; stroke-opacity: 0;"></circle><circle cx="9" cy="246" r="3" fill="#ff0000" stroke="#000" fill-opacity="0" stroke-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; stroke-opacity: 0;" stroke-width="2"></circle><circle cx="55.5" cy="246" r="3" fill="#ff0000" stroke="#000" fill-opacity="0" stroke-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; stroke-opacity: 0;" stroke-width="2"></circle><circle cx="101" cy="246" r="3" fill="#ff0000" stroke="#000" fill-opacity="0" stroke-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; stroke-opacity: 0;" stroke-width="2"></circle><circle cx="146.5" cy="246" r="3" fill="#ff0000" stroke="#000" fill-opacity="0" stroke-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; stroke-opacity: 0;"></circle><circle cx="192" cy="246" r="3" fill="#ff0000" stroke="#000" fill-opacity="0" stroke-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; stroke-opacity: 0;"></circle><circle cx="237.5" cy="246" r="3" fill="#ff0000" stroke="#000" fill-opacity="0" stroke-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; stroke-opacity: 0;"></circle><circle cx="283" cy="246" r="3" fill="#ff0000" stroke="#000" fill-opacity="0" stroke-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; stroke-opacity: 0;"></circle><circle cx="9" cy="246" r="3" fill="#f4bf75" stroke="#000" fill-opacity="0" stroke-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; stroke-opacity: 0;"></circle><circle cx="55.5" cy="246" r="3" fill="#f4bf75" stroke="#000" fill-opacity="0" stroke-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; stroke-opacity: 0;"></circle><circle cx="101" cy="246" r="3" fill="#f4bf75" stroke="#000" fill-opacity="0" stroke-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; stroke-opacity: 0;"></circle><circle cx="146.5" cy="246" r="3" fill="#f4bf75" stroke="#000" fill-opacity="0" stroke-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; stroke-opacity: 0;"></circle><circle cx="192" cy="246" r="3" fill="#f4bf75" stroke="#000" fill-opacity="0" stroke-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; stroke-opacity: 0;"></circle><circle cx="237.5" cy="246" r="3" fill="#f4bf75" stroke="#000" fill-opacity="0" stroke-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; stroke-opacity: 0;"></circle><circle cx="283" cy="246" r="3" fill="#f4bf75" stroke="#000" fill-opacity="0" stroke-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; stroke-opacity: 0;"></circle><circle cx="9" cy="246" r="3" fill="#009900" stroke="#000" fill-opacity="0" stroke-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; stroke-opacity: 0;"></circle><circle cx="55.5" cy="246" r="3" fill="#009900" stroke="#000" fill-opacity="0" stroke-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; stroke-opacity: 0;"></circle><circle cx="101" cy="246" r="3" fill="#009900" stroke="#000" fill-opacity="0" stroke-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; stroke-opacity: 0;"></circle><circle cx="146.5" cy="246" r="3" fill="#009900" stroke="#000" fill-opacity="0" stroke-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; stroke-opacity: 0;"></circle><circle cx="192" cy="246" r="3" fill="#009900" stroke="#000" fill-opacity="0" stroke-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; stroke-opacity: 0;"></circle><circle cx="237.5" cy="246" r="3" fill="#009900" stroke="#000" fill-opacity="0" stroke-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; stroke-opacity: 0;"></circle><circle cx="283" cy="246" r="3" fill="#009900" stroke="#000" fill-opacity="0" stroke-opacity="0" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); fill-opacity: 0; stroke-opacity: 0;"></circle></svg><div class="tui-chart-series-label-area"></div></div><div class="tui-chart-tooltip-area" style="top: 20px; left: 27px;"><div class="tui-chart-tooltip" data-chart-type="line" data-groupindex="2" data-index="0" data-showed="false" style=""><div class="tui-chart-default-tooltip"><div>12/27</div><div><span>매출</span>:&nbsp;<span>0</span><span></span></div></div></div></div></div></div>
+				                                        </div>
+				                                    </div>
+				                                </div>
+				
+				                                <div role="sales-sub-tab2" class="tab-pane fade" id="sales-sub-tab2">
+				                                    <div>
+				                                        <table class="table table-rows table-fixed text-center">
+				                                            <colgroup>
+				                                                <col class="width-3xs">
+				                                                <col>
+				                                                <col class="width-sm">
+				                                                <col class="width-2xs">
+				                                                <col class="width-2xs">
+				                                            </colgroup>
+				                                            <thead>
+				                                            <tr>
+				                                                <th>순위</th>
+				                                                <th>상품명</th>
+				                                                <th>상품금액</th>
+				                                                <th>구매수량</th>
+				                                                <th>구매건수</th>
+				                                            </tr>
+				                                            </thead>
+				                                            <tbody>
+				                                            <tr>
+				                                                <td colspan="5">데이터가 존재하지 않습니다.</td>
+				                                            </tr>
+				                                            </tbody>
+				                                        </table>
+				                                    </div>
+				                                </div>
+				                                <div class="clearfix pull-right">
+				                                    <span class="js-display-search-period display-none">(0000.00.00~0000.00.00 기준)</span>
+				                                </div>
+				                            </div>
+				                        </div>
+				                        <div class="clear-both"></div>
+				                    </div>
+				
+				                    <div role="tab-type1-id2" class="main-tab-pane tab-pane fade " id="tab-type1-id2">
+				
+				                        <div class="pos-r js-chart-checkbox">
+				                            <div class="nav-pills-sub">
+				                                <ul class="gd5-tabnav" role="tablist"></ul>
+				                            </div>
+				                            <div class="nav-pills-check">
+				                                데이터 노출형태 :
+				                                <select name="deviceFl" class="js-device">
+				                                    <option value="all">통합</option>
+				                                    <option value="pc">PC</option>
+				                                    <option value="mobile">모바일</option>
+				                                    <option value="write">수기</option>
+				                                </select>
+				                            </div>
+				                            <div class="nav-pills-option">
+				                                <a href="../statistics/order_day.php" target="_top" class="btn btn-sm btn-link">더보기</a>
+				                            </div>
+				                        </div>
+				
+				                        <div class="row row-pd10">
+				                            <div class="col-xs-6">
+				                                <table class="table table-rows table-fixed text-center">
+				                                    <colgroup>
+				                                        <col>
+				                                        <col>
+				                                        <col>
+				                                        <col>
+				                                    </colgroup>
+				                                    <thead>
+				                                    <tr>
+				                                        <th>날짜</th>
+				                                        <th>판매금액</th>
+				                                        <th>구매건수</th>
+				                                        <th>구매개수</th>
+				                                    </tr>
+				                                    </thead>
+				                                    <tbody>
+				                                    <tr class="now highlight">
+				                                        <td class="bold">00/00</td>
+				                                        <td class="bold">0</td>
+				                                        <td>0</td>
+				                                        <td>0</td>
+				                                    </tr>
+				                                    <tr class="active">
+				                                        <td>7일합계</td>
+				                                        <td>0</td>
+				                                        <td>0</td>
+				                                        <td>0</td>
+				                                    </tr>
+				                                    <tr class="active">
+				                                        <td>15일합계</td>
+				                                        <td>0</td>
+				                                        <td>0</td>
+				                                        <td>0</td>
+				                                    </tr>
+				                                    <tr class="active">
+				                                        <td>30일합계</td>
+				                                        <td>0</td>
+				                                        <td>0</td>
+				                                        <td>0</td>
+				                                    </tr>
+				                                    </tbody>
+				                                </table>
+				                            </div>
+				
+				                            <div class="col-xs-6">
+				                                <div class="graph bdtype">
+				                                </div>
+				                            </div>
+				                        </div>
+				
+				                        <div class="clear-both"></div>
+				                    </div>
+				                    <div role="tab-type1-id3" class="main-tab-pane tab-pane fade " id="tab-type1-id3">
+				
+				                        <div class="pos-r js-chart-checkbox">
+				                            <div class="nav-pills-sub">
+				                                <ul class="gd5-tabnav" role="tablist"></ul>
+				                            </div>
+				                            <div class="nav-pills-check">
+				                                데이터 노출형태 :
+				                                <select name="deviceFl" class="js-device">
+				                                    <option value="all">통합</option>
+				                                    <option value="pc">PC</option>
+				                                    <option value="mobile">모바일</option>
+				                                </select>
+				                            </div>
+				                            <div class="nav-pills-option">
+				                                <a href="../statistics/visit_today.php" target="_top" class="btn btn-sm btn-link">더보기</a>
+				                            </div>
+				                        </div>
+				
+				
+				                        <div class="row row-pd10">
+				                            <div class="col-xs-6">
+				                                <table class="table table-rows table-fixed text-center">
+				                                    <colgroup>
+				                                        <col>
+				                                        <col>
+				                                        <col>
+				                                    </colgroup>
+				                                    <thead>
+				                                    <tr>
+				                                        <th>날짜</th>
+				                                        <th>방문자수</th>
+				                                        <th>페이지뷰</th>
+				                                    </tr>
+				                                    </thead>
+				                                    <tbody>
+				                                    <tr class="now highlight">
+				                                        <td class="bold">00/00</td>
+				                                        <td class="bold">0</td>
+				                                        <td>0</td>
+				                                    </tr>
+				                                    <tr class="active">
+				                                        <td>7일합계</td>
+				                                        <td>0</td>
+				                                        <td>0</td>
+				                                    </tr>
+				                                    <tr class="active">
+				                                        <td>15일합계</td>
+				                                        <td>0</td>
+				                                        <td>0</td>
+				                                    </tr>
+				                                    <tr class="active">
+				                                        <td>30일합계</td>
+				                                        <td>0</td>
+				                                        <td>0</td>
+				                                    </tr>
+				                                    </tbody>
+				                                </table>
+				                            </div>
+				                            <div class="col-xs-6">
+				                                <div class="graph bdtype">
+				                                </div>
+				                            </div>
+				                        </div>
+				                        <div class="clear-both"></div>
+				                    </div>
+				                    <div role="tab-type1-id4" class="main-tab-pane tab-pane fade " id="tab-type1-id4">
+				                        <div class="pos-r">
+				                            <div class="nav-pills-sub">
+				                                <ul class="gd5-tabnav" role="tablist">
+				                                    <li role="presentation" class="active">
+				                                        <a href="#member-sub-tab1" role="tab" data-toggle="tab" data-mode="memberTotal" data-link="member_day">회원현황</a>
+				                                    </li>
+				                                                                        <li role="presentation">
+				                                        <a href="#member-sub-tab2" role="tab" data-toggle="tab" data-mode="mileage" data-link="member_mileage">마일리지현황</a>
+				                                    </li>
+				                                                                                                            <li role="presentation">
+				                                        <a href="#member-sub-tab3" role="tab" data-toggle="tab" data-mode="deposit" data-link="member_deposit">예치금현황</a>
+				                                    </li>
+				                                                                    </ul>
+				                            </div>
+				                            <div class="nav-pills-option">
+				                                <a href="../statistics/member_day.php" target="_top" class="btn btn-sm btn-link">더보기</a>
+				                            </div>
+				                        </div>
+				
+				                        <div>
+				                            <div class="tab-content">
+				                                <div class="tab-pane fade in active" role="member-sub-tab1" id="member-sub-tab1">
+				                                    <div class="row">
+				                                        <div class="col-xs-6">
+				                                            <table class="table table-rows table-fixed text-center">
+				                                                <colgroup>
+				                                                    <col>
+				                                                    <col>
+				                                                    <col>
+				                                                    <col>
+				                                                    <col>
+				                                                </colgroup>
+				                                                <thead>
+				                                                <tr>
+				                                                    <th>날짜</th>
+				                                                    <th>전체회원</th>
+				                                                    <th>신규회원</th>
+				                                                    <th>탈퇴회원</th>
+				                                                    <th>휴면회원</th>
+				                                                </tr>
+				                                                </thead>
+				                                                <tbody>
+				                                                <tr class="now highlight">
+				                                                    <td class="bold">00/00</td>
+				                                                    <td class="bold">0</td>
+				                                                    <td>0</td>
+				                                                    <td>0</td>
+				                                                    <td>0</td>
+				                                                </tr>
+				                                                <tr class="active">
+				                                                    <td colspan="2">7일합계</td>
+				                                                    <td>0</td>
+				                                                    <td>0</td>
+				                                                    <td>0</td>
+				                                                </tr>
+				                                                <tr class="active">
+				                                                    <td colspan="2">15일합계</td>
+				                                                    <td>0</td>
+				                                                    <td>0</td>
+				                                                    <td>0</td>
+				                                                </tr>
+				                                                <tr class="active">
+				                                                    <td colspan="2">30일합계</td>
+				                                                    <td>0</td>
+				                                                    <td>0</td>
+				                                                    <td>0</td>
+				                                                </tr>
+				                                                </tbody>
+				                                            </table>
+				                                        </div>
+				                                        <div class="col-xs-6">
+				                                            <div class="graph bdtype">
+				                                            </div>
+				                                        </div>
+				                                    </div>
+				                                </div>
+				
+				                                <div role="member-sub-tab2" class="tab-pane fade" id="member-sub-tab2">
+				                                    <div>
+				                                        <table class="table table-rows table-fixed text-center">
+				                                            <colgroup>
+				                                                <col class="width-xs">
+				                                                <col>
+				                                                <col class="width-xs">
+				                                                <col>
+				                                                <col class="width-xs">
+				                                                <col>
+				                                            </colgroup>
+				                                            <thead>
+				                                            <tr>
+				                                                <th>날짜</th>
+				                                                <th>잔여마일리지</th>
+				                                                <th>지급건수</th>
+				                                                <th>지급금액</th>
+				                                                <th>사용건수</th>
+				                                                <th>사용금액</th>
+				                                            </tr>
+				                                            </thead>
+				                                            <tbody>
+				                                            <tr>
+				                                                <td>00/00</td>
+				                                                <td>0</td>
+				                                                <td>0</td>
+				                                                <td>0</td>
+				                                                <td>0</td>
+				                                                <td>0</td>
+				                                            </tr>
+				                                            </tbody>
+				                                        </table>
+				                                    </div>
+				                                </div>
+				
+				                                <div role="member-sub-tab3" class="tab-pane fade" id="member-sub-tab3">
+				                                    <div>
+				                                        <table class="table table-rows table-fixed text-center">
+				                                            <colgroup>
+				                                                <col class="width-xs">
+				                                                <col>
+				                                                <col class="width-xs">
+				                                                <col>
+				                                                <col class="width-xs">
+				                                                <col>
+				                                            </colgroup>
+				                                            <thead>
+				                                            <tr>
+				                                                <th>날짜</th>
+				                                                <th>잔여예치금</th>
+				                                                <th>지급건수</th>
+				                                                <th>지급금액</th>
+				                                                <th>사용건수</th>
+				                                                <th>사용금액</th>
+				                                            </tr>
+				                                            </thead>
+				                                            <tbody>
+				                                            <tr>
+				                                                <td>00/00</td>
+				                                                <td>0</td>
+				                                                <td>0</td>
+				                                                <td>0</td>
+				                                                <td>0</td>
+				                                                <td>0</td>
+				                                            </tr>
+				                                            </tbody>
+				                                        </table>
+				                                    </div>
+				                                </div>
+				                                <div class="clearfix pull-right">
+				                                    <span class="js-display-search-period display-none">(0000.00.00~0000.00.00 기준)</span>
+				                                </div>
+				                            </div>
+				                        </div>
+				                        <div class="clear-both"></div>
+				                    </div>
+				                </div>
+				            </div>
+				            <div class="display-none mask-content js-layer-presentation">
+				                <p>주요현황 조회가<br>정상적으로 완료되지 않았습니다.</p>
+				                <div class="">
+				                    <button type="button" class="mask-btn">
+				                        <img src="/admin/gd_share/img/icon_re.png"> 다시 시도
+				                    </button>
+				                </div>
+				                <span class="mask-bg"></span>
+				            </div>
+				            <div class="display-none mask-content js-layer-reload">
+				                <p>데이터 업데이트는 60초당 1회 가능합니다.<br>상세한 통계 데이터는 통계 메뉴에서 확인 가능합니다.</p>
+				                <div class="">
+				                    <button type="button" class="mask-btn">확인</button>
+				                </div>
+				                <span class="mask-bg"></span>
+				            </div>
+				        </div>
+				    </div>
+				</div>
+        <!-- 중앙 현황판 내용 끝 -->
+
+        <!-- 주요 일정 내용 시작 -->
+        <div class="main-section">
+    <div class="table-title">
+        <span class="gd-help-manual">주요일정</span>
+    </div>
+    <div class="calendar-box">
+        <div class="col-calendar">
+        <!-- <div class="col-xs-6">-->
+            <div class="calendar">
+                <!-- 스케줄(일정관리) -->
+                <div class="work_calender" id="schedule">
+                    <h3 class="hidden">일정관리</h3>
+                </div>
+                <script type="text/javascript">
+                    var schObj;
+                    $(function(){
+                        schObj = $('#schedule').schedule();
+                    });
+                </script>
+                <!-- //스케줄(일정관리) -->
+            </div>
+        </div>
+        <div class="col-schedule">
+        <!--            <div class="col-xs-6">-->
+            <div class="memo">
+                <div class="title">
+                                            <span style="font-size:14px;font-weight:bold;color:#333">12/31</span> 일정이 없습니다.
+                                        <div class="pull-right" style="padding-top:6px;color:#888;font-size:11px">
+                        <a href="javascript:Schedule.addToday()" class="btn-link">일정추가</a>
+                    </div>
+                </div>
+                <ul>
+                                    </ul>
+            </div>
+        </div>
+        <div class="clear-both"></div>
+    </div>
+</div>
+        <!-- 주요 일정 내용 끝 -->
+
+        <!-- 교육소식 -->
+        <div>
+            <div class="main-section">
+                <div class="table-title">
+                    <span class="">교육소식</span>
+                    <div id="panel_link_eduLink" class="pull-right more-view"></div>
+                </div>
+                <div class="tab-content sub-sector sub-sector-no-margin">
+                    <div role="tabpanel" class="tab-pane fade in active" id="edu">
+                        <div id="panel_board_eduAPI">
+                        
+							<div class="edunews-items"><ul><li><a href="http://edu.godo.co.kr/lecture/view.php?no=5322" target="_blank"><div class="edunews-head"><img src="//edu.godo.co.kr/cache/goods_thumb/6/5df08102f00f6.png"></div><div class="edunews-body"><div class="edunews-title">[쇼핑몰제작] 고도몰5 쇼핑몰 제작 하루만에 끝내기</div><div class="edunews-date">2020-01-02</div></div></a></li><li><a href="http://edu.godo.co.kr/lecture/view.php?no=5336" target="_blank"><div class="edunews-head"><img src="//edu.godo.co.kr/cache/goods_thumb/6/5df08efe051e4.png"></div><div class="edunews-body"><div class="edunews-title">[마케팅] 저비용 고효율 쇼핑몰 키워드 광고 전략</div><div class="edunews-date">2020-01-10</div></div></a></li></ul></div>                        
+                        
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 관리자 메인 하단 배너 시작 -->
+        <div id="panel_banner_mainBottom" class="main-section"></div>
+        <!-- 관리자 메인 하단 배너 끝 -->
+    </div>
+
+    <div class="content-sub">
+        <!-- 관리자 메모 내용 시작 -->
+        <!--// 관리자메모 -->
+<form id="frmMemo" method="post">
+    <input type="hidden" name="mode" value="memo">
+    <input type="hidden" name="code" value="save">
+    <input type="hidden" name="oldViewAuth">
+    <div class="main-section">
+        <div class="table-title btm-line">
+            <span class="gd-help-manual">관리메모</span>
+                                    <div class="pull-right form-inline">
+                <div class="memo-action">
+                    <select class="form-control" name="viewAuth">
+                        <option value="all" selected>공유메모</option>
+                        <option value="self" >개인메모</option>
+                    </select>
+                    <button type="button" class="btn btn-icon-fold-on js-memo-fold"><!--메모열기--></button>
+                </div>
+            </div>
+        </div>
+        <div id="adminMemo">
+            <div class="js-memo" data-type="all">
+                <textarea name="memo[all]" class="form-control mgb10" maxlength="1000" style="border-top: 0px;height:132px;resize: vertical;" placeholder="공유하실 운영업무 등을 기록하세요."></textarea>
+                <div class="pull-left">
+                    <span style="font-size:11px;color:#777">최종수정 : -</span>
+                </div>
+            </div>
+
+            <div class="js-memo" data-type="self">
+                <textarea name="memo[self]" class="form-control mgb10" maxlength="1000" style="border-top: 0px;height:132px;resize:vertical;" placeholder="내가 해야할 업무 등을 기록하세요."></textarea>
+                <div class="pull-left">
+                    <span style="font-size:11px;color:#777">최종수정 : -</span>
+                </div>
+            </div>
+
+            <div class="pull-right">
+                <button type="button" class="btn btn-white btn-sm js-memo-clear">전체삭제</button>
+                <button type="button" class="btn btn-red-line-s btn-sm js-memo-save" style="margin-left:4px">저장</button>
+            </div>
+            <div class="clear-both"></div>
+        </div>
+    </div>
+</form>
+        <!-- 관리자 메모 내용 끝 -->
+
+        <!-- 관리자 메인 게시판 시작 -->
+                    <div class="main-section">
+                <div class="table-title">
+                    <span class="">플러스샵</span>
+                    <div class="pull-right more-view">
+                        <a href="http://plus.godo.co.kr/" target="_blank" class="btn btn-sm btn-link">더보기</a>
+                    </div>
+                </div>
+                <ol class="board-list-newest content list-unstyled reform">
+					    <li>
+					        <a href="http://plus.godo.co.kr/goods/view.gd?idx=37" target="_blank">회원 : 회원가입 이벤트 <img src="https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_new.png" alert="NEW" class="img-fix"></a>
+					    </li>
+					    <li>
+					        <a href="http://plus.godo.co.kr/goods/view.gd?idx=36" target="_blank">회원 : 카카오 알림톡 : 루나소프트 <img src="https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_new.png" alert="NEW" class="img-fix"></a>
+					    </li>
+					    <li>
+					        <a href="http://plus.godo.co.kr/goods/view.gd?idx=35" target="_blank">회원 : 간편 로그인 : 위메프 아이디 <img src="https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_new.png" alert="NEW" class="img-fix"></a>
+					    </li>
+					    <li>
+					        <a href="http://plus.godo.co.kr/goods/view.gd?idx=34" target="_blank">주문/배송 : 발주서 다운로드 <img src="https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_new.png" alert="NEW" class="img-fix"></a>
+					    </li> 
+                </ol>
+                <div class="clear-both"></div>
+            </div>
+        
+            <!-- 관리자 메인 중간 배너 시작 -->
+            <div id="panel_banner_mainMiddle" class="main-section">
+				<a href="http://gongji.godo.co.kr/userinterface/season5/bannerStatistics.php?idx=1&amp;area=middle&amp;src=%2F201610%2Fbanner320x80.png&amp;href=http%3A%2F%2Fmanual.godomall5.godomall.com%2Fdata%2Fuser_guide_list.php&amp;title=%BB%E7%BF%EB%C0%DA+%B0%A1%C0%CC%B5%E5" target="_blank">
+				<img src="//img.godo.co.kr/gongji/s5/201610/banner320x80.png" alt="사용자 가이드">            
+            </div>
+            <!-- 관리자 메인 중간 배너 끝 -->
+        
+        <!-- 더 좋아지는 고도몰 -->
+        <ul class="nav nav-tabs mgt35 display-none">
+            <li role="presentation" class="active">
+                <a href="#better" aria-controls="panel-better" role="tab" data-toggle="tab">더 좋아지는 고도몰</a>
+            </li>
+        </ul>
+        <div class="tab-content sub-sector sub-sector-no-margin display-none">
+            <div role="tabpanel" class="tab-pane fade in active" id="better">
+                <div id="panel_link_betterLink" class="pull-right more-view"></div>
+                <div id="panel_board_betterAPI"></div>
+            </div>
+        </div>
+
+        <!-- 플러스샵 이용현황 시작 -->
+            <div class="main-section">
+        <div class="table-title">
+            <span class="">플러스샵 이용현황</span>
+            <div class="pull-right more-view">
+                <a href="http://plus.godo.co.kr/member/my-app.gd" target="_blank" class="btn btn-sm btn-link">더보기</a>
+            </div>
+        </div>
+                    <div class="plusshop-stat-outer">
+                <table class="table table-bordered">
+                    <colgroup>
+                        <col class="width20p">
+                        <col class="width20p">
+                    </colgroup>
+                    <tr><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=37" target="_blank">회원가입 이벤트</a></td><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=36" target="_blank">카카오 알림톡 : 루나소프트</a></td></tr><tr><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=35" target="_blank">간편 로그인 : 위메프 아이디</a></td><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=34" target="_blank">발주서 다운로드</a></td></tr><tr><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=33" target="_blank">간편 로그인 : 카카오 아이디</a></td><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=29" target="_blank">복수배송지</a></td></tr><tr><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=26" target="_blank">간편 로그인 : 네이버 아이디</a></td><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=25" target="_blank">상품 재입고 알림</a></td></tr><tr><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=15" target="_blank">견적서 출력</a></td><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=27" target="_blank">밴드왜건 푸시</a></td></tr><tr><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=24" target="_blank">플러스리뷰</a></td><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=23" target="_blank">매입처 관리</a></td></tr><tr><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=20" target="_blank">검색창 상품추천</a></td><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=19" target="_blank">상품상세 공통정보</a></td></tr><tr><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=18" target="_blank">인스고 위젯</a></td><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=17" target="_blank">리스트 효과 관리</a></td></tr><tr><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=16" target="_blank">설문조사</a></td><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=14" target="_blank">간이영수증</a></td></tr><tr><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=13" target="_blank">간편 로그인 : 페이스북 아이디</a></td><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=12" target="_blank">단축URL</a></td></tr><tr><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=11" target="_blank">멀티팝업</a></td><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=10" target="_blank">장바구니 알림</a></td></tr><tr><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=9" target="_blank">우체국택배 연동</a></td><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=8" target="_blank">쇼핑카트탭</a></td></tr><tr><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=7" target="_blank">고객교환/반품/환불신청 관리</a></td><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=6" target="_blank">공급사 관리</a></td></tr><tr><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=5" target="_blank">출석체크 이벤트</a></td><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=4" target="_blank">타임세일전</a></td></tr><tr><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=3" target="_blank">QR코드</a></td><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=2" target="_blank">페이퍼쿠폰</a></td></tr><tr><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=1" target="_blank">사은품</a></td><td class=""><a href="" target="_blank"></a></td></tr>                </table>
+            </div>
+            </div>
+        <!-- 플러스샵 이용현황 끝 -->
+
+        <!-- 운영 필수 서비스 현황 내용 시작 -->
+            <div class="main-section">
+        <div class="table-title">
+            <span class="">운영필수서비스 현황</span>
+        </div>
+        <div class="slide-items-wrap">
+            <div class="single-item">
+                <div class="slide-item">
+                    <img src="https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_new.png">
+                    <span class="slide-item-text">
+                        <a href="/marketing/marketing_info.php?menu=viral_facebookAD">1600만 페이스북 회원을 내 고객으로!</a>
+                    </span>
+                </div>
+                <div class="slide-item">
+                    <img src="https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_new.png">
+                    <span class="slide-item-text">
+                        <a href="/service/service_info.php?menu=marketing_livefeed_info">실시간으로 응답하라! 1:1 상담채팅</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // 운영필수서비스 현황
+            $('.single-item').slick();
+        </script>
+    </div>
+    <div class="main-section">
+        <div class="table-title">
+            부가서비스
+        </div>
+        <div class="plusshop-stat-outer">
+            <table class="table table-bordered">
+                <colgroup>
+                    <col class="width20p">
+                    <col class="width20p">
+                </colgroup>
+                <tr>
+                    <td class=""><a href="https://gdadmin.plus.godomall.com:14003/policy/settle_pg_config.php">전자 결제(PG)</a></td>
+                    <td class=""><a href="https://gdadmin.plus.godomall.com:14003/policy/settle_pg_config.php">구매안전 서비스</a></td>
+                </tr>
+                <tr>
+                    <td class=""><a href="https://gdadmin.plus.godomall.com:14003/policy/settle_pg_mobile_config.php">휴대폰 결제</a></td>
+                    <td class=""><a href="https://gdadmin.plus.godomall.com:14003/policy/settle_pg_payco.php">페이코</a></td>
+                </tr>
+                <tr>
+                    <td class=""><a href="https://gdadmin.plus.godomall.com:14003/policy/naver_pay_config.php">네이버페이</a></td>
+                    <td class="active"><a href="javascript:gotoGodomall('domain');">정식 도메인</a></td>
+                </tr>
+                <tr>
+                    <td class=""><a href="https://gdadmin.plus.godomall.com:14003/policy/ssl_pc_setting.php">보안서버(SSL)</a></td>
+                    <td class=""><a href="https://gdadmin.plus.godomall.com:14003/policy/member_auth_ipin.php">아이핀 본인인증</a></td>
+                </tr>
+                <tr>
+                    <td class=""><a href="https://gdadmin.plus.godomall.com:14003/policy/member_auth_cellphone.php">휴대폰 본인확인</a></td>
+                    <td class=""><a href="https://gdadmin.plus.godomall.com:14003/member/sms_auto.php">SMS</a></td>
+                </tr>
+                <tr>
+                    <!--<td class=""><a href="https://gdadmin.plus.godomall.com:14003/">에이스카운터</a></td>-->
+                    <td class=""><a href="https://gdadmin.plus.godomall.com:14003/order/bankda_service.php">무통장자동입금</a></td>
+                    <td class=""><a href="https://gdadmin.plus.godomall.com:14003/order/tax_invoice_config.php">고도빌</a></td>
+                </tr>
+                <tr>
+                    <td class=""><a href="https://gdadmin.plus.godomall.com:14003/member/mail_config_pmail.php">파워메일</a></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="main-section">
+        <div class="table-title">
+            마케팅서비스
+        </div>
+        <div class="marketingservice-table">
+            <table class="table table-bordered mgb0">
+                <colgroup>
+                    <col class="width20p">
+                    <col class="width20p">
+                </colgroup>
+                <tr>
+                    <td class="icon-arr-r">
+                        <a href="https://gdadmin.plus.godomall.com:14003/marketing/marketing_info.php?menu=keyword_info">통합 키워드 광고</a>
+                    </td>
+                    <td class="icon-arr-r">
+                        <a href="https://gdadmin.plus.godomall.com:14003/marketing/marketing_info.php?menu=daumAd_nateShoppingbox1">네이트 쇼핑박스</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="icon-arr-r">
+                        <a href="https://gdadmin.plus.godomall.com:14003/marketing/marketing_info.php?menu=criteo_info">리타게팅 광고</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+        <!-- 운영 필수 서비스 현황 내용 끝 -->
+
+		<div class="main-section">
+		            <div class="table-title">
+		                고객센터
+		                <div id="panel_link_customerLink" class="pull-right"><a href="https://www.godo.co.kr/customer/main.gd" target="_blank" class="btn btn-sm btn-link">더보기</a></div>
+		            </div>
+		            <div id="panel_customer_customerAPI" class="cs-box"><span class="call">1688-7662</span><table><tbody><tr><td>평일</td><td>09:00 ~ 18:00 (점심 12:30~13:30)</td></tr><tr><td></td><td>(토/일/공휴일 휴무)</td></tr></tbody></table></div>
+		</div>
+        <!-- 관리자 메인 게시판 끝 -->
+
+    </div>
+
+    <!-- 관리자 메인 측면 배너 시작 -->
+            <div id="panel_banner_mainSide" class="sub-sector banner-float">
+            
+				<p>
+					<a href="http://gongji.godo.co.kr/userinterface/season5/bannerStatistics.php?idx=1&amp;area=side&amp;src=%2F%2Fimg.godo.co.kr%2Fgongji%2Fs5%2F201711%2Fbtn_transfer.png&amp;href=https%3A%2F%2Fwww.godo.co.kr%2Fmygodo_transfer%2Ftrans_step1_list.php&amp;title=Pro%B7%CE+%C0%CC%C0%FC%C7%CF%B1%E2" target="_blank">
+						<img src="//img.godo.co.kr/gongji/s5/201711/btn_transfer.png" alt="Pro로 이전하기">
+					</a>
+				</p>
+				<p>
+					<a href="http://gongji.godo.co.kr/userinterface/season5/bannerStatistics.php?idx=2&amp;area=side&amp;src=%2F%2Fimg.godo.co.kr%2Fgongji%2Fs5%2F201711%2Fbtn_guide.png&amp;href=http%3A%2F%2Fwww.godo.co.kr%2Fcustomer%2Fmanual%2Flist.gd&amp;title=%B3%AA%B8%A6+%C0%A7%C7%D1+%C0%CC%BF%EB%B0%A1%C0%CC%B5%E5" target="_blank">
+						<img src="//img.godo.co.kr/gongji/s5/201711/btn_guide.png" alt="나를 위한 이용가이드">
+					</a>
+				</p>
+				<p>
+					<a href="http://gongji.godo.co.kr/userinterface/season5/bannerStatistics.php?idx=3&amp;area=side&amp;src=%2F%2Fimg.godo.co.kr%2Fgongji%2Fs5%2F201711%2Fbtn_down.png&amp;href=http%3A%2F%2Fwww.godo.co.kr%2Fechost%2Fmobile%2Fadmin-app-intro.gd&amp;title=%B0%FC%B8%AE%C0%DA+APP+%B4%D9%BF%EE%B7%CE%B5%E5" target="_blank">
+						<img src="//img.godo.co.kr/gongji/s5/201711/btn_down.png" alt="관리자 APP 다운로드">
+					</a>
+				</p>
+				<p>
+					<a href="http://gongji.godo.co.kr/userinterface/season5/bannerStatistics.php?idx=4&amp;area=side&amp;src=%2F%2Fwww.godo.co.kr%2Fcommon%2Fimg.banner%2F201906%2F062115240018.png&amp;href=https%3A%2F%2Fmarketing.godo.co.kr%2Fopening%2Fnaver-pay.gd&amp;title=%B3%D7%C0%CC%B9%F6%C6%E4%C0%CC+%B0%A3%C6%ED%B0%E1%C1%A6" target="_blank">
+						<img src="//www.godo.co.kr/common/img.banner/201906/062115240018.png" alt="네이버페이 간편결제">
+					</a>
+				</p>            
+        	</div>
+        <!-- 관리자 메인 측면 배너 끝 -->
+</div>
+
+                                            </div>
+                </div>
+            </div>
+
+
+</th:block>
+
+
+</html>

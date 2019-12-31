@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/admin/admindefault}">
+
+<th:block layout:fragment="adminMainContents">
+
+<div id="content" class="row">
+                <div class="col-xs-12">
+                    <form id="frm" action="../member/member_group_ps.php" method="post">
+    <div class="page-header js-affix">
+        <h3>회원등급 평가방법 설정</h3>
+        <input type="button" value="저장" class="btn btn-red" id="btnSubmit">
+    </div>
+    <input type="hidden" name="mode" value="appraisal_rule"/>
+
+    <div class="table-title gd-help-manual">회원등급 평가방법</div>
+    <div class="form-inline">
+        <table class="table table-cols table-bordered">
+            <colgroup>
+                <col class="width-md"/>
+                <col class="width-md"/>
+                <col/>
+                <col/>
+            </colgroup>
+            <tr>
+                <th>자동/수동평가</th>
+                <td colspan="3">
+                    <label class="radio-inline">
+                        <input type="radio" name="automaticFl" value="n" checked="checked"/>
+                        수동 평가
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="automaticFl" value="y" />
+                        자동 평가
+                    </label>
+                    <div class="row mgt10">
+                        <div class="col-xs-12">
+                            <span class="notice-info">자동 평가 선택 시 설정된 평가방법 및 평가기준의 산출기간/등급산정일에 따라 회원등급이 자동 평가됩니다.</span>
+                        </div>
+                        <div class="col-xs-12">
+                            <span class="notice-info">
+                                수동 평가 선택 시 회원등급이 자동으로 평가되지 않습니다. 실적에 따른 평가 필요 시 <a href="#" class="js-btn-appraisal">[회원등급 수동평가]</a>를 눌러 회원등급을 평가합니다.
+                            </span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>하향평가 사용여부</th>
+                <td colspan="3">
+                    <label class="radio-inline">
+                        <input type="radio" name="downwardAdjustment" value="y" checked="checked"/>
+                        사용함
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="downwardAdjustment" value="n" />
+                        사용안함
+                    </label>
+                    <div class="row mgt10">
+                        <div class="col-xs-12">
+                            <span class="notice-info">사용안함으로 설정할 경우, 자동/수동 평가에 따라 회원의 등급순서가 하향되지 않습니다</span>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label class="radio-inline">
+                        <input type="radio" name="apprSystem"
+                               value="figure" checked="checked"/>
+                        실적 수치제
+                    </label>
+                </th>
+                <td colspan="3">
+                    주문금액, 상품주문건수, 주문상품후기횟수를 종합하여 평가하는 방법입니다. 회원등급별 평가기준을 입력하세요.
+                    <div class="notice-info">수동 평가 선택 시 회원등급이 자동으로 평가되지 않고 <a href="#" class="js-btn-appraisal">[회원등급 수동평가]</a>를 눌러 회원등급을 평가합니다.</div>
+                </td>
+            </tr>
+            <tr class="sysPoint">
+                <th rowspan="7">
+                    <label class="radio-inline">
+                        <input type="radio" name="apprSystem" value="point" />
+                        실적 점수제
+                    </label>
+                </th>
+            </tr>
+            <tr>
+                <th colspan="2" class="text-center">쇼핑몰 전체 실적</th>
+                <th class="text-center">모바일샵 추가 실적</th>
+            </tr>
+            <tr class="sysPoint">
+                <th>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="appraisalPointOrderPriceFl" value="y"  data-target-class="terms_p01"/>
+                        주문금액
+                    </label>
+                </th>
+                <td>
+                    <input type="text" name="apprPointOrderPriceUnit"
+                           value="0"
+                           size="10"
+                           class="form-control input_int_l terms_p01 numberonly"/>
+                    원당
+                    <input type="text" name="apprPointOrderPricePoint"
+                           value="0" size="10"
+                           class="form-control input_int_m terms_p01 numberonly"/>
+                    점
+                </td>
+                <td>
+                    <input type="text" name="apprPointOrderPriceUnitMobile"
+                           value="0"
+                           size="10"
+                           class="form-control input_int_l terms_p01 numberonly"/>
+                    원당
+                    <input type="text" name="apprPointOrderPricePointMobile"
+                           value="0" size="10"
+                           class="form-control input_int_m terms_p01 numberonly"/>
+                    점
+                </td>
+            </tr>
+            <tr class="sysPoint">
+                <th>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="appraisalPointOrderRepeatFl" value="y"  data-target-class="terms_p02"/>
+                        상품주문건수
+                    </label>
+                </th>
+                <td>
+                    구매 1회당
+                    <input type="text" name="apprPointOrderRepeatPoint"
+                           value="0" size="10"
+                           class="form-control input_int_m terms_p02 numberonly"/>
+                    점
+                </td>
+                <td>
+                    구매 1회당
+                    <input type="text" name="apprPointOrderRepeatPointMobile"
+                           value="0" size="10"
+                           class="form-control input_int_m terms_p02 numberonly"/>
+                    점
+                </td>
+            </tr>
+            <tr class="sysPoint">
+                <th>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="appraisalPointReviewRepeatFl" value="y"  data-target-class="terms_p03"/>
+                        주문상품후기
+                    </label>
+                </th>
+                <td>
+                    구매 후기당
+                    <input type="text" name="apprPointReviewRepeatPoint"
+                           value="0" size="10"
+                           class="form-control input_int_m terms_p03 numberonly"/>
+                    점
+                </td>
+                <td>
+                    구매 후기당
+                    <input type="text" name="apprPointReviewRepeatPointMobile"
+                           value="0" size="10"
+                           class="form-control input_int_m terms_p03 numberonly"/>
+                    점
+                </td>
+            </tr>
+            <tr class="sysPoint">
+                <th>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="appraisalPointLoginRepeatFl" value="y"  data-target-class="terms_p04"/>
+                        로그인 횟수
+                    </label>
+                </th>
+                <td>
+                    1회/일 로그인당
+                    <input type="text" name="apprPointLoginRepeatPoint"
+                           value="0" size="10"
+                           class="form-control input_int_m terms_p04 numberonly"/>
+                    점
+                </td>
+                <td>
+                    1회/일 로그인당
+                    <input type="text" name="apprPointLoginRepeatPointMobile"
+                           value="0" size="10"
+                           class="form-control input_int_m terms_p04 numberonly"/>
+                    점
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="table-title gd-help-manual">회원등급별 평가기준</div>
+    <div class="form-inline">
+        <table class="table table-cols table-bordered">
+            <colgroup>
+                <col class="width-md"/>
+                <col class="width-sm"/>
+                <col/>
+                <col/>
+                <col/>
+                <col class="width-md"/>
+                <col class="width-sm"/>
+                <col class="width-sm"/>
+            </colgroup>
+            <thead>
+            <tr>
+                <th rowspan="2">회원등급명</th>
+                <th rowspan="2">등급혜택</th>
+                <th colspan="3">
+                    <span class="sysFigureGroup display-none">실적 수치</span>
+                    <span class="sysPointGroup display-none">실적 점수</span>
+                </th>
+                <th rowspan="2">실적계산기간</th>
+                <th rowspan="2">등급 평가일</th>
+            </tr>
+            <tr>
+                <th colspan="2">쇼핑몰 전체실적</th>
+                <th colspan="">모바일샵 추가실적</th>
+            </tr>
+            </thead>
+            <tbody>
+                                <tr >
+                        <td>
+                            <input type="hidden" name="sno[]" value="2"/>
+                            <span>우수회원</span>
+                            <br/>
+                        </td>
+                        <td>
+                            <span class="notice-ref notice-sm"><ul class="list-group"><li class="">추가 5.0% 할인</li><li class="mgt3">추가 0.0% 적립</li><li class="mgt3">중복 0.0% 할인</li></ul>쿠폰미발급</span>
+                        </td>
+                        <!-- 실적 수치제 -->
+                        <th class="sysFigureGroup display-none">
+                                                        <label class="checkbox-inline">
+                                <input type="checkbox" name="apprFigureOrderPriceFl[2]" value="y"  data-target-class="apprFigureOrderPrice2"/>
+                                주문금액
+                            </label>
+                            <br/>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="apprFigureOrderRepeatFl[2]" value="y"  data-target-class="apprFigureOrderRepeat2"/>
+                                상품주문건수
+                            </label>
+                            <br/>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="apprFigureReviewRepeatFl[2]" value="y"  data-target-class="apprFigureReviewRepeat2"/>
+                                주문상품후기
+                            </label>
+                        </th>
+                        <td class="sysFigureGroup display-none">
+                            <label class="checkbox-inline">
+                                <input type="text"
+                                       name="apprFigureOrderPriceMore[2]"
+                                       value="0" size="6"
+                                       class="form-control input_num_xl apprFigureOrderPrice2 numberonly"/>
+                                만원 이상
+                            </label>
+                            ~
+                            <label class="checkbox-inline">
+                                <input type="text" name="apprFigureOrderPriceBelow[2]"
+                                       value="0" size="6"
+                                       class="form-control input_num_xl apprFigureOrderPrice2 numberonly"/>
+                                만원 미만
+                            </label>
+                            <br/>
+                            <label class="checkbox-inline">
+                                <input type="text" name="apprFigureOrderRepeat[2]"
+                                       value="0" size="6"
+                                       class="form-control input_num_m apprFigureOrderRepeat2 numberonly"/>
+                            </label>
+                            회 이상 <br/>
+                            <label class="checkbox-inline">
+                                <input type="text"
+                                       name="apprFigureReviewRepeat[2]"
+                                       value="0" size="6"
+                                       class="form-control input_num_m apprFigureReviewRepeat2 numberonly"/>
+                            </label>
+                            개 이상
+
+                        </td>
+                        <td class="sysFigureGroup display-none">
+                            <label class="checkbox-inline">
+                                <input type="text"
+                                       name="apprFigureOrderPriceMoreMobile[2]"
+                                       value="0" size="6"
+                                       class="form-control input_num_xl apprFigureOrderPrice2 numberonly"/>
+                                만원 이상
+                            </label>
+                            ~
+                            <label class="checkbox-inline">
+                                <input type="text" name="apprFigureOrderPriceBelowMobile[2]"
+                                       value="0" size="6"
+                                       class="form-control input_num_xl apprFigureOrderPrice2 numberonly"/>
+                                만원 미만
+                            </label>
+                            <br/>
+                            <label class="checkbox-inline">
+                                <input type="text" name="apprFigureOrderRepeatMobile[2]"
+                                       value="0" size="6"
+                                       class="form-control input_num_m apprFigureOrderRepeat2 numberonly"/>
+                            </label>
+                            회 이상 <br/>
+                            <label class="checkbox-inline">
+                                <input type="text"
+                                       name="apprFigureReviewRepeatMobile[2]"
+                                       value="0" size="6"
+                                       class="form-control input_num_m apprFigureReviewRepeat2 numberonly"/>
+                            </label>
+                            개 이상
+                        </td>
+                        <!-- //실적 수치제 -->
+                        <!-- 실적 점수제 -->
+                        <td class="sysPointGroup display-none" colspan="2">
+                            <label class="checkbox-inline">
+                                <input type="text" name="apprPointMore[2]"
+                                       value="1" size="4"
+                                       class="form-control input_num_m numberonly"/>
+                            </label>
+                            점 이상 ~
+                            <label class="checkbox-inline">
+                                <input type="text" name="apprPointBelow[2]"
+                                       value="10" size="4"
+                                       class="form-control input_num_m numberonly"/>
+                            </label>
+                            점 미만
+                        </td>
+                        <td class="sysPointGroup display-none" colspan="">
+                            <label class="checkbox-inline">
+                                <input type="text" name="apprPointMoreMobile[2]"
+                                       value="0" size="4"
+                                       class="form-control input_num_m numberonly"/>
+                            </label>
+                            점 이상 ~
+                            <label class="checkbox-inline">
+                                <input type="text" name="apprPointBelowMobile[2]"
+                                       value="0" size="4"
+                                       class="form-control input_num_m numberonly"/>
+                            </label>
+                            점 미만
+                        </td>
+                        <!-- //실적 점수제 -->
+                                                    <td rowspan="2" class="">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="calcPeriodFl"
+                                                   value="n" />
+                                            기간제한 없음
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="calcPeriodFl"
+                                                   value="y" checked="checked"/>
+                                            기간제한 있음
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <select name="calcPeriodBegin" class="form-control">
+                                            <option value="-1d" selected="selected">
+                                                직전(어제)
+                                            </option>
+                                            <option value="-1w" >
+                                                1주일전
+                                            </option>
+                                            <option value="-2w" >
+                                                2주일전
+                                            </option>
+                                            <option value="-1m" >
+                                                한달전
+                                            </option>
+                                        </select> 부터
+                                    </div>
+                                    <div class="col-xs-12">
+                                        <select name="calcPeriodMonth" class="form-control">
+                                            <option value="1" >1
+                                            </option>
+                                            <option value="2" >2
+                                            </option>
+                                            <option value="3" selected="selected">3
+                                            </option>
+                                            <option value="6" >6
+                                            </option>
+                                        </select> 개월간
+                                    </div>
+                                </div>
+                            </td>
+                            <td rowspan="2" class="figure-group">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <select name="calcCycleMonth">
+                                            <option value="1" selected="selected">1
+                                            </option>
+                                            <option value="2" >2
+                                            </option>
+                                            <option value="3" >3
+                                            </option>
+                                            <option value="6" >6
+                                            </option>
+                                        </select> 개월마다
+                                    </div>
+                                    <div class="col-xs-12">해당월<select name="calcCycleDay">
+                                            <option value="1" selected="selected">1</option><option value="2" >2</option><option value="3" >3</option><option value="4" >4</option><option value="5" >5</option><option value="6" >6</option><option value="7" >7</option><option value="8" >8</option><option value="9" >9</option><option value="10" >10</option><option value="11" >11</option><option value="12" >12</option><option value="13" >13</option><option value="14" >14</option><option value="15" >15</option><option value="16" >16</option><option value="17" >17</option><option value="18" >18</option><option value="19" >19</option><option value="20" >20</option><option value="21" >21</option><option value="22" >22</option><option value="23" >23</option><option value="24" >24</option><option value="25" >25</option><option value="26" >26</option><option value="27" >27</option><option value="28" >28</option><option value="29" >29</option><option value="30" >30</option><option value="31" >31</option>                                        </select>일
+                                    </div>
+                                </div>
+                            </td>
+                                            </tr>
+                                        <tr data-default="true">
+                        <td>
+                            <input type="hidden" name="sno[]" value="1"/>
+                            <span>일반회원</span>
+                            <br/>
+                        </td>
+                        <td>
+                            <span class="notice-ref notice-sm"><ul class="list-group"><li class="">추가 0.0% 할인</li><li class="mgt3">추가 0.0% 적립</li><li class="mgt3">중복 0.0% 할인</li></ul>쿠폰미발급</span>
+                        </td>
+                        <!-- 실적 수치제 -->
+                        <th class="sysFigureGroup display-none">
+                                                        <label class="checkbox-inline">
+                                <input type="checkbox" name="apprFigureOrderPriceFl[1]" value="y"  data-target-class="apprFigureOrderPrice1"/>
+                                주문금액
+                            </label>
+                            <br/>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="apprFigureOrderRepeatFl[1]" value="y"  data-target-class="apprFigureOrderRepeat1"/>
+                                상품주문건수
+                            </label>
+                            <br/>
+                            <label class="checkbox-inline">
+                                <input type="checkbox" name="apprFigureReviewRepeatFl[1]" value="y"  data-target-class="apprFigureReviewRepeat1"/>
+                                주문상품후기
+                            </label>
+                        </th>
+                        <td class="sysFigureGroup display-none">
+                            <label class="checkbox-inline">
+                                <input type="text"
+                                       name="apprFigureOrderPriceMore[1]"
+                                       value="0" size="6"
+                                       class="form-control input_num_xl apprFigureOrderPrice1 numberonly"/>
+                                만원 이상
+                            </label>
+                            ~
+                            <label class="checkbox-inline">
+                                <input type="text" name="apprFigureOrderPriceBelow[1]"
+                                       value="0" size="6"
+                                       class="form-control input_num_xl apprFigureOrderPrice1 numberonly"/>
+                                만원 미만
+                            </label>
+                            <br/>
+                            <label class="checkbox-inline">
+                                <input type="text" name="apprFigureOrderRepeat[1]"
+                                       value="0" size="6"
+                                       class="form-control input_num_m apprFigureOrderRepeat1 numberonly"/>
+                            </label>
+                            회 이상 <br/>
+                            <label class="checkbox-inline">
+                                <input type="text"
+                                       name="apprFigureReviewRepeat[1]"
+                                       value="0" size="6"
+                                       class="form-control input_num_m apprFigureReviewRepeat1 numberonly"/>
+                            </label>
+                            개 이상
+
+                        </td>
+                        <td class="sysFigureGroup display-none">
+                            <label class="checkbox-inline">
+                                <input type="text"
+                                       name="apprFigureOrderPriceMoreMobile[1]"
+                                       value="0" size="6"
+                                       class="form-control input_num_xl apprFigureOrderPrice1 numberonly"/>
+                                만원 이상
+                            </label>
+                            ~
+                            <label class="checkbox-inline">
+                                <input type="text" name="apprFigureOrderPriceBelowMobile[1]"
+                                       value="0" size="6"
+                                       class="form-control input_num_xl apprFigureOrderPrice1 numberonly"/>
+                                만원 미만
+                            </label>
+                            <br/>
+                            <label class="checkbox-inline">
+                                <input type="text" name="apprFigureOrderRepeatMobile[1]"
+                                       value="0" size="6"
+                                       class="form-control input_num_m apprFigureOrderRepeat1 numberonly"/>
+                            </label>
+                            회 이상 <br/>
+                            <label class="checkbox-inline">
+                                <input type="text"
+                                       name="apprFigureReviewRepeatMobile[1]"
+                                       value="0" size="6"
+                                       class="form-control input_num_m apprFigureReviewRepeat1 numberonly"/>
+                            </label>
+                            개 이상
+                        </td>
+                        <!-- //실적 수치제 -->
+                        <!-- 실적 점수제 -->
+                        <td class="sysPointGroup display-none" colspan="2">
+                            <label class="checkbox-inline">
+                                <input type="text" name="apprPointMore[1]"
+                                       value="0" size="4"
+                                       class="form-control input_num_m numberonly"/>
+                            </label>
+                            점 이상 ~
+                            <label class="checkbox-inline">
+                                <input type="text" name="apprPointBelow[1]"
+                                       value="0" size="4"
+                                       class="form-control input_num_m numberonly"/>
+                            </label>
+                            점 미만
+                        </td>
+                        <td class="sysPointGroup display-none" colspan="">
+                            <label class="checkbox-inline">
+                                <input type="text" name="apprPointMoreMobile[1]"
+                                       value="0" size="4"
+                                       class="form-control input_num_m numberonly"/>
+                            </label>
+                            점 이상 ~
+                            <label class="checkbox-inline">
+                                <input type="text" name="apprPointBelowMobile[1]"
+                                       value="0" size="4"
+                                       class="form-control input_num_m numberonly"/>
+                            </label>
+                            점 미만
+                        </td>
+                        <!-- //실적 점수제 -->
+                                            </tr>
+                                </tbody>
+        </table>
+    </div>
+</form>
+
+<script type="text/javascript">
+    <!--
+    $(document).ready(function () {
+        var $checkboxAppraisal;
+
+        var gd_group_list = {
+            layerRule: null,
+            message: {
+                figure: "현재 설정된 평가방법은 실적수치제이며, 회원등급별 평가기준에 따라 주문금액, 상품주문건수, 주문상품후기횟수를 종합하여 회원등급이 평가됩니다. 회원등급 평가를 진행하시겠습니까?",
+                point: "현재 설정된 평가방법은 실적점수제이며, 주문금액, 상품주문건수, 주문상품후기횟수, 로그인횟수를 점수로 환산하여 회원등급이 평가됩니다. 회원등급 평가를 진행하시겠습니까?"
+            }
+        };
+
+        var frmObj = $('#frm');
+        frmObj.validate({
+            submitHandler: function (form) {
+                var params = $(form).serializeArray();
+                post_with_reload(form.action, params);
+            }
+        });
+
+        $('#btnSubmit').click(function () {
+            if (validate_submit()) {
+                frmObj.submit();
+            }
+        });
+
+        $('.js-btn-appraisal').click(function (e) {
+            BootstrapDialog.confirm({
+                title: $(e.target).text(),
+                message: gd_group_list.message[$(':radio[name=apprSystem]:checked').val()],
+                callback: function (result) {
+                    if (result) {
+                        var data = {
+                            'mode': 'checkSendSms',
+                            'checkType': 'group'
+                        }
+                        var $ajax = $.ajax('../member/member_ps.php', {type: "post", data: data});
+                        $ajax.done(function (data, textStatus, jqXHR) {
+                            if(data === true) {
+                                $.get('../share/layer_sms_password.php?mode=input', function () {
+                                    BootstrapDialog.show({
+                                        title: 'SMS 인증번호 입력',
+                                        size: BootstrapDialog.SIZE_WIDE,
+                                        message: arguments[0]
+                                    });
+                                });
+                            } else {
+                                alert('데이터를 처리중입니다. 잠시만 기다려 주시기 바랍니다.');
+                                post_with_reload('../member/member_group_ps.php', {
+                                    mode: "appraisal"
+                                });
+                            }
+                        });
+                    }
+                }
+            });
+        });
+
+        $('#layerClose').click(layer_close);
+
+        var $apprSystem = $('input[name=\'apprSystem\']');
+        $apprSystem.click(set_appr_system);
+        $apprSystem.each(function () {
+            set_appr_system.call(this);
+        });
+
+        $('input[name=\'dcPercent\'], input[name=\'mileagePercent\']').number_only(4, 100, 100);
+        $('.numberonly').number_only();
+
+        disableDefaultGroup();
+
+        $checkboxAppraisal = $(':checkbox[name*="appraisalPoint"], :checkbox[name*="apprFigure"]');
+        $checkboxAppraisal.change(function () {
+            var $this = $(this);
+            var targetClass = $this.data('targetClass');
+            var $target = $('.' + targetClass);
+            $target.each(function (i, item) {
+                var checked = $this.prop('checked');
+                $(item).prop('disabled', !checked);
+            });
+        });
+        $checkboxAppraisal.trigger("change");
+
+        function set_appr_system() {
+            if ($(this).prop('checked') === false) return;
+            var thisVal = $('input[name=\'apprSystem\']:checked').val();
+            if (thisVal == 'figure') {
+                $('.sysPoint input:not(input[name=\'apprSystem\'])').prop('disabled', true);
+                $('input', $('.sysFigureGroup').show()).prop('disabled', false);
+                $('input:not(:text)', $('.sysPointGroup').hide()).prop('disabled', true);
+                $(':checkbox[name*=\'apprFigure\']').each(function () {
+                    set_terms.call(this);
+                });
+                $('.figure-group').find(':radio, select:not([name="calcCycleMonth"], [name="calcCycleDay"])').prop('disabled', false);
+            } else if (thisVal == 'point') {
+                $('.sysPoint input:not(input[name=\'apprSystem\'])').prop('disabled', false);
+                $('input', $('.sysFigureGroup:not([name="calcPeriodFl"], [name=""])').hide()).prop('disabled', true);
+                $('input', $('.sysPointGroup').show()).prop('disabled', false);
+                $('input[name*=\'terms_p\']').each(function () {
+                    set_terms.call(this);
+                });
+                $('.figure-group').find(':radio, select:not([name="calcCycleMonth"], [name="calcCycleDay"])').prop('disabled', true);
+            }
+            disableDefaultGroup();
+            if ($checkboxAppraisal) {
+                $checkboxAppraisal.trigger("change");
+            }
+        }
+    });
+
+    function sms_password_callback(password) {
+        post_with_reload('../member/member_group_ps.php', {
+            mode: "appraisal",
+            password: password
+        });
+    }
+
+    function validate_submit() {
+        if ($(':radio[name=apprSystem]:checked').val() == 'figure') {
+            return validate_figure();
+        } else {
+            return validate_point();
+        }
+    }
+
+    function validate_point() {
+        var isOpen = true;
+        $('.sysPoint :checkbox').each(function () {
+            if (this.checked) {
+                isOpen = false;
+                return false;
+            }
+        });
+        if (isOpen) {
+            var message = '선택한 실적점수제의 평가 기준이 없습니다. 평가 기준이 없을 경우 회원등급이 자동/수동으로 평가되지 않습니다. 이대로 저장하시겠습니까?';
+            var callback = function (isConfirm) {
+                if (isConfirm) {
+                    $('#frm').submit();
+                }
+            };
+            dialog_confirm(message, callback);
+        } else {
+            return true;
+        }
+    }
+
+    function validate_figure() {
+        var isOpen = false;
+        $('th.sysFigureGroup').not(':last').each(function () {
+            var isGroupChecked = is_figure_group_checked($(this));
+            if (isGroupChecked === false) {
+                isOpen = true;
+                return false;
+            }
+        });
+        if (isOpen) {
+            var message = '회원등급 평가 실적 기준이 입력되지 않은 회원등급이 있습니다. 해당 회원등급은 등급평가 시 제외됩니다. 이대로 저장하시겠습니까?';
+            var callback = function (isConfirm) {
+                if (isConfirm) {
+                    $('#frm').submit();
+                }
+            };
+            dialog_confirm(message, callback);
+        } else {
+            return true;
+        }
+    }
+
+    function is_figure_group_checked($group) {
+        var isReturn = false;
+        $group.find(':checked').each(function () {
+            if (this.checked) {
+                isReturn = true;
+                return false;
+            }
+        });
+        return isReturn;
+    }
+
+    function disableDefaultGroup() {
+        $('tr[data-default=true]').find(':input').prop('disabled', true);
+    }
+    /**
+     * 조건 disabled
+     */
+    function set_terms() {
+        var nm = $(this).attr('name');
+        var checked = $(this).prop('checked');
+        $('input.' + nm).each(function () {
+            if (checked === false) {
+                $(this).prop('disabled', true);
+            } else {
+                $(this).prop('disabled', false);
+            }
+        });
+    }
+    //-->
+</script>
+
+                                    </div>
+            </div>
+
+
+
+
+
+</th:block>
+
+
+</html>

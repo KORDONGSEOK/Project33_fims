@@ -1,0 +1,1475 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8" />
+    <title>고도:체험샵 :: 쇼핑몰 관리자 - 고도몰5</title>
+    <meta name="description" content="고도몰만의 특별한 서비스! 새로워진 쇼핑몰 관리자 앱은 모바일 전용 페이지를 통해 운영 중인 쇼핑몰을 언제, 어디서든 관리하실 수 있는 서비스입니다.
+	고도몰의 쇼핑몰 솔루션 e나무 임대형, e나무 무료형, e나무 독립형 고객님 모두 제한 없이 이용하실 수 있습니다. " />
+    <meta name="author" content="qnibus" />
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta http-equiv="cleartype" content="on">
+    
+    <!-- Latest compiled and minified CSS -->
+    <link type="text/css" href="/admin/gd_share/css/bootstrap.css?ts=1531816402" rel="stylesheet"/>
+    <link type="text/css" href="/admin/gd_share/css/bootstrap-datetimepicker.css?ts=1525753067" rel="stylesheet"/>
+    <link type="text/css" href="/admin/gd_share/css/bootstrap-datetimepicker-standalone.css?ts=1525753067" rel="stylesheet"/>
+    <link type="text/css" href="/admin/gd_share/css/bootstrap-dialog.css?ts=1525753067" rel="stylesheet"/>
+    <link type="text/css" href="/admin/gd_share/script/jquery/jquery-ui/jquery-ui.css?ts=1525753067" rel="stylesheet"/>
+    <link type="text/css" href="/admin/gd_share/css/style.css?ts=1535616065" rel="stylesheet"/>
+    <link type="text/css" href="/admin/gd_share/css/non-responsive.css?ts=1525753067" rel="stylesheet"/>
+    <link type="text/css" href="/admin/gd_share/css/flags.css?ts=1525753067" rel="stylesheet"/>
+    <link type="text/css" href="/admin/gd_share/css/jquery.countdownTimer.css?ts=1525753067" rel="stylesheet"/>
+        <link type="text/css" href="/admin/gd_share/css/gd5-style.css?ts=1574204051" rel="stylesheet"/>
+    <link type="text/css" href="/admin/css/admin-custom.css?ts=1468220054" rel="stylesheet"/>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript" src="/admin/gd_share/script/underscore/underscore-min.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/jquery/jquery.min.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/jquery/jquery-ui/jquery-ui.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/bootstrap/bootstrap.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/moment/moment.min.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/numeral/numeral.min.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/bootstrap/bootstrap-datetimepicker.min.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/bootstrap/bootstrap-dialog.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/bootstrap/bootstrap-filestyle.min.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/copyclipboard/ZeroClipboard.min.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/copyclipboard/clipboard.min.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/copyclipboard/clipboard-2.0.0.min.js?ts=1536816430"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/jquery/jquery-browser/dist/jquery.browser.min.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/jquery/jquery.serialize-object.min.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/jquery/jquery.countdownTimer.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/jquery/validation/jquery.validate.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/jquery/validation/localization/messages_ko.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/jquery/validation/additional-methods.min.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/jquery/datasaver/jquery.DataSaver.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/jquery/jquery.number_only.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/jquery/jquery-cookie/jquery.cookie.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/common2.js?ts=1535616065"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/common.js?ts=1574204051"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/schedule.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/admin_panel_api.js?ts=1556493394"></script>
+                <script type="text/javascript" src="/admin/gd_share/script/gd_board_common.js"></script>
+                        <script type="text/javascript" src="/admin/gd_share/script/jquery/jquery.multi_select_box.js"></script>
+                <script type="text/javascript" src="/admin/script/admin-custom.js?ts=1468220054"></script>
+
+    <script type="text/javascript">
+        <!--
+        $(document).ready(function () {
+            
+            
+            // 메뉴얼 링크
+            $(".gd-help-manual").each(function() {
+                var linkText = $(this).text().trim().replace(/\s/g, ''); // 타이틀의 문자열의 공백을 제거함
+                var manualUrl = 'http://manual.godomall5.godomall.com/data/manual_view.php?category=base__index___index#' + linkText;
+                $(this).append(' <a href="' + manualUrl + '" target="_blank" class="link-help">페이지 도움말</a>');
+            });
+            
+                    });
+        //-->
+    </script>
+
+</head>
+<body class="base index layout-fluid menu-no-border breadcrumb-no-header">
+
+<div id="container-wrap" class="container-fluid pd0">
+    <div id="container" class="row">
+        <div id="header" class="col-xs-12">
+            <nav class="navbar">
+    <div class="container">
+        <div class="navbar-inner">
+
+            <div class="navbar-header">
+                <a class="navbar-brand" href="https://gdadmin.plus.godomall.com:14003/base/index.php">Godomall5</a>
+                <span class="standard"></span>
+                                                    
+            </div>
+
+            <div class="gnb">
+                <ul class="list-inline">
+                    <li class="no-bar">
+                        <div class="dropdown">
+                            <!--js-btn-layer-sub-menu-->
+                            <a href="#" class="dropdown-toggle gnb-idinfo" id="headerSubMenuManager" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+                                <span>전체관리자</span>님 (
+                                <span>freeadm</span>
+                                ) </a>
+                            <ul class="dropdown-menu gnb-dropdown-menu" aria-labelledby="headerSubMenuManager">
+                                <li class="dropdown-item"><a href="https://gdadmin.plus.godomall.com:14003/policy/manage_register.php?sno=1">운영자정보</a></li>
+                                <li class="dropdown-item"><a href="https://gdadmin.plus.godomall.com:14003/base/login_ps.php?mode=logout">로그아웃</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="pos-r no-bar">
+                        <a href="javascript:Schedule.addToday()" class="schedule-a"> <img src="/admin/gd_share/img/icon_bell.png" style="margin-right: 6px;">
+                                                    </a>
+                    </li>
+                    <li class="no-bar">
+                        <span class="dropdown" style="margin: 0; padding: 0;">
+                                                            <a href="#" class="dropdown-toggle gnb-myshop" id="headerMyShop" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">내쇼핑몰</a>
+                                <ul class="dropdown-menu gnb-dropdown-menu" aria-labelledby="headerMyShop">
+                                                                    <li class="dropdown-item"><a href="https://plus.godomall.com/" target="_blank"><span class="flag flag-16 flag-kr"></span> 기준몰</a></li>
+                                                                    <li class="dropdown-item"><a href="https://plus.godomall.com/us/" target="_blank"><span class="flag flag-16 flag-us"></span> 영문몰</a></li>
+                                                                    <li class="dropdown-item"><a href="https://plus.godomall.com/cn/" target="_blank"><span class="flag flag-16 flag-cn"></span> 중문몰</a></li>
+                                                                    <li class="dropdown-item"><a href="https://plus.godomall.com/jp/" target="_blank"><span class="flag flag-16 flag-jp"></span> 일문몰</a></li>
+                                                            </ul>
+                                                    </span>
+                                                <span style="margin: 0; padding: 0;">
+                            <a href="../plusshop/" target="_blank" class="gnb-myshop text-red">플러스샵</a>
+                        </span>
+                        <span style="margin: 0; padding: 0;">
+                            <a href="https://gdadmin.plus.godomall.com:14003/share/shoplinker.php" class="gnb-myshop pdr0">마켓연동</a>
+                        </span>
+                                            </li>
+                                        <li class="no-bar new">
+                        <div class="dropdown gnb-orderinfo" id="dropDownOrderPresentation">
+                            <a href="#" class="dropdown-toggle dropdown-toggle-arr" id="headerSubMenuOrderPresentation" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+                                <span class="js-oder-count-new display-none">
+                                    <img src="/admin/gd_share/img/icon_new.png" width="14">
+                                </span>
+                                주문현황
+                            </a>
+                            <ul class="dropdown-menu gnb-dropdown-menu" aria-labelledby="headerSubMenuOrderPresentation">
+                                <li class="dropdown-head">주문상태설정
+                                    <div class="pull-right">
+                                        <a href="#" class="js-setting-order" data-role="orderPresentation"> <img src="/admin/gd_share/img/icon_gear.png" alt=""> </a>
+                                    </div>
+                                </li>
+                                <li class="dropdown-noitem">조회할 주문상태를<br>선택해주세요.</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="devide"></li>
+                                        <li class="no-bar">
+                        <div class="dropdown gnb-favorite" id="dropDownFavoriteMenu">
+                            <a href="#" class="dropdown-toggle dropdown-toggle-arr" id="headerSubMenuFavoriteMenu" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false"> 자주쓰는메뉴 </a>
+                            <ul class="dropdown-menu gnb-dropdown-menu" aria-labelledby="headerSubMenuFavoriteMenu">
+                                <li class="dropdown-head">메뉴설정
+                                    <div class="pull-right">
+                                        <a href="#" class="js-setting-favorite-menu"> <img src="/admin/gd_share/img/icon_gear.png" alt=""> </a>
+                                    </div>
+                                </li>
+                                <li class="dropdown-noitem">자주쓰는 메뉴를<br>설정해주세요.</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="devide"></li>
+                    <li class="no-bar">
+                        <div class="dropdown gnb-btn-more">
+                            <a href="#" class="dropdown-toggle dropdown-toggle-arr" id="headerSubMenuMore" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">더보기</a>
+                            <ul class="dropdown-menu gnb-dropdown-menu" aria-labelledby="headerSubMenuMore">
+                                <li class="dropdown-item"><a href="https://www.godo.co.kr/mygodo/main.gd" target="_blank" class="pdr0">마이고도</a></li>                                <li class="dropdown-item"><a href="http://manual.godomall5.godomall.com" target="_blank" class="pdr0">매뉴얼</a></li>
+                                <li class="dropdown-item"><a href="https://gdadmin.plus.godomall.com:14003/share/sitemap.php" class="pdr0">사이트맵</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                                        <li class="no-bar">
+                        <div class="form-inline gnb-search">
+                            <div class="gnb-search-head">
+                                                                    <select id="headerSearchType" name="headerSearchType" class="header-select">
+                                        <option value="menu">메뉴</option>
+                                        <option value="member">회원</option>
+                                    </select>
+                                                            </div>
+                            <div class="gnb-search-body">
+                                <span class="icon-magni"><img src="/admin/gd_share/img/ico_search_btn.png" alt=""></span>
+                                <input type="text" id="headerSearchKeyword" class="form-control" name="headerSearchKeyword" placeholder="메뉴검색"/>
+                                <div class="gnb-search-hint form-inline display-none">
+                                    <select class="form-control multiple-select" size="5" id="headerSearchMenuList" style="height:100px;"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<a href="#" class="js-btn-layer-search-member pdr0 ">회원검색</a>-->
+                    </li>
+                    <!-- 스타일 안보임 처리 : 컨트롤러 제거는 하지 않음. 직접 URL 입력시 접속됨 -->
+                    <!-- <li><a href="../bootstrap/index" style="color:yellow;" target="_blank">스타일</a></li>-->
+                </ul>
+            </div>
+        </div>
+
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav reform">
+                                            <li class="">
+                                <a href="https://gdadmin.plus.godomall.com:14003/policy/index.php" id="menu_policy"
+                                   style="width:89.615384615385px;">기본설정</a>
+                            </li>
+                                                        <li class="">
+                                <a href="https://gdadmin.plus.godomall.com:14003/goods/index.php" id="menu_goods"
+                                   style="width:89.615384615385px;">상품</a>
+                            </li>
+                                                        <li class="">
+                                <a href="https://gdadmin.plus.godomall.com:14003/order/index.php" id="menu_order"
+                                   style="width:89.615384615385px;">주문/배송</a>
+                            </li>
+                                                        <li class="">
+                                <a href="https://gdadmin.plus.godomall.com:14003/member/index.php" id="menu_member"
+                                   style="width:89.615384615385px;">회원</a>
+                            </li>
+                                                        <li class="">
+                                <a href="https://gdadmin.plus.godomall.com:14003/board/index.php" id="menu_board"
+                                   style="width:89.615384615385px;">게시판</a>
+                            </li>
+                                                        <li class="">
+                                <a href="https://gdadmin.plus.godomall.com:14003/promotion/index.php" id="menu_promotion"
+                                   style="width:89.615384615385px;">프로모션</a>
+                            </li>
+                                                        <li class="">
+                                <a href="https://gdadmin.plus.godomall.com:14003/design/index.php" id="menu_design"
+                                   style="width:89.615384615385px;">디자인</a>
+                            </li>
+                                                        <li class="">
+                                <a href="https://gdadmin.plus.godomall.com:14003/service/index.php" id="menu_service"
+                                   style="width:89.615384615385px;">부가서비스</a>
+                            </li>
+                                                        <li class="">
+                                <a href="https://gdadmin.plus.godomall.com:14003/marketing/index.php" id="menu_marketing"
+                                   style="width:89.615384615385px;">마케팅</a>
+                            </li>
+                                                        <li class="">
+                                <a href="https://gdadmin.plus.godomall.com:14003/mobile/index.php" id="menu_mobile"
+                                   style="width:89.615384615385px;">모바일샵</a>
+                            </li>
+                                                        <li class="">
+                                <a href="https://gdadmin.plus.godomall.com:14003/scm/index.php" id="menu_scm"
+                                   style="width:89.615384615385px;">공급사</a>
+                            </li>
+                                                        <li class="">
+                                <a href="https://gdadmin.plus.godomall.com:14003/statistics/index.php" id="menu_statistics"
+                                   style="width:89.615384615385px;">통계</a>
+                            </li>
+                                                        <li class="">
+                                <a href="https://gdadmin.plus.godomall.com:14003/myapp/index.php" id="menu_myapp"
+                                   style="width:89.615384615385px;">모바일앱</a>
+                            </li>
+                                        </ul>
+        </div><!-- /.navbar-collapse -->
+
+    </div>
+</nav>
+
+<ol class="breadcrumb text-small clearfix">
+    </ol>
+
+<!-- 고도 사이트로 이동 시작 -->
+<form name="frmGotoGodomall" action="" method="post">
+    <input type="hidden" name="pageKey" value="321783">
+    <input type="hidden" name="sno" value="321783">
+    <input type="hidden" name="mode" value="">
+</form>
+<!-- 고도 사이트로 이동 끝 -->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var gd_main_layer = {
+            presentation: {id: "presentation", selector: "#layerPresentation", title: "주요현황 조회설정"},
+            order_presentation: {id: "orderPresentation", get_id: "getOrderPresentation", title: "주문현황 조회설정"},
+            order_setting: {id: "orderSetting", title: "주문관리 조회설정"},
+            favorite_menu: {id: "favoriteMenu", get_id: "getFavoriteMenu", selector: "#layerFavorite", title: "자주쓰는 메뉴 설정"}
+        };
+        var _bootstrap_dialog = BootstrapDialog;
+
+        $('#dropDownFavoriteMenu').on('show.bs.dropdown', function () {
+            var dropdown_container = $(this);
+            var dropdown_menu = dropdown_container.find('.dropdown-menu');
+            $.ajax('../base/main_setting_ps.php', {
+                method: "post",
+                data: {mode: gd_main_layer.favorite_menu.get_id},
+                global_complete: false,
+                success: function () {
+                    if (arguments[0].success === 'OK') {
+                        var result = arguments[0].result;
+                        if (result.length > 0) {
+                            var html = [];
+                            $.each(result, function (idx, item) {
+                                var menuName = 'none';
+                                var menuLink = '';
+                                if (typeof item.tName === 'string') {
+                                    menuName = item.tName;
+                                } else if (typeof item.sName === 'string') {
+                                    menuName = item.sName;
+                                } else if (typeof item.fName === 'string') {
+                                    menuName = item.fName;
+                                }
+                                if (typeof item.tUrl === 'string') {
+                                    menuLink = '/' + item.tUrl;
+                                } else if (typeof item.sUrl === 'string') {
+                                    menuLink = '/' + item.sUrl;
+                                } else {
+                                    menuLink = '/index.php';
+                                }
+                                if (typeof item.fCode === 'string') {
+                                    menuLink = item.fCode + menuLink;
+                                }
+                                // html.push('<li role="separator" class="divider"></li>');
+                                html.push('<li class="dropdown-item"><a href="../' + menuLink + '">' + menuName + '</a></li>');
+                            });
+                            dropdown_menu.find('li:gt(0)').remove();
+                            dropdown_menu.append(html.join(''));
+                        } else {
+                            if (dropdown_menu.find('.dropdown-noitem').length == 0) {
+                                dropdown_menu.find('li:gt(0)').remove();
+                                dropdown_menu.append('<li class="dropdown-noitem">자주쓰는 메뉴를<br>설정해주세요.</li>');
+                            }
+                        }
+                    } else {
+                        console.log(arguments);
+                    }
+                }
+            });
+        });
+
+        $('#dropDownOrderPresentation').on('show.bs.dropdown', function () {
+            var dropdown_container = $(this);
+            $.ajax('../base/main_setting_ps.php', {
+                method: "post",
+                data: {mode: gd_main_layer.order_presentation.get_id},
+                global_complete: false,
+                success: function () {
+                    if (arguments[0].success === 'OK') {
+                        var result = arguments[0].result;
+                        if (result.length > 0) {
+                            var html = [];
+                            $.each(result, function (idx, item) {
+                                // html.push('<li role="separator" class="divider"></li>');
+                                html.push('<li class="dropdown-item"><a href="' + item.link + '">' + item.name + '<span class="dropdown-item-val"><span class="text-red">' + item.count + '</span>건</span></a></li>');
+                            });
+                            var dropdown_menu = dropdown_container.find('.dropdown-menu');
+                            dropdown_menu.find('li:gt(0)').remove();
+                            dropdown_menu.append(html.join(''));
+                        }
+                    } else {
+                        console.log(arguments);
+                    }
+                }
+            });
+        });
+
+        $('.js-setting-presentation').click(function () {
+            $.post('/share/layer_presentation_setting.php', {mode: gd_main_layer.presentation.id}, function (data) {
+                var options = {title: gd_main_layer.presentation.title, message: $(data), size: _bootstrap_dialog.SIZE_WIDE};
+                _bootstrap_dialog.show(options);
+            });
+        });
+
+        $('.js-setting-cs').bind('click', function () {
+            $.post('/share/layer_cs_setting.php', null, function (data) {
+                _bootstrap_dialog.show({
+                    title: '문의/답변관리 조회설정 ',
+                    message: $(data)
+                });
+            });
+        });
+
+        $('.js-setting-order').bind('click', function () {
+            var layer_id = this.dataset.role;
+            var title = (layer_id === gd_main_layer.order_presentation.id) ? gd_main_layer.order_presentation.title : gd_main_layer.order_setting.title;
+            $.post('../base/layer_order_setting.php', {mode: layer_id}, function (data) {
+                var options = {title: title, message: $(data)};
+                _bootstrap_dialog.show(options);
+            });
+        });
+
+        $('.js-setting-favorite-menu').bind('click', function () {
+            $.post('/share/layer_favorite_menu.php', {mode: gd_main_layer.favorite_menu.id}, function (data) {
+                var options = {title: gd_main_layer.favorite_menu.title, message: $(data), size: _bootstrap_dialog.SIZE_WIDE};
+                _bootstrap_dialog.show(options);
+            });
+        });
+
+        $('#headerSearchType').change(function () {
+            if (this.value === 'member') {
+                layer_member_search();
+                document.getElementById('headerSearchType').options[0].selected = true;
+            }
+        });
+
+        $('#headerSearchKeyword').keyup(function (e) {
+            if (e.keyCode === 13 && this.value.length > 1) {
+                $.ajax('../base/main_setting_ps.php', {
+                    method: "post",
+                    global_complete: false,
+                    data: {mode: "searchMenu", keyword: this.value},
+                    success: function () {
+                        var result = arguments[0].result;
+                        var optionHtml = [];
+                        $.each(result, function (idx, item) {
+                            var link = '../' + item.fCode + '/' + item.tUrl;
+                            optionHtml.push('<option value="' + link + '">' + item.tName + '</option>');
+                        });
+                        var $headerSearchMenuList = $('#headerSearchMenuList');
+                        $headerSearchMenuList.closest('div').removeClass('display-none');
+                        $headerSearchMenuList.find('option').remove();
+                        if (optionHtml.length == 0) {
+                            $headerSearchMenuList.append('<option>검색된 메뉴가 없습니다.</option>');
+                        } else {
+                            $headerSearchMenuList.append(optionHtml.join(''));
+                        }
+                    }
+                });
+            }
+        });
+
+        $('#headerSearchMenuList').on('click', function () {
+            location.href = this.value;
+        });
+
+        $(window).click(function () {
+            var $headerSearchMenuList = $('#headerSearchMenuList').closest('div');
+            if ($headerSearchMenuList.hasClass('display-none') === false) {
+                $headerSearchMenuList.addClass('display-none');
+            }
+        });
+
+        $('.endDatetime').datetimepicker().on('dp.show', function (e) {
+            var dateNow = new Date();
+            $(this).children().val(moment(dateNow).hours(23).minutes(59).format("YYYY-MM-DD HH:mm"));
+        });
+    });
+</script>
+            <div id="panel_popupPanel"></div>
+        </div>
+        <div id="content-wrap">
+            <div class="container-fluid pd0">
+                <div id="content" class="row">
+                    <div class="col-xs-12">
+                        <script type="text/javascript">
+    var isVisibleMemo = 'y';
+    var viewAuth = 'all';
+    var main_setting = {"memo":{"self":{"isVisible":"y","viewAuth":"all"}}};
+</script>
+<link type="text/css" href="/admin/gd_share/script/slider/slick/slick.css" rel="stylesheet"/>
+<script type="text/javascript" src="/admin/gd_share/script/slider/slick/slick.js"></script>
+<script type="text/javascript" src="/admin/gd_share/script/main.js" charset="utf-8"></script>
+
+<!-- 쇼핑몰 서비스 정보 내용 시작 -->
+<div class="row main-layout main-header reform mgt-33">
+    <div class="wrap">
+        <div class="layout-left">
+            <h1>
+                <a href="../policy/base_info.php">고도:체험샵</a> <a href="../policy/base_info.php">
+                    <small>godomall5.com</small>
+                </a>
+            </h1>
+        </div>
+                    <div class="layout-right text-right">
+                <ul class="mall-info-cnt list-inline">
+                    <li class="disk-space">
+                        <span class="disk-space-check disk-storage"></span>
+                        <button type="button" class="btn btn-gray btn-xs btn_react_disk">갱신</button>
+                        <button type="button" onclick="gotoGodomall('disk');" class="btn btn-gray btn-xs">추가</button>
+                    </li>
+                    <li class="sms-cnt pdlr30">
+                        <strong>SMS</strong>
+                        <strong class="text-danger">0.0 포인트</strong>
+                        <a href="../member/sms_charge.php" class="btn btn-gray btn-xs">충전</a>
+                    </li>
+                </ul>
+            </div>
+            </div>
+</div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // 계정용량
+            $('.disk-space-check').disk_space();
+
+            $('.btn_react_disk').click(function () {
+                $('.disk-space-check').disk_space('react');
+            }).css('cursor', 'pointer');
+        });
+
+        /*
+         * 계정용량
+         */
+        $.fn.disk_space = function (mode) {
+            var obj = $(this);
+            obj.html('<img src="/admin/gd_share/img/icon_loading2.gif" alt="로딩중" width="34" class="middle" />');
+            $.post('https://gdadmin.plus.godomall.com:14003/base/disk_space.php', {'mode': mode}, function (data) {
+                if (data == '') {
+                    obj.empty();
+                    return;
+                }
+                var diskData = data;
+                var diskHtml = [];
+                if (diskData.supplyDisk == '') {
+                    diskHtml.push('<strong class="pdr15">' + diskData.diskTitle + '</strong><span class="si_disk"><strong class="text-danger">' + diskData.usedDisk + '</strong></span>');
+                } else if (typeof diskData.usedPer !== 'undefined') {
+                    diskHtml.push('<span class="storage-title">' + diskData.diskTitle + '</span>');
+                    diskHtml.push('<span class="disk-progressbar"><span class="disk-guage" style="width:' + diskData.usedPer + '%;"></span></span>');
+                    diskHtml.push('<span class="storage-val"><span class="c-gdred"><b>' + diskData.usedDisk + ' </b> </span> <span class="bar"> / </span> <span>' + diskData.supplyDisk + '</span></span>');
+                    if (diskData.usedPer == '100') {
+                        var message = '쇼핑몰 제공용량이 초과되었습니다. <span class="c-gdred">초과 상태로 3일 경과 시, 전체 관리자 로그인이 차단</span>됩니다.<br /><br />- 초과시점 : <span class="c-gdred">' + diskData.fullDate + '</span><br />- 잔여용량 확보 방법 안내<br />1. 불필요한 용량 정리<br />2. 디스크 용량 추가';
+                        var btnText = {};
+                        btnText.cancelLabel = '자세히보기';
+                        btnText.confirmLabel = '확인';
+                        dialog_confirm(message, function(result) {
+                            if (result) {
+                                layer_close();
+                            } else {
+                                window.open('https://www.godo.co.kr/customer/faq-list.gd?refcd=52#753', '_blank');
+                            }
+                        }, '경고', btnText);
+                    }
+                }
+                obj.html(diskHtml.join(''));
+            });
+        };
+    </script>
+<!-- 쇼핑몰 서비스 정보 내용 끝 -->
+
+<div class="main-layout main-content reform">
+    <div class="content-main">
+        <div class="row">
+            <div class="col-xs-8">
+                <!-- 주문 관리 내용 시작 -->
+                <!-- 주문관리 -->
+<div class="main-section order-management">
+    <div class="table-title btm-line">
+        <span class="gd-help-manual">주문관리</span>
+        <div class="pull-right"><a href="#" class="btn btn-icon-setting btn-sm btn-white js-setting-order" data-role="orderSetting">세팅</a></div>
+    </div>
+
+    <div class="main-section-inner">
+
+                    <ol class="content order list-unstyled reform"><li class="active"><a href="/order/order_list_order.php?treatDate[]=2019-12-23&treatDate[]=2019-12-30&view=orderGoods&detailSearch=y&searchFl=y&orderStatus[]=o1"><span class="status">입금대기</span><div class="order-list-val">1</div></a></li><li class="active"><a href="/order/order_list_pay.php?treatDate[]=2019-12-23&treatDate[]=2019-12-30&view=orderGoods&detailSearch=y&searchFl=y&orderStatus[]=p1"><span class="status">결제완료</span><div class="order-list-val">1</div></a></li><li class=""><a href="/order/order_list_goods.php?treatDate[]=2019-12-23&treatDate[]=2019-12-30&view=orderGoods&detailSearch=y&searchFl=y&orderStatus[]=g1"><span class="status">상품준비중</span><div class="order-list-val">0</div></a></li><li class=""><a href="/order/order_list_delivery.php?treatDate[]=2019-12-23&treatDate[]=2019-12-30&view=orderGoods&detailSearch=y&searchFl=y&orderStatus[]=d1"><span class="status">배송중</span><div class="order-list-val">0</div></a></li></ol><ol class="content order list-unstyled reform"><li class=""><a href="/order/order_list_delivery_ok.php?treatDate[]=2019-12-23&treatDate[]=2019-12-30&view=orderGoods&detailSearch=y&searchFl=y&orderStatus[]=d2"><span class="status">배송완료</span><div class="order-list-val">0</div></a></li><li class=""><a href="/order/order_list_settle.php?treatDate[]=2019-12-23&treatDate[]=2019-12-30&view=orderGoods&detailSearch=y&searchFl=y&orderStatus[]=s1"><span class="status">구매확정</span><div class="order-list-val">0</div></a></li><li class=""><a href="/order/order_list_refund.php?treatDate[]=2019-12-23&treatDate[]=2019-12-30&view=orderGoods&detailSearch=y&searchFl=y&orderStatus[]=r1"><span class="status">환불접수</span><div class="order-list-val">0</div></a></li><li class=""><a href="/order/order_list_exchange.php?treatDate[]=2019-12-23&treatDate[]=2019-12-30&view=orderGoods&detailSearch=y&searchFl=y&orderStatus[]=e1"><span class="status">교환접수</span><div class="order-list-val">0</div></a></li></ol>            </div>
+    <div class="clear-both"></div>
+</div>
+                <!-- 주문 관리 내용 끝 -->
+            </div>
+            <div class="col-xs-4">
+                <!-- 문의 / 답변 관리 내용 시작 -->
+                <div class="main-section">
+    <div class="table-title btm-line">
+        <span class="gd-help-manual">문의/답변관리</span>
+        <div class="pull-right"><a href="#" class="btn btn-icon-setting btn-sm btn-white js-setting-cs">세팅</a></div>
+    </div>
+    <div class="qa-board-box reform">
+        <ol class="content list-unstyled reform"><li><a href="../board/article_list.php?bdId=goodsreview&searchDateFl=regDt&rangDate[]=2019-12-24&rangDate[]=2019-12-30&searchPeriod=6">상품후기<span class="qa-board-val"><b class="c-gdred">4</b>건</span></a></li><li><a href="../board/article_list.php?bdId=goodsqa&searchDateFl=regDt&rangDate[]=2019-12-24&rangDate[]=2019-12-30&searchPeriod=6">상품문의<span class="qa-board-val"><b class="c-gdred">0</b>/0건</span></a></li><li><a href="../board/article_list.php?bdId=qa&searchDateFl=regDt&rangDate[]=2019-12-24&rangDate[]=2019-12-30&searchPeriod=6">1:1문의<span class="qa-board-val"><b class="c-gdred">0</b>/0건</span></a></li><li><a href="../scm/scm_board_list.php?searchDate[]=2019-12-24&searchDate[]=2019-12-30&searchPeriod=6">공급사문의<span class="qa-board-val"><b class="c-gdred">0</b>건</span></a></li></ol>    </div>
+</div>
+                <!-- 문의 / 답변 관리 내용 끝 -->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-6">
+                <!-- 공지사항 / godo:플러스샵 -->
+                <div class="main-section">
+                    <div class="table-title">
+                        <span class="">공지사항</span>
+                        <div class="pull-right">
+                            <div id="panel_link_noticeLink" class="pull-right more-view"></div>
+                        </div>
+                    </div>
+                    <div class="board-list-newest content list-unstyled reform" id="panel_board_noticeAPI">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <!-- 패치&업그레이드 -->
+                <div class="main-section">
+                    <div class="table-title">
+                        <span class="">패치&업그레이드</span>
+                        <div class="pull-right">
+                            <div id="panel_link_patchLink" class="pull-right more-view"></div>
+                        </div>
+                    </div>
+                    <ol class="board-list-newest content list-unstyled reform" id="panel_board_patchAPI">
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- 관리자 메인 배너 시작 -->
+        <div class="main-section">
+            <div id="panel_banner_mainTop" class="content-main-banner"></div>
+        </div>
+        <!-- 관리자 메인 배너 끝 -->
+
+        <!-- 중앙 현황판 내용 시작 -->
+        <iframe name="mainStatistics" src="./main_statistics.php" class="main-statistics pd0 mg0" scrolling="no" frameborder="0"></iframe>
+
+        <!-- 중앙 현황판 내용 끝 -->
+
+        <!-- 주요 일정 내용 시작 -->
+        <div class="main-section">
+    <div class="table-title">
+        <span class="gd-help-manual">주요일정</span>
+    </div>
+    <div class="calendar-box">
+        <div class="col-calendar">
+        <!-- <div class="col-xs-6">-->
+            <div class="calendar">
+                <!-- 스케줄(일정관리) -->
+                <div class="work_calender" id="schedule">
+                    <h3 class="hidden">일정관리</h3>
+                </div>
+                <script type="text/javascript">
+                    var schObj;
+                    $(function(){
+                        schObj = $('#schedule').schedule();
+                    });
+                </script>
+                <!-- //스케줄(일정관리) -->
+            </div>
+        </div>
+        <div class="col-schedule">
+        <!--            <div class="col-xs-6">-->
+            <div class="memo">
+                <div class="title">
+                                            <span style="font-size:14px;font-weight:bold;color:#333">12/30</span> 일정이 없습니다.
+                                        <div class="pull-right" style="padding-top:6px;color:#888;font-size:11px">
+                        <a href="javascript:Schedule.addToday()" class="btn-link">일정추가</a>
+                    </div>
+                </div>
+                <ul>
+                                    </ul>
+            </div>
+        </div>
+        <div class="clear-both"></div>
+    </div>
+</div>
+        <!-- 주요 일정 내용 끝 -->
+
+        <!-- 교육소식 -->
+        <div>
+            <div class="main-section">
+                <div class="table-title">
+                    <span class="">교육소식</span>
+                    <div id="panel_link_eduLink" class="pull-right more-view"></div>
+                </div>
+                <div class="tab-content sub-sector sub-sector-no-margin">
+                    <div role="tabpanel" class="tab-pane fade in active" id="edu">
+                        <div id="panel_board_eduAPI"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 관리자 메인 하단 배너 시작 -->
+        <div id="panel_banner_mainBottom" class="main-section"></div>
+        <!-- 관리자 메인 하단 배너 끝 -->
+    </div>
+
+    <div class="content-sub">
+        <!-- 관리자 메모 내용 시작 -->
+        <!--// 관리자메모 -->
+<form id="frmMemo" method="post">
+    <input type="hidden" name="mode" value="memo">
+    <input type="hidden" name="code" value="save">
+    <input type="hidden" name="oldViewAuth">
+    <div class="main-section">
+        <div class="table-title btm-line">
+            <span class="gd-help-manual">관리메모</span>
+                                    <div class="pull-right form-inline">
+                <div class="memo-action">
+                    <select class="form-control" name="viewAuth">
+                        <option value="all" selected>공유메모</option>
+                        <option value="self" >개인메모</option>
+                    </select>
+                    <button type="button" class="btn btn-icon-fold-on js-memo-fold"><!--메모열기--></button>
+                </div>
+            </div>
+        </div>
+        <div id="adminMemo">
+            <div class="js-memo" data-type="all">
+                <textarea name="memo[all]" class="form-control mgb10" maxlength="1000" style="border-top: 0px;height:132px;resize: vertical;" placeholder="공유하실 운영업무 등을 기록하세요."></textarea>
+                <div class="pull-left">
+                    <span style="font-size:11px;color:#777">최종수정 : -</span>
+                </div>
+            </div>
+
+            <div class="js-memo" data-type="self">
+                <textarea name="memo[self]" class="form-control mgb10" maxlength="1000" style="border-top: 0px;height:132px;resize:vertical;" placeholder="내가 해야할 업무 등을 기록하세요."></textarea>
+                <div class="pull-left">
+                    <span style="font-size:11px;color:#777">최종수정 : -</span>
+                </div>
+            </div>
+
+            <div class="pull-right">
+                <button type="button" class="btn btn-white btn-sm js-memo-clear">전체삭제</button>
+                <button type="button" class="btn btn-red-line-s btn-sm js-memo-save" style="margin-left:4px">저장</button>
+            </div>
+            <div class="clear-both"></div>
+        </div>
+    </div>
+</form>
+        <!-- 관리자 메모 내용 끝 -->
+
+        <!-- 관리자 메인 게시판 시작 -->
+                    <div class="main-section">
+                <div class="table-title">
+                    <span class="">플러스샵</span>
+                    <div class="pull-right more-view">
+                        <a href="http://plus.godo.co.kr/" target="_blank" class="btn btn-sm btn-link">더보기</a>
+                    </div>
+                </div>
+                <ol class="board-list-newest content list-unstyled reform">
+                                        <li>
+                        <a href="http://plus.godo.co.kr/goods/view.gd?idx=37" target="_blank">회원 : 회원가입 이벤트 <img src="/admin/gd_share/img/icon_new.png" alert="NEW" class="img-fix"/></a>
+                    </li>
+                                        <li>
+                        <a href="http://plus.godo.co.kr/goods/view.gd?idx=36" target="_blank">회원 : 카카오 알림톡 : 루나소프트 <img src="/admin/gd_share/img/icon_new.png" alert="NEW" class="img-fix"/></a>
+                    </li>
+                                        <li>
+                        <a href="http://plus.godo.co.kr/goods/view.gd?idx=35" target="_blank">회원 : 간편 로그인 : 위메프 아이디 <img src="/admin/gd_share/img/icon_new.png" alert="NEW" class="img-fix"/></a>
+                    </li>
+                                        <li>
+                        <a href="http://plus.godo.co.kr/goods/view.gd?idx=34" target="_blank">주문/배송 : 발주서 다운로드 <img src="/admin/gd_share/img/icon_new.png" alert="NEW" class="img-fix"/></a>
+                    </li>
+                                    </ol>
+                <div class="clear-both"></div>
+            </div>
+        
+                    <!-- 관리자 메인 중간 배너 시작 -->
+            <div id="panel_banner_mainMiddle" class="main-section"></div>
+            <!-- 관리자 메인 중간 배너 끝 -->
+        
+        <!-- 더 좋아지는 고도몰 -->
+        <ul class="nav nav-tabs mgt35 display-none">
+            <li role="presentation" class="active">
+                <a href="#better" aria-controls="panel-better" role="tab" data-toggle="tab">더 좋아지는 고도몰</a>
+            </li>
+        </ul>
+        <div class="tab-content sub-sector sub-sector-no-margin display-none">
+            <div role="tabpanel" class="tab-pane fade in active" id="better">
+                <div id="panel_link_betterLink" class="pull-right more-view"></div>
+                <div id="panel_board_betterAPI"></div>
+            </div>
+        </div>
+
+        <!-- 플러스샵 이용현황 시작 -->
+            <div class="main-section">
+        <div class="table-title">
+            <span class="">플러스샵 이용현황</span>
+            <div class="pull-right more-view">
+                <a href="http://plus.godo.co.kr/member/my-app.gd" target="_blank" class="btn btn-sm btn-link">더보기</a>
+            </div>
+        </div>
+                    <div class="plusshop-stat-outer">
+                <table class="table table-bordered">
+                    <colgroup>
+                        <col class="width20p">
+                        <col class="width20p">
+                    </colgroup>
+                    <tr><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=37" target="_blank">회원가입 이벤트</a></td><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=36" target="_blank">카카오 알림톡 : 루나소프트</a></td></tr><tr><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=35" target="_blank">간편 로그인 : 위메프 아이디</a></td><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=34" target="_blank">발주서 다운로드</a></td></tr><tr><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=33" target="_blank">간편 로그인 : 카카오 아이디</a></td><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=29" target="_blank">복수배송지</a></td></tr><tr><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=26" target="_blank">간편 로그인 : 네이버 아이디</a></td><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=25" target="_blank">상품 재입고 알림</a></td></tr><tr><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=15" target="_blank">견적서 출력</a></td><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=27" target="_blank">밴드왜건 푸시</a></td></tr><tr><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=24" target="_blank">플러스리뷰</a></td><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=23" target="_blank">매입처 관리</a></td></tr><tr><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=20" target="_blank">검색창 상품추천</a></td><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=19" target="_blank">상품상세 공통정보</a></td></tr><tr><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=18" target="_blank">인스고 위젯</a></td><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=17" target="_blank">리스트 효과 관리</a></td></tr><tr><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=16" target="_blank">설문조사</a></td><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=14" target="_blank">간이영수증</a></td></tr><tr><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=13" target="_blank">간편 로그인 : 페이스북 아이디</a></td><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=12" target="_blank">단축URL</a></td></tr><tr><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=11" target="_blank">멀티팝업</a></td><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=10" target="_blank">장바구니 알림</a></td></tr><tr><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=9" target="_blank">우체국택배 연동</a></td><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=8" target="_blank">쇼핑카트탭</a></td></tr><tr><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=7" target="_blank">고객교환/반품/환불신청 관리</a></td><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=6" target="_blank">공급사 관리</a></td></tr><tr><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=5" target="_blank">출석체크 이벤트</a></td><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=4" target="_blank">타임세일전</a></td></tr><tr><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=3" target="_blank">QR코드</a></td><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=2" target="_blank">페이퍼쿠폰</a></td></tr><tr><td class="active"><a href="http://plus.godo.co.kr/goods/view.gd?idx=1" target="_blank">사은품</a></td><td class=""><a href="" target="_blank"></a></td></tr>                </table>
+            </div>
+            </div>
+        <!-- 플러스샵 이용현황 끝 -->
+
+        <!-- 운영 필수 서비스 현황 내용 시작 -->
+            <div class="main-section">
+        <div class="table-title">
+            <span class="">운영필수서비스 현황</span>
+        </div>
+        <div class="slide-items-wrap">
+            <div class="single-item">
+                <div class="slide-item">
+                    <img src="/admin/gd_share/img/icon_new.png">
+                    <span class="slide-item-text">
+                        <a href="/marketing/marketing_info.php?menu=viral_facebookAD">1600만 페이스북 회원을 내 고객으로!</a>
+                    </span>
+                </div>
+                <div class="slide-item">
+                    <img src="/admin/gd_share/img/icon_new.png">
+                    <span class="slide-item-text">
+                        <a href="/service/service_info.php?menu=marketing_livefeed_info">실시간으로 응답하라! 1:1 상담채팅</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // 운영필수서비스 현황
+            $('.single-item').slick();
+        </script>
+    </div>
+    <div class="main-section">
+        <div class="table-title">
+            부가서비스
+        </div>
+        <div class="plusshop-stat-outer">
+            <table class="table table-bordered">
+                <colgroup>
+                    <col class="width20p">
+                    <col class="width20p">
+                </colgroup>
+                <tr>
+                    <td class=""><a href="https://gdadmin.plus.godomall.com:14003/policy/settle_pg_config.php">전자 결제(PG)</a></td>
+                    <td class=""><a href="https://gdadmin.plus.godomall.com:14003/policy/settle_pg_config.php">구매안전 서비스</a></td>
+                </tr>
+                <tr>
+                    <td class=""><a href="https://gdadmin.plus.godomall.com:14003/policy/settle_pg_mobile_config.php">휴대폰 결제</a></td>
+                    <td class=""><a href="https://gdadmin.plus.godomall.com:14003/policy/settle_pg_payco.php">페이코</a></td>
+                </tr>
+                <tr>
+                    <td class=""><a href="https://gdadmin.plus.godomall.com:14003/policy/naver_pay_config.php">네이버페이</a></td>
+                    <td class="active"><a href="javascript:gotoGodomall('domain');">정식 도메인</a></td>
+                </tr>
+                <tr>
+                    <td class=""><a href="https://gdadmin.plus.godomall.com:14003/policy/ssl_pc_setting.php">보안서버(SSL)</a></td>
+                    <td class=""><a href="https://gdadmin.plus.godomall.com:14003/policy/member_auth_ipin.php">아이핀 본인인증</a></td>
+                </tr>
+                <tr>
+                    <td class=""><a href="https://gdadmin.plus.godomall.com:14003/policy/member_auth_cellphone.php">휴대폰 본인확인</a></td>
+                    <td class=""><a href="https://gdadmin.plus.godomall.com:14003/member/sms_auto.php">SMS</a></td>
+                </tr>
+                <tr>
+                    <!--<td class=""><a href="https://gdadmin.plus.godomall.com:14003/">에이스카운터</a></td>-->
+                    <td class=""><a href="https://gdadmin.plus.godomall.com:14003/order/bankda_service.php">무통장자동입금</a></td>
+                    <td class=""><a href="https://gdadmin.plus.godomall.com:14003/order/tax_invoice_config.php">고도빌</a></td>
+                </tr>
+                <tr>
+                    <td class=""><a href="https://gdadmin.plus.godomall.com:14003/member/mail_config_pmail.php">파워메일</a></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="main-section">
+        <div class="table-title">
+            마케팅서비스
+        </div>
+        <div class="marketingservice-table">
+            <table class="table table-bordered mgb0">
+                <colgroup>
+                    <col class="width20p">
+                    <col class="width20p">
+                </colgroup>
+                <tr>
+                    <td class="icon-arr-r">
+                        <a href="https://gdadmin.plus.godomall.com:14003/marketing/marketing_info.php?menu=keyword_info">통합 키워드 광고</a>
+                    </td>
+                    <td class="icon-arr-r">
+                        <a href="https://gdadmin.plus.godomall.com:14003/marketing/marketing_info.php?menu=daumAd_nateShoppingbox1">네이트 쇼핑박스</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="icon-arr-r">
+                        <a href="https://gdadmin.plus.godomall.com:14003/marketing/marketing_info.php?menu=criteo_info">리타게팅 광고</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+        <!-- 운영 필수 서비스 현황 내용 끝 -->
+
+        <div class="main-section">
+            <div class="table-title">
+                고객센터
+                <div id="panel_link_customerLink" class="pull-right"></div>
+            </div>
+            <div id="panel_customer_customerAPI" class="cs-box"></div>
+        </div>
+        <!-- 관리자 메인 게시판 끝 -->
+
+    </div>
+
+    <!-- 관리자 메인 측면 배너 시작 -->
+            <div id="panel_banner_mainSide" class="sub-sector banner-float">
+        </div>
+        <!-- 관리자 메인 측면 배너 끝 -->
+</div>
+
+                                            </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer" class="col-xs-12">
+            <!-- //gnbAnchor_wrap -->
+<div class="ly_setting " style="display:none;">
+    <div class="setting_header">
+        <h4>쇼핑몰 필수 설정</h4>
+        <p>
+                    설정이 완료된 항목은 체크해주세요
+                </p>
+        <label for="check1" class="check_label">
+            <div class="input_check_box">
+                <input type="checkbox" name="" value="" id="check1" class="check-origin" >
+                <span class="check-clone"></span>
+            </div>
+            <span class="label_txt">체크된 항목  숨김</span>
+        </label>
+        <ul class="tab_list">
+            <li class="active"><a href="#necessary">필수 설정</a></li>
+            <li><a href="#operation">쇼핑몰 운영</a></li>
+            <li><a href="#recommend">추천 서비스</a></li>
+        </ul>
+        <span class="btn_close"><img src="../admin/gd_share/img/icon_ly_close.png" alt="닫기 버튼"/></span>
+    </div>
+    <!-- //setting_header -->
+    <div class="inner">
+        <div class="cont_wrap">
+            <div id="necessary" class="setting_cont">
+                <h5>필수 설정</h5>
+                <div class="setting_box">
+                    <!--N:체크 항목 리스트 노출-->
+                    <ul class="setting_list">
+                                                <li>
+                            <div class="input_area">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="necessary" value="base_info"  >
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="text_area">
+                                <a href="/policy/base_info.php" target="_blank">
+                                        <span class="txt">
+                                            <strong>사업자 정보 입력</strong>
+                                            <span class="s_txt">상호 / 대표자명 / 사업장 주소 / 전화번호 / 사업자등록번호 / 통신판매신고번호 등 사업자 정보 필수 기재</span>
+                                        </span>
+                                </a>
+                            </div>
+                        </li>
+                                                <li>
+                            <div class="input_area">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="necessary" value="private"  >
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="text_area">
+                                <a href="/policy/base_agreement_with_private.php?mallSno=1&mode=private" target="_blank">
+                                        <span class="txt">
+                                            <strong>개인정보처리방침 설정</strong>
+                                            <span class="s_txt">개인정보처리방침 내용 입력 및 개인정보 보호책임자 입력</span>
+                                        </span>
+                                </a>
+                            </div>
+                        </li>
+                                                <li>
+                            <div class="input_area">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="necessary" value="base_agreement_with_private"  >
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="text_area">
+                                <a href="/policy/base_agreement_with_private.php?mallSno=1&mode=privateItem" target="_blank">
+                                        <span class="txt">
+                                            <strong>제3자 제공 및 개인정보 처리 위탁 설정</strong>
+                                            <span class="s_txt">제3자 제공 및 처리 위탁 내역 고지 및 동의 여부 선택권 제공</span>
+                                        </span>
+                                </a>
+                            </div>
+                        </li>
+                                                <li>
+                            <div class="input_area">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="necessary" value="ssl_admin_setting"  >
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="text_area">
+                                <a href="/policy/ssl_admin_setting.php" target="_blank">
+                                        <span class="txt">
+                                            <strong>보안 서버 설치</strong>
+                                            <span class="s_txt">개인정보 취급 페이지 내 보안서버 의무 적용</span>
+                                        </span>
+                                </a>
+                            </div>
+                        </li>
+                                                <li>
+                            <div class="input_area">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="necessary" value="manage_security"  >
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="text_area">
+                                <a href="/policy/manage_security.php" target="_blank">
+                                        <span class="txt">
+                                            <strong>운영 보안 설정</strong>
+                                            <span class="s_txt">관리자 2차 인증 및 관리자 IP 접속 제한 설정</span>
+                                        </span>
+                                </a>
+                            </div>
+                        </li>
+                                                <li>
+                            <div class="input_area">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="necessary" value="member_join"  >
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="text_area">
+                                <a href="/member/member_join.php" target="_blank">
+                                        <span class="txt">
+                                            <strong>회원 가입 정책 설정</strong>
+                                            <span class="s_txt">14세 미만 회원가입 시 법정대리인 동의 후 가입 가능</span>
+                                        </span>
+                                </a>
+                            </div>
+                        </li>
+                                                <li>
+                            <div class="input_area">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="necessary" value="member_password_change"  >
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="text_area">
+                                <a href="/policy/member_password_change.php" target="_blank">
+                                        <span class="txt">
+                                            <strong>비밀번호 변경 주기 설정</strong>
+                                            <span class="s_txt">비밀번호 유효기간 설정하여 6개월에 1회 이상 변경하도록 안내</span>
+                                        </span>
+                                </a>
+                            </div>
+                        </li>
+                                                <li>
+                            <div class="input_area">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="necessary" value="sms_auto"  >
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="text_area">
+                                <a href="/member/sms_auto.php" target="_blank">
+                                        <span class="txt">
+                                            <strong>sms 발신번호 등록</strong>
+                                            <span class="s_txt">거짓 전화번호로 인한 피해 예방을 위해 사전 등록한 발신번호로만 sms 발송 가능</span>
+                                        </span>
+                                </a>
+                            </div>
+                        </li>
+                                                <li>
+                            <div class="input_area">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="necessary" value="sms080_config"  >
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="text_area">
+                                <a href="/member/sms080_config" target="_blank">
+                                        <span class="txt">
+                                            <strong>080 수신거부 설정</strong>
+                                            <span class="s_txt">광고성 정보 전송 시, 수신거부의사 표시 기능 의무제공</span>
+                                        </span>
+                                </a>
+                            </div>
+                        </li>
+                                            </ul>
+                    <!--//N-->
+
+                    <!--N:모든 항목 숨김 처리시 노출-->
+                    <p class="empty_notice" style="display:none;">모든 항목의 설정이 완료 되었습니다.</p>
+                    <!--//N-->
+                </div>
+                <!-- //setting_box -->
+            </div>
+            <!-- //setting_cont -->
+
+            <div id="operation" class="setting_cont">
+                <h5>쇼핑몰 운영</h5>
+                <div class="setting_box">
+                    <!--N:체크 항목 리스트 노출-->
+                    <ul class="setting_list">
+                                                    <li>
+                                <div class="input_area">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="operation" value="manage_list"  >
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="text_area">
+                                    <a href="/policy/manage_list.php" target="_blank">
+                                        <span class="txt">
+                                            <strong>쇼핑몰 운영자 관리</strong>
+                                            <span class="s_txt">고객 개인정보 보호를 위해 운영자별 권한 설정</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                                                    <li>
+                                <div class="input_area">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="operation" value="admin_log_list"  >
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="text_area">
+                                    <a href="/policy/admin_log_list.php" target="_blank">
+                                        <span class="txt">
+                                            <strong>관리자 접속 기록 확인</strong>
+                                            <span class="s_txt">월 1회 이상 개인정보처리시스템 접속 기록 확인 · 감독</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                                                    <li>
+                                <div class="input_area">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="operation" value="goods_must_info_list"  >
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="text_area">
+                                    <a href="/goods/goods_must_info_list.php" target="_blank">
+                                        <span class="txt">
+                                            <strong>상품정보제공 고시 설정</strong>
+                                            <span class="s_txt">판매 상품의 필수(상세) 정보 등록 필요</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                                                    <li>
+                                <div class="input_area">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="operation" value="sms_auto"  >
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="text_area">
+                                    <a href="/member/sms_auto.php" target="_blank">
+                                        <span class="txt">
+                                            <strong>광고 수신거부 처리 결과 통보</strong>
+                                            <span class="s_txt">수신거부 의사 표시 받은 날로 부터 14일 이내 처리 결과 통보</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                                                    <li>
+                                <div class="input_area">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="operation" value="member_modify_event_list"  >
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="text_area">
+                                    <a href="/member/member_modify_event_list.php" target="_blank">
+                                        <span class="txt">
+                                            <strong>회원정보수정 이벤트</strong>
+                                            <span class="s_txt">회원 비밀번호 변경 유도 및 고객 정보 업데이트 가능</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                                                    <li>
+                                <div class="input_area">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="operation" value="member_sleep_list"  >
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="text_area">
+                                    <a href="/member/member_sleep_list.php" target="_blank">
+                                        <span class="txt">
+                                            <strong>휴면 회원 데이터 분리</strong>
+                                            <span class="s_txt">1년 이상 서비스를 사용하지 않는 고객은 휴면상태로 별도 보관</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                                            </ul>
+                    <!--//N-->
+
+                    <!--N:모든 항목 숨김 처리시 노출-->
+                    <p class="empty_notice" style="display:none;">모든 항목의 설정이 완료 되었습니다.</p>
+                    <!--//N-->
+                </div>
+                <!-- //setting_box -->
+            </div>
+            <!-- //setting_cont -->
+
+            <div id="recommend" class="setting_cont">
+                <h5>추천 서비스</h5>
+                <div class="setting_box">
+                    <!--N:체크 항목 리스트 노출-->
+                    <ul class="setting_list">
+                                                    <li>
+                                <div class="input_area">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="recommend" value="pg_info"  >
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="text_area">
+                                    <a href="/service/service_info.php?menu=pg_info" target="_blank">
+                                        <span class="txt">
+                                            <strong>통합 전자결제 서비스</strong>
+                                            <span class="s_txt">구매안전 (에스크로) 서비스 적용 의무화</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                                                    <li>
+                                <div class="input_area">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="recommend" value="member_auth_info"  >
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="text_area">
+                                    <a href="/service/service_info.php?menu=member_auth_info" target="_blank">
+                                        <span class="txt">
+                                            <strong>휴대폰본인확인 서비스</strong>
+                                            <span class="s_txt">본인명의의 휴대폰으로 회원 가입자의 식별 및 성인인증 가능</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                                                    <li>
+                                <div class="input_area">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="recommend" value="member_ipin_info"  >
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="text_area">
+                                    <a href="/service/service_info.php?menu=member_ipin_info" target="_blank">
+                                        <span class="txt">
+                                            <strong>아이핀 서비스</strong>
+                                            <span class="s_txt">아이핀 ID와 패스워드로 회원 가입자의 식별 및 성인인증 가능</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                                                    <li>
+                                <div class="input_area">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="recommend" value="convenience_refusal_info"  >
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="text_area">
+                                    <a href="/service/service_info.php?menu=convenience_refusal_info" target="_blank">
+                                        <span class="txt">
+                                            <strong>080 수신거부 서비스</strong>
+                                            <span class="s_txt">광고성 정보 전달 시, 고객의 수신거부 요청 ARS로 자동처리</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                                            </ul>
+                    <!--//N-->
+
+                    <!--N:모든 항목 숨김 처리시 노출-->
+                    <p class="empty_notice" style="display:none;">모든 항목의 설정이 완료 되었습니다.</p>
+                    <!--//N-->
+                </div>
+                <!-- //setting_box -->
+            </div>
+            <!-- //setting_cont -->
+
+        </div>
+    </div>
+
+</div>
+<script>
+
+    $(function(){
+        var header_h = $('#header').outerHeight();
+        var location_h = $('#header .breadcrumb').outerHeight();
+        var pageheader_h = $('.page-header').outerHeight();
+        var sub_h = header_h + location_h + 76;
+
+        $(window).resize(resizeContents);
+        resizeContents();
+
+
+        function resizeContents() {
+            if($('.ly_setting').hasClass('sub_type')){
+                if($('.ly_setting').hasClass('on')){
+                    var ly_sub_h3 = ($(window).height())-pageheader_h;
+                    $(".ly_setting").css({'height':ly_sub_h3});
+                }else{
+                    var ly_sub_h2 = ($(window).height())-sub_h;
+                    $(".ly_setting").css({'height':ly_sub_h2});
+                }
+            }else{
+                if($('.ly_setting').hasClass('on')){
+                    $(".ly_setting").css('height','100%');
+                }else{
+                    var ly_h = ($(window).height())-header_h;
+                    $(".ly_setting").css('height', ly_h);
+                }
+            }
+        }
+
+        if($('.ly_setting').hasClass('sub_type')){
+            $(".sub_type").css('top', sub_h);
+        }else{
+            $(".ly_setting").css('top', header_h);
+        }
+
+        $(window).scroll(function() {
+            var position = $(window).scrollTop();
+            if($('.ly_setting').hasClass('sub_type')){
+                var ly_sub_h = ($(window).height())-59;
+                if(position >= 130) {
+                    $(".ly_setting").addClass('on');
+                    $(".ly_setting").addClass('active');
+                    $(".ly_setting").css({'height':ly_sub_h,'top':59});
+                }else{
+                    $(".ly_setting").removeClass('on');
+                    $(".ly_setting").removeClass('active');
+                    resizeContents();
+                    $(".sub_type").css('top', sub_h);
+
+                    if(1 <= position <= 129){
+                        $(".ly_setting").css({'height':ly_sub_h});
+                        $(".sub_type").css('top', sub_h-position);
+                    }else{
+                        var ly_sub_h2 = ($(window).height())-sub_h;
+                        $(".ly_setting").css({'height':ly_sub_h2});
+                    }
+                }
+            }else{
+                if(position >= 1) {
+                    $(".ly_setting").addClass('on');
+                    $(".ly_setting").css({'height':'100%','top':'0px'});
+                } else {
+                    $(".ly_setting").removeClass('on');
+                    resizeContents();
+                    $(".ly_setting").css('top', header_h);
+                }
+            }
+
+
+        });
+
+        //setting_button
+        $('.btn_setting').on('click',function(){
+            $('.ly_setting').show();
+            listSort();
+            var data = {
+                'mode': 'saveLegalRequirementsConfig',
+                'key': 'displayFl',
+                'val': 'true'
+            }
+            $.ajax('/base/layer_legal_requirements_ps.php', {type: "post", data: data});
+        });
+        function listSort() {
+            var checked = $( ".setting_header .input_check_box input[type=checkbox]" ).is(':checked');
+            $('.cont_wrap li').each(function(){
+                var parentsId = $(this).parents('div.setting_cont').attr('id');
+                if($(this).find('input[type=checkbox]').is(':checked') == true) {
+                    var li = $(this).clone();
+                    $('#'+parentsId+' ul').append(li);
+                    if(checked) $(li).attr('style', "display:none;");
+                    $(this).remove();
+                }
+            }).promise().done(function(){
+                if(checked) displayChecked();
+                if ($("#necessary li").length == $("#necessary li input[type=checkbox]:checked").length) {
+                    if ($("#operation li").length == $("#operation li input[type=checkbox]:checked").length) {
+                        if ($("#recommend li").length != $("#recommend li input[type=checkbox]:checked").length) {
+                            $('a[href=#recommend]').get(0).click();
+                        }
+                    } else {
+                        $('a[href=#operation]').get(0).click();
+                    }
+                }
+            });
+        }
+
+        //close_button
+        $('.btn_close').on('click',function(){
+            $('.ly_setting').hide();
+            var data = {
+                'mode': 'saveLegalRequirementsConfig',
+                'key': 'displayFl',
+                'val': 'false'
+            }
+            $.ajax('/base/layer_legal_requirements_ps.php', {type: "post", data: data});
+        });
+
+        // checkbox checked
+        $(document).on('click', '.ly_setting .cont_wrap input[type="checkbox"]', function(event){
+                        var name = $(this).attr('name');
+            var key = $(this).val();
+            var checked = $(this).is(':checked');
+            var data = {
+                'mode': 'saveLegalRequirements',
+                'name': name,
+                'key': key,
+                'val': checked
+            }
+            $.ajax('/base/layer_legal_requirements_ps.php', {type: "post", data: data});
+                    })
+
+        //check_hidden
+        function displayChecked() {
+            var checked = $( ".setting_header .input_check_box input[type=checkbox]" ).is(':checked');
+            if(checked == true) {
+                $('.ly_setting .cont_wrap input[type="checkbox"]:checked').parents('li').hide();
+                if($("input[name=necessary]").length == $("input[name=necessary]:checked").length) $('#necessary .empty_notice').show();
+                if($("input[name=operation]").length == $("input[name=operation]:checked").length) $('#operation .empty_notice').show();
+                if($("input[name=recommend]").length == $("input[name=recommend]:checked").length) $('#recommend .empty_notice').show();
+                $(".setting_header .label_txt").text(" 체크된 항목 노출");
+            } else {
+                $('ul.setting_list li').show();
+                $('.ly_setting .empty_notice').hide();
+                $(".setting_header .label_txt").text(" 체크된 항목 숨김");
+            }
+        };
+
+        $(".setting_header .input_check_box input[type=checkbox]").on("click", function() {
+            displayChecked();
+            var checked = $( ".setting_header .input_check_box input[type=checkbox]" ).is(':checked');
+            var data = {
+                'mode': 'saveLegalRequirementsConfig',
+                'key': 'checkedFl',
+                'val': checked
+            }
+            $.ajax('/base/layer_legal_requirements_ps.php', {type: "post", data: data});
+        });
+        listSort();
+    });
+</script>
+<!-- //pub_190802 -->
+
+<div class="gnbAnchor_wrap">
+    <span class="btn_setting"><img src="../admin/gd_share/img/button_setting.png" alt="필수설정 버튼"/></span>
+</div>
+
+<div class="footer">
+    <div class="copyright">
+        &copy; NHN <a href="https://www.godo.co.kr" target="_blank">godo
+            <span>:</span>
+        </a> Corp All Rights Reserved. (ver : <span class="version">5.1.19.1223.6f4e77b1</span>)
+    </div>
+</div>
+<script type="text/javascript">
+    <!--
+    $(document).ready(function () {
+                
+        $.ajax('../base/main_setting_ps.php', {
+            method: "post",
+            data: {mode: 'orderPresentationNew'},
+            global_complete: false,
+            beforeSend: function () {
+                $('.js-oder-count-new').addClass('display-none')
+            },
+            success: function () {
+                if (arguments[0].success === 'OK') {
+                    var result = arguments[0].result;
+                    if (result === true) {
+                        $('.js-oder-count-new').removeClass('display-none');
+                    }
+                }
+            }
+        });
+    });
+    //-->
+</script>
+        </div>
+    </div>
+</div>
+
+
+<div id="panel_noticePanel"></div>
+
+<iframe name="ifrmProcess" src="/blank.php" width="100%" height="200" class="display-none"></iframe>
+<script type="text/javascript">
+    $(function() {
+        adminPanelApiAjax('base', 'index', 'index');
+    });
+</script>
+</body>
+</html>

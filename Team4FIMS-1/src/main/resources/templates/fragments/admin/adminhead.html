@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="adminHeadFragment">
+    <meta charset="utf-8" />
+    <title>고도:체험샵 :: 쇼핑몰 관리자 - 고도몰5</title>
+    <meta name="description" content="고도몰만의 특별한 서비스! 새로워진 쇼핑몰 관리자 앱은 모바일 전용 페이지를 통해 운영 중인 쇼핑몰을 언제, 어디서든 관리하실 수 있는 서비스입니다.
+	고도몰의 쇼핑몰 솔루션 e나무 임대형, e나무 무료형, e나무 독립형 고객님 모두 제한 없이 이용하실 수 있습니다. " />
+    <meta name="author" content="qnibus" />
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta http-equiv="cleartype" content="on">
+    
+    <!-- Latest compiled and minified CSS -->
+    <link type="text/css" href="/admin/gd_share/css/bootstrap.css?ts=1531816402" rel="stylesheet"/>
+    <link type="text/css" href="/admin/gd_share/css/bootstrap-datetimepicker.css?ts=1525753067" rel="stylesheet"/>
+    <link type="text/css" href="/admin/gd_share/css/bootstrap-datetimepicker-standalone.css?ts=1525753067" rel="stylesheet"/>
+    <link type="text/css" href="/admin/gd_share/css/bootstrap-dialog.css?ts=1525753067" rel="stylesheet"/>
+    <link type="text/css" href="/admin/gd_share/script/jquery/jquery-ui/jquery-ui.css?ts=1525753067" rel="stylesheet"/>
+    <link type="text/css" href="/admin/gd_share/css/style.css?ts=1535616065" rel="stylesheet"/>
+    <link type="text/css" href="/admin/gd_share/css/non-responsive.css?ts=1525753067" rel="stylesheet"/>
+    <link type="text/css" href="/admin/gd_share/css/flags.css?ts=1525753067" rel="stylesheet"/>
+    <link type="text/css" href="/admin/gd_share/css/jquery.countdownTimer.css?ts=1525753067" rel="stylesheet"/>
+        <link type="text/css" href="/admin/gd_share/css/gd5-style.css?ts=1574204051" rel="stylesheet"/>
+    <link type="text/css" href="/admin/css/admin-custom.css?ts=1468220054" rel="stylesheet"/>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript" src="/admin/gd_share/script/underscore/underscore-min.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/jquery/jquery.min.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/jquery/jquery-ui/jquery-ui.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/bootstrap/bootstrap.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/moment/moment.min.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/numeral/numeral.min.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/bootstrap/bootstrap-datetimepicker.min.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/bootstrap/bootstrap-dialog.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/bootstrap/bootstrap-filestyle.min.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/copyclipboard/ZeroClipboard.min.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/copyclipboard/clipboard.min.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/copyclipboard/clipboard-2.0.0.min.js?ts=1536816430"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/jquery/jquery-browser/dist/jquery.browser.min.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/jquery/jquery.serialize-object.min.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/jquery/jquery.countdownTimer.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/jquery/validation/jquery.validate.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/jquery/validation/localization/messages_ko.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/jquery/validation/additional-methods.min.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/jquery/datasaver/jquery.DataSaver.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/jquery/jquery.number_only.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/jquery/jquery-cookie/jquery.cookie.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/common2.js?ts=1535616065"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/common.js?ts=1574204051"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/schedule.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/admin_panel_api.js?ts=1556493394"></script>
+                <script type="text/javascript" src="/admin/gd_share/script/member.js"></script>
+                        <script type="text/javascript" src="/admin/gd_share/script/sms.js"></script>
+                <script type="text/javascript" src="/admin/script/admin-custom.js?ts=1468220054"></script>
+
+    <script type="text/javascript">
+        <!--
+        $(document).ready(function () {
+            
+            
+            // 메뉴얼 링크
+            $(".gd-help-manual").each(function() {
+                var linkText = $(this).text().trim().replace(/\s/g, ''); // 타이틀의 문자열의 공백을 제거함
+                var manualUrl = 'http://manual.godomall5.godomall.com/data/manual_view.php?category=member__member___member_list#' + linkText;
+                $(this).append(' <a href="' + manualUrl + '" target="_blank" class="link-help">페이지 도움말</a>');
+            });
+            
+            
+            // 툴팁 데이터
+            var tooltipData = [{"title":"회원검색","attribute":"생일","content":"&lt;p&gt;&lt;span style=&quot;font-family: 나눔고딕, NanumGothic;&quot;&gt;&lt;b&gt;- 날짜를 수기로 입력할 경우, 년-월-일(2000-01-01) 또는 월-일(01-01)로 검색이 가능합니다.&lt;\/b&gt;&lt;\/span&gt;&lt;\/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: 나눔고딕, NanumGothic; font-size: 8pt; color: rgb(0, 117, 200);&quot;&gt;&amp;nbsp; &amp;nbsp;ex) 2000년 출생 회원 검색&lt;\/span&gt;&lt;\/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: 나눔고딕, NanumGothic; font-size: 8pt; color: rgb(0, 117, 200);&quot;&gt;&amp;nbsp; &amp;nbsp;&lt;img src=&quot;http:\/\/manual.godomall5.godomall.com\/common\/javascript\/smarteditor\/upload\/1507696749447533.jpg&quot; title=&quot;1507696749447533.jpg&quot;&gt;&lt;\/span&gt;&lt;\/p&gt;&lt;p&gt;&lt;font color=&quot;#0075c8&quot; face=&quot;나눔고딕, NanumGothic&quot;&gt;&lt;span style=&quot;font-size: 10.6667px;&quot;&gt;&amp;nbsp; &amp;nbsp;ex) 1월 출생 회원 검색&lt;\/span&gt;&lt;\/font&gt;&lt;\/p&gt;&lt;p&gt;&lt;font color=&quot;#0075c8&quot; face=&quot;나눔고딕, NanumGothic&quot;&gt;&lt;span style=&quot;font-size: 10.6667px;&quot;&gt;&amp;nbsp; &amp;nbsp;&lt;\/span&gt;&lt;\/font&gt;&lt;img src=&quot;http:\/\/manual.godomall5.godomall.com\/common\/javascript\/smarteditor\/upload\/1507696758940987.jpg&quot; title=&quot;1507696758940987.jpg&quot;&gt;&lt;\/p&gt;&lt;p&gt;&amp;nbsp;&lt;\/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: 나눔고딕, NanumGothic;&quot;&gt;&lt;b&gt;- 특정일 검색 체크 시 날짜를 지정하여 검색이 가능합니다.&lt;\/b&gt;&lt;\/span&gt;&lt;\/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: 나눔고딕, NanumGothic; font-size: 8pt; color: rgb(0, 117, 200);&quot;&gt;&amp;nbsp; &amp;nbsp;ex) 2000년 1월 1일 출생 회원 검색&lt;\/span&gt;&lt;\/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: 나눔고딕, NanumGothic; font-size: 8pt; color: rgb(0, 117, 200);&quot;&gt;&amp;nbsp; &amp;nbsp;&lt;img src=&quot;http:\/\/manual.godomall5.godomall.com\/common\/javascript\/smarteditor\/upload\/1507696772103875.jpg&quot; title=&quot;1507696772103875.jpg&quot;&gt;&amp;nbsp;&lt;\/span&gt;&lt;\/p&gt;&lt;p&gt;&lt;font color=&quot;#0075c8&quot; face=&quot;나눔고딕, NanumGothic&quot;&gt;&lt;span style=&quot;font-size: 10.6667px;&quot;&gt;&amp;nbsp; &amp;nbsp;ex) 1월 1일 출생 회원 검색&lt;\/span&gt;&lt;\/font&gt;&lt;\/p&gt;&lt;p&gt;&lt;font color=&quot;#0075c8&quot; face=&quot;나눔고딕, NanumGothic&quot;&gt;&lt;span style=&quot;font-size: 10.6667px;&quot;&gt;&amp;nbsp; &amp;nbsp;&lt;img src=&quot;http:\/\/manual.godomall5.godomall.com\/common\/javascript\/smarteditor\/upload\/1507696782991780.jpg&quot; title=&quot;1507696782991780.jpg&quot;&gt;&lt;br&gt;&lt;\/span&gt;&lt;\/font&gt;&lt;\/p&gt;","cntWidth":""}];
+            var sectionEle = null;
+            $('#content .table.table-cols th').each(function(idx){
+                if ($(this).closest('table').siblings('.table-title').length) {
+                    sectionEle = $(this).closest('table').prevAll('.table-title:first');
+                } else if ($(this).closest('table').parent('div').siblings('.table-title').length) {
+                    sectionEle = $(this).closest('table').parent('div').prevAll('.table-title:first');
+                } else {
+                    sectionEle = $(this).closest('table').parent('div').parent('div').prevAll('.table-title:first');
+                }
+                if (typeof sectionEle[0] !== "undefined") {
+                    var sectionTitle = $(sectionEle[0]).html().replace(/\(?<\/?[^*]+>/gi, '').trim().replace(/ /gi, '').replace(/\n/gi, '');
+                    var titleName = $(this).text().trim().replace(/ /gi, '').replace(/\n/gi, '');
+                    for (var i in tooltipData) {
+                        if (tooltipData[i].title == sectionTitle) {
+                            if (tooltipData[i].attribute == titleName) {
+                                $(this).append('<button type="button" class="btn btn-xs js-tooltip" title="' + tooltipData[i].content + '" data-placement="right" data-width="' + tooltipData[i].cntWidth + '"><span title="" class="icon-tooltip"></span></button>');
+                            }
+                        }
+                    }
+                }
+            });
+
+            if ($('.js-tooltip').length > 0) {
+                // 툴팁 초기화
+                $(document).on({
+                    'click': function() {
+                        if ($(this).attr('aria-describedby')) {
+                            $(this).tooltip('destroy');
+                        } else {
+                            var option = {
+                                trigger: 'click',
+                                container: '#content',
+                                html: true,
+                                template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div><button class="tooltip-close">close</button></div>',
+                            };
+                            $(this).on('shown.bs.tooltip', function () {
+                                $(".tooltip.in").css({
+                                    width: $(this).data('width'),
+                                    maxWidth: "none",
+                                });
+                            });
+                            $(this).tooltip(option).tooltip('show');
+                        }
+                    }
+                }, '.js-tooltip');
+                $(document).on('click', '.tooltip.in .tooltip-close', function () {
+                    $('.js-tooltip[aria-describedby=' + $(this).parent().attr('id') + ']').trigger('click');
+                });
+            }
+
+            // 레이어 생성/제거시에 툴팁 제거
+            $(document).on('shown.bs.modal hidden.bs.modal', '.modal', function () {
+                if ($('.tooltip.in').length) {
+                    $('.tooltip.in').tooltip('destroy');
+                }
+            });
+                    });
+        //-->
+    </script>
+
+</head>
+</html>

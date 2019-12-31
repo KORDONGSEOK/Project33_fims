@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+
+    
+<div id="footer" class="col-xs-12" th:fragment="adminFooterFragment">
+            <!-- //gnbAnchor_wrap -->
+<div class="ly_setting sub_type" style="display:none;">
+    <div class="setting_header">
+        <h4>쇼핑몰 필수 설정</h4>
+        <p>
+                    설정이 완료된 항목은 체크해주세요
+                </p>
+        <label for="check1" class="check_label">
+            <div class="input_check_box">
+                <input type="checkbox" name="" value="" id="check1" class="check-origin" >
+                <span class="check-clone"></span>
+            </div>
+            <span class="label_txt">체크된 항목  숨김</span>
+        </label>
+        <ul class="tab_list">
+            <li class="active"><a href="#necessary">필수 설정</a></li>
+            <li><a href="#operation">쇼핑몰 운영</a></li>
+            <li><a href="#recommend">추천 서비스</a></li>
+        </ul>
+        <span class="btn_close"><img src="../admin/gd_share/img/icon_ly_close.png" alt="닫기 버튼"/></span>
+    </div>
+    <!-- //setting_header -->
+    <div class="inner">
+        <div class="cont_wrap">
+            <div id="necessary" class="setting_cont">
+                <h5>필수 설정</h5>
+                <div class="setting_box">
+                    <!--N:체크 항목 리스트 노출-->
+                    <ul class="setting_list">
+                                                <li>
+                            <div class="input_area">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="necessary" value="base_info"  >
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="text_area">
+                                <a href="/policy/base_info.php" target="_blank">
+                                        <span class="txt">
+                                            <strong>사업자 정보 입력</strong>
+                                            <span class="s_txt">상호 / 대표자명 / 사업장 주소 / 전화번호 / 사업자등록번호 / 통신판매신고번호 등 사업자 정보 필수 기재</span>
+                                        </span>
+                                </a>
+                            </div>
+                        </li>
+                                                <li>
+                            <div class="input_area">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="necessary" value="private"  >
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="text_area">
+                                <a href="/policy/base_agreement_with_private.php?mallSno=1&mode=private" target="_blank">
+                                        <span class="txt">
+                                            <strong>개인정보처리방침 설정</strong>
+                                            <span class="s_txt">개인정보처리방침 내용 입력 및 개인정보 보호책임자 입력</span>
+                                        </span>
+                                </a>
+                            </div>
+                        </li>
+                                                <li>
+                            <div class="input_area">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="necessary" value="base_agreement_with_private"  >
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="text_area">
+                                <a href="/policy/base_agreement_with_private.php?mallSno=1&mode=privateItem" target="_blank">
+                                        <span class="txt">
+                                            <strong>제3자 제공 및 개인정보 처리 위탁 설정</strong>
+                                            <span class="s_txt">제3자 제공 및 처리 위탁 내역 고지 및 동의 여부 선택권 제공</span>
+                                        </span>
+                                </a>
+                            </div>
+                        </li>
+                                                <li>
+                            <div class="input_area">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="necessary" value="ssl_admin_setting"  >
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="text_area">
+                                <a href="/policy/ssl_admin_setting.php" target="_blank">
+                                        <span class="txt">
+                                            <strong>보안 서버 설치</strong>
+                                            <span class="s_txt">개인정보 취급 페이지 내 보안서버 의무 적용</span>
+                                        </span>
+                                </a>
+                            </div>
+                        </li>
+                                                <li>
+                            <div class="input_area">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="necessary" value="manage_security"  >
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="text_area">
+                                <a href="/policy/manage_security.php" target="_blank">
+                                        <span class="txt">
+                                            <strong>운영 보안 설정</strong>
+                                            <span class="s_txt">관리자 2차 인증 및 관리자 IP 접속 제한 설정</span>
+                                        </span>
+                                </a>
+                            </div>
+                        </li>
+                                                <li>
+                            <div class="input_area">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="necessary" value="member_join"  >
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="text_area">
+                                <a href="/member/member_join.php" target="_blank">
+                                        <span class="txt">
+                                            <strong>회원 가입 정책 설정</strong>
+                                            <span class="s_txt">14세 미만 회원가입 시 법정대리인 동의 후 가입 가능</span>
+                                        </span>
+                                </a>
+                            </div>
+                        </li>
+                                                <li>
+                            <div class="input_area">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="necessary" value="member_password_change"  >
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="text_area">
+                                <a href="/policy/member_password_change.php" target="_blank">
+                                        <span class="txt">
+                                            <strong>비밀번호 변경 주기 설정</strong>
+                                            <span class="s_txt">비밀번호 유효기간 설정하여 6개월에 1회 이상 변경하도록 안내</span>
+                                        </span>
+                                </a>
+                            </div>
+                        </li>
+                                                <li>
+                            <div class="input_area">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="necessary" value="sms_auto"  >
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="text_area">
+                                <a href="/member/sms_auto.php" target="_blank">
+                                        <span class="txt">
+                                            <strong>sms 발신번호 등록</strong>
+                                            <span class="s_txt">거짓 전화번호로 인한 피해 예방을 위해 사전 등록한 발신번호로만 sms 발송 가능</span>
+                                        </span>
+                                </a>
+                            </div>
+                        </li>
+                                                <li>
+                            <div class="input_area">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="necessary" value="sms080_config"  >
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="text_area">
+                                <a href="/member/sms080_config" target="_blank">
+                                        <span class="txt">
+                                            <strong>080 수신거부 설정</strong>
+                                            <span class="s_txt">광고성 정보 전송 시, 수신거부의사 표시 기능 의무제공</span>
+                                        </span>
+                                </a>
+                            </div>
+                        </li>
+                                            </ul>
+                    <!--//N-->
+
+                    <!--N:모든 항목 숨김 처리시 노출-->
+                    <p class="empty_notice" style="display:none;">모든 항목의 설정이 완료 되었습니다.</p>
+                    <!--//N-->
+                </div>
+                <!-- //setting_box -->
+            </div>
+            <!-- //setting_cont -->
+
+            <div id="operation" class="setting_cont">
+                <h5>쇼핑몰 운영</h5>
+                <div class="setting_box">
+                    <!--N:체크 항목 리스트 노출-->
+                    <ul class="setting_list">
+                                                    <li>
+                                <div class="input_area">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="operation" value="manage_list"  >
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="text_area">
+                                    <a href="/policy/manage_list.php" target="_blank">
+                                        <span class="txt">
+                                            <strong>쇼핑몰 운영자 관리</strong>
+                                            <span class="s_txt">고객 개인정보 보호를 위해 운영자별 권한 설정</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                                                    <li>
+                                <div class="input_area">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="operation" value="admin_log_list"  >
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="text_area">
+                                    <a href="/policy/admin_log_list.php" target="_blank">
+                                        <span class="txt">
+                                            <strong>관리자 접속 기록 확인</strong>
+                                            <span class="s_txt">월 1회 이상 개인정보처리시스템 접속 기록 확인 · 감독</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                                                    <li>
+                                <div class="input_area">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="operation" value="goods_must_info_list"  >
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="text_area">
+                                    <a href="/goods/goods_must_info_list.php" target="_blank">
+                                        <span class="txt">
+                                            <strong>상품정보제공 고시 설정</strong>
+                                            <span class="s_txt">판매 상품의 필수(상세) 정보 등록 필요</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                                                    <li>
+                                <div class="input_area">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="operation" value="sms_auto"  >
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="text_area">
+                                    <a href="/member/sms_auto.php" target="_blank">
+                                        <span class="txt">
+                                            <strong>광고 수신거부 처리 결과 통보</strong>
+                                            <span class="s_txt">수신거부 의사 표시 받은 날로 부터 14일 이내 처리 결과 통보</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                                                    <li>
+                                <div class="input_area">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="operation" value="member_modify_event_list"  >
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="text_area">
+                                    <a href="/member/member_modify_event_list.php" target="_blank">
+                                        <span class="txt">
+                                            <strong>회원정보수정 이벤트</strong>
+                                            <span class="s_txt">회원 비밀번호 변경 유도 및 고객 정보 업데이트 가능</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                                                    <li>
+                                <div class="input_area">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="operation" value="member_sleep_list"  >
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="text_area">
+                                    <a href="/member/member_sleep_list.php" target="_blank">
+                                        <span class="txt">
+                                            <strong>휴면 회원 데이터 분리</strong>
+                                            <span class="s_txt">1년 이상 서비스를 사용하지 않는 고객은 휴면상태로 별도 보관</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                                            </ul>
+                    <!--//N-->
+
+                    <!--N:모든 항목 숨김 처리시 노출-->
+                    <p class="empty_notice" style="display:none;">모든 항목의 설정이 완료 되었습니다.</p>
+                    <!--//N-->
+                </div>
+                <!-- //setting_box -->
+            </div>
+            <!-- //setting_cont -->
+
+            <div id="recommend" class="setting_cont">
+                <h5>추천 서비스</h5>
+                <div class="setting_box">
+                    <!--N:체크 항목 리스트 노출-->
+                    <ul class="setting_list">
+                                                    <li>
+                                <div class="input_area">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="recommend" value="pg_info"  >
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="text_area">
+                                    <a href="/service/service_info.php?menu=pg_info" target="_blank">
+                                        <span class="txt">
+                                            <strong>통합 전자결제 서비스</strong>
+                                            <span class="s_txt">구매안전 (에스크로) 서비스 적용 의무화</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                                                    <li>
+                                <div class="input_area">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="recommend" value="member_auth_info"  >
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="text_area">
+                                    <a href="/service/service_info.php?menu=member_auth_info" target="_blank">
+                                        <span class="txt">
+                                            <strong>휴대폰본인확인 서비스</strong>
+                                            <span class="s_txt">본인명의의 휴대폰으로 회원 가입자의 식별 및 성인인증 가능</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                                                    <li>
+                                <div class="input_area">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="recommend" value="member_ipin_info"  >
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="text_area">
+                                    <a href="/service/service_info.php?menu=member_ipin_info" target="_blank">
+                                        <span class="txt">
+                                            <strong>아이핀 서비스</strong>
+                                            <span class="s_txt">아이핀 ID와 패스워드로 회원 가입자의 식별 및 성인인증 가능</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                                                    <li>
+                                <div class="input_area">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="recommend" value="convenience_refusal_info"  >
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="text_area">
+                                    <a href="/service/service_info.php?menu=convenience_refusal_info" target="_blank">
+                                        <span class="txt">
+                                            <strong>080 수신거부 서비스</strong>
+                                            <span class="s_txt">광고성 정보 전달 시, 고객의 수신거부 요청 ARS로 자동처리</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                                            </ul>
+                    <!--//N-->
+
+                    <!--N:모든 항목 숨김 처리시 노출-->
+                    <p class="empty_notice" style="display:none;">모든 항목의 설정이 완료 되었습니다.</p>
+                    <!--//N-->
+                </div>
+                <!-- //setting_box -->
+            </div>
+            <!-- //setting_cont -->
+
+        </div>
+    </div>
+
+</div>
+<script>
+
+    $(function(){
+        var header_h = $('#header').outerHeight();
+        var location_h = $('#header .breadcrumb').outerHeight();
+        var pageheader_h = $('.page-header').outerHeight();
+        var sub_h = header_h + location_h + 76;
+
+        $(window).resize(resizeContents);
+        resizeContents();
+
+
+        function resizeContents() {
+            if($('.ly_setting').hasClass('sub_type')){
+                if($('.ly_setting').hasClass('on')){
+                    var ly_sub_h3 = ($(window).height())-pageheader_h;
+                    $(".ly_setting").css({'height':ly_sub_h3});
+                }else{
+                    var ly_sub_h2 = ($(window).height())-sub_h;
+                    $(".ly_setting").css({'height':ly_sub_h2});
+                }
+            }else{
+                if($('.ly_setting').hasClass('on')){
+                    $(".ly_setting").css('height','100%');
+                }else{
+                    var ly_h = ($(window).height())-header_h;
+                    $(".ly_setting").css('height', ly_h);
+                }
+            }
+        }
+
+        if($('.ly_setting').hasClass('sub_type')){
+            $(".sub_type").css('top', sub_h);
+        }else{
+            $(".ly_setting").css('top', header_h);
+        }
+
+        $(window).scroll(function() {
+            var position = $(window).scrollTop();
+            if($('.ly_setting').hasClass('sub_type')){
+                var ly_sub_h = ($(window).height())-59;
+                if(position >= 130) {
+                    $(".ly_setting").addClass('on');
+                    $(".ly_setting").addClass('active');
+                    $(".ly_setting").css({'height':ly_sub_h,'top':59});
+                }else{
+                    $(".ly_setting").removeClass('on');
+                    $(".ly_setting").removeClass('active');
+                    resizeContents();
+                    $(".sub_type").css('top', sub_h);
+
+                    if(1 <= position <= 129){
+                        $(".ly_setting").css({'height':ly_sub_h});
+                        $(".sub_type").css('top', sub_h-position);
+                    }else{
+                        var ly_sub_h2 = ($(window).height())-sub_h;
+                        $(".ly_setting").css({'height':ly_sub_h2});
+                    }
+                }
+            }else{
+                if(position >= 1) {
+                    $(".ly_setting").addClass('on');
+                    $(".ly_setting").css({'height':'100%','top':'0px'});
+                } else {
+                    $(".ly_setting").removeClass('on');
+                    resizeContents();
+                    $(".ly_setting").css('top', header_h);
+                }
+            }
+
+
+        });
+
+        //setting_button
+        $('.btn_setting').on('click',function(){
+            $('.ly_setting').show();
+            listSort();
+            var data = {
+                'mode': 'saveLegalRequirementsConfig',
+                'key': 'displayFl',
+                'val': 'true'
+            }
+            $.ajax('/base/layer_legal_requirements_ps.php', {type: "post", data: data});
+        });
+        function listSort() {
+            var checked = $( ".setting_header .input_check_box input[type=checkbox]" ).is(':checked');
+            $('.cont_wrap li').each(function(){
+                var parentsId = $(this).parents('div.setting_cont').attr('id');
+                if($(this).find('input[type=checkbox]').is(':checked') == true) {
+                    var li = $(this).clone();
+                    $('#'+parentsId+' ul').append(li);
+                    if(checked) $(li).attr('style', "display:none;");
+                    $(this).remove();
+                }
+            }).promise().done(function(){
+                if(checked) displayChecked();
+                if ($("#necessary li").length == $("#necessary li input[type=checkbox]:checked").length) {
+                    if ($("#operation li").length == $("#operation li input[type=checkbox]:checked").length) {
+                        if ($("#recommend li").length != $("#recommend li input[type=checkbox]:checked").length) {
+                            $('a[href=#recommend]').get(0).click();
+                        }
+                    } else {
+                        $('a[href=#operation]').get(0).click();
+                    }
+                }
+            });
+        }
+
+        //close_button
+        $('.btn_close').on('click',function(){
+            $('.ly_setting').hide();
+            var data = {
+                'mode': 'saveLegalRequirementsConfig',
+                'key': 'displayFl',
+                'val': 'false'
+            }
+            $.ajax('/base/layer_legal_requirements_ps.php', {type: "post", data: data});
+        });
+
+        // checkbox checked
+        $(document).on('click', '.ly_setting .cont_wrap input[type="checkbox"]', function(event){
+                        var name = $(this).attr('name');
+            var key = $(this).val();
+            var checked = $(this).is(':checked');
+            var data = {
+                'mode': 'saveLegalRequirements',
+                'name': name,
+                'key': key,
+                'val': checked
+            }
+            $.ajax('/base/layer_legal_requirements_ps.php', {type: "post", data: data});
+                    })
+
+        //check_hidden
+        function displayChecked() {
+            var checked = $( ".setting_header .input_check_box input[type=checkbox]" ).is(':checked');
+            if(checked == true) {
+                $('.ly_setting .cont_wrap input[type="checkbox"]:checked').parents('li').hide();
+                if($("input[name=necessary]").length == $("input[name=necessary]:checked").length) $('#necessary .empty_notice').show();
+                if($("input[name=operation]").length == $("input[name=operation]:checked").length) $('#operation .empty_notice').show();
+                if($("input[name=recommend]").length == $("input[name=recommend]:checked").length) $('#recommend .empty_notice').show();
+                $(".setting_header .label_txt").text(" 체크된 항목 노출");
+            } else {
+                $('ul.setting_list li').show();
+                $('.ly_setting .empty_notice').hide();
+                $(".setting_header .label_txt").text(" 체크된 항목 숨김");
+            }
+        };
+
+        $(".setting_header .input_check_box input[type=checkbox]").on("click", function() {
+            displayChecked();
+            var checked = $( ".setting_header .input_check_box input[type=checkbox]" ).is(':checked');
+            var data = {
+                'mode': 'saveLegalRequirementsConfig',
+                'key': 'checkedFl',
+                'val': checked
+            }
+            $.ajax('/base/layer_legal_requirements_ps.php', {type: "post", data: data});
+        });
+        listSort();
+    });
+</script>
+<!-- //pub_190802 -->
+
+<th:block th:include="fragments/admin/adminfooterlast"></th:block>
+
+        </div>
+
+</html>

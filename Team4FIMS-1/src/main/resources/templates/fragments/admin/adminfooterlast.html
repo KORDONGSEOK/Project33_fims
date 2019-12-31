@@ -1,0 +1,30 @@
+<div class="footer">
+    <div class="copyright">
+        &copy; NHN <a href="https://www.godo.co.kr" target="_blank">godo
+            <span>:</span>
+        </a> Corp All Rights Reserved. (ver : <span class="version">5.1.19.1223.6f4e77b1</span>)
+    </div>
+</div>
+<script type="text/javascript">
+    <!--
+    $(document).ready(function () {
+                
+        $.ajax('../base/main_setting_ps.php', {
+            method: "post",
+            data: {mode: 'orderPresentationNew'},
+            global_complete: false,
+            beforeSend: function () {
+                $('.js-oder-count-new').addClass('display-none')
+            },
+            success: function () {
+                if (arguments[0].success === 'OK') {
+                    var result = arguments[0].result;
+                    if (result === true) {
+                        $('.js-oder-count-new').removeClass('display-none');
+                    }
+                }
+            }
+        });
+    });
+    //-->
+</script>

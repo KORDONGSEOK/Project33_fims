@@ -1,0 +1,979 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko"><head><meta name="_csrf_parameter" content="_csrf"><meta name="_csrf_header" content="X-CSRF-TOKEN"><meta name="_csrf" content="10e86aee-cc5a-4956-a4c6-18fabfce0f32"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>워크넷 - 직업심리검사</title><link rel="stylesheet" href="/css/jobPsyExamNew/main.css"><link rel="stylesheet" href="/css/jobPsyExamNew/font.css"><script type="text/javascript" src="/js/framework/jquery/jquery-1.6.1.js"></script><script type="text/javascript" src="/js/jobPsyExamNew/common.js?v=1"></script><script type="text/javascript">
+//<![CDATA[
+var age = '';
+
+$(document).ready(function(){
+	if(age != '' && parseInt(age) > 15 && parseInt(age) < 18) alert('본 검사는 만 18세 이상을 대상으로 하는 검사입니다.\n따라서 검사를 실시하실 경우,\n다른 집단의 규준이 적용될 수 있습니다.');
+	
+	if( $('#goStart').val() == 'Y') {
+		$("#test2").show();
+		$("#test1").hide();
+	} else {
+		$("#test2").hide();
+		$("#test1").show();
+	}
+});
+
+$(document).bind("keydown",function(e){
+	keyDownEvent(e);
+}).bind("contextmenu",function(e){
+	contextMenuButton(e);
+});
+
+//------------------------------------------------------------
+// 문제 인쇄 못하게 방지
+//------------------------------------------------------------
+var hideBuf;
+function hideBeforePrint()
+{
+	hideBuf = document.body.innerHTML;
+	document.body.innerHTML = '';
+}
+function showAfterPrint()
+{
+	document.body.innerHTML = hideBuf;
+}
+window.onbeforeprint = hideBeforePrint;
+window.onafterprint = showAfterPrint;
+
+//------------------------------------------------------------
+// 다음 버튼 클릭시
+//------------------------------------------------------------
+
+var button_click=0;
+function goNext(param)
+{
+	$('div[id^="showhideBtn"]').hide();
+
+	if(button_click==0){
+		if(!Radio_Value_Check()){
+			return false;
+
+		}
+		doFinish("1");
+		button_click=1;
+	}
+
+	var btnId = '';
+	$('div[id^="showhideBtn"]').each(function(){
+		btnId = $(this).attr('id');
+	});
+
+	$('#' + btnId).parent().append('<div><p class="sbtnf_loading" style="width:204px; height:31px; line-height:31px; text-align:center; background:url(/images/consltJobCarpa/jobPsyExamNew/sbtnf_bg.gif) 0 0 no-repeat; font-size:12px; font-weight:bold; color:#fff">저장중입니다...</p></div>');
+
+}
+
+function doFinish(progress_code)
+{
+
+	if (button_click == 0){
+		document.getElementById('progress_code').value = progress_code;
+		Go();
+	}
+}
+
+function Go()
+{
+	var form = document.bodyform;
+	form.goOk.value = "OK";
+	form.submit();
+	//new JBehind().form('bodyform').run('onCreate');
+}
+
+function Radio_Value_Check()
+{
+    var chk = false;
+    for(var i=1;i<43;i++){
+       for(var k=0; k<3; k++){
+           if(document.getElementsByName('actvAnsNo'+i)[k].checked){
+              chk = true;
+           }
+       }
+       if(!chk)
+       {
+          alert("선택하지 않은 항목이 있습니다.");
+         //document.getElementsByName('actvAnsNo'+i)[0].focus();
+	       if((i%10)==0 ){
+		      var v=0;
+		   }else{
+			  var v=1;
+		   }
+		   var x = (i/10)+v;
+		   f_showhide(parseInt(x));
+	          return false;
+       }
+       chk=0;
+    }
+    return true;
+}
+
+//------------------------------------------------------------
+// 테스트를 용이하게 하기 위한 스크립트
+//------------------------------------------------------------
+function check_ALL()
+{
+	var ls_theForm = document.bodyform;
+	var i=0;
+
+	for(i=15;i<141;i+=3)
+		ls_theForm.elements[i].checked = !ls_theForm.elements[i].checked;
+
+}
+function checkAll(no){
+	for(var i=1; i<43; i++) {
+		document.getElementsByName('actvAnsNo'+i)[no].checked = true;
+	}
+}
+function resize() {
+
+	document.body.scroll='auto';
+	var height = screen.height;
+    var agent = navigator.userAgent.toLowerCase();
+    if (agent.indexOf("msie 7") > -1) {
+
+    } else if (agent.indexOf("msie") > -1) {
+        height -= 40;
+    }
+    window.resizeTo(770, height);
+}
+
+function session(){
+
+    $.ajax({
+        type: 'POST',
+        url: '../../TempSessionPage.do',
+        dataType: 'html',
+        contentType: 'application/x-www-form-urlencoded;charset='+'utf-8',
+		beforeSend: function(request){
+			var token = $("meta[name='_csrf']").attr("content");
+			var header = $("meta[name='_csrf_header']").attr("content");
+			if(token != null && token != 'undefinded'){
+				request.setRequestHeader(header, token);
+			}else if(oThis.header != null && oThis.token != null ){
+				request.setRequestHeader(oThis.header, oThis.token);
+			}
+		},	
+        success: handleResponse
+    });
+
+    function handleResponse(resData) {
+	    on_setTime();
+    }
+}
+function on_setTime()
+{
+	window.setTimeout('session()', 6000);
+}
+//검사 시작페이지를 위한 스크립트
+function start_test() {
+	$('#goStart').val('Y');
+	$('#bodyform').attr('action', '/consltJobCarpa/jobPsyExamNew/popup/adult/popJobPrefExamSNew02.do');
+	$('#bodyform').submit();
+}
+
+/* 2차 - 선택 항목체크,탭이동 */
+function f_showhide(divid)
+{
+	document.getElementById('top_div').style.display=''; //탭영역
+	document.getElementById('gbtn').style.display=''; //문제 바로가기
+
+	var end=divid*10-10;
+	var chk = false;
+	for(var i=1; i<end; i++) {
+		if(i != end) {
+			for(var k=0; k<3; k++){
+				if(document.getElementsByName('actvAnsNo'+i)[k].checked){
+	               chk = true;
+	            }
+			}
+
+			chk=0;
+		}
+	}
+
+	for(i=0; i <=5; i++) {
+		document.getElementById('menu'+i+'outline').style.display='none';
+		if(i!=0){
+			document.getElementById('showhideBtn'+i).style.display='none';
+		}
+	}
+
+	if (document.getElementById('menu'+divid+'outline').style.display=='none') {
+		document.getElementById('menu'+divid+'outline').style.display='';
+		document.getElementById('showhideBtn'+divid).style.display='';
+	} else {
+		document.getElementById('menu'+divid+'outline').style.display='none';
+		document.getElementById('showhideBtn'+divid).style.display='none';
+	}
+
+	//탭버튼
+	for(var i=1;i<=5;i++){
+		if(i==divid){
+			document.getElementById("tab"+i).className="tabs1_on";
+		}else{
+			document.getElementById("tab"+i).className="tabs1_off";
+		}
+	}
+}
+
+/*2차  - 전체 진행현황*/
+function f_progress(no){
+	var chk = false;
+	var cnt = 0;
+	for(var i=1; i<=42; i++) {
+		for(var k=0; k<3; k++) {
+			if(document.getElementsByName('actvAnsNo'+i)[k].checked == true) {
+				cnt=cnt+1;
+			}
+		}
+	}
+	var cnt_p = cnt*100/204;
+	cnt_p = Math.round(cnt_p*10)/10;//소수 둘째자리
+	process_div.innerHTML  = "전체 검사진행 현황:  <span class='green'>"+cnt+"</span>/204 ("+cnt_p+"%)";
+	//문항바로가기 버튼 샘플
+	document.getElementById("gbtn"+no).className="go_btn_non";
+}
+//]]>
+</script></head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body class="popup">
+<form id="bodyform" name="bodyform" action="popJobPrefExamSNew03.do" method="post">
+<input type="hidden" name="psyExamNo" value="000030272377">
+<input type="hidden" name="hs_org_gubun" value="">
+<input type="hidden" name="progress_code" id="progress_code">
+<input type="hidden" name="c_date" value="20191231">
+<input type="hidden" name="goOk" id="goOk">
+<input type="hidden" name="psyExamOrgcd" value="">
+<input type="hidden" name="psyExamStudentId" value="">
+<input type="hidden" id="goStart" name="goStart" value="Y">
+
+<div class="tit">
+    <!--페이지  타이틀 -->
+    <table class="tit_posi"><tbody><tr><td class="tit_l"></td><td class="tit_c">직업선호도검사 S형</td><td class="tit_r"></td></tr></tbody></table>
+</div>
+
+<div id="test1" style="display: none;">
+	<table width="970" height="690" border="0" cellpadding="0" cellspacing="0" class="center center_wrap">
+		<tbody><tr>
+		<td valign="top">
+			<table width="890" border="0" cellspacing="0" cellpadding="0">
+				<tbody><tr>
+			    	<td class="td_mibble01">
+	                    	<ul>
+			    			<li>지금부터 직업선호도검사 S형을 실시하겠습니다.
+			          		</li><li>직업선호도검사 S형은 개인이 좋아하는 활동, 자신감을 가지고 있는 분야, 관심있는 직업 및 학문분야 등을 측정하여 직업탐색 및 직업선택과 같은 직업의사결정을 하는데 도움을 주기위한 심리검사입니다.</li>
+	                        <li>본 검사는 204개의(활동성 42개, 유능성 36개, 직업 48개, 선호분야 36개, 일반성향 42개) 문항으로 구성되어 있으며 약 25분 정도 소요됩니다.</li>
+	                        <li>본 검사는 자신을 이해하는 데 도움을 주기위한 것이므로, 편안한 마음으로 성실하게 각 문항에 응답하여 주시기 바랍니다.</li>
+	                        </ul>
+			         </td>
+			     </tr>
+			     <tr>
+			     <td>
+		             <table width="100%" cellpadding="0" cellspacing="0" border="0">
+		             <tbody><tr><td class="bg_tree">직업선호도검사 S형<br> </td>
+		             <td><img src="https://www.work.go.kr/images/consltJobCarpa/jobPsyExamNew/bg_tree.gif"></td></tr>
+		             </tbody></table>
+		          </td>
+		         </tr>
+	             <tr>
+			         <td align="center">
+	                 	<div id="showhide1">
+	      					<table>
+	      						<tbody><tr style="cursor:pointer;" onclick="javascript:start_test()">
+	      							<td class="sbtn_l"></td><td class="sbtn_c">시 작</td><td class="sbtn_r"></td>
+								</tr>
+							</tbody></table>
+	      				</div>
+	                 </td>
+		         </tr>
+
+	             <!--  <tr>
+			         <td align="center" style="padding-top:20px;"><img src="/images/counsel/child_course/img_logo.gif"></td>
+		         </tr> -->
+			  </tbody></table>
+			  <div style="padding-top:30px;"></div>
+			 <table class="center">
+					<tbody><tr>
+						<td align="center" valign="bottom" style="padding-bottom: 5px"><img src="https://www.work.go.kr/images/consltJobCarpa/jobPsyExamNew/logo.jpg" alt=""></td>
+					</tr>
+				</tbody></table>
+		</td>
+		</tr>
+	</tbody></table>
+</div>
+
+
+<!-- 검사화면 -->
+<div id="test2" style="">
+	<table width="970" height="690" border="0" cellpadding="0" cellspacing="0" class="center center_wrap">
+	<tbody><tr>
+		<td valign="top">
+			<!-- 상단탭 -->
+			<div id="top_div" style="">
+			 <table class="grayr"><tbody><tr><td align="right"><span id="process_div">전체 검사진행 현황: <span class="green">0</span>/204(0%)</span></td></tr></tbody></table>
+
+			<table><tbody><tr><td class="org" style="font-size:13px;padding-top: 10px;"><b>[활동] 당신은 어떤 활동들을 좋아합니까?</b></td></tr></tbody></table>
+			<div style="padding-top: 5px"></div>
+			 <table id="tabs" border="0" cellpadding="0" cellspacing="0">
+				 <tbody><tr>
+					 <td class="tabs1_on" id="tab1" onclick="javascript:f_showhide(1)" style="cursor:pointer;">1-10</td>
+					 <td width="2"></td>
+					 <td class="tabs1_off" id="tab2" onclick="javascript:f_showhide(2)" style="cursor:pointer;">11-20</td>
+					 <td width="2"></td>
+					 <td class="tabs1_off" id="tab3" onclick="javascript:f_showhide(3)" style="cursor:pointer;">21-30</td>
+					 <td width="2"></td>
+					 <td class="tabs1_off" id="tab4" onclick="javascript:f_showhide(4)" style="cursor:pointer;">31-40</td>
+					 <td width="2"></td>
+					 <td class="tabs1_off" id="tab5" onclick="javascript:f_showhide(5)" style="cursor:pointer;">41-42</td>
+				 </tr>
+			 </tbody></table>
+			</div>
+
+			<!--예제화면 내용 -->
+			<div id="menu0outline" style="display: none;">
+			<table class="toptext2">
+			   <tbody><tr><td class="td01"></td></tr>
+			   <tr><td class="td03">
+			   <ul>
+					<li>본 검사는 개인의 직업흥미를 알아보기 위한 검사로서, 다양한 활동, 직업 분야 등에 관한 다양한 내용으로 구성되어 있습니다.</li>
+					<li>다음 문항들은 옳거나 틀린 대답은 없습니다. 너무 오래 생각하지 마시고 떠오르는 대로 응답하시면 됩니다.</li>
+				</ul>
+				</td></tr>
+				<tr><td class="td02"></td></tr>
+				</tbody></table>
+				<div style="padding-top: 55px"></div>
+				<table><tbody><tr><td class="org" style="font-size:12px;">* 한 문항도 빠짐없이 응답해 주십시오.</td></tr></tbody></table>
+				<!--문항타이틀 -->
+				<table id="table01">
+					<tbody><tr>
+						<th scope="col" width="40%" align="center">&lt;예&gt;다음의 문항들을 읽어보고</th>
+						<th scope="col" width="10%" align="center">좋아함</th>
+						<th scope="col" width="10%" align="center">관심없음</th>
+						<th scope="col" width="10%" align="center">싫어함</th>
+					</tr>
+					<tr>
+						<td class="f">좋아하는 활동이면</td>
+						<td class="td_mibble_radio"><input type="radio" checked=""></td>
+						<td class="td_mibble_radio"><input type="radio"></td>
+						<td class="td_mibble_radio"><input type="radio"></td>
+					</tr>
+					<tr>
+						<td class="f">관심없는  활동이면</td>
+						<td class="td_mibble_radio"><input type="radio"></td>
+						<td class="td_mibble_radio"><input type="radio" checked=""></td>
+						<td class="td_mibble_radio"><input type="radio"></td>
+					</tr>
+					<tr>
+						<td class="f">싫어하는  활동이면</td>
+						<td class="td_mibble_radio"><input type="radio"></td>
+						<td class="td_mibble_radio"><input type="radio"></td>
+						<td class="td_mibble_radio"><input type="radio" checked=""></td>
+					</tr>
+				</tbody></table>
+				<div style="padding-top: 30px"></div>
+				<table id="showhide1" width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tbody><tr>
+						<td align="center" style="padding-bottom:10px;">
+							<div>
+							<table><tbody><tr onclick="f_showhide(1);" style="cursor:pointer;"><td class="sbtn_l"></td><td class="sbtn_c" style="cursor:pointer;">시작</td><td class="sbtn_r"></td></tr></tbody></table>
+							</div>
+						</td>
+					</tr>
+				</tbody></table>
+			</div>
+
+
+			<!-- 문항1~10 시작 -->
+			<div id="menu1outline" style="">
+
+				<table id="table01">
+					<tbody><tr>
+						<th scope="col" width="5%" title="번호" align="center">번호</th>
+						<th scope="col" width="35%" title="검사문항" align="center">검사문항</th>
+						<th scope="col" width="10%" title="좋아함" align="center">좋아함</th>
+						<th scope="col" width="10%" title="관심없음" align="center">관심없음</th>
+						<th scope="col" width="10%" title="싫어함" align="center">싫어함</th>
+					</tr>
+
+					<tr>
+						<td class="td_no">1</td>
+						<td class="f" title="갈등을 겪고 있는 사람들이 화합하도록 돕는다">갈등을 겪고 있는 사람들이 화합하도록 돕는다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo1" value="1" onclick="f_progress('1')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo1" value="2" onclick="f_progress('1')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo1" value="3" onclick="f_progress('1')" title="싫어함"></td>
+					</tr>
+
+					<tr>
+						<td class="td_no">2</td>
+						<td class="f" title="디자인 과정을 이수한다">디자인 과정을 이수한다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo2" value="1" onclick="f_progress('2')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo2" value="2" onclick="f_progress('2')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo2" value="3" onclick="f_progress('2')" title="싫어함"></td>
+					</tr>
+
+					<tr>
+						<td class="td_no">3</td>
+						<td class="f" title="바다에서 고기를 잡는다">바다에서 고기를 잡는다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo3" value="1" onclick="f_progress('3')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo3" value="2" onclick="f_progress('3')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo3" value="3" onclick="f_progress('3')" title="싫어함"></td>
+					</tr>
+
+					<tr>
+						<td class="td_no">4 </td>
+						<td class="f" title="예술, 문화, 음악 관련 글을 읽는다">예술, 문화, 음악 관련 글을 읽는다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo4" value="1" onclick="f_progress('4')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo4" value="2" onclick="f_progress('4')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo4" value="3" onclick="f_progress('4')" title="싫어함"></td>
+					</tr>
+
+					<tr>
+						<td class="td_no">5 </td>
+						<td class="f" title="연구소에서 화학 실험을 한다">연구소에서 화학 실험을 한다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo5" value="1" onclick="f_progress('5')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo5" value="2" onclick="f_progress('5')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo5" value="3" onclick="f_progress('5')" title="싫어함"></td>
+					</tr>
+
+					<tr>
+						<td class="td_no">6 </td>
+						<td class="f" title="공급 물품의 목록을 정리한다">공급 물품의 목록을 정리한다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo6" value="1" onclick="f_progress('6')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo6" value="2" onclick="f_progress('6')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo6" value="3" onclick="f_progress('6')" title="싫어함"></td>
+					</tr>
+
+					<tr>
+						<td class="td_no">7 </td>
+						<td class="f" title="프로젝트나 집단의 리더가 된다">프로젝트나 집단의 리더가 된다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo7" value="1" onclick="f_progress('7')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo7" value="2" onclick="f_progress('7')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo7" value="3" onclick="f_progress('7')" title="싫어함"></td>
+					</tr>
+
+					<tr>
+						<td class="td_no">8 </td>
+						<td class="f" title="학생들을 가르치거나 선도한다">학생들을 가르치거나 선도한다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo8" value="1" onclick="f_progress('8')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo8" value="2" onclick="f_progress('8')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo8" value="3" onclick="f_progress('8')" title="싫어함"></td>
+					</tr>
+
+					<tr>
+						<td class="td_no">9 </td>
+						<td class="f" title="성인이나 아동을 교육시킨다">성인이나 아동을 교육시킨다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo9" value="1" onclick="f_progress('9')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo9" value="2" onclick="f_progress('9')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo9" value="3" onclick="f_progress('9')" title="싫어함"></td>
+					</tr>
+
+					<tr>
+						<td class="td_no">10</td>
+						<td class="f" title="다른 사람에게 해야 할 일을 지시한다">다른 사람에게 해야 할 일을 지시한다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo10" value="1" onclick="f_progress('10')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo10" value="2" onclick="f_progress('10')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo10" value="3" onclick="f_progress('10')" title="싫어함"></td>
+					</tr>
+				</tbody></table>
+			</div>
+
+			<!-- 문항11~20 시작 -->
+			<div id="menu2outline" style="display:none">
+				<table id="table01">
+					<tbody><tr>
+						<th scope="col" width="5%" title="번호" align="center">번호</th>
+						<th scope="col" width="35%" title="검사문항" align="center">검사문항</th>
+						<th scope="col" width="10%" title="좋아함" align="center">좋아함</th>
+						<th scope="col" width="10%" title="관심없음" align="center">관심없음</th>
+						<th scope="col" width="10%" title="싫어함" align="center">싫어함</th>
+					</tr>
+
+					<tr>
+						<td class="td_no">11</td>
+						<td class="f" title="통신케이블을 설치한다">통신케이블을 설치한다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo11" value="1" onclick="f_progress('11')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo11" value="2" onclick="f_progress('11')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo11" value="3" onclick="f_progress('11')" title="싫어함"></td>
+					</tr>
+
+					<tr>
+						<td class="td_no">12 </td>
+						<td class="f" title="예술 작품을 감상한다">예술 작품을 감상한다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo12" value="1" onclick="f_progress('12')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo12" value="2" onclick="f_progress('12')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo12" value="3" onclick="f_progress('12')" title="싫어함"></td>
+					</tr>
+
+					<tr>
+						<td class="td_no">13</td>
+						<td class="f" title="회사의 중역이나 대표들을 만난다">회사의 중역이나 대표들을 만난다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo13" value="1" onclick="f_progress('13')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo13" value="2" onclick="f_progress('13')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo13" value="3" onclick="f_progress('13')" title="싫어함"></td>
+					</tr>
+
+					<tr>
+						<td class="td_no">14</td>
+						<td class="f" title="자동차를 정비한다">자동차를 정비한다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo14" value="1" onclick="f_progress('14')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo14" value="2" onclick="f_progress('14')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo14" value="3" onclick="f_progress('14')" title="싫어함"></td>
+					</tr>
+
+					<tr>
+						<td class="td_no">15</td>
+						<td class="f" title="작품 사진을 찍는다">작품 사진을 찍는다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo15" value="1" onclick="f_progress('15')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo15" value="2" onclick="f_progress('15')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo15" value="3" onclick="f_progress('15')" title="싫어함"></td>
+					</tr>
+
+					<tr>
+						<td class="td_no">16</td>
+						<td class="f" title="사회과학 분야를 연구한다">사회과학 분야를 연구한다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo16" value="1" onclick="f_progress('16')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo16" value="2" onclick="f_progress('16')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo16" value="3" onclick="f_progress('16')" title="싫어함"></td>
+					</tr>
+
+					<tr>
+						<td class="td_no">17 </td>
+						<td class="f" title="사람들이 자신의 문제를 해결하도록 돕는다">사람들이 자신의 문제를 해결하도록 돕는다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo17" value="1" onclick="f_progress('17')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo17" value="2" onclick="f_progress('17')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo17" value="3" onclick="f_progress('17')" title="싫어함"></td>
+					</tr>
+
+					<tr>
+						<td class="td_no">18</td>
+						<td class="f" title="사무실에서 일한다">사무실에서 일한다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo18" value="1" onclick="f_progress('18')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo18" value="2" onclick="f_progress('18')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo18" value="3" onclick="f_progress('18')" title="싫어함"></td>
+					</tr>
+
+					<tr>
+						<td class="td_no">19</td>
+						<td class="f" title="우주 생성에 관하여 공부한다">우주 생성에 관하여 공부한다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo19" value="1" onclick="f_progress('19')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo19" value="2" onclick="f_progress('19')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo19" value="3" onclick="f_progress('19')" title="싫어함"></td>
+					</tr>
+
+					<tr>
+						<td class="td_no">20</td>
+						<td class="f" title="다른 사람들에게 영향력을 행사한다">다른 사람들에게 영향력을 행사한다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo20" value="1" onclick="f_progress('20')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo20" value="2" onclick="f_progress('20')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo20" value="3" onclick="f_progress('20')" title="싫어함"></td>
+					</tr>
+
+				</tbody></table>
+			</div>
+			<!-- 문항21~30 시작 -->
+			<div id="menu3outline" style="display:none">
+				<table id="table01">
+					<tbody><tr>
+						<th scope="col" width="5%" title="번호" align="center">번호</th>
+						<th scope="col" width="35%" title="검사문항" align="center">검사문항</th>
+						<th scope="col" width="10%" title="좋아함" align="center">좋아함</th>
+						<th scope="col" width="10%" title="관심없음" align="center">관심없음</th>
+						<th scope="col" width="10%" title="싫어함" align="center">싫어함</th>
+					</tr>
+
+					<tr>
+						<td class="td_no">21</td>
+						<td class="f" title="기상의 흐름을 분석한다">기상의 흐름을 분석한다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo21" value="1" onclick="f_progress('21')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo21" value="2" onclick="f_progress('21')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo21" value="3" onclick="f_progress('21')" title="싫어함"></td>
+					</tr>
+
+					<tr>
+						<td class="td_no">22</td>
+						<td class="f" title="다른 사람의 고민을 듣고 충고해준다">다른 사람의 고민을 듣고 충고해준다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo22" value="1" onclick="f_progress('22')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo22" value="2" onclick="f_progress('22')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo22" value="3" onclick="f_progress('22')" title="싫어함"></td>
+					</tr>
+
+					<tr>
+						<td class="td_no">23</td>
+						<td class="f" title="중장비를 운전한다">중장비를 운전한다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo23" value="1" onclick="f_progress('23')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo23" value="2" onclick="f_progress('23')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo23" value="3" onclick="f_progress('23')" title="싫어함"></td>
+					</tr>
+
+					<tr>
+						<td class="td_no">24</td>
+						<td class="f" title="사람들이 자신의 적성에 맞는 직업을 찾도록 돕는다">사람들이 자신의 적성에 맞는 직업을 찾도록 돕는다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo24" value="1" onclick="f_progress('24')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo24" value="2" onclick="f_progress('24')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo24" value="3" onclick="f_progress('24')" title="싫어함"></td>
+					</tr>
+
+					<tr>
+						<td class="td_no">25</td>
+						<td class="f" title="시스템 소프트웨어를 개발한다">시스템 소프트웨어를 개발한다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo25" value="1" onclick="f_progress('25')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo25" value="2" onclick="f_progress('25')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo25" value="3" onclick="f_progress('25')" title="싫어함"></td>
+					</tr>
+
+					<tr>
+						<td class="td_no">26</td>
+						<td class="f" title="문서를 확인하고 교정한다">문서를 확인하고 교정한다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo26" value="1" onclick="f_progress('26')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo26" value="2" onclick="f_progress('26')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo26" value="3" onclick="f_progress('26')" title="싫어함"></td>
+					</tr>
+
+					<tr>
+						<td class="td_no">27</td>
+						<td class="f" title="집단의 중요한 결정을 내린다">집단의 중요한 결정을 내린다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo27" value="1" onclick="f_progress('27')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo27" value="2" onclick="f_progress('27')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo27" value="3" onclick="f_progress('27')" title="싫어함"></td>
+					</tr>
+
+					<tr>
+						<td class="td_no">28 </td>
+						<td class="f" title="회사규칙을 중시한다">회사규칙을 중시한다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo28" value="1" onclick="f_progress('28')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo28" value="2" onclick="f_progress('28')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo28" value="3" onclick="f_progress('28')" title="싫어함"></td>
+					</tr>
+
+					<tr>
+						<td class="td_no">29</td>
+						<td class="f" title="컴퓨터를 조립한다">컴퓨터를 조립한다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo29" value="1" onclick="f_progress('29')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo29" value="2" onclick="f_progress('29')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo29" value="3" onclick="f_progress('29')" title="싫어함"></td>
+					</tr>
+
+					<tr>
+						<td class="td_no">30</td>
+						<td class="f" title="자연과학 분야를 연구한다">자연과학 분야를 연구한다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo30" value="1" onclick="f_progress('30')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo30" value="2" onclick="f_progress('30')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo30" value="3" onclick="f_progress('30')" title="싫어함"></td>
+					</tr>
+
+				</tbody></table>
+			</div>
+			<!-- 문항31~40 시작 -->
+			<div id="menu4outline" style="display:none">
+				<table id="table01">
+					<tbody><tr>
+						<th scope="col" width="5%" title="번호" align="center">번호</th>
+						<th scope="col" width="35%" title="검사문항" align="center">검사문항</th>
+						<th scope="col" width="10%" title="좋아함" align="center">좋아함</th>
+						<th scope="col" width="10%" title="관심없음" align="center">관심없음</th>
+						<th scope="col" width="10%" title="싫어함" align="center">싫어함</th>
+					</tr>
+
+					<tr>
+						<td class="td_no">31</td>
+						<td class="f" title="회의를 진행한다">회의를 진행한다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo31" value="1" onclick="f_progress('31')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo31" value="2" onclick="f_progress('31')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo31" value="3" onclick="f_progress('31')" title="싫어함"></td>
+					</tr>
+
+					<tr>
+						<td class="td_no">32 </td>
+						<td class="f" title="연극이나 뮤지컬을 관람한다">연극이나 뮤지컬을 관람한다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo32" value="1" onclick="f_progress('32')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo32" value="2" onclick="f_progress('32')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo32" value="3" onclick="f_progress('32')" title="싫어함"></td>
+					</tr>
+
+					<tr>
+						<td class="td_no">33 </td>
+						<td class="f" title="보고서나 공문을 작성한다">보고서나 공문을 작성한다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo33" value="1" onclick="f_progress('33')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo33" value="2" onclick="f_progress('33')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo33" value="3" onclick="f_progress('33')" title="싫어함"></td>
+					</tr>
+
+					<tr>
+						<td class="td_no">34</td>
+						<td class="f" title="사물의 화학구조를 분석한다">사물의 화학구조를 분석한다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo34" value="1" onclick="f_progress('34')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo34" value="2" onclick="f_progress('34')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo34" value="3" onclick="f_progress('34')" title="싫어함"></td>
+					</tr>
+
+					<tr>
+						<td class="td_no">35</td>
+						<td class="f" title="자동화 공정에서 기계 장치를 조작한다">자동화 공정에서 기계 장치를 조작한다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo35" value="1" onclick="f_progress('35')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo35" value="2" onclick="f_progress('35')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo35" value="3" onclick="f_progress('35')" title="싫어함"></td>
+					</tr>
+
+					<tr>
+						<td class="td_no">36 </td>
+						<td class="f" title="사무실에서 문서를 정리한다">사무실에서 문서를 정리한다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo36" value="1" onclick="f_progress('36')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo36" value="2" onclick="f_progress('36')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo36" value="3" onclick="f_progress('36')" title="싫어함"></td>
+					</tr>
+
+					<tr>
+						<td class="td_no">37</td>
+						<td class="f" title="회계처리를 한다">회계처리를 한다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo37" value="1" onclick="f_progress('37')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo37" value="2" onclick="f_progress('37')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo37" value="3" onclick="f_progress('37')" title="싫어함"></td>
+					</tr>
+
+					<tr>
+						<td class="td_no">38 </td>
+						<td class="f" title="물품을 운송한다">물품을 운송한다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo38" value="1" onclick="f_progress('38')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo38" value="2" onclick="f_progress('38')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo38" value="3" onclick="f_progress('38')" title="싫어함"></td>
+					</tr>
+
+					<tr>
+						<td class="td_no">39 </td>
+						<td class="f" title="대중 앞에서 연설한다">대중 앞에서 연설한다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo39" value="1" onclick="f_progress('39')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo39" value="2" onclick="f_progress('39')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo39" value="3" onclick="f_progress('39')" title="싫어함"></td>
+					</tr>
+
+					<tr>
+						<td class="td_no" title="">40</td>
+						<td class="f" title="무대공연을 연출한다">무대공연을 연출한다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo40" value="1" onclick="f_progress('40')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo40" value="2" onclick="f_progress('40')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo40" value="3" onclick="f_progress('40')" title="싫어함"></td>
+					</tr>
+
+				</tbody></table>
+			</div>
+			<!-- 문항41~42 시작 -->
+			<div id="menu5outline" style="display:none">
+				<table id="table01">
+					<tbody><tr>
+						<th scope="col" width="5%" title="번호" align="center">번호</th>
+						<th scope="col" width="35%" title="검사문항" align="center">검사문항</th>
+						<th scope="col" width="10%" title="좋아함" align="center">좋아함</th>
+						<th scope="col" width="10%" title="관심없음" align="center">관심없음</th>
+						<th scope="col" width="10%" title="싫어함" align="center">싫어함</th>
+					</tr>
+
+					<tr>
+						<td class="td_no">41 </td>
+						<td class="f" title="타인의 활동을 지원한다">타인의 활동을 지원한다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo41" value="1" onclick="f_progress('41')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo41" value="2" onclick="f_progress('41')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo41" value="3" onclick="f_progress('41')" title="싫어함"></td>
+					</tr>
+
+					<tr>
+						<td class="td_no">42</td>
+						<td class="f" title="화음에 맞추어 합창한다">화음에 맞추어 합창한다</td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo42" value="1" onclick="f_progress('42')" title="좋아함"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo42" value="2" onclick="f_progress('42')" title="관심없음"></td>
+						<td class="td_mibble_radio"><input type="radio" name="actvAnsNo42" value="3" onclick="f_progress('42')" title="싫어함"></td>
+					</tr>
+
+
+				</tbody></table>
+			</div>
+
+			</td>
+
+			<!--예제 문항바로가기 -->
+				<td width="233" valign="top" class="golist">
+					<table style="margin-left:5px;" border="0">
+					   <tbody><tr><td id="gbtn" valign="top" style="">
+							<label>
+								<input type="button" class="go_btn" name="1" value="1" id="gbtn1" onclick="javascript:f_showhide(1);return false;">
+								<input type="button" class="go_btn" name="2" value="2" id="gbtn2" onclick="javascript:f_showhide(1);return false;">
+								<input type="button" class="go_btn" name="3" value="3" id="gbtn3" onclick="javascript:f_showhide(1);return false;">
+								<input type="button" class="go_btn" name="4" value="4" id="gbtn4" onclick="javascript:f_showhide(1);return false;">
+								<input type="button" class="go_btn" name="5" value="5" id="gbtn5" onclick="javascript:f_showhide(1);return false;"><br>
+								<input type="button" class="go_btn" name="6" value="6" id="gbtn6" onclick="javascript:f_showhide(1);return false;">
+								<input type="button" class="go_btn" name="7" value="7" id="gbtn7" onclick="javascript:f_showhide(1);return false;">
+								<input type="button" class="go_btn" name="8" value="8" id="gbtn8" onclick="javascript:f_showhide(1);return false;">
+								<input type="button" class="go_btn" name="9" value="9" id="gbtn9" onclick="javascript:f_showhide(1);return false;">
+								<input type="button" class="go_btn" name="10" value="10" id="gbtn10" onclick="javascript:f_showhide(1);return false;"><br>
+								<input type="button" class="go_btn" name="11" value="11" id="gbtn11" onclick="javascript:f_showhide(2);return false;">
+								<input type="button" class="go_btn" name="12" value="12" id="gbtn12" onclick="javascript:f_showhide(2);return false;">
+								<input type="button" class="go_btn" name="13" value="13" id="gbtn13" onclick="javascript:f_showhide(2);return false;">
+								<input type="button" class="go_btn" name="14" value="14" id="gbtn14" onclick="javascript:f_showhide(2);return false;">
+								<input type="button" class="go_btn" name="15" value="15" id="gbtn15" onclick="javascript:f_showhide(2);return false;"><br>
+								<input type="button" class="go_btn" name="16" value="16" id="gbtn16" onclick="javascript:f_showhide(2);return false;">
+								<input type="button" class="go_btn" name="17" value="17" id="gbtn17" onclick="javascript:f_showhide(2);return false;">
+								<input type="button" class="go_btn" name="18" value="18" id="gbtn18" onclick="javascript:f_showhide(2);return false;">
+								<input type="button" class="go_btn" name="19" value="19" id="gbtn19" onclick="javascript:f_showhide(2);return false;">
+								<input type="button" class="go_btn" name="20" value="20" id="gbtn20" onclick="javascript:f_showhide(2);return false;"><br>
+								<input type="button" class="go_btn" name="21" value="21" id="gbtn21" onclick="javascript:f_showhide(3);return false;">
+								<input type="button" class="go_btn" name="22" value="22" id="gbtn22" onclick="javascript:f_showhide(3);return false;">
+								<input type="button" class="go_btn" name="23" value="23" id="gbtn23" onclick="javascript:f_showhide(3);return false;">
+								<input type="button" class="go_btn" name="24" value="24" id="gbtn24" onclick="javascript:f_showhide(3);return false;">
+								<input type="button" class="go_btn" name="25" value="25" id="gbtn25" onclick="javascript:f_showhide(3);return false;"><br>
+								<input type="button" class="go_btn" name="26" value="26" id="gbtn26" onclick="javascript:f_showhide(3);return false;">
+								<input type="button" class="go_btn" name="27" value="27" id="gbtn27" onclick="javascript:f_showhide(3);return false;">
+								<input type="button" class="go_btn" name="28" value="28" id="gbtn28" onclick="javascript:f_showhide(3);return false;">
+								<input type="button" class="go_btn" name="29" value="29" id="gbtn29" onclick="javascript:f_showhide(3);return false;">
+								<input type="button" class="go_btn" name="30" value="30" id="gbtn30" onclick="javascript:f_showhide(3);return false;"><br>
+								<input type="button" class="go_btn" name="31" value="31" id="gbtn31" onclick="javascript:f_showhide(4);return false;">
+								<input type="button" class="go_btn" name="32" value="32" id="gbtn32" onclick="javascript:f_showhide(4);return false;">
+								<input type="button" class="go_btn" name="33" value="33" id="gbtn33" onclick="javascript:f_showhide(4);return false;">
+								<input type="button" class="go_btn" name="34" value="34" id="gbtn34" onclick="javascript:f_showhide(4);return false;">
+								<input type="button" class="go_btn" name="35" value="35" id="gbtn35" onclick="javascript:f_showhide(4);return false;"><br>
+								<input type="button" class="go_btn" name="36" value="36" id="gbtn36" onclick="javascript:f_showhide(4);return false;">
+								<input type="button" class="go_btn" name="37" value="37" id="gbtn37" onclick="javascript:f_showhide(4);return false;">
+								<input type="button" class="go_btn" name="38" value="38" id="gbtn38" onclick="javascript:f_showhide(4);return false;">
+								<input type="button" class="go_btn" name="39" value="39" id="gbtn39" onclick="javascript:f_showhide(4);return false;">
+								<input type="button" class="go_btn" name="40" value="40" id="gbtn40" onclick="javascript:f_showhide(4);return false;"><br>
+								<input type="button" class="go_btn" name="41" value="41" id="gbtn41" onclick="javascript:f_showhide(5);return false;">
+								<input type="button" class="go_btn" name="42" value="42" id="gbtn42" onclick="javascript:f_showhide(5);return false;">
+							</label>
+						  </td>
+						</tr>
+					 </tbody></table>
+
+					 <div id="showhideBtn1" style="cursor: pointer;" border="0">
+					  <table width="90%" border="0" cellspacing="0" cellpadding="0" align="center">
+						<tbody><tr>
+							<td width="105">
+							</td>
+							<td><a href="#6" onclick="javascript:f_showhide(2)" style="cursor:pointer;">
+								<table><tbody><tr><td class="nbtn_c">다음</td><td class="nbtn_r"></td></tr></tbody></table></a>
+							</td>
+						</tr>
+					  </tbody></table>
+					 </div>
+					 <div id="showhideBtn2" style="cursor:pointer;display:none" border="0">
+					  <table width="90%" border="0" cellspacing="0" cellpadding="0" align="center">
+						<tbody><tr>
+							<td><a href="#4" onclick="javascript:f_showhide(1)" style="cursor:pointer;">
+							   <table><tbody><tr><td class="pbtn_l"></td><td class="pbtn_c">이전</td></tr></tbody></table></a>
+							</td>
+							<td><a href="#6" onclick="javascript:f_showhide(3)" style="cursor:pointer;">
+								<table><tbody><tr><td class="nbtn_c">다음</td><td class="nbtn_r"></td></tr></tbody></table></a>
+						   </td>
+						</tr>
+					  </tbody></table>
+					 </div>
+					 <div id="showhideBtn3" style="cursor:pointer;display:none" border="0">
+					  <table width="90%" border="0" cellspacing="0" cellpadding="0" align="center">
+						<tbody><tr>
+							<td><a href="#4" onclick="javascript:f_showhide(2)" style="cursor:pointer;">
+							   <table><tbody><tr><td class="pbtn_l"></td><td class="pbtn_c">이전</td></tr></tbody></table></a>
+							</td>
+							<td><a href="#6" onclick="javascript:f_showhide(4)" style="cursor:pointer;">
+								<table><tbody><tr><td class="nbtn_c">다음</td><td class="nbtn_r"></td></tr></tbody></table></a>
+						   </td>
+						</tr>
+					  </tbody></table>
+					 </div>
+					 <div id="showhideBtn4" style="cursor:pointer;display:none" border="0">
+					  <table width="90%" border="0" cellspacing="0" cellpadding="0" align="center">
+						<tbody><tr>
+							<td><a href="#4" onclick="javascript:f_showhide(3)" style="cursor:pointer;">
+							   <table><tbody><tr><td class="pbtn_l"></td><td class="pbtn_c">이전</td></tr></tbody></table></a>
+							</td>
+							<td><a href="#6" onclick="javascript:f_showhide(5)" style="cursor:pointer;">
+								<table><tbody><tr><td class="nbtn_c">다음</td><td class="nbtn_r"></td></tr></tbody></table></a>
+						   </td>
+						</tr>
+					  </tbody></table>
+					 </div>
+					 <div id="showhideBtn5" style="cursor:pointer;display:none" border="0">
+					  <table width="90%" border="0" cellspacing="0" cellpadding="0" align="center">
+						<tbody><tr>
+							<td><a href="#4" onclick="javascript:f_showhide(4)" style="cursor:pointer;">
+							   <table><tbody><tr><td class="pbtn_l"></td><td class="pbtn_c">이전</td></tr></tbody></table></a>
+							</td>
+							<td><a href="#" onclick="javascript:goNext();return false;" style="cursor:pointer;">
+								<table><tbody><tr><td class="sbtnf_l"></td>
+							<td class="sbtnf_c">다음단계</td>
+							<td class="sbtnf_r"></td></tr></tbody></table></a></td>
+						</tr>
+					  </tbody></table>
+					 </div>
+				</td>
+
+		</tr>
+	</tbody></table>
+	<a href="javascript:check_ALL()"><font color="#ffffff">.</font></a>
+	<a href="javascript:checkAll(0)">
+		<font color="#ffffff">.</font>
+	</a>
+	<a href="javascript:checkAll(1)">
+		<font color="#ffffff">.</font>
+	</a>
+	<a href="javascript:checkAll(2)">
+		<font color="#ffffff">.</font>
+	</a>
+	
+	
+	
+
+	</div>
+
+
+
+
+
+
+
+
+<!--
+	<p class="txtright mt10 pb10">
+		<a href="javascript:check_ALL()"><font color=#ffffff>0</font></a>
+		<a href="popupPsyTest05_Exam.do" onclick="try { latte.getEvent(event).stop(); } catch (ex) {}; document.bodyform.reset(); return false; ">
+			<img src="/images/counsel/btn_reaction.gif" alt="다시쓰기" />
+		</a>
+		<a href="popupPsyTest05_Exam_A.do" onclick="try { latte.getEvent(event).stop(); } catch (ex) {}; goNext(''); return false; ">
+			<img src="/images/counsel/btn_next.gif" alt="다음단계" />
+		</a>
+		<a href="MakeAppTest.do" onclick="try { latte.getEvent(event).stop(); } catch (ex) {}; window.close(); return false; ">
+			<img src="/images/counsel/btn_close.gif" alt="창닫기" />
+		</a>
+	</p>
+ -->
+
+
+<input type="hidden" name="osNm" value="Win 7">
+<input type="hidden" name="brwsrNm" value="Netscape">
+<input type="hidden" name="brwsrVer" value="537.36">
+<input type="hidden" name="userAgntInfo" value="Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36">
+<script type="text/javascript">
+//<![CDATA[
+getOsNm();		//OS정보 및 브라우져 속성 정보를 가져옴.
+//]]>
+</script>
+<div>
+<input type="hidden" name="_csrf" value="10e86aee-cc5a-4956-a4c6-18fabfce0f32">
+</div></form>
+<script>
+on_setTime();
+</script>
+
+
+
+</body></html>
