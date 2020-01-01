@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/admin/goodsdefault}">
+
+<th:block layout:fragment="adminMainContents">
+
+<div id="content" class="row">
+                <div class="col-xs-12">
+                    <script type="text/javascript">
+<!--
+
+$(document).ready(function () {
+
+	// 삭제
+	$('button.checkDelete').click(function () {
+		var chkCnt = $('input[name*="sno["]:checkbox:checked').length;
+		if (chkCnt == 0) {
+			alert('선택된 아이콘이 없습니다.');
+			return;
+		}
+
+        dialog_confirm('선택한 ' + chkCnt + '개의 아이콘을 정말로 삭제하시겠습니까?<br/>삭제시 정보는 복구 되지 않습니다.', function (result) {
+            if (result) {
+                $('#frmList input[name=\'mode\']').val('icon_delete');
+                $('#frmList').attr('method', 'post');
+                $('#frmList').attr('action', './goods_ps.php');
+                $('#frmList').submit();
+            }
+        });
+	});
+
+	// 등록
+	$('#checkRegister').click(function () {
+		location.href = './goods_icon_register.php';
+	});
+
+
+	$('select[name=\'pageNum\']').change(function () {
+		$('#frmSearchBase').submit();
+	});
+
+	$('select[name=\'sort\']').change(function () {
+		$('#frmSearchBase').submit();
+	});
+});
+
+//-->
+</script>
+
+
+<div class="page-header js-affix">
+	<h3>상품 아이콘 관리</h3>
+	<div class="btn-group">
+		<input type="button" id="checkRegister" value="아이콘 등록" class="btn btn-red-line" />
+
+	</div>
+</div>
+
+
+
+
+<form id="frmSearchBase" name="frmSearchBase" method="get" class="js-form-enter-submit">
+
+	<div class="table-title gd-help-manual">
+		아이콘 검색
+	</div>
+	<div class="search-detail-box">
+		<table class="table table-cols">
+			<colgroup>
+				<col class="width-sm"/>
+				<col/>
+				<col class="width-sm"/>
+				<col/>
+			</colgroup>
+			<tr>
+				<th>아이콘 이름</th>
+				<td colspan="3">
+					<input type="text" name="iconNm" value="" class="form-control width-lg" />
+				</td>
+			</tr>
+			<tr>
+				<th>기간검색</th>
+				<td  colspan="3"><div class="form-inline">
+						<select name="searchDateFl" class="form-control">
+							<option value="regDt" selected='selected'>등록일</option>
+							<option value="modDt" >수정일</option>
+						</select>
+
+						<div class="input-group js-datepicker">
+							<input type="text" class="form-control width-xs" name="searchDate[]" value="" >
+                    <span class="input-group-addon">
+                        <span class="btn-icon-calendar">
+                        </span>
+                    </span>
+						</div>
+
+						~  <div class="input-group js-datepicker">
+							<input type="text" class="form-control width-xs" name="searchDate[]" value="" >
+                    <span class="input-group-addon">
+                        <span class="btn-icon-calendar">
+                        </span>
+                    </span>
+						</div>
+
+						<div class="btn-group js-dateperiod" data-toggle="buttons" data-target-name="searchDate"><label class="btn btn-white btn-sm hand "><input type="radio" name="searchPeriod" value="0"  >오늘</label><label class="btn btn-white btn-sm hand "><input type="radio" name="searchPeriod" value="6"  >7일</label><label class="btn btn-white btn-sm hand "><input type="radio" name="searchPeriod" value="14"  >15일</label><label class="btn btn-white btn-sm hand "><input type="radio" name="searchPeriod" value="29"  >1개월</label><label class="btn btn-white btn-sm hand "><input type="radio" name="searchPeriod" value="89"  >3개월</label><label class="btn btn-white btn-sm hand "><input type="radio" name="searchPeriod" value="-1"  >전체</label> </div > 
+				</td>
+			</tr>
+			<tr>
+				<th>기간제한 상태</th>
+				<td>
+					<label  class="radio-inline"><input type="radio" name="iconPeriodFl" value="" checked="checked" />전체</label>
+					<label  class="radio-inline"><input type="radio" name="iconPeriodFl" value="n"  />무제한용</label>
+					<label  class="radio-inline"><input type="radio" name="iconPeriodFl" value="y"  />기간제한용</label>
+				</td>
+				<th>사용상태</th>
+				<td>
+					<label  class="radio-inline"><input type="radio" name="iconUseFl" value="" checked="checked" />전체</label>
+					<label  class="radio-inline"><input type="radio" name="iconUseFl" value="y"  />사용함</label>
+					<label  class="radio-inline"><input type="radio" name="iconUseFl" value="n"  />사용안함</label>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+
+	<div class="table-btn">
+		<input type="submit" value="검색" class="btn btn-lg btn-black">
+	</div>
+
+	<div class="table-header">
+		<div class="pull-left">
+			검색 <strong>8</strong>개 /
+			전체 <strong>8</strong>개
+		</div>
+		<div class="pull-right form-inline">
+			<select class="form-control " id="sort" name="sort" ><option value="iconNm asc"  >아이콘 이름 ↓</option><option value="iconNm desc"  >아이콘 이름 ↑</option><option value="regDt desc" selected="selected" >등록일 ↓</option><option value="regDt asc"  >등록일 ↑</option><option value="modDt asc"  >수정일 ↓</option><option value="modDt desc"  >수정일 ↑</option></select>			<select class="form-control " id="pageNum" name="pageNum" ><option value="10"  >10개 보기</option><option value="20"  >20개 보기</option><option value="30"  >30개 보기</option><option value="40"  >40개 보기</option><option value="50"  >50개 보기</option><option value="60"  >60개 보기</option><option value="70"  >70개 보기</option><option value="80"  >80개 보기</option><option value="90"  >90개 보기</option><option value="100"  >100개 보기</option><option value="200"  >200개 보기</option><option value="300"  >300개 보기</option><option value="500"  >500개 보기</option></select>		</div>
+	</div>
+
+</form>
+
+
+<div>
+	<form id="frmList" action="" method="get" target="ifrmProcess" >
+	<input type="hidden" name="mode" value="">
+	<table class="table table-rows">
+	<thead>
+	<tr>
+		<th class="width5p center"><input type="checkbox"  class="js-checkall" data-target-name="sno"/></th>
+		<th class="width5p">번호</th>
+		<th class="width20p">아이콘 이름</th>
+		<th class="width20p center">아이콘 이미지</th>
+		<th class="width15p center">기간제한 상태</th>
+		<th class="width15p center">사용상태</th>
+		<th class="width10p center">등록일</th>
+		<th class="width10p center">수정일</th>
+		<th class="width5p center">수정</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr>
+		<td class="center"><input type="checkbox" name="sno[1]" value="1"/></td>
+		<td class="center number">8</td>
+		<td class="hand" onclick="show_popup('./goods_icon_register.php?popupMode=yes&sno=1')">베스트상품</td>
+		<td class="center"><img src="https://gdadmin.plus.godomall.com:14003/data/icon/goods_icon/icon_best.png"  alt="베스트상품" title="베스트상품" class="middle"  /></td>
+		<td class="center">무제한용</td>
+		<td class="center">사용</td>
+		<td class="center date">2020-01-01</td>
+		<td class="center date">-</td>
+		<td class="center">
+			<a href="./goods_icon_register.php?sno=1" class="btn btn-white btn-xs"> 수정</a>
+		</td>
+	</tr>
+	<tr>
+		<td class="center"><input type="checkbox" name="sno[2]" value="2"/></td>
+		<td class="center number">7</td>
+		<td class="hand" onclick="show_popup('./goods_icon_register.php?popupMode=yes&sno=2')">이벤트상품</td>
+		<td class="center"><img src="https://gdadmin.plus.godomall.com:14003/data/icon/goods_icon/icon_event.png"  alt="이벤트상품" title="이벤트상품" class="middle"  /></td>
+		<td class="center">무제한용</td>
+		<td class="center">사용</td>
+		<td class="center date">2020-01-01</td>
+		<td class="center date">-</td>
+		<td class="center">
+			<a href="./goods_icon_register.php?sno=2" class="btn btn-white btn-xs"> 수정</a>
+		</td>
+	</tr>
+	<tr>
+		<td class="center"><input type="checkbox" name="sno[3]" value="3"/></td>
+		<td class="center number">6</td>
+		<td class="hand" onclick="show_popup('./goods_icon_register.php?popupMode=yes&sno=3')">신상품</td>
+		<td class="center"><img src="https://gdadmin.plus.godomall.com:14003/data/icon/goods_icon/icon_new.png"  alt="신상품" title="신상품" class="middle"  /></td>
+		<td class="center">무제한용</td>
+		<td class="center">사용</td>
+		<td class="center date">2020-01-01</td>
+		<td class="center date">-</td>
+		<td class="center">
+			<a href="./goods_icon_register.php?sno=3" class="btn btn-white btn-xs"> 수정</a>
+		</td>
+	</tr>
+	<tr>
+		<td class="center"><input type="checkbox" name="sno[4]" value="4"/></td>
+		<td class="center number">5</td>
+		<td class="hand" onclick="show_popup('./goods_icon_register.php?popupMode=yes&sno=4')">인기상품</td>
+		<td class="center"><img src="https://gdadmin.plus.godomall.com:14003/data/icon/goods_icon/icon_hot.png"  alt="인기상품" title="인기상품" class="middle"  /></td>
+		<td class="center">무제한용</td>
+		<td class="center">사용</td>
+		<td class="center date">2020-01-01</td>
+		<td class="center date">-</td>
+		<td class="center">
+			<a href="./goods_icon_register.php?sno=4" class="btn btn-white btn-xs"> 수정</a>
+		</td>
+	</tr>
+	<tr>
+		<td class="center"><input type="checkbox" name="sno[5]" value="5"/></td>
+		<td class="center number">4</td>
+		<td class="hand" onclick="show_popup('./goods_icon_register.php?popupMode=yes&sno=5')">추천상품</td>
+		<td class="center"><img src="https://gdadmin.plus.godomall.com:14003/data/icon/goods_icon/icon_recommend.png"  alt="추천상품" title="추천상품" class="middle"  /></td>
+		<td class="center">무제한용</td>
+		<td class="center">사용</td>
+		<td class="center date">2020-01-01</td>
+		<td class="center date">-</td>
+		<td class="center">
+			<a href="./goods_icon_register.php?sno=5" class="btn btn-white btn-xs"> 수정</a>
+		</td>
+	</tr>
+	<tr>
+		<td class="center"><input type="checkbox" name="sno[6]" value="6"/></td>
+		<td class="center number">3</td>
+		<td class="hand" onclick="show_popup('./goods_icon_register.php?popupMode=yes&sno=6')">세일상품</td>
+		<td class="center"><img src="https://gdadmin.plus.godomall.com:14003/data/icon/goods_icon/icon_sale.png"  alt="세일상품" title="세일상품" class="middle"  /></td>
+		<td class="center">무제한용</td>
+		<td class="center">사용</td>
+		<td class="center date">2020-01-01</td>
+		<td class="center date">-</td>
+		<td class="center">
+			<a href="./goods_icon_register.php?sno=6" class="btn btn-white btn-xs"> 수정</a>
+		</td>
+	</tr>
+	<tr>
+		<td class="center"><input type="checkbox" name="sno[7]" value="7"/></td>
+		<td class="center number">2</td>
+		<td class="hand" onclick="show_popup('./goods_icon_register.php?popupMode=yes&sno=7')">기획상품</td>
+		<td class="center"><img src="https://gdadmin.plus.godomall.com:14003/data/icon/goods_icon/icon_plan.png"  alt="기획상품" title="기획상품" class="middle"  /></td>
+		<td class="center">무제한용</td>
+		<td class="center">사용</td>
+		<td class="center date">2020-01-01</td>
+		<td class="center date">-</td>
+		<td class="center">
+			<a href="./goods_icon_register.php?sno=7" class="btn btn-white btn-xs"> 수정</a>
+		</td>
+	</tr>
+	<tr>
+		<td class="center"><input type="checkbox" name="sno[8]" value="8"/></td>
+		<td class="center number">1</td>
+		<td class="hand" onclick="show_popup('./goods_icon_register.php?popupMode=yes&sno=8')">예약상품</td>
+		<td class="center"><img src="https://gdadmin.plus.godomall.com:14003/data/icon/goods_icon/icon_reservation.png"  alt="예약상품" title="예약상품" class="middle"  /></td>
+		<td class="center">기간제한용</td>
+		<td class="center">사용</td>
+		<td class="center date">2020-01-01</td>
+		<td class="center date">-</td>
+		<td class="center">
+			<a href="./goods_icon_register.php?sno=8" class="btn btn-white btn-xs"> 수정</a>
+		</td>
+	</tr>
+	</tbody>
+	</table>
+
+
+	<div class="table-action">
+		<div class="pull-left">
+			<button type="button" class="btn btn-white checkDelete">선택 삭제</button>
+		</div>
+	</div>
+
+
+	</form>
+	<div class="center"><nav><ul class="pagination pagination-sm"><li class="active"><span>1</span></li></ul></nav></div>
+</div>
+
+                    <div class="information ">
+    <h4>안내</h4>
+    <div class="content">
+        <p><span style='font-family: "나눔고딕",NanumGothic; font-size: 9pt;'><strong>[상품 정보] 전용아이콘은&nbsp; 무엇인가요?</strong></span><br><span style='font-family: "나눔고딕",NanumGothic; font-size: 9pt;'>· 시스템에서 기본으로 제공하는 아이콘으로 "품절 / 쿠폰 / 마일리지 / 옵션" 아이콘이 상품와 상품정보에 맞게 시스템이 자동으로 쇼핑몰에 노출합니다.</span><br><span style='font-family: "나눔고딕",NanumGothic; font-size: 9pt;'>&nbsp; (전용아이콘 삭제는 불가능합니다.)</span><span style='line-height: 1.5; font-family: "나눔고딕",NanumGothic; font-size: 9pt;'>&nbsp;</span></p><p><span style='line-height: 1.5; font-family: "나눔고딕",NanumGothic; font-size: 9pt;'>&nbsp;</span></p><p><span style='font-family: "나눔고딕",NanumGothic; font-size: 9pt;'><strong>[상품 정보] 무제한용 아이콘은 무엇인가요?</strong></span><br><span style='font-family: "나눔고딕",NanumGothic; font-size: 9pt;'>· 운영자가 필요에따라 추가 등록이 가능한 아이콘으로 노출 기간에 제한이 없이&nbsp; 쇼핑몰에 노출합니다.</span><br><span style='font-family: "나눔고딕",NanumGothic; font-size: 9pt;'>· 등록된 무제한용 아이콘은 "상품 &gt; 상품 관리 &gt; 상품 등록 &gt; 아이콘" 항목과 "상품 &gt; 상품 일괄 관리 &gt; 상품 아이콘/대표색상 관리" 메뉴에 노출되며,</span><br><span style='font-family: "나눔고딕",NanumGothic; font-size: 9pt;'>&nbsp; 운영자가 상품 등록 / 수정 시 쇼핑몰 화면에 노출할 아이콘을 상품별로 추가 / 삭제할 수 있습니다.</span><span style='line-height: 1.5; font-family: "나눔고딕",NanumGothic; font-size: 9pt;'>&nbsp;</span></p><p><span style='line-height: 1.5; font-family: "나눔고딕",NanumGothic; font-size: 9pt;'>&nbsp;</span></p><p><span style='font-family: "나눔고딕",NanumGothic; font-size: 9pt;'><strong>[상품 정보] 기간제한용 아이콘은 무엇인가요?</strong></span><br><span style='font-family: "나눔고딕",NanumGothic; font-size: 9pt;'>· 운영자가 필요에 따라 추가 등록이 가능한 아이콘으로, 설정된 기간 동안에만 쇼핑몰에 노출합니다.</span><br><span style='font-family: "나눔고딕",NanumGothic; font-size: 9pt;'>· 등록된 기간제한용 아이콘은 "상품 &gt; 상품 관리 &gt; 상품 등록 &gt; 아이콘" 항목과 "상품 &gt; 상품 일괄 관리 &gt; 상품 아이콘/대표색상 관리" 메뉴에 노출되며,</span><br><span style='font-family: "나눔고딕",NanumGothic; font-size: 9pt;'>&nbsp; 운영자가 상품 등록 / 수정 시 쇼핑몰 화면에 노출할 아이콘을 상품별로 노출일자인 "시작일 / 종료일"을 지정하거나 추가 / 삭제할 수 있습니다.</span></p>    </div>
+</div>
+                </div>
+            </div>
+
+
+
+</th:block>
+
+
+</html>

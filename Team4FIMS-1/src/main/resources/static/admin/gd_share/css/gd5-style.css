@@ -93,7 +93,7 @@ label {
 
 /* 로딩 */
 .loading {
-    background: url(../img/icon_loading.gif) no-repeat 50% 50%;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_loading.gif) no-repeat 50% 50%;
 }
 
 /* 플로팅 클리어 */
@@ -806,10 +806,10 @@ tfoot > tr.text-right td,
 }
 
 .gd-help-manual a.link-help:hover {
-    background-image: url(../img/btn_manual_3depth_on.png);
+    background-image: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/btn_manual_3depth_on.png);
 }
 
-/*.gd-help-manual a.link-help {display:inline-block; width:20px; background:url('../img/icon_question_off.png') no-repeat left 50%; text-indent:-99999px;}*/
+/*.gd-help-manual a.link-help {display:inline-block; width:20px; background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_question_off.png') no-repeat left 50%; text-indent:-99999px;}*/
 
 /***********************************************
  ** 기본 레이이웃
@@ -853,7 +853,7 @@ tfoot > tr.text-right td,
 }
 #gnbNoticeBox .close{
     margin: 10px 10px 0 0;
-    background: url(../img/btn_gnb_notice_close.png) no-repeat 50% 50%;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/btn_gnb_notice_close.png) no-repeat 50% 50%;
     text-indent: -9000px;
     width: 10px;
     height: 9px;
@@ -866,7 +866,7 @@ tfoot > tr.text-right td,
     color: #333;
 }
 #gnbNoticeBox .notice-title {
-    background: url(../img/ico_notice.png) no-repeat left 5px;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/ico_notice.png) no-repeat left 5px;
     padding:2px 0 0 20px;
     font-weight: bold;
 }
@@ -923,14 +923,14 @@ tfoot > tr.text-right td,
     width: 28px;
     height: 17px;
     margin-top: 14px;
-    background-image: url('../img/icon_pro.png');
+    background-image: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_pro.png');
     background-repeat: no-repeat;
 }
 
 #header .navbar-header .pro_plus {
     width: 35px;
     height: 17px;
-    background-image: url('../img/icon_pro_plus.png');
+    background-image: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_pro_plus.png');
     background-repeat: no-repeat;
 }
 
@@ -938,7 +938,7 @@ tfoot > tr.text-right td,
     width: 300px;
     /*height: 17px;*/
     padding-left: 20px;
-    background-image: url('../img/icon_expire.png');
+    background-image: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_expire.png');
     background-repeat: no-repeat;
     vertical-align: top;
     margin-left: 11px;
@@ -947,12 +947,12 @@ tfoot > tr.text-right td,
 }
 
 #header .navbar-header .expire_info {
-    background: url('../img/icon_expire.png') no-repeat left 2px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_expire.png') no-repeat left 2px;
     color: #ccc;
 }
 
 #header .navbar-header .expire_warning {
-    background: url('../img/icon_expire_warning.png') no-repeat left 4px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_expire_warning.png') no-repeat left 4px;
     color: #ccc;
     margin-top: 12px;
 }
@@ -1145,7 +1145,7 @@ header gnb dropdown UI
     left: 10px;
     width: 6px;
     height: 6px;
-    background: url(../img/dropdown-arr.png) 0 0 no-repeat;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/dropdown-arr.png) 0 0 no-repeat;
 }
 #header .gnb-dropdown-menu .dropdown-item:after{
     content: '';
@@ -1154,7 +1154,7 @@ header gnb dropdown UI
     left: 10px;
     width: 6px;
     height: 6px;
-    background: url(../img/dropdown-arr.png) right 0 no-repeat;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/dropdown-arr.png) right 0 no-repeat;
 }
 #header .gnb-dropdown-menu .dropdown-head+.dropdown-item:after,
 #header .gnb-dropdown-menu .dropdown-item+.dropdown-item:after{
@@ -1464,47 +1464,47 @@ header gnb dropdown UI
 }
 
 #menu .policy {
-    background: url(../img/icon_menu_policy.png) center 0px no-repeat;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_menu_policy.png) center 0px no-repeat;
 }
 #menu .goods {
-    background: url(../img/icon_menu_goods.png) center 0px no-repeat;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_menu_goods.png) center 0px no-repeat;
 }
 #menu .order {
-    background: url(../img/icon_menu_order.png) center 0px no-repeat;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_menu_order.png) center 0px no-repeat;
 }
 #menu .member {
     background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_menu_member.png) center 0px no-repeat;
 }
 #menu .board {
-    background: url(../img/icon_menu_board.png) center 0px no-repeat;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_menu_board.png) center 0px no-repeat;
 }
 #menu .promotion {
-    background: url(../img/icon_menu_promotion.png) center 0px no-repeat;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_menu_promotion.png) center 0px no-repeat;
 }
 #menu .design {
-    background: url(../img/icon_menu_design.png) center 0px no-repeat;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_menu_design.png) center 0px no-repeat;
 }
 #menu .service {
-    background: url(../img/icon_menu_service.png) center 0px no-repeat;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_menu_service.png) center 0px no-repeat;
 }
 #menu .marketing {
-    background: url(../img/icon_menu_marketing.png) center 0px no-repeat;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_menu_marketing.png) center 0px no-repeat;
 }
 #menu .mobile {
-    background: url(../img/icon_menu_mobile.png) center 0px no-repeat;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_menu_mobile.png) center 0px no-repeat;
 }
 #menu .scm {
-    background: url(../img/icon_menu_scm.png) center 0px no-repeat;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_menu_scm.png) center 0px no-repeat;
 }
 #menu .statistics {
-    background: url(../img/icon_menu_statistics.png) center 0px no-repeat;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_menu_statistics.png) center 0px no-repeat;
 }
 
 #menu .plusShop, #menu .plusshop {
-    background: url(../img/icon_menu_plusshop.png) center 0px no-repeat;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_menu_plusshop.png) center 0px no-repeat;
 }
 #menu .myapp {
-    background: url(../img/icon_menu_myapp.svg) center 0px no-repeat;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_menu_myapp.svg) center 0px no-repeat;
 }
 
 #menu .panel {
@@ -1773,7 +1773,7 @@ header gnb dropdown UI
 #content .page-header .close {
     floar: right;
     margin-top: -33px;
-    background: url(../img/btn_layer_close.png) no-repeat 50% 50%;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/btn_layer_close.png) no-repeat 50% 50%;
     text-indent: -9000px;
     width: 22px;
     height: 22px;
@@ -1843,7 +1843,7 @@ button.js-tooltip {
     border: none;
     text-indent: -9000px;
     padding: 2px;
-    background: #fff url(../img/del.png) no-repeat;
+    background: #fff url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/del.png) no-repeat;
 }
 
 .menu-no-border #content-wrap {
@@ -1882,7 +1882,7 @@ button.js-tooltip {
 }
 
 .js-listgroup-toggle.active {
-    background: url(../img/lnb_list_close.png);
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/lnb_list_close.png);
 }
 
 .js-layer-crm {
@@ -2884,7 +2884,7 @@ fieldset[disabled] .btn-red.active {
 .btn-red-line:focus {
     background-color: #FFFFFF;
     background-position: 0 -15px;
-    background: url(../img/icon_plus_s_on.png) no-repeat 10px 50%;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_plus_s_on.png) no-repeat 10px 50%;
     border-color: #CA1717;
     color: #CA1717;
     font-weight: bold;
@@ -2908,7 +2908,7 @@ fieldset[disabled] .btn-red.active {
 .table-cols td .btn-red-line:focus {
     background-color: #FFFFFF;
     background-position: 0 -15px;
-    background: url(../img/icon_plus_s_on.png) no-repeat 10px 6px;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_plus_s_on.png) no-repeat 10px 6px;
     border-color: #CA1717;
     color: #CA1717;
     font-weight: bold;
@@ -3054,7 +3054,7 @@ fieldset[disabled] .btn-red-box.active {
     margin-top: 10px;
     padding: 7px 0 5px;
     display: none;
-    background: url(../img/dot-3x1-a8a8a8.png) repeat-x left top;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/dot-3x1-a8a8a8.png) repeat-x left top;
 }
 
 .selected-btn-group.no-dot {
@@ -3096,11 +3096,11 @@ fieldset[disabled] .btn-red-box.active {
 }
 
 .icon-tooltip:hover {
-    background: url('../img/icon_tooltip_on.png') no-repeat;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_tooltip_on.png') no-repeat;
 }
 
 .btn-icon-check-bottom {
-    background: url(../img/btn_icon_check_off.png) no-repeat 50% 25px;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/btn_icon_check_off.png) no-repeat 50% 25px;
     padding-bottom: 20px;
     height:48px;
     color:#ff1414;
@@ -3108,51 +3108,51 @@ fieldset[disabled] .btn-red-box.active {
 }
 
 .btn-icon-check-bottom:hover {
-    background: #f91d11 url(../img/btn_icon_check_on.png) no-repeat 50% 25px;
+    background: #f91d11 url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/btn_icon_check_on.png) no-repeat 50% 25px;
     color:#fff;
     border:1px solid #f91d11;
 }
 
 .btn-icon-plus-bottom {
-    background: #fff url(../img/icon_plus_s_off.png) no-repeat 50% 25px;
+    background: #fff url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_plus_s_off.png) no-repeat 50% 25px;
     padding-bottom: 20px;
     height:48px;
 }
 
 .btn-icon-plus-bottom:hover {
-    background: #fff url(../img/icon_plus_s_on.png) no-repeat 50% 25px;
+    background: #fff url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_plus_s_on.png) no-repeat 50% 25px;
     padding-bottom: 20px;
     height:48px;
 }
 
 .btn-icon-plus-bottom[disabled],
 .btn-icon-plus-bottom[disabled]:hover {
-    background-image: url(../img/icon_plus_off.png);
+    background-image: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_plus_off.png);
 }
 
 .btn-icon-source-bottom {
-    background: #fff url(../img/development/view_icon_off.png) no-repeat 50% 42px;
+    background: #fff url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/development/view_icon_off.png) no-repeat 50% 42px;
     padding-bottom: 20px;
     height: 63px;
 }
 
 .btn-icon-source-bottom:hover {
-    background: #fff url(../img/development/view_icon_on.png) no-repeat 50% 42px;
+    background: #fff url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/development/view_icon_on.png) no-repeat 50% 42px;
 }
 
 .btn-icon-source-bottom[disabled],
 .btn-icon-source-bottom[disabled]:hover {
-    background-image: url(../img/development/view_icon_off.png);
+    background-image: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/development/view_icon_off.png);
 }
 
 .btn-icon-minus-bottom {
-    background: #fff url(../img/icon_minus_off.png) no-repeat 50% 25px;
+    background: #fff url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_minus_off.png) no-repeat 50% 25px;
     padding-bottom: 20px;
     height:48px;
 }
 
 .btn-icon-minus-bottom:hover {
-    background: #fff url(../img/icon_minus_on.png) no-repeat 50% 25px;
+    background: #fff url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_minus_on.png) no-repeat 50% 25px;
 }
 
 
@@ -3168,7 +3168,7 @@ fieldset[disabled] .btn-red-box.active {
 }
 
 .btn-icon-plus:hover {
-    background:#fff url(../img/icon_plus_s_on.png) no-repeat 10px 50%;
+    background:#fff url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_plus_s_on.png) no-repeat 10px 50%;
 }
 
 .btn-sm.btn-icon-plus:hover {
@@ -3177,7 +3177,7 @@ fieldset[disabled] .btn-red-box.active {
 
 .btn-icon-minus {
     margin:0 10px 0 0;
-    background:#fff url(../img/icon_minus_s_off.png) no-repeat 10px 50%;
+    background:#fff url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_minus_s_off.png) no-repeat 10px 50%;
     padding-left: 25px;
 }
 
@@ -3187,7 +3187,7 @@ fieldset[disabled] .btn-red-box.active {
 }
 
 .btn-icon-minus:hover {
-    background:#fff url(../img/icon_minus_s_on.png) no-repeat 10px 50%;
+    background:#fff url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_minus_s_on.png) no-repeat 10px 50%;
 }
 
 .btn-sm.btn-icon-minus:hover {
@@ -3201,7 +3201,7 @@ fieldset[disabled] .btn-red-box.active {
 
 .btn-icon-excel:focus,
 .btn-icon-excel:hover {
-    background: url(../img/icon_excel_on.png) no-repeat 10px 50%;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_excel_on.png) no-repeat 10px 50%;
     font-weight:normal;
 }
 
@@ -3212,46 +3212,46 @@ fieldset[disabled] .btn-red-box.active {
 
 .btn-icon-list:focus,
 .btn-icon-list:hover {
-    background:#fff url(../img/icon_list.png) no-repeat 15px 55%;
+    background:#fff url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_list.png) no-repeat 15px 55%;
 }
 .btn-icon-print {
-    background: url(../img/icon_print_off.png) no-repeat 10px 50%;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_print_off.png) no-repeat 10px 50%;
     padding-left: 32px;
 }
 
 .btn-icon-print:focus,
 .btn-icon-print:hover {
-    background: url(../img/icon_print_on.png) no-repeat 10px 50%;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_print_on.png) no-repeat 10px 50%;
 }
 
 .btn-icon-tax-common {
-    background: url(../img/icon_tax_common.png) no-repeat 10px 50%;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_tax_common.png) no-repeat 10px 50%;
     padding-left: 32px;
 }
 
 .btn-icon-tax-common:focus,
 .btn-icon-tax-common:hover {
-    background: url(../img/icon_tax_common.png) no-repeat 10px 50%;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_tax_common.png) no-repeat 10px 50%;
 }
 
 .btn-icon-tax-godobill {
-    background: url(../img/icon_tax_godobill.png) no-repeat 10px 50%;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_tax_godobill.png) no-repeat 10px 50%;
     padding-left: 32px;
 }
 
 .btn-icon-tax-godobill:focus,
 .btn-icon-tax-godobill:hover {
-    background: url(../img/icon_tax_godobill.png) no-repeat 10px 50%;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_tax_godobill.png) no-repeat 10px 50%;
 }
 
 
 .btn-icon-passwd {
-    background: url(../img/icon_question_login_off.png) no-repeat right 50%;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_question_login_off.png) no-repeat right 50%;
     padding-right: 23px;
 }
 
 .btn-icon-passwd:hover {
-    background: url(../img/icon_question_login_on.png) no-repeat right 50%;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_question_login_on.png) no-repeat right 50%;
 }
 
 .btn-icon-mail {
@@ -3259,12 +3259,12 @@ fieldset[disabled] .btn-red-box.active {
     padding: 0;
     width: 24px;
     height: 24px;
-    background: url(../img/btn_mail.png) no-repeat left top;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/btn_mail.png) no-repeat left top;
 }
 
 .btn-icon-goods-must-info-01 {
     margin:0 10px 0 0;
-    background-image:url(../img/goods_must_info_01.png);
+    background-image:url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/goods_must_info_01.png);
     background-repeat: no-repeat;
     background-position:5px 50%;
     padding-left:35px;
@@ -3272,7 +3272,7 @@ fieldset[disabled] .btn-red-box.active {
 
 .btn-icon-goods-must-info-02 {
     margin:0 1px 0 0;
-    background-image:url(../img/goods_must_info_02.png);
+    background-image:url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/goods_must_info_02.png);
     background-repeat: no-repeat,no-repeat;
     background-position:5px 50%;
     padding-left: 60px;
@@ -3281,7 +3281,7 @@ fieldset[disabled] .btn-red-box.active {
 .btn-icon-goods-must-info-01:focus,
 .btn-icon-goods-must-info-01:hover {
     margin:0 10px 0 0;
-    background-image:url(../img/goods_must_info_01.png);
+    background-image:url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/goods_must_info_01.png);
     background-repeat: no-repeat;
     background-position: 5px 50%;
     padding-left:35px;
@@ -3289,7 +3289,7 @@ fieldset[disabled] .btn-red-box.active {
 
 .btn-icon-goods-must-info-02:focus,
 .btn-icon-goods-must-info-02:hover {
-    background-image:url(../img/goods_must_info_02.png);
+    background-image:url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/goods_must_info_02.png);
     background-repeat: no-repeat;
     background-position:5px 50%;
     padding-left: 60px;
@@ -3318,7 +3318,7 @@ fieldset[disabled] .btn-red-box.active {
 
 .btn-icon-bottom:focus ,
 .btn-icon-bottom:hover {
-    background: url(../img/icon_arrow_down2_on.png) no-repeat 50% 50%;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_arrow_down2_on.png) no-repeat 50% 50%;
 }
 
 .btn-icon-down {
@@ -3327,7 +3327,7 @@ fieldset[disabled] .btn-red-box.active {
 
 .btn-icon-down:focus,
 .btn-icon-down:hover {
-    background: url(../img/icon_arrow_down_on.png) no-repeat 50% 50%;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_arrow_down_on.png) no-repeat 50% 50%;
 }
 
 .btn-icon-up {
@@ -3335,7 +3335,7 @@ fieldset[disabled] .btn-red-box.active {
 }
 .btn-icon-up:focus,
 .btn-icon-up:hover {
-    background: url(../img/icon_arrow_top_on.png) no-repeat 50% 50%;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_arrow_top_on.png) no-repeat 50% 50%;
 }
 
 .btn-icon-top {
@@ -3344,49 +3344,49 @@ fieldset[disabled] .btn-red-box.active {
 
 .btn-icon-top:focus,
 .btn-icon-top:hover {
-    background: url(../img/icon_arrow_top2_on.png) no-repeat 50% 50%;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_arrow_top2_on.png) no-repeat 50% 50%;
 }
 
 .btn-icon-left {
-    background: url(../img/btn_icon_plus.png) no-repeat 50% 50%;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/btn_icon_plus.png) no-repeat 50% 50%;
 }
 
 .btn-icon-left:focus,
 .btn-icon-left:hover {
-    background: url(../img/btn_icon_plus_over.png) no-repeat 50% 50%;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/btn_icon_plus_over.png) no-repeat 50% 50%;
 }
 
 .btn-icon-right {
-    background: url(../img/btn_icon_minus.png) no-repeat 50% 50%;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/btn_icon_minus.png) no-repeat 50% 50%;
 }
 
 .btn-icon-right:focus,
 .btn-icon-right:hover {
-    background: url(../img/btn_icon_minus_over.png) no-repeat 50% 50%;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/btn_icon_minus_over.png) no-repeat 50% 50%;
 }
 
 .btn-icon-left-all {
-    background: url(../img/btn_icon_plus.png) no-repeat 50% 35px;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/btn_icon_plus.png) no-repeat 50% 35px;
     padding-bottom: 30px;
     height:54px;
 }
 
 .btn-icon-left-all:focus,
 .btn-icon-left-all:hover {
-    background: url(../img/btn_icon_plus_over.png) no-repeat 50% 35px;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/btn_icon_plus_over.png) no-repeat 50% 35px;
     padding-bottom: 30px;
     height:54px;
 }
 
 .btn-icon-right-all {
-    background: url(../img/btn_icon_minus.png) no-repeat 50% 35px;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/btn_icon_minus.png) no-repeat 50% 35px;
     padding-bottom: 30px;
     height:54px;
 }
 
 .btn-icon-right-all:focus,
 .btn-icon-right-all:hover {
-    background: url(../img/btn_icon_minus_over.png) no-repeat 50% 35px;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/btn_icon_minus_over.png) no-repeat 50% 35px;
     padding-bottom: 30px;
     height:54px;
 }
@@ -3403,7 +3403,7 @@ fieldset[disabled] .btn-red-box.active {
     padding: 0;
     width: 24px;
     height: 24px;
-    background: url(../img/btn_sms.png) no-repeat left top;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/btn_sms.png) no-repeat left top;
 }
 
 .btn-icon-setting {
@@ -3420,7 +3420,7 @@ fieldset[disabled] .btn-red-box.active {
     padding: 0;
     width: 21px;
     height: 21px;
-    background: url(../img/icon_setting_on.png) no-repeat 50% 50%;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_setting_on.png) no-repeat 50% 50%;
 }
 
 .btn-icon-refresh {
@@ -3438,7 +3438,7 @@ fieldset[disabled] .btn-red-box.active {
     padding: 0;
     width: 21px;
     height: 21px;
-    background: url(../img/main_statistics/ico_refresh_on.png) no-repeat 50% 50%;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/main_statistics/ico_refresh_on.png) no-repeat 50% 50%;
 }
 
 /*.btn-icon-fold-on:hover {
@@ -3446,7 +3446,7 @@ fieldset[disabled] .btn-red-box.active {
     padding: 0;
     width: 21px;
     height: 21px;
-    background: url(../img/icon_detailsearch_close_on.png) no-repeat 50% 50%;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_detailsearch_close_on.png) no-repeat 50% 50%;
 }
 
 .btn-icon-fold-off:hover {
@@ -3454,7 +3454,7 @@ fieldset[disabled] .btn-red-box.active {
     padding: 0;
     width: 21px;
     height: 21px;
-    background: url(../img/icon_detailsearch_close_off.png) no-repeat 50% 50%;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_detailsearch_close_off.png) no-repeat 50% 50%;
 }*/
 
 .main-section .btn-icon-fold-off {
@@ -3470,7 +3470,7 @@ fieldset[disabled] .btn-red-box.active {
     padding: 0;
     width: 67px;
     height: 21px;
-    background: url(../img/icon_arrow_memo_down.gif) no-repeat 100% 50%;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_arrow_memo_down.gif) no-repeat 100% 50%;
     font-size: 11px;
     color: #333333;
 }
@@ -3480,7 +3480,7 @@ fieldset[disabled] .btn-red-box.active {
     padding: 0;
     width: 24px;
     height: 24px;
-    background: url(../img/btn_cs.png) no-repeat left top;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/btn_cs.png) no-repeat left top;
 }
 
 .btn-icon-calendar {
@@ -3492,17 +3492,17 @@ fieldset[disabled] .btn-red-box.active {
 }
 
 .btn-icon-calendar:hover {
-    background: url(../img/icon_calendar_over.png) no-repeat 50% 50%;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_calendar_over.png) no-repeat 50% 50%;
 }
 
 .btn-icon-delete {
     text-indent: -9000px;
     padding: 0 5px;
-    background: url(../img/btn_delete_off.png) no-repeat 50% 50%;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/btn_delete_off.png) no-repeat 50% 50%;
 }
 
 .btn-icon-delete:hover {
-    background: url(../img/btn_delete_on.png) no-repeat 50% 50%;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/btn_delete_on.png) no-repeat 50% 50%;
 }
 
 /***********************************************
@@ -3764,10 +3764,10 @@ fieldset[disabled] .btn-red-box.active {
     padding-left: 14px;
 }
 .table .val-down{
-    background:url(../img/icon_down.png) left center no-repeat;
+    background:url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_down.png) left center no-repeat;
 }
 .table .val-up{
-    background:url(../img/icon_up.png) left center no-repeat;
+    background:url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_up.png) left center no-repeat;
 }
 
 .table > tbody + tbody {
@@ -4541,7 +4541,7 @@ fieldset[disabled] .btn-red-box.active {
 /*.table-action input,.table-header select,.panel-heading select,.table-action select {height:21px;padding: 0 6px;}*/
 .table-action .action-title {
     display:inline-block;
-    background: url(../img/check.png) no-repeat left 4px;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/check.png) no-repeat left 4px;
     padding-left: 17px;
     margin-right: 7px;
     vertical-align:-4px;
@@ -4587,7 +4587,7 @@ fieldset[disabled] .btn-red-box.active {
     left: 10px;
     width: 6px;
     height: 6px;
-    background: url(../img/dropdown-arr.png) right 0 no-repeat;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/dropdown-arr.png) right 0 no-repeat;
 }
 
 .table-action-dropdown .pull-right {
@@ -4615,7 +4615,7 @@ fieldset[disabled] .btn-red-box.active {
 }
 
 .search-detail-box .js-search-toggle:hover {
-    background-image: url(../img/icon_detailsearch_open_on.png);
+    background-image: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_detailsearch_open_on.png);
 }
 
 .search-detail-box .js-search-toggle.opened {
@@ -4623,7 +4623,7 @@ fieldset[disabled] .btn-red-box.active {
 }
 
 .search-detail-box .js-search-toggle.opened:hover {
-    background-image: url(../img/icon_detailsearch_close_on.png);
+    background-image: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_detailsearch_close_on.png);
 }
 
 .bootstrap-maxlength.label-success {
@@ -4661,11 +4661,11 @@ textarea.js-maxlength {
 
 .js-pay-toggle {
     text-indent: -9999px;
-    background: url(../img/layerbox_arrow_down.png) no-repeat 50% 50%;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/layerbox_arrow_down.png) no-repeat 50% 50%;
 }
 
 .js-pay-toggle.active {
-    background-image: url(../img/layerbox_arrow_up.png);
+    background-image: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/layerbox_arrow_up.png);
 }
 
 th .js-pay-toggle {
@@ -4788,7 +4788,7 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]:disabled {
-    background: url(../img/checkbox_disabled_off.png) no-repeat 0 0;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/checkbox_disabled_off.png) no-repeat 0 0;
 }
 
 input[type="checkbox"]:checked {
@@ -4796,7 +4796,7 @@ input[type="checkbox"]:checked {
 }
 
 input[type="checkbox"]:checked:disabled {
-    background: url(../img/checkbox_disabled_on.png) no-repeat 0 0;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/checkbox_disabled_on.png) no-repeat 0 0;
 }
 
 label.checkbox-lg {
@@ -4808,13 +4808,13 @@ label.checkbox-lg input[type="checkbox"],
 input[type="checkbox"].input-lg {
     width: 18px;
     height: 18px;
-    background: url(../img/checkbox_login_off.png) no-repeat 0 0;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/checkbox_login_off.png) no-repeat 0 0;
     margin-left: -25px;
 }
 
 label.checkbox-lg input[type="checkbox"]:checked,
 input[type="checkbox"]:checked.input-lg {
-    background: url(../img/checkbox_login_on.png) no-repeat 0 0;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/checkbox_login_on.png) no-repeat 0 0;
 }
 
 select:hover {
@@ -5511,7 +5511,7 @@ caption.notice-danger {
     height: 17px;
     font-size: 12px;
     color: #747474;
-    background: url("../img/icon_caution.png") no-repeat left 2px;
+    background: url("https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_caution.png") no-repeat left 2px;
     padding: 0 0 0 18px;
     margin: 10px 0 0 0;
 }
@@ -5622,15 +5622,15 @@ caption.notice-danger {
 }
 
 .crm-summary-right li .icon-mileage {
-    background: url(../img/icon_gmileage.png) no-repeat left 50%;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_gmileage.png) no-repeat left 50%;
 }
 
 .crm-summary-right li .icon-deposit {
-    background: url(../img/icon_deposit.png) no-repeat left 50%;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_deposit.png) no-repeat left 50%;
 }
 
 .crm-summary-right li .icon-coupon {
-    background: url(../img/icon_coupon.png) no-repeat left 50%;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_coupon.png) no-repeat left 50%;
 }
 
 .crm-summary-right li div {
@@ -5768,7 +5768,7 @@ caption.notice-danger {
 }
 .btn-icon-plus-red-box {
     margin: 0;
-    background: #fff url(../img/icon_plus_s_on.png) no-repeat 10px 50%;
+    background: #fff url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_plus_s_on.png) no-repeat 10px 50%;
     padding-left: 25px;
     color: #ff0000;
     border: 1px solid #ff0000;
@@ -6257,7 +6257,7 @@ caption.notice-danger {
 /*}*/
 
 .main-content .col-xs-3 .sub-sector table.qa-board-table tr td.second-child {
-    background: url('../img/dotted_vertical.gif') right repeat-y;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/dotted_vertical.gif') right repeat-y;
 }
 
 .main-content .col-xs-3 .sub-sector table.qa-board-table tr td.count {
@@ -6468,7 +6468,7 @@ select.form-control{
 
 .table-title .pull-right .memo-action {
     display: inline-block;
-    background: url("../img/bar_13px.gif") no-repeat 63% center;
+    background: url("https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/bar_13px.gif") no-repeat 63% center;
 }
 
 .gnb ul {
@@ -6485,7 +6485,7 @@ select.form-control{
 }
 
 .gnb ul > li {
-    /*background: url('../img/bar_gnb.gif') no-repeat right;*/
+    /*background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/bar_gnb.gif') no-repeat right;*/
     padding: 0;
 }
 
@@ -6735,16 +6735,16 @@ select.form-control{
     color:#ff1414;
 }
 .btn-group-vertical.center-block.pop-pam .btn-add {
-    background:url('../img/icon_b_plus_off.png') no-repeat center 25px;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_b_plus_off.png') no-repeat center 25px;
 }
 .btn-group-vertical.center-block.pop-pam .btn-add:hover {
-    background:url('../img/icon_b_plus_on.png') no-repeat center 25px;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_b_plus_on.png') no-repeat center 25px;
 }
 .btn-group-vertical.center-block.pop-pam .btn-del {
-    background:url('../img/icon_b_minus_off.png') no-repeat center 32px;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_b_minus_off.png') no-repeat center 32px;
 }
 .btn-group-vertical.center-block.pop-pam .btn-del:hover {
-    background:url('../img/icon_b_minus_on.png') no-repeat center 32px;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_b_minus_on.png') no-repeat center 32px;
 }
 .btn-group-vertical.center-block.pop-pam button span {
     position:relative;
@@ -6752,10 +6752,10 @@ select.form-control{
 }
 .btn-group-vertical.center-block.pop-pam > div .btn-choice {
     height:66px;
-    background:url('../img/icon_b_check_off.png') no-repeat center 45px;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_b_check_off.png') no-repeat center 45px;
 }
 .btn-group-vertical.center-block.pop-pam > div .btn-choice:hover {
-    background:url('../img/icon_b_check_on.png') no-repeat center 45px;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_b_check_on.png') no-repeat center 45px;
 }
 .btn-group-vertical.center-block.pop-pam > div .btn-choice span {
     top:-8px;
@@ -7141,173 +7141,173 @@ select.form-control{
     width:25%;
 }
 .main-section .content.order.reform .item-o1 a {
-    background: url('../img/order_status/o1.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/o1.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-p1 a {
-    background: url('../img/order_status/p1.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/p1.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-g1 a {
-    background: url('../img/order_status/g1.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/g1.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-g2 a {
-    background: url('../img/order_status/g2.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/g2.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-g3 a {
-    background: url('../img/order_status/g3.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/g3.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-g4 a {
-    background: url('../img/order_status/g4.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/g4.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-d1 a {
-    background: url('../img/order_status/d1.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/d1.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-d2 a {
-    background: url('../img/order_status/d2.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/d2.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-s1 a {
-    background: url('../img/order_status/s1.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/s1.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-c1 a {
-    background: url('../img/order_status/c1.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/c1.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-c2 a {
-    background: url('../img/order_status/c2.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/c2.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-c3 a {
-    background: url('../img/order_status/c3.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/c3.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-c4 a {
-    background: url('../img/order_status/c4.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/c4.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-f1 a {
-    background: url('../img/order_status/f1.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/f1.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-f2 a {
-    background: url('../img/order_status/f2.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/f2.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-f3 a {
-    background: url('../img/order_status/f3.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/f3.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-b1 a {
-    background: url('../img/order_status/b1.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/b1.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-b2 a {
-    background: url('../img/order_status/b2.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/b2.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-b3 a {
-    background: url('../img/order_status/b3.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/b3.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-b4 a {
-    background: url('../img/order_status/b4.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/b4.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-e1 a {
-    background: url('../img/order_status/e1.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/e1.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-e2 a {
-    background: url('../img/order_status/e2.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/e2.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-e3 a {
-    background: url('../img/order_status/e3.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/e3.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-e4 a {
-    background: url('../img/order_status/e4.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/e4.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-e5 a {
-    background: url('../img/order_status/e5.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/e5.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-r1 a {
-    background: url('../img/order_status/r1.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/r1.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-r2 a {
-    background: url('../img/order_status/r2.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/r2.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-r3 a {
-    background: url('../img/order_status/r3.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/r3.png') no-repeat center 12px;
 }
 
 .main-section .content.order.reform .item-o1 a:hover {
-    background: url('../img/order_status/o1_ov.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/o1_ov.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-p1 a:hover {
-    background: url('../img/order_status/p1_ov.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/p1_ov.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-g1 a:hover {
-    background: url('../img/order_status/g1_ov.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/g1_ov.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-g2 a:hover {
-    background: url('../img/order_status/g2_ov.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/g2_ov.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-g3 a:hover {
-    background: url('../img/order_status/g3_ov.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/g3_ov.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-g4 a:hover {
-    background: url('../img/order_status/g4_ov.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/g4_ov.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-d1 a:hover {
-    background: url('../img/order_status/d1_ov.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/d1_ov.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-d2 a:hover {
-    background: url('../img/order_status/d2_ov.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/d2_ov.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-s1 a:hover {
-    background: url('../img/order_status/s1_ov.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/s1_ov.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-c1 a:hover {
-    background: url('../img/order_status/c1_ov.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/c1_ov.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-c2 a:hover {
-    background: url('../img/order_status/c2_ov.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/c2_ov.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-c3 a:hover {
-    background: url('../img/order_status/c3_ov.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/c3_ov.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-c4 a:hover {
-    background: url('../img/order_status/c4_ov.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/c4_ov.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-f1 a:hover {
-    background: url('../img/order_status/f1_ov.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/f1_ov.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-f2 a:hover {
-    background: url('../img/order_status/f2_ov.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/f2_ov.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-f3 a:hover {
-    background: url('../img/order_status/f3_ov.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/f3_ov.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-b1 a:hover {
-    background: url('../img/order_status/b1_ov.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/b1_ov.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-b2 a:hover {
-    background: url('../img/order_status/b2_ov.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/b2_ov.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-b3 a:hover {
-    background: url('../img/order_status/b3_ov.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/b3_ov.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-b4 a:hover {
-    background: url('../img/order_status/b4_ov.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/b4_ov.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-e1 a:hover {
-    background: url('../img/order_status/e1_ov.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/e1_ov.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-e2 a:hover {
-    background: url('../img/order_status/e2_ov.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/e2_ov.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-e3 a:hover {
-    background: url('../img/order_status/e3_ov.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/e3_ov.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-e4 a:hover {
-    background: url('../img/order_status/e4_ov.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/e4_ov.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-e5 a:hover {
-    background: url('../img/order_status/e5_ov.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/e5_ov.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-r1 a:hover {
-    background: url('../img/order_status/r1_ov.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/r1_ov.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-r2 a:hover {
-    background: url('../img/order_status/r2_ov.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/r2_ov.png') no-repeat center 12px;
 }
 .main-section .content.order.reform .item-r3 a:hover {
-    background: url('../img/order_status/r3_ov.png') no-repeat center 12px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/order_status/r3_ov.png') no-repeat center 12px;
 }
 .main-section .content.order.reform li a {
     padding:20px 15px;
@@ -7740,7 +7740,7 @@ ul#uploadBox{
 }
 
 .schedule-icon-title {
-    background: #f6f6f6 url(../img/icon_calendar.png) no-repeat 20px 22px;
+    background: #f6f6f6 url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_calendar.png) no-repeat 20px 22px;
     height: 65px;
     padding-top: 15px;
     padding-left: 15px;
@@ -7773,7 +7773,7 @@ ul#uploadBox{
     font-size: 12px;
     font-weight: bold;
     color: #333;
-    background: url('../img/check.png') no-repeat 20px 0px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/check.png') no-repeat 20px 0px;
 }
 .no-line{
     border-right: 0px !important;
@@ -8158,7 +8158,7 @@ div#sitemap .snb .nav ul.each_box li.each {
     letter-spacing: -1px;
     line-height: 26px;
     text-indent: 12px;
-    background: url('../image/ico_snb_menu.jpg') no-repeat left 6px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/image/ico_snb_menu.jpg') no-repeat left 6px;
 }
 
 div#sitemap .snb .nav ul.each_box li.each a {
@@ -8211,7 +8211,7 @@ div#sitemapIdx .nav ul.each_box li.each {
     letter-spacing: -1px;
     line-height: 26px;
     text-indent: 12px;
-    background: url('../img/ico_snb_menu.jpg') no-repeat left 6px;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/ico_snb_menu.jpg') no-repeat left 6px;
 }
 
 div#sitemapIdx .nav ul.each_box li.each a {
@@ -8236,12 +8236,12 @@ div#sitemapIdx .nav ul.each_box li.each a {
     border-top: 1px solid #888888;
 }
 .depth-toggle .depth-toggle-button {
-    background: url(../img/icon_detailsearch_close_off.png) no-repeat right 50%;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_detailsearch_close_off.png) no-repeat right 50%;
     padding-right: 8px;
 }
 
 .depth-toggle .depth-toggle-button.opened {
-    background-image: url(../img/icon_detailsearch_open_off.png);
+    background-image: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_detailsearch_open_off.png);
 }
 
 /* 검색설정 */
@@ -8271,29 +8271,29 @@ div#sitemapIdx .nav ul.each_box li.each a {
 }
 #fileList .fa-level-up, #fileList .fa-folder {
     padding-left: 22px;
-    background: transparent url(../img/design/icon_ftp_folder.gif) no-repeat left 50%;
+    background: transparent url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/design/icon_ftp_folder.gif) no-repeat left 50%;
 }
 #fileList .fa-picture-o {
     padding-left: 22px;
-    background: transparent url(../img/design/icon_ftp_img.gif) no-repeat left 50%;
+    background: transparent url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/design/icon_ftp_img.gif) no-repeat left 50%;
 }
 #fileList .fa-code, #fileList .fa-file {
     padding-left: 22px;
-    background: transparent url(../img/design/icon_ftp_file.gif) no-repeat left 50%;
+    background: transparent url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/design/icon_ftp_file.gif) no-repeat left 50%;
 }
 
 .rating {
     display: inline-block;
     width: 88px;
     height: 15px;
-    background: url('../img/board/star-bg-88x15.png') no-repeat left top;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/board/star-bg-88x15.png') no-repeat left top;
     vertical-align: middle;
     text-indent: -9999px;
 }
 
 .rating span {
     display: block;
-    background: url('../img/board/star-fill-88x15.png') no-repeat left top;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/board/star-fill-88x15.png') no-repeat left top;
 }
 
 .choice-rating li .radio {
@@ -8583,12 +8583,12 @@ div#sitemapIdx .nav ul.each_box li.each a {
 }
 
 .search-member-popup .btn-icon-check-bottom {
-    background:url('../img/btn_icon_check_off.png') no-repeat 50% 40px;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/btn_icon_check_off.png') no-repeat 50% 40px;
     height:60px;
 }
 
 .search-member-popup .btn-icon-check-bottom:hover {
-    background:#f91d11 url('../img/btn_icon_check_on.png') no-repeat 50% 40px;
+    background:#f91d11 url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/btn_icon_check_on.png') no-repeat 50% 40px;
 }
 
 .search-member-popup .btn-group-wrapper {
@@ -8610,7 +8610,7 @@ div#sitemapIdx .nav ul.each_box li.each a {
 }
 
 .global-select {
-    background: url('../img/select-arrow-down-11x7.png') center right no-repeat;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/select-arrow-down-11x7.png') center right no-repeat;
 }
 
 .main-statistics {
@@ -8720,11 +8720,11 @@ div#sitemapIdx .nav ul.each_box li.each a {
  회원가입항목 사업자정보관련
 */
 .defaultBusinessInfoRequire {
-    background: url(../img/checkbox_disabled_off.png) no-repeat 0 0 !important;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/checkbox_disabled_off.png) no-repeat 0 0 !important;
 }
 
 .defaultBusinessInfoRequire:checked {
-    background: url(../img/checkbox_disabled_on.png) no-repeat 0 0 !important;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/checkbox_disabled_on.png) no-repeat 0 0 !important;
 }
 
 /*
@@ -8797,7 +8797,7 @@ div#sitemapIdx .nav ul.each_box li.each a {
     border-right: 0;
 }
 .inform-data .disabled {
-    background: url(../img/checkbox_disabled_on.png) no-repeat 0 0 !important;
+    background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/checkbox_disabled_on.png) no-repeat 0 0 !important;
 }
 .inform-data #enforcement {
     float: none;
@@ -8898,7 +8898,7 @@ div#sitemapIdx .nav ul.each_box li.each a {
     top:15px;
     width:17px;
     height:17px;
-    background:#fff url('../img/btn_layer_close_s.png') no-repeat left top;
+    background:#fff url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/btn_layer_close_s.png') no-repeat left top;
     text-indent:-9999px;
 }
 
@@ -8917,7 +8917,7 @@ div#sitemapIdx .nav ul.each_box li.each a {
     display:inline-block;
     min-height:20px;
     padding:0 0 0 20px;
-    background:url('../img/self_order_member_cart/time.png') no-repeat left 2px;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/time.png') no-repeat left 2px;
     color:#3e3d3c;
     font-size:13px;
 }
@@ -8948,7 +8948,7 @@ div#sitemapIdx .nav ul.each_box li.each a {
     display:inline-block;
     min-height:20px;
     padding:0 0 0 28px;
-    background:url('../img/self_order_member_cart/completed.png') no-repeat left 3px;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/completed.png') no-repeat left 3px;
     color:#3e3d3c;
     font-size:13px;
 }
@@ -9119,7 +9119,7 @@ div#sitemapIdx .nav ul.each_box li.each a {
 }
 .self-order-member-cart .table1.type1 table tr.add.fir td {
     padding:20px 0 10px;
-    background:url('../img/self_order_member_cart/dotted-1x3-b4b4b4.png') repeat-x left top;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/dotted-1x3-b4b4b4.png') repeat-x left top;
 }
 .self-order-member-cart .table1.type1 table .gi > div dl {
     padding: 2px 0 0;
@@ -9137,11 +9137,11 @@ div#sitemapIdx .nav ul.each_box li.each a {
 }
 .self-order-member-cart .table1.type1 table tr.add.single td {
     padding:20px 0;
-    background:url('../img/self_order_member_cart/dotted-1x3-b4b4b4.png') repeat-x left top;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/dotted-1x3-b4b4b4.png') repeat-x left top;
 }
 .self-order-member-cart .table1.type1 table tr.op td {
     padding:20px 0;
-    background:url('../img/self_order_member_cart/dotted-1x3-b4b4b4.png') repeat-x left top;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/dotted-1x3-b4b4b4.png') repeat-x left top;
     border-top:none;
 }
 .self-order-member-cart .table1.type1 table .supplier-total {
@@ -9205,7 +9205,7 @@ div#sitemapIdx .nav ul.each_box li.each a {
     display:block;
     margin:10px 0 0;
     padding:22px 0 0;
-    background:url('../img/self_order_member_cart/check-off-s.png') no-repeat center top;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/check-off-s.png') no-repeat center top;
     line-height:16px;
     text-align:center;
     word-break:keep-all;
@@ -9224,7 +9224,7 @@ div#sitemapIdx .nav ul.each_box li.each a {
     border:2px solid #3e3d3c;
 }
 .self-order-member-cart .table1.type1 .gift-choice ul li label.on .txt {
-    background:url('../img/self_order_member_cart/check-on-s.png') no-repeat center top;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/check-on-s.png') no-repeat center top;
     font-weight:bold;
 }
 .self-order-member-cart .table1.type1 table .benefits {
@@ -9243,13 +9243,13 @@ div#sitemapIdx .nav ul.each_box li.each a {
     color:#444;
 }
 .self-order-member-cart .table1.type1 table .benefits dl.sale dt {
-    background:url('../img/self_order_member_cart/sale.png') no-repeat left 4px;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/sale.png') no-repeat left 4px;
 }
 .self-order-member-cart .table1.type1 table .benefits dl.mileage {
     margin:20px 0 0;
 }
 .self-order-member-cart .table1.type1 table .benefits dl.mileage dt {
-    background:url('../img/self_order_member_cart/mileage.png') no-repeat left 4px;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/mileage.png') no-repeat left 4px;
 }
 .self-order-member-cart .table1 table .g-add .gi {
     padding:5px 0;
@@ -9288,7 +9288,7 @@ div#sitemapIdx .nav ul.each_box li.each a {
     display:inline-block;
     margin:22px 0 0;
     padding:0 0 0 12px;
-    background:url('../img/self_order_member_cart/bl-arrow-left.png') no-repeat 2px 50%;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/bl-arrow-left.png') no-repeat 2px 50%;
     border-bottom:1px solid #979797;
 }
 .self-order-member-cart .price-box {
@@ -9407,7 +9407,7 @@ div#sitemapIdx .nav ul.each_box li.each a {
     vertical-align:top;
 }
 .self-order-member-cart .table1 table tbody th.required {
-    background:#f9f9f9 url('../img/self_order_member_cart/squre-4x4-red.png') no-repeat 20px 22px;
+    background:#f9f9f9 url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/squre-4x4-red.png') no-repeat 20px 22px;
 }
 .self-order-member-cart .table1 table td {
     height:28px;
@@ -9454,15 +9454,15 @@ div#sitemapIdx .nav ul.each_box li.each a {
     color:#979797;
 }
 .self-order-member-cart .table1 table td .pay-benefits p.sale {
-    background:url('../img/self_order_member_cart/sale.png') no-repeat left 4px;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/sale.png') no-repeat left 4px;
 }
 .self-order-member-cart .table1 table td .pay-benefits p.mileage {
-    background:url('../img/self_order_member_cart/mileage.png') no-repeat left 4px;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/mileage.png') no-repeat left 4px;
 }
 .self-order-member-cart .order-completion {
     margin:40px 0 0;
     padding:128px 0 0;
-    background:url('../img/self_order_member_cart/order-completion.png') no-repeat center top;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/order-completion.png') no-repeat center top;
     text-align:center;
 }
 .self-order-member-cart .order-completion strong {
@@ -9479,7 +9479,7 @@ div#sitemapIdx .nav ul.each_box li.each a {
 .self-order-member-cart .order-fail {
     margin:40px 0 0;
     padding:128px 0 0;
-    background:url('../img/self_order_member_cart/order-fail.png') no-repeat center top;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/order-fail.png') no-repeat center top;
     text-align:center;
 }
 .self-order-member-cart .order-fail strong {
@@ -9569,7 +9569,7 @@ div#sitemapIdx .nav ul.each_box li.each a {
 .self-order-member-cart .how-to-pay .method .overseas-pg {
     margin:10px 0 0 0;
     padding:3px 0 0 0;
-    background:url('../img/self_order_member_cart/dot-1x3-c0.png') repeat-x left top;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/dot-1x3-c0.png') repeat-x left top;
 }
 .self-order-member-cart .how-to-pay .method .bank li {
     display:table;
@@ -9606,7 +9606,7 @@ div#sitemapIdx .nav ul.each_box li.each a {
 .self-order-member-cart .how-to-pay .method .receipt .wu .user-info {
     overflow:hidden;
     padding:20px 0;
-    background:url('../img/self_order_member_cart/dot-1x3-c0.png') repeat-x left top;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/dot-1x3-c0.png') repeat-x left top;
 }
 .self-order-member-cart .how-to-pay .method .receipt .wu .user-info > strong,
 .self-order-member-cart .how-to-pay .method .receipt .wu .user-info > div {
@@ -9681,7 +9681,7 @@ div#sitemapIdx .nav ul.each_box li.each a {
 }
 .self-order-member-cart .normal-btn.small1 {
     height:24px;
-    background:url('../img/self_order_member_cart/btn-small1-bg.png') repeat-x left top;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/btn-small1-bg.png') repeat-x left top;
     font-size:11px !important;
     line-height:22px;
 }
@@ -9719,7 +9719,7 @@ div#sitemapIdx .nav ul.each_box li.each a {
     min-height:25px;
     margin:15px 0 0;
     padding:0 0 0 19px;
-    background:#fff url('../img/self_order_member_cart/caution-1.png') no-repeat left 5px;
+    background:#fff url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/caution-1.png') no-repeat left 5px;
     color:#3e3d3c;
     line-height:25px;
 }
@@ -9741,7 +9741,7 @@ div#sitemapIdx .nav ul.each_box li.each a {
 }
 .self-order-member-cart .normal-btn.small1 {
     height:24px;
-    background:url('../img/self_order_member_cart/btn-small1-bg.png') repeat-x left top;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/btn-small1-bg.png') repeat-x left top;
     font-size:11px !important;
     line-height:22px;
     margin-left: 4px;
@@ -9812,7 +9812,7 @@ div#sitemapIdx .nav ul.each_box li.each a {
     width: 18px;
     height: 18px;
     text-indent: -9999px;
-    background: url('../img/self_order_member_cart/layer-close.png') no-repeat left top;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/layer-close.png') no-repeat left top;
 }
 .self-order-member-cart .nomal-layer .wrap .sub_close {
     border: 0;
@@ -9860,7 +9860,7 @@ div#sitemapIdx .nav ul.each_box li.each a {
     min-height: 25px;
     margin: 15px 0 0 5px;
     padding: 3px 0 0 19px;
-    background: #fff url(../img/self_order_member_cart/caution-1.png) no-repeat left 5px;
+    background: #fff url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/caution-1.png) no-repeat left 5px;
     color: #3e3d3c;
     line-height: 25px;
     cursor: pointer;
@@ -9881,20 +9881,20 @@ div#sitemapIdx .nav ul.each_box li.each a {
     color:#444;
 }
 .self-order-goods-layout dl.sale dt {
-    background:url('../img/self_order_member_cart/sale.png') no-repeat left 4px;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/sale.png') no-repeat left 4px;
 }
 .self-order-goods-layout dl.mileage {
     margin:5px 0 0 0;
 }
 .self-order-goods-layout dl.mileage dt {
-    background:url('../img/self_order_member_cart/mileage.png') no-repeat left 4px;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/mileage.png') no-repeat left 4px;
 }
 
 .self-order-goods-layout .caution-msg1 {
     min-height:25px;
     margin:15px 0 0;
     padding:0 0 0 19px;
-    background:#fff url('../img/self_order_member_cart/caution-1.png') no-repeat left 2px;
+    background:#fff url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/caution-1.png') no-repeat left 2px;
     color:#3e3d3c;
     line-height:25px;
 }
@@ -9916,7 +9916,7 @@ div#sitemapIdx .nav ul.each_box li.each a {
 }
 .self-order-goods-layout .normal-btn.small1 {
     height:24px;
-    background:url('../img/self_order_member_cart/btn-small1-bg.png') repeat-x left top;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/btn-small1-bg.png') repeat-x left top;
     font-size:11px !important;
     line-height:22px;
     margin-left: 4px;
@@ -9987,18 +9987,18 @@ div#sitemapIdx .nav ul.each_box li.each a {
     width: 18px;
     height: 18px;
     text-indent: -9999px;
-    background: url('../img/self_order_member_cart/layer-close.png') no-repeat left top;
+    background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/layer-close.png') no-repeat left top;
 }
 .self-order-goods-layout td { border-right: 1px solid #E6E6E6 !important; }
 .self-order-write-option-area { color: #a9a9a9; }
 /* 수기주문 상품추가 레이아웃 */
 
 .self-order-sale-icon {
-    background:url('../img/self_order_member_cart/sale.png') no-repeat left 4px;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/sale.png') no-repeat left 4px;
     padding-left: 20px;
 }
 .self-order-mileage-icon {
-    background:url('../img/self_order_member_cart/mileage.png') no-repeat left 4px;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/mileage.png') no-repeat left 4px;
     padding-left: 20px;
 }
 
@@ -10215,7 +10215,7 @@ div#sitemapIdx .nav ul.each_box li.each a {
     height: 40px;
     width: 100%;
     line-height: 40px;
-    background:url('../img/self_order_member_cart/dotted-1x3-b4b4b4.png') repeat-x left top;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/dotted-1x3-b4b4b4.png') repeat-x left top;
     margin-top: 10px;
 }
 
@@ -10309,7 +10309,7 @@ div#sitemapIdx .nav ul.each_box li.each a {
 }
 .self-order-goods-optioin .order-goods .add .check .name {
     padding:0 0 0 28px;
-    background:url('../img/self_order_member_cart/ap.png') no-repeat 7px 11px;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/ap.png') no-repeat 7px 11px;
 }
 .self-order-goods-optioin .order-goods .check .name > span img {
     vertical-align:-4px;
@@ -10379,11 +10379,11 @@ div#sitemapIdx .nav ul.each_box li.each a {
     outline: none;
 }
 .self-order-goods-optioin .order-goods .check .price .count span button.up {
-    background:url('../img/self_order_member_cart/count-up.png') no-repeat left top;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/count-up.png') no-repeat left top;
 }
 .self-order-goods-optioin .order-goods .check .price .count span button.down {
     margin:-1px 0 0;
-    background:url('../img/self_order_member_cart/count-down.png') no-repeat left top;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/count-down.png') no-repeat left top;
 }
 .self-order-goods-optioin .order-goods .check .price em {
     display:inline-block;
@@ -10403,7 +10403,7 @@ div#sitemapIdx .nav ul.each_box li.each a {
 .self-order-goods-optioin .order-goods .check .del button {
     width:16px;
     height:16px;
-    background:url('../img/self_order_member_cart/del.png') no-repeat left top;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/del.png') no-repeat left top;
     text-indent:-9999px;
     border: none;
     outline: none;
@@ -10528,10 +10528,10 @@ div#sitemapIdx .nav ul.each_box li.each a {
     background-image: linear-gradient(#efefef 20%, #e9e9e9 90%);
 }
 .self-order-goods-optioin .chosen-container-single .chosen-single div b {
-    background:url('../img/self_order_member_cart/select-arrow-down-11x7.png') no-repeat left 50%;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/select-arrow-down-11x7.png') no-repeat left 50%;
 }
 .self-order-goods-optioin .chosen-container-active.chosen-with-drop .chosen-single div b {
-    background:url('../img/self_order_member_cart/select-arrow-up-11x7.png') no-repeat left 50%;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/select-arrow-up-11x7.png') no-repeat left 50%;
 }
 .self-order-goods-optioin .chosen-container-multi .chosen-choices {
     border: 1px solid #ccc;
@@ -10672,12 +10672,12 @@ div#sitemapIdx .nav ul.each_box li.each a {
 .devs-intro h5 {margin:0; font-size:14px; font-weight:bold;}
 .devs-intro > p {line-height:19px; margin:0 0 17px 0;}
 .devs-intro .devs-items { margin:5px 20px; }
-.devs-intro .start_menu_box {overflow:hidden;background:url('../img/development/bg_arrow.png') no-repeat 0 0;margin-top: 6px;}
-.devs-intro .start_menu_box dl:first-child {width:390px; margin:0; background:#f8f8f8 url('../img/development/img_menu01.png') no-repeat 288px center;}
-.devs-intro .start_menu_box dl {float:left; width:395px; margin:0 0 0 15px; padding:22px 24px 24px 24px; background:#f8f8f8 url('../img/development/img_menu02.png') no-repeat 288px center; border:1px solid #e0e0e0;}
+.devs-intro .start_menu_box {overflow:hidden;background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/development/bg_arrow.png') no-repeat 0 0;margin-top: 6px;}
+.devs-intro .start_menu_box dl:first-child {width:390px; margin:0; background:#f8f8f8 url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/development/img_menu01.png') no-repeat 288px center;}
+.devs-intro .start_menu_box dl {float:left; width:395px; margin:0 0 0 15px; padding:22px 24px 24px 24px; background:#f8f8f8 url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/development/img_menu02.png') no-repeat 288px center; border:1px solid #e0e0e0;}
 .devs-intro .start_menu_box dl dd span {display:block; margin:4px 0 10px 0; line-height:20px;}
 .devs-intro .start_menu_box dl dd a {display:inline-block; padding:2px 14px 4px 14px; background:#fff; border:1px solid #d5d5d5; font-size:11px; color:#444444; text-decoration:none;}
-.devs-intro .commu_menu_box {margin: 7px 0; padding:11px 24px; border:1px solid #e0e0e0; background:url('../img/development/bg_arrow.png') no-repeat center; width:800px;}
+.devs-intro .commu_menu_box {margin: 7px 0; padding:11px 24px; border:1px solid #e0e0e0; background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/development/bg_arrow.png') no-repeat center; width:800px;}
 .devs-intro .commu_menu_box .commu_menu1 {float:left; width:330px; padding:10px 0 0 0;}
 .devs-intro .commu_menu_box .commu_menu2 {position:relative; float:right; width:330px; padding:10px 0 0 0;}
 .devs-intro .commu_menu_box:after {content:""; display:block; clear:both;}
@@ -10739,11 +10739,11 @@ div#sitemapIdx .nav ul.each_box li.each a {
     outline: none;
 }
 .self-order-multishipping-goods-select .price .count span button.up {
-    background:url('../img/self_order_member_cart/count-up.png') no-repeat left top;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/count-up.png') no-repeat left top;
 }
 .self-order-multishipping-goods-select .price .count span button.down {
     margin:-1px 0 0;
-    background:url('../img/self_order_member_cart/count-down.png') no-repeat left top;
+    background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/self_order_member_cart/count-down.png') no-repeat left top;
 }
 
 /* 상품리스트 메인상품진열 팝업 css추가 */
@@ -10753,10 +10753,10 @@ div#sitemapIdx .nav ul.each_box li.each a {
 .popup-page-header h3 {font-size: 22px; color: #222222; font-weight: bold;}
 #frmDisplayMainList .table-rows{position:relative; width:945px;}
 #frmDisplayMainList .table-rows .btn-box{float:right;}
-.up-on{background:url('../img/btn/btn_up_on.gif') no-repeat; padding-right: 10px; cursor: pointer;}
-.down-on{background:url('../img/btn/btn_down_on.gif') no-repeat; padding-right: 10px; cursor: pointer;}
-.up-off{background:url('../img/btn/btn_up_off.gif') no-repeat; padding-right: 10px; cursor: pointer;}
-.down-off{background:url('../img/btn/btn_down_off.gif') no-repeat; padding-right: 10px; cursor: pointer;}
+.up-on{background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/btn/btn_up_on.gif') no-repeat; padding-right: 10px; cursor: pointer;}
+.down-on{background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/btn/btn_down_on.gif') no-repeat; padding-right: 10px; cursor: pointer;}
+.up-off{background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/btn/btn_up_off.gif') no-repeat; padding-right: 10px; cursor: pointer;}
+.down-off{background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/btn/btn_down_off.gif') no-repeat; padding-right: 10px; cursor: pointer;}
 
 /* 상품리스트 분류관리 팝업 css추가 */
 #frmGoodsCategory .popup-display-main-list .depth-check-toggle-layer{padding: 20px 0;}
@@ -10777,7 +10777,7 @@ div#sitemapIdx .nav ul.each_box li.each a {
 .display-title{height: 45px; background: #F6F6F6; border-top: 1px solid #e6e6e6; border-bottom: 1px solid #e6e6e6; line-height: 40px; font-weight: bold; padding-left: 10px;}
 .display-list-left{height: auto; padding: 5px;}
 .display-list-right{height: auto; padding: 5px;}
-.scrollSave .save-btn{background:url('../img/save_s_btn.png'); -webkit-appearance:none; width: 44px; height: 44px; outline: 0; border: 0;}
+.scrollSave .save-btn{background:url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/save_s_btn.png'); -webkit-appearance:none; width: 44px; height: 44px; outline: 0; border: 0;}
 
 /* input 크기 조정 css추가*/
 .label-width{width: 100% !important;}
@@ -10935,7 +10935,7 @@ _:-ms-input-placeholder, :root .ly_setting .setting_header .input_check_box .che
 .ly_setting .cont_wrap { overflow-y:scroll; height:100%; box-sizing:border-box; background:#f5f5f7; padding:0 16px; margin-right:5px;}
 .ly_setting .cont_wrap h5 {padding:23px 0 11px 0; font-size:18px; color:#222222; font-weight:bold; text-align:center; margin:0; letter-spacing:-1px;}
 .ly_setting .cont_wrap input[type="checkbox"] {width:16px; height:16px; background: url(https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_checkbox_off.png) no-repeat 0 0;}
-.ly_setting .cont_wrap input[type="checkbox"]:checked {background: url('../img/icon_checkbox_on.png') no-repeat 0 0;}
+.ly_setting .cont_wrap input[type="checkbox"]:checked {background: url('https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_checkbox_on.png') no-repeat 0 0;}
 .ly_setting .cont_wrap .checkbox-inline {padding-left: 34px; height:16px;}
 _:-ms-input-placeholder, :root .ly_setting .cont_wrap .checkbox-inline {height:17px;}
 .ly_setting .cont_wrap .checkbox-inline span {display:block; width:43px; min-height:90px; position:absolute; left:0; top:-38px;}

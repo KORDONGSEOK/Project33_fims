@@ -1,0 +1,10 @@
+https://gdadmin.plus.godomall.com:14003/admin/gd_share/script/smart/img/bg_button.gif?20121228
+https://gdadmin.plus.godomall.com:14003/admin/gd_share/script/smart/img/bg_button_left.gif?20121228
+https://gdadmin.plus.godomall.com:14003/admin/gd_share/script/smart/img/bg_button_right.gif
+https://gdadmin.plus.godomall.com:14003/admin/gd_share/script/smart/img/bg_text_tool.gif
+https://gdadmin.plus.godomall.com:14003/admin/gd_share/script/smart/img/ico_extend.png
+https://gdadmin.plus.godomall.com:14003/admin/gd_share/script/smart/img/icon_set.gif
+
+https://gdadmin.plus.godomall.com:14003/admin/gd_share/script/smart/img/ko_KR/btn_set.png?130306
+https://gdadmin.plus.godomall.com:14003/admin/gd_share/script/smart/img/ko_KR/text_tool_set.png?140317
+

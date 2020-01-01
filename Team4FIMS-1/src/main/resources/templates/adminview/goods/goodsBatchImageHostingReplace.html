@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/admin/goodsdefault}">
+
+<th:block layout:fragment="adminMainContents">
+
+<div id="content" class="row">
+                <div class="col-xs-12">
+                    <div class="page-header js-affix">
+    <h3>이미지호스팅 일괄전환</h3>
+    <div class="btn-group">
+    </div>
+</div>
+
+<div class="panel pd10">
+    <p><b style="font-size: 15px;">이미지호스팅 일괄전환이란?</b></p>
+    <p>
+        오픈마켓에 입점한 운영자는 반드시 이미지호스팅을 사용해야 합니다.<br/>
+        내 상점에 등록한 상품수가 많을 경우 하나하나 이미지호스팅으로 수정하는 시간이 많이 걸리게 됩니다.<br/>
+        아래 기능은 내 쇼핑몰에 올려진 상품설명이미지를 이미지호스팅으로 빠르게 전환해주는 기능입니다.<br/>
+        이 기능을 사용하려면 이미지호스팅이 신청되어 있어야 합니다.
+        <a href="http://hosting.godo.co.kr/imghosting/imghosting_info.php" class="btn btn-gray btn-sm" target="_blank">서비스 자세히 보기</a>
+    </p>
+</div>
+
+
+
+<form id="frmSearchGoods" name="frmSearchGoods" method="get" class="js-form-enter-submit">
+    <div class="table-title gd-help-manual">
+        상품 검색
+                <span class="search"><button type="button" class="btn btn-sm btn-black" onclick="set_search_config(this.form)">검색설정저장</button></span>
+            </div>
+
+    <div class="search-detail-box">
+        <input type="hidden" name="detailSearch" value=""/>
+        <input type="hidden" name="delFl" value="n"/>
+        <table class="table table-cols">
+            <colgroup>
+                <col class="width-md"/>
+                <col>
+                <col class="width-md"/>
+                <col/>
+            </colgroup>
+            <tbody>
+                                    <tr>
+                <th>공급사 구분</th>
+                <td colspan="3">
+                                        <label class="radio-inline">
+                        <input type="radio" name="scmFl" value="all" checked="checked" onclick="$('#scmLayer').html('');"/>전체
+                    </label>
+                                        <label class="radio-inline">
+                        <input type="radio" name="scmFl" value="n"  onclick="$('#scmLayer').html('')" ;/>본사
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="scmFl" value="y"  onclick="layer_register('scm', 'checkbox')"/>공급사
+                    </label>
+                    <label>
+                        <button type="button" class="btn btn-sm btn-gray" onclick="layer_register('scm','checkbox')">공급사 선택</button>
+                    </label>
+
+                    <div id="scmLayer" class="selected-btn-group ">
+                        <h5>선택된 공급사 : </h5>
+                                            </div>
+                </td>
+            </tr>
+                                    <tr>
+                <th>검색어</th>
+                <td colspan="3">
+                    <div class="form-inline">
+                        <select class="form-control " id="key" name="key" ><option value="goodsNm"  >상품명</option><option value="goodsNo"  >상품코드</option><option value="goodsCd"  >자체상품코드</option><option value="goodsSearchWord"  >검색 키워드</option><option value="__disable1"  disabled>==========</option><option value="makerNm"  >제조사</option><option value="originNm"  >원산지</option><option value="goodsModelNo"  >모델번호</option><option value="hscode"  >HS코드</option><option value="addInfo"  >추가항목</option><option value="__disable2"  disabled>==========</option><option value="memo"  >관리자 메모</option><option value="companyNm"  >공급사명</option><option value="purchaseNm"  >매입처명</option></select>                        <input type="text" name="keyword" value="" class="form-control"/>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>기간검색</th>
+                <td colspan="3">
+                    <div class="form-inline">
+                        <select name="searchDateFl" class="form-control">
+                            <option value="regDt" selected='selected'>등록일</option>
+                            <option value="modDt" >수정일</option>
+                        </select>
+
+                        <div class="input-group js-datepicker">
+                            <input type="text" class="form-control width-xs" name="searchDate[]" value="" />
+                            <span class="input-group-addon"><span class="btn-icon-calendar"></span></span>
+                        </div>
+                        ~
+                        <div class="input-group js-datepicker">
+                            <input type="text" class="form-control width-xs" name="searchDate[]" value="" />
+                            <span class="input-group-addon"><span class="btn-icon-calendar"></span></span>
+                        </div>
+                        <div class="btn-group js-dateperiod" data-toggle="buttons" data-target-name="searchDate"><label class="btn btn-white btn-sm hand "><input type="radio" name="searchPeriod" value="0"  >오늘</label><label class="btn btn-white btn-sm hand "><input type="radio" name="searchPeriod" value="6"  >7일</label><label class="btn btn-white btn-sm hand "><input type="radio" name="searchPeriod" value="14"  >15일</label><label class="btn btn-white btn-sm hand "><input type="radio" name="searchPeriod" value="29"  >1개월</label><label class="btn btn-white btn-sm hand "><input type="radio" name="searchPeriod" value="89"  >3개월</label><label class="btn btn-white btn-sm hand "><input type="radio" name="searchPeriod" value="-1"  >전체</label> </div >                     </div>
+                </td>
+            </tr>
+            <tr>
+                <th>카테고리</th>
+                <td class="contents" colspan="3">
+                    <div class="form-inline">
+                        <select id="cateGoods1" name="cateGoods[]"  class="form-control multiple-select">
+<option value="">=카테고리선택=</option>
+<option value="001"  data-flag="kr,us,cn,jp" data-mall-name="기준몰,영문몰,중문몰,일문몰">TOP</option>
+<option value="002"  data-flag="kr,us,cn,jp" data-mall-name="기준몰,영문몰,중문몰,일문몰">BOTTOM</option>
+<option value="003"  data-flag="kr,us,cn,jp" data-mall-name="기준몰,영문몰,중문몰,일문몰">OUTER</option>
+<option value="006"  data-flag="kr,us,cn,jp" data-mall-name="기준몰,영문몰,중문몰,일문몰">BAG</option>
+<option value="007"  data-flag="kr,us,cn,jp" data-mall-name="기준몰,영문몰,중문몰,일문몰">SHOES</option>
+<option value="004"  data-flag="kr,us,cn,jp" data-mall-name="기준몰,영문몰,중문몰,일문몰">ACC</option>
+</select>
+<select id="cateGoods2" name="cateGoods[]"  class="form-control multiple-select">
+<option value="">=카테고리선택=</option>
+</select>
+<select id="cateGoods3" name="cateGoods[]"  class="form-control multiple-select">
+<option value="">=카테고리선택=</option>
+</select>
+<select id="cateGoods4" name="cateGoods[]"  class="form-control multiple-select">
+<option value="">=카테고리선택=</option>
+</select>
+<script type="text/javascript">
+$(function() {
+	$('#cateGoods1').multi_select_box('#cateGoods',4,'/share/category_select_json.php','=카테고리선택=');
+	$('#cateGoods2').multi_select_box('#cateGoods',4,'/share/category_select_json.php','=카테고리선택=');
+	$('#cateGoods3').multi_select_box('#cateGoods',4,'/share/category_select_json.php','=카테고리선택=');
+	$('#cateGoods4').multi_select_box('#cateGoods',4,'/share/category_select_json.php','=카테고리선택=');
+});
+
+</script>
+                        <label class="checkbox-inline mgl10">
+                            <input type="checkbox" name="categoryNoneFl" value="y" > 카테고리 미지정 상품
+                        </label>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+            <tbody class="js-search-detail" style="display: none;">
+            <tr>
+                <th>브랜드</th>
+                <td>
+                    <div class="form-inline">
+
+                        <label><input type="button" value="브랜드선택" class="btn btn-sm btn-gray"  onclick="layer_register('brand', 'radio')"/></label>
+
+                        <label class="checkbox-inline mgl10"><input type="checkbox" name="brandNoneFl" value="y" > 브랜드 미지정 상품</label>
+
+                        <div id="brandLayer" class="selected-btn-group ">
+                            <h5>선택된 브랜드 : </h5>
+                                                    </div>
+
+                    </div>
+                </td>
+                <th>판매가</th>
+                <td>
+                    <div class="form-inline">
+                        <input type="text" name="goodsPrice[]" value="" class="form-control width-sm js-number"/>이상 ~
+                        <input type="text" name="goodsPrice[]" value="" class="form-control width-sm js-number"/>이하
+                    </div>
+                </td>
+            </tr>
+                        <tr>
+                <th>마일리지</th>
+                <td>
+                    <div class="form-inline">
+                        <input type="text" name="mileage[]" value="" class="form-control width-sm js-number"/>이상 ~
+                        <input type="text" name="mileage[]" value="" class="form-control width-sm js-number"/>이하</div>
+                </td>
+                <th>마일리지 지급방법</th>
+                <td>
+                    <label class="radio-inline"><input type="radio" name="mileageFl" value="" checked="checked" />전체</label>
+                    <label class="radio-inline"><input type="radio" name="mileageFl" value="c"  />통합설정</label>
+                    <label class="radio-inline"><input type="radio" name="mileageFl" value="g"  />개별설정</label>
+                </td>
+            </tr>
+                        <tr>
+                <th>상품 재고</th>
+                <td>
+                    <div class="form-inline">
+                        <input type="text" name="stock[]" value="" class="form-control width-sm"/>개 이상 ~
+                        <input type="text" name="stock[]" value="" class="form-control width-sm"/>개 이하
+                    </div>
+                </td>
+                <th>옵션 사용</th>
+                <td>
+                    <label class="radio-inline"><input type="radio" name="optionFl" value="" checked="checked" />전체</label>
+                    <label class="radio-inline"><input type="radio" name="optionFl" value="y"  />사용함</label>
+                    <label class="radio-inline"><input type="radio" name="optionFl" value="n"  />사용안함</label>
+                </td>
+            </tr>
+            <tr>
+                <th>텍스트옵션 사용</th>
+                <td>
+                    <label class="radio-inline"><input type="radio" name="optionTextFl" value="" checked="checked" />전체</label>
+                    <label class="radio-inline"><input type="radio" name="optionTextFl" value="y"  />사용함</label>
+                    <label class="radio-inline"><input type="radio" name="optionTextFl" value="n"  />사용안함</label>
+                </td>
+                <th>추가상품 사용</th>
+                <td>
+                    <label class="radio-inline"><input type="radio" name="addGoodsFl" value="" checked="checked" />전체</label>
+                    <label class="radio-inline"><input type="radio" name="addGoodsFl" value="y"  />사용함</label>
+                    <label class="radio-inline"><input type="radio" name="addGoodsFl" value="n"  />사용안함</label>
+                </td>
+            </tr>
+            <tr>
+                <th>상품노출 상태</th>
+                <td>
+                    <label class="radio-inline"><input type="radio" name="goodsDisplayFl" value="" checked="checked" />전체</label>
+                    <label class="radio-inline"><input type="radio" name="goodsDisplayFl" value="y"  />노출함</label>
+                    <label class="radio-inline"><input type="radio" name="goodsDisplayFl" value="n"  />노출안함</label>
+                </td>
+                <th>상품판매 상태</th>
+                <td>
+                    <label class="radio-inline"><input type="radio" name="goodsSellFl" value="" checked="checked" />전체</label>
+                    <label class="radio-inline"><input type="radio" name="goodsSellFl" value="y"  />판매함</label>
+                    <label class="radio-inline"><input type="radio" name="goodsSellFl" value="n"  />판매안함</label>
+                </td>
+            </tr>
+            <tr>
+                <th>판매 재고</th>
+                <td>
+                    <label class="radio-inline"><input type="radio" name="stockFl" value="" checked="checked" />전체</label>
+                    <label class="radio-inline"><input type="radio" name="stockFl" value="n"  />무한정 판매</label>
+                    <label class="radio-inline"><input type="radio" name="stockFl" value="y"  />재고량에 따름</label>
+                </td>
+                <th>품절 상태</th>
+                <td>
+                    <label class="radio-inline"><input type="radio" name="soldOut" value="" checked="checked" />전체</label>
+                    <label class="radio-inline"><input type="radio" name="soldOut" value="y"  />품절</label>
+                    <label class="radio-inline"><input type="radio" name="soldOut" value="n"  />정상</label>
+                </td>
+            </tr>
+            <tr class="js-search-icon">
+                <th>아이콘(기간제한)</th>
+                <td>
+                    <label class="radio-inline"><input type="radio" name="goodsIconCdPeriod" value="" checked="checked" />전체</label>
+                    <label class="radio-inline"><input type="radio" name="goodsIconCdPeriod" value="icon0008"  /><img src="/data/icon/goods_icon/icon_reservation.png"  alt="예약상품" title="예약상품" class="middle"  />&nbsp;</label>
+                </td>
+                <th>아이콘(무제한)</th>
+                <td>
+                    <label class="radio-inline"><input type="radio" name="goodsIconCd" value="" checked="checked" />전체</label>
+                    <label class="radio-inline"><input type="radio" name="goodsIconCd" value="icon0001"  /><img src="/data/icon/goods_icon/icon_best.png"  alt="베스트상품" title="베스트상품" class="middle"  />&nbsp;</label>
+<label class="radio-inline"><input type="radio" name="goodsIconCd" value="icon0002"  /><img src="/data/icon/goods_icon/icon_event.png"  alt="이벤트상품" title="이벤트상품" class="middle"  />&nbsp;</label>
+<label class="radio-inline"><input type="radio" name="goodsIconCd" value="icon0003"  /><img src="/data/icon/goods_icon/icon_new.png"  alt="신상품" title="신상품" class="middle"  />&nbsp;</label>
+<label class="radio-inline"><input type="radio" name="goodsIconCd" value="icon0004"  /><img src="/data/icon/goods_icon/icon_hot.png"  alt="인기상품" title="인기상품" class="middle"  />&nbsp;</label>
+<label class="radio-inline"><input type="radio" name="goodsIconCd" value="icon0005"  /><img src="/data/icon/goods_icon/icon_recommend.png"  alt="추천상품" title="추천상품" class="middle"  />&nbsp;</label>
+<label class="radio-inline"><input type="radio" name="goodsIconCd" value="icon0006"  /><img src="/data/icon/goods_icon/icon_sale.png"  alt="세일상품" title="세일상품" class="middle"  />&nbsp;</label>
+<label class="radio-inline"><input type="radio" name="goodsIconCd" value="icon0007"  /><img src="/data/icon/goods_icon/icon_plan.png"  alt="기획상품" title="기획상품" class="middle"  />&nbsp;</label>
+                </td>
+            </tr>
+            <tr class="js-search-delivery">
+                <th>배송비 조건</th>
+                <td colspan="3">
+                    <div class="radio">
+                        <label class="radio-inline">
+                            <input type="radio" name="goodsDeliveryFl" value="" checked="checked"/> 전체
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="goodsDeliveryFl" value="y" /> 배송비조건별
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="goodsDeliveryFl" value="n" /> 상품별
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="goodsDeliveryFixFl[]" value="all" class="js-not-checkall" data-target-name="goodsDeliveryFixFl[]" checked="checked"> 전체
+                        </label>
+                                            <label>
+                            <input class="checkbox-inline" type="checkbox" name="goodsDeliveryFixFl[]" value="free"  > 배송비무료                        </label>
+                                            <label>
+                            <input class="checkbox-inline" type="checkbox" name="goodsDeliveryFixFl[]" value="price"  > 금액별배송                        </label>
+                                            <label>
+                            <input class="checkbox-inline" type="checkbox" name="goodsDeliveryFixFl[]" value="count"  > 수량별배송                        </label>
+                                            <label>
+                            <input class="checkbox-inline" type="checkbox" name="goodsDeliveryFixFl[]" value="weight"  > 무게별배송                        </label>
+                                            <label>
+                            <input class="checkbox-inline" type="checkbox" name="goodsDeliveryFixFl[]" value="fixed"  > 고정배송비                        </label>
+                                        </div>
+                </td>
+            </tr>
+                                    <tr>
+                <th>매입처</th>
+                <td colspan="3">
+                    <div class="form-inline">
+
+                        <label><input type="button" value="매입처 선택" class="btn btn-sm btn-gray"  onclick="layer_register('purchase', 'checkbox')"/></label>
+
+                        <label class="checkbox-inline mgl10"><input type="checkbox" name="purchaseNoneFl" value="y" > 매입처 미지정 상품</label>
+
+                        <div id="purchaseLayer" class="selected-btn-group ">
+                            <h5>선택된 매입처 : </h5>
+
+                                                        <label><input type="button" value="전체 삭제" class="btn btn-sm btn-gray" data-toggle="delete" data-target="#purchaseLayer div"/></label>
+                        </div>
+
+                    </div>
+                </td>
+            </tr>
+                        </tbody>
+        </table>
+        <button type="button" class="btn btn-sm btn-link js-search-toggle bold">상세검색 <span>펼침</span></button>
+    </div>
+
+    <div class="table-btn">
+        <input type="submit" value="검색" class="btn btn-lg btn-black">
+    </div>
+
+
+    <div class="table-header">
+        <div class="pull-left">
+            검색 <strong>22</strong>개 /
+            전체 <strong>22</strong>개
+        </div>
+        <div class="pull-right form-inline">
+            <select class="form-control " id="sort" name="sort" ><option value="g.goodsNo desc" selected="selected" >등록일 ↓</option><option value="g.goodsNo asc"  >등록일 ↑</option><option value="goodsNm asc"  >상품명 ↓</option><option value="goodsNm desc"  >상품명 ↑</option><option value="companyNm asc"  >공급사 ↓</option><option value="companyNm desc"  >공급사 ↑</option><option value="goodsPrice asc"  >판매가 ↓</option><option value="goodsPrice desc"  >판매가 ↑</option></select>            <select class="form-control " id="pageNum" name="pageNum" ><option value="10"  >10개 보기</option><option value="20"  >20개 보기</option><option value="30"  >30개 보기</option><option value="40"  >40개 보기</option><option value="50"  >50개 보기</option><option value="60"  >60개 보기</option><option value="70"  >70개 보기</option><option value="80"  >80개 보기</option><option value="90"  >90개 보기</option><option value="100"  >100개 보기</option><option value="200"  >200개 보기</option><option value="300"  >300개 보기</option><option value="500"  >500개 보기</option></select>        </div>
+    </div>
+    <input type="hidden" name="searchFl" value="y">
+    <input type="hidden" name="applyPath" value="/goods/goods_image_hosting_replace.php">
+</form>
+<script>
+
+function brand_del(){
+    $('input[name=brandCdNm]').val('');
+}
+</script>
+
+<form id="frmList" action="" method="get" target="ifrmProcess">
+    <input type="hidden" name="mode" value="">
+    <table class="table table-rows">
+        <thead>
+        <tr>
+            <th rowspan="2" class="width5p center"><input type="checkbox" class="js-checkall" data-target-name="goodsNo"></th>
+            <th rowspan="2" class="width5p">번호</th>
+            <th rowspan="2" class="width10p">상품코드</th>
+            <th rowspan="2" class="width-2xs">이미지</th>
+            <th rowspan="2" class="width20p">상품명</th>
+            <th rowspan="2" class="width10p">전환이 필요한<br/>이미지갯수</th>
+            <th rowspan="2" class="width10p">공급사</th>
+            <th colspan="2" class="width10p">노출상태</th>
+            <th colspan="2" class="width10p">판매상태</th>
+            <th rowspan="2" class="width5p">재고</th>
+            <th rowspan="2" class="width10p">판매가</th>
+            <th rowspan="2" class="width10p">등록일 / 수정일</th>
+        </tr>
+        <tr>
+            <th class="width5p center">PC</th>
+            <th class="width5p center">모바일</th>
+            <th class="width5p center">PC</th>
+            <th class="width5p center">모바일</th>
+        </tr>
+        </thead>
+        <tbody>
+                        <tr>
+                    <td class="center"><input type="checkbox" name="goodsNo[]" value="1000000022"  /></td>
+                    <td class="center number">22</td>
+                    <td class="center number">1000000022</td>
+                    <td class="width-2xs center">
+                            <a href="http://plus.godomall.com/goods/goods_view.php?goodsNo=1000000022" target="_blank"><img src="/data/goods/17/02/06/1000000022/t50_1000000022_list_085.png" width="40" alt="스웨이드 옥스포드 스니커즈" title="스웨이드 옥스포드 스니커즈" class="middle"  /></a>                    </td>
+                    <td>
+                        <div onclick="goods_register_popup('1000000022' );"
+                             class="hand">스웨이드 옥스포드 스니커즈</div>
+                        <div
+                            class="notice-ref notice-sm"></div>
+                        <div>
+                            
+                        </div>
+                    </td>
+                    <td class="center lmenu" id="in_1000000022"><span style="font-weight: bold; font-size: 19px; color: #0070c0;">1</span></td>
+                    <td class="center lmenu">엔에이치엔고도(주)</td>
+                    <td class="center lmenu">노출함</td>
+                    <td class="center lmenu">노출함</td>
+                    <td class="center lmenu">판매함</td>
+                    <td class="center lmenu">판매함</td>
+                    <td class="center number">∞</td>
+                    <td class="center">
+                        <div><span class="font-num">82,000원</span></div>
+                    </td>                    
+                    <td class="center date">
+                        2020-01-01                                            </td>
+                </tr>
+                                <tr>
+                    <td class="center"><input type="checkbox" name="goodsNo[]" value="1000000021"  /></td>
+                    <td class="center number">21</td>
+                    <td class="center number">1000000021</td>
+                    <td class="width-2xs center">
+                            <a href="http://plus.godomall.com/goods/goods_view.php?goodsNo=1000000021" target="_blank"><img src="/data/goods/17/02/06/1000000021/t50_1000000021_list_09.png" width="40" alt="지퍼 그레이 카고 팬츠" title="지퍼 그레이 카고 팬츠" class="middle"  /></a>                    </td>
+                    <td>
+                        <div onclick="goods_register_popup('1000000021' );"
+                             class="hand">지퍼 그레이 카고 팬츠</div>
+                        <div
+                            class="notice-ref notice-sm"></div>
+                        <div>
+                            
+                        </div>
+                    </td>
+                    <td class="center lmenu" id="in_1000000021"><span style="font-weight: bold; font-size: 19px; color: #0070c0;">1</span></td>
+                    <td class="center lmenu">엔에이치엔고도(주)</td>
+                    <td class="center lmenu">노출함</td>
+                    <td class="center lmenu">노출함</td>
+                    <td class="center lmenu">판매함</td>
+                    <td class="center lmenu">판매함</td>
+                    <td class="center number">∞</td>
+                    <td class="center">
+                        <div><span class="font-num">113,000원</span></div>
+                    </td>                    
+                    <td class="center date">
+                        2020-01-01                                            </td>
+                </tr>
+                                <tr>
+                    <td class="center"><input type="checkbox" name="goodsNo[]" value="1000000020"  /></td>
+                    <td class="center number">20</td>
+                    <td class="center number">1000000020</td>
+                    <td class="width-2xs center">
+                            <a href="http://plus.godomall.com/goods/goods_view.php?goodsNo=1000000020" target="_blank"><img src="/data/goods/17/02/06/1000000020/t50_1000000020_list_042.png" width="40" alt="딥블루 스트레이트 데님" title="딥블루 스트레이트 데님" class="middle"  /></a>                    </td>
+                    <td>
+                        <div onclick="goods_register_popup('1000000020' );"
+                             class="hand">딥블루 스트레이트 데님</div>
+                        <div
+                            class="notice-ref notice-sm"></div>
+                        <div>
+                            
+                        </div>
+                    </td>
+                    <td class="center lmenu" id="in_1000000020"><span style="font-weight: bold; font-size: 19px; color: #0070c0;">1</span></td>
+                    <td class="center lmenu">엔에이치엔고도(주)</td>
+                    <td class="center lmenu">노출함</td>
+                    <td class="center lmenu">노출함</td>
+                    <td class="center lmenu">판매함</td>
+                    <td class="center lmenu">판매함</td>
+                    <td class="center number">∞</td>
+                    <td class="center">
+                        <div><span class="font-num">96,000원</span></div>
+                    </td>                    
+                    <td class="center date">
+                        2020-01-01                                            </td>
+                </tr>
+                                <tr>
+                    <td class="center"><input type="checkbox" name="goodsNo[]" value="1000000019"  /></td>
+                    <td class="center number">19</td>
+                    <td class="center number">1000000019</td>
+                    <td class="width-2xs center">
+                            <a href="http://plus.godomall.com/goods/goods_view.php?goodsNo=1000000019" target="_blank"><img src="/data/goods/17/02/06/1000000019/t50_1000000019_list_033.png" width="40" alt="퀼팅 블랙 스트랩백" title="퀼팅 블랙 스트랩백" class="middle"  /></a>                    </td>
+                    <td>
+                        <div onclick="goods_register_popup('1000000019' );"
+                             class="hand">퀼팅 블랙 스트랩백</div>
+                        <div
+                            class="notice-ref notice-sm"></div>
+                        <div>
+                            
+                        </div>
+                    </td>
+                    <td class="center lmenu" id="in_1000000019"><span style="font-weight: bold; font-size: 19px; color: #0070c0;">1</span></td>
+                    <td class="center lmenu">엔에이치엔고도(주)</td>
+                    <td class="center lmenu">노출함</td>
+                    <td class="center lmenu">노출함</td>
+                    <td class="center lmenu">판매함</td>
+                    <td class="center lmenu">판매함</td>
+                    <td class="center number">∞</td>
+                    <td class="center">
+                        <div><span class="font-num">214,000원</span></div>
+                    </td>                    
+                    <td class="center date">
+                        2020-01-01                                            </td>
+                </tr>
+                                <tr>
+                    <td class="center"><input type="checkbox" name="goodsNo[]" value="1000000018"  /></td>
+                    <td class="center number">18</td>
+                    <td class="center number">1000000018</td>
+                    <td class="width-2xs center">
+                            <a href="http://plus.godomall.com/goods/goods_view.php?goodsNo=1000000018" target="_blank"><img src="/data/goods/17/02/06/1000000018/t50_1000000018_list_021.png" width="40" alt="아이보리 페도라" title="아이보리 페도라" class="middle"  /></a>                    </td>
+                    <td>
+                        <div onclick="goods_register_popup('1000000018' );"
+                             class="hand">아이보리 페도라</div>
+                        <div
+                            class="notice-ref notice-sm"></div>
+                        <div>
+                            
+                        </div>
+                    </td>
+                    <td class="center lmenu" id="in_1000000018"><span style="font-weight: bold; font-size: 19px; color: #0070c0;">1</span></td>
+                    <td class="center lmenu">엔에이치엔고도(주)</td>
+                    <td class="center lmenu">노출함</td>
+                    <td class="center lmenu">노출함</td>
+                    <td class="center lmenu">판매함</td>
+                    <td class="center lmenu">판매함</td>
+                    <td class="center number">∞</td>
+                    <td class="center">
+                        <div><span class="font-num">92,000원</span></div>
+                    </td>                    
+                    <td class="center date">
+                        2020-01-01                                            </td>
+                </tr>
+                                <tr>
+                    <td class="center"><input type="checkbox" name="goodsNo[]" value="1000000017"  /></td>
+                    <td class="center number">17</td>
+                    <td class="center number">1000000017</td>
+                    <td class="width-2xs center">
+                            <a href="http://plus.godomall.com/goods/goods_view.php?goodsNo=1000000017" target="_blank"><img src="/data/goods/17/02/06/1000000017/t50_1000000017_list_029.png" width="40" alt="레드 페이즐리 스카프" title="레드 페이즐리 스카프" class="middle"  /></a>                    </td>
+                    <td>
+                        <div onclick="goods_register_popup('1000000017' );"
+                             class="hand">레드 페이즐리 스카프</div>
+                        <div
+                            class="notice-ref notice-sm"></div>
+                        <div>
+                            
+                        </div>
+                    </td>
+                    <td class="center lmenu" id="in_1000000017"><span style="font-weight: bold; font-size: 19px; color: #0070c0;">1</span></td>
+                    <td class="center lmenu">엔에이치엔고도(주)</td>
+                    <td class="center lmenu">노출함</td>
+                    <td class="center lmenu">노출함</td>
+                    <td class="center lmenu">판매함</td>
+                    <td class="center lmenu">판매함</td>
+                    <td class="center number">∞</td>
+                    <td class="center">
+                        <div><span class="font-num">48,000원</span></div>
+                    </td>                    
+                    <td class="center date">
+                        2020-01-01                                            </td>
+                </tr>
+                                <tr>
+                    <td class="center"><input type="checkbox" name="goodsNo[]" value="1000000016"  /></td>
+                    <td class="center number">16</td>
+                    <td class="center number">1000000016</td>
+                    <td class="width-2xs center">
+                            <a href="http://plus.godomall.com/goods/goods_view.php?goodsNo=1000000016" target="_blank"><img src="/data/goods/16/05/19/1000000016/t50_1000000016_list_099.png" width="40" alt="블랙 스퀘어백" title="블랙 스퀘어백" class="middle"  /></a>                    </td>
+                    <td>
+                        <div onclick="goods_register_popup('1000000016' );"
+                             class="hand">블랙 스퀘어백</div>
+                        <div
+                            class="notice-ref notice-sm"></div>
+                        <div>
+                            
+                        </div>
+                    </td>
+                    <td class="center lmenu" id="in_1000000016"><span style="font-weight: bold; font-size: 19px; color: #0070c0;">1</span></td>
+                    <td class="center lmenu">엔에이치엔고도(주)</td>
+                    <td class="center lmenu">노출함</td>
+                    <td class="center lmenu">노출함</td>
+                    <td class="center lmenu">판매함</td>
+                    <td class="center lmenu">판매함</td>
+                    <td class="center number">∞</td>
+                    <td class="center">
+                        <div><span class="font-num">128,000원</span></div>
+                    </td>                    
+                    <td class="center date">
+                        2020-01-01                                            </td>
+                </tr>
+                                <tr>
+                    <td class="center"><input type="checkbox" name="goodsNo[]" value="1000000015"  /></td>
+                    <td class="center number">15</td>
+                    <td class="center number">1000000015</td>
+                    <td class="width-2xs center">
+                            <a href="http://plus.godomall.com/goods/goods_view.php?goodsNo=1000000015" target="_blank"><img src="/data/goods/16/05/19/1000000015/t50_1000000015_list_030.png" width="40" alt="빈티지 레더백" title="빈티지 레더백" class="middle"  /></a>                    </td>
+                    <td>
+                        <div onclick="goods_register_popup('1000000015' );"
+                             class="hand">빈티지 레더백</div>
+                        <div
+                            class="notice-ref notice-sm"></div>
+                        <div>
+                            
+                        </div>
+                    </td>
+                    <td class="center lmenu" id="in_1000000015"><span style="font-weight: bold; font-size: 19px; color: #0070c0;">1</span></td>
+                    <td class="center lmenu">엔에이치엔고도(주)</td>
+                    <td class="center lmenu">노출함</td>
+                    <td class="center lmenu">노출함</td>
+                    <td class="center lmenu">판매함</td>
+                    <td class="center lmenu">판매함</td>
+                    <td class="center number">∞</td>
+                    <td class="center">
+                        <div><span class="font-num">198,000원</span></div>
+                    </td>                    
+                    <td class="center date">
+                        2020-01-01                                            </td>
+                </tr>
+                                <tr>
+                    <td class="center"><input type="checkbox" name="goodsNo[]" value="1000000013"  /></td>
+                    <td class="center number">14</td>
+                    <td class="center number">1000000013</td>
+                    <td class="width-2xs center">
+                            <a href="http://plus.godomall.com/goods/goods_view.php?goodsNo=1000000013" target="_blank"><img src="/data/goods/16/05/19/1000000013/t50_1000000013_list_022.png" width="40" alt="화이트 샌들" title="화이트 샌들" class="middle"  /></a>                    </td>
+                    <td>
+                        <div onclick="goods_register_popup('1000000013' );"
+                             class="hand">화이트 샌들</div>
+                        <div
+                            class="notice-ref notice-sm"></div>
+                        <div>
+                            
+                        </div>
+                    </td>
+                    <td class="center lmenu" id="in_1000000013"><span style="font-weight: bold; font-size: 19px; color: #0070c0;">1</span></td>
+                    <td class="center lmenu">엔에이치엔고도(주)</td>
+                    <td class="center lmenu">노출함</td>
+                    <td class="center lmenu">노출함</td>
+                    <td class="center lmenu">판매함</td>
+                    <td class="center lmenu">판매함</td>
+                    <td class="center number">∞</td>
+                    <td class="center">
+                        <div><span class="font-num">67,000원</span></div>
+                    </td>                    
+                    <td class="center date">
+                        2020-01-01                                            </td>
+                </tr>
+                                <tr>
+                    <td class="center"><input type="checkbox" name="goodsNo[]" value="1000000012"  /></td>
+                    <td class="center number">13</td>
+                    <td class="center number">1000000012</td>
+                    <td class="width-2xs center">
+                            <a href="http://plus.godomall.com/goods/goods_view.php?goodsNo=1000000012" target="_blank"><img src="/data/goods/16/05/19/1000000012/t50_1000000012_list_051.png" width="40" alt="데일리 스냅백" title="데일리 스냅백" class="middle"  /></a>                    </td>
+                    <td>
+                        <div onclick="goods_register_popup('1000000012' );"
+                             class="hand">데일리 스냅백</div>
+                        <div
+                            class="notice-ref notice-sm"></div>
+                        <div>
+                            
+                        </div>
+                    </td>
+                    <td class="center lmenu" id="in_1000000012"><span style="font-weight: bold; font-size: 19px; color: #0070c0;">1</span></td>
+                    <td class="center lmenu">엔에이치엔고도(주)</td>
+                    <td class="center lmenu">노출함</td>
+                    <td class="center lmenu">노출함</td>
+                    <td class="center lmenu">판매함</td>
+                    <td class="center lmenu">판매함</td>
+                    <td class="center number">∞</td>
+                    <td class="center">
+                        <div><span class="font-num">59,600원</span></div>
+                    </td>                    
+                    <td class="center date">
+                        2020-01-01                                            </td>
+                </tr>
+                        </tbody>
+    </table>
+
+    <div class="table-action">
+        <div class="pull-left">
+            <button type="button" class="btn btn-white js-check-replace">전환하기</button>
+        </div>
+        <div class="pull-right">
+            <!--button type="button" class="btn btn-white btn-icon-excel js-excel-download" data-target-form="frmSearchGoods" data-target-list-form="frmList" data-target-list-sno="goodsNo" data-search-count="22" data-total-count="22">엑셀다운로드</button-->
+        </div>
+    </div>
+</form>
+<div class="text-center"><nav><ul class="pagination pagination-sm"><li class="active"><span>1</span></li><li><a href="./goods_image_hosting_replace.php?page=2&amp;&amp;__soldOutCnt=&amp;__pcDisplayCnt=&amp;__mobileDisplayCnt=&amp;__pcNoDisplayCnt=&amp;__mobileNoDisplayCnt=&amp;__total=22&amp;__amount=22">2</a></li><li><a href="./goods_image_hosting_replace.php?page=3&amp;&amp;__soldOutCnt=&amp;__pcDisplayCnt=&amp;__mobileDisplayCnt=&amp;__pcNoDisplayCnt=&amp;__mobileNoDisplayCnt=&amp;__total=22&amp;__amount=22">3</a></li></ul></nav></div>
+
+
+<script type="text/javascript">
+    <!--
+    $(document).ready(function () {
+        $('button.js-check-replace').click(function () {
+            var chkCnt = $('input[name*="goodsNo"]:checked').length;
+            if (chkCnt == 0) {
+                alert('선택된 상품이 없습니다.');
+                return;
+            }
+
+            var loadChk = $('#layerImageHostingReplaceForm').length;
+
+            $.get('layer_goods_image_hosting_replace.php', {}, function (data) {
+                if (loadChk == 0) {
+                    data = '<div id="layerImageHostingReplaceForm">' + data + '</div>';
+                }
+                var layerForm = data;
+                layer_ui(layerForm, '이미지호스팅 전환하기');
+            });
+        });
+
+        $('select[name=\'pageNum\']').change(function () {
+            $('#frmSearchGoods').submit();
+        });
+
+        $('select[name=\'sort\']').change(function () {
+            $('#frmSearchGoods').submit();
+        });
+
+    });
+
+    /**
+     * 카테고리 연결하기 Ajax layer
+     */
+    function layer_register(typeStr, mode, isDisabled) {
+
+        var addParam = {
+            "mode": mode,
+        };
+
+        if (typeStr == 'scm') {
+            $('input:radio[name=scmFl]:input[value=y]').prop("checked", true);
+        }
+
+        if (!_.isUndefined(isDisabled) && isDisabled == true) {
+            addParam.disabled = 'disabled';
+        }
+
+        layer_add_info(typeStr,addParam);
+    }
+    //-->
+</script>
+
+                                    </div>
+            </div>
+
+
+</th:block>
+
+
+</html>

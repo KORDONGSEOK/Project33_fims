@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/admin/goodsdefault}">
+
+<th:block layout:fragment="adminMainContents">
+
+<div id="content" class="row">
+                <div class="col-xs-12">
+                    <div class="page-header js-affix">
+    <h3>상품 마일리지/혜택 관리</h3>
+    <div class="btn-group">
+        <input type="button" value="저장" class="btn btn-red" id="batchSubmit"/>
+    </div>
+</div>
+
+
+
+<form id="frmSearchGoods" name="frmSearchGoods" method="get" class="js-form-enter-submit">
+    <div class="table-title gd-help-manual">
+        상품 검색
+                <span class="search"><button type="button" class="btn btn-sm btn-black" onclick="set_search_config(this.form)">검색설정저장</button></span>
+            </div>
+
+    <div class="search-detail-box">
+        <input type="hidden" name="detailSearch" value=""/>
+        <input type="hidden" name="delFl" value="n"/>
+        <table class="table table-cols">
+            <colgroup>
+                <col class="width-md"/>
+                <col>
+                <col class="width-md"/>
+                <col/>
+            </colgroup>
+            <tbody>
+                                    <tr>
+                <th>공급사 구분</th>
+                <td colspan="3">
+                                        <label class="radio-inline">
+                        <input type="radio" name="scmFl" value="all" checked="checked" onclick="$('#scmLayer').html('');"/>전체
+                    </label>
+                                        <label class="radio-inline">
+                        <input type="radio" name="scmFl" value="n"  onclick="$('#scmLayer').html('')" ;/>본사
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="scmFl" value="y"  onclick="layer_register('scm', 'checkbox')"/>공급사
+                    </label>
+                    <label>
+                        <button type="button" class="btn btn-sm btn-gray" onclick="layer_register('scm','checkbox')">공급사 선택</button>
+                    </label>
+
+                    <div id="scmLayer" class="selected-btn-group ">
+                        <h5>선택된 공급사 : </h5>
+                                            </div>
+                </td>
+            </tr>
+                                    <tr>
+                <th>검색어</th>
+                <td colspan="3">
+                    <div class="form-inline">
+                        <select class="form-control " id="key" name="key" ><option value="goodsNm"  >상품명</option><option value="goodsNo"  >상품코드</option><option value="goodsCd"  >자체상품코드</option><option value="goodsSearchWord"  >검색 키워드</option><option value="__disable1"  disabled>==========</option><option value="makerNm"  >제조사</option><option value="originNm"  >원산지</option><option value="goodsModelNo"  >모델번호</option><option value="hscode"  >HS코드</option><option value="addInfo"  >추가항목</option><option value="__disable2"  disabled>==========</option><option value="memo"  >관리자 메모</option><option value="companyNm"  >공급사명</option><option value="purchaseNm"  >매입처명</option></select>                        <input type="text" name="keyword" value="" class="form-control"/>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>기간검색</th>
+                <td colspan="3">
+                    <div class="form-inline">
+                        <select name="searchDateFl" class="form-control">
+                                                        <option value="regDt" selected='selected'>등록일</option>
+                            <option value="modDt" >수정일</option>
+                        </select>
+
+                        <div class="input-group js-datepicker">
+                            <input type="text" class="form-control width-xs" name="searchDate[]" value="" />
+                            <span class="input-group-addon"><span class="btn-icon-calendar"></span></span>
+                        </div>
+                        ~
+                        <div class="input-group js-datepicker">
+                            <input type="text" class="form-control width-xs" name="searchDate[]" value="" />
+                            <span class="input-group-addon"><span class="btn-icon-calendar"></span></span>
+                        </div>
+                        <div class="btn-group js-dateperiod" data-toggle="buttons" data-target-name="searchDate"><label class="btn btn-white btn-sm hand "><input type="radio" name="searchPeriod" value="0"  >오늘</label><label class="btn btn-white btn-sm hand "><input type="radio" name="searchPeriod" value="6"  >7일</label><label class="btn btn-white btn-sm hand "><input type="radio" name="searchPeriod" value="14"  >15일</label><label class="btn btn-white btn-sm hand "><input type="radio" name="searchPeriod" value="29"  >1개월</label><label class="btn btn-white btn-sm hand "><input type="radio" name="searchPeriod" value="89"  >3개월</label><label class="btn btn-white btn-sm hand "><input type="radio" name="searchPeriod" value="-1"  >전체</label> </div >                     </div>
+                </td>
+            </tr>
+            </tbody>
+            <tbody class="js-search-detail" style="display: none;">
+			<tr>
+                <th>카테고리</th>
+                <td class="contents" colspan="3">
+                    <div class="form-inline">
+                        <select id="cateGoods1" name="cateGoods[]"  class="form-control multiple-select">
+<option value="">=카테고리선택=</option>
+<option value="001"  data-flag="kr,us,cn,jp" data-mall-name="기준몰,영문몰,중문몰,일문몰">TOP</option>
+<option value="002"  data-flag="kr,us,cn,jp" data-mall-name="기준몰,영문몰,중문몰,일문몰">BOTTOM</option>
+<option value="003"  data-flag="kr,us,cn,jp" data-mall-name="기준몰,영문몰,중문몰,일문몰">OUTER</option>
+<option value="006"  data-flag="kr,us,cn,jp" data-mall-name="기준몰,영문몰,중문몰,일문몰">BAG</option>
+<option value="007"  data-flag="kr,us,cn,jp" data-mall-name="기준몰,영문몰,중문몰,일문몰">SHOES</option>
+<option value="004"  data-flag="kr,us,cn,jp" data-mall-name="기준몰,영문몰,중문몰,일문몰">ACC</option>
+</select>
+<select id="cateGoods2" name="cateGoods[]"  class="form-control multiple-select">
+<option value="">=카테고리선택=</option>
+</select>
+<select id="cateGoods3" name="cateGoods[]"  class="form-control multiple-select">
+<option value="">=카테고리선택=</option>
+</select>
+<select id="cateGoods4" name="cateGoods[]"  class="form-control multiple-select">
+<option value="">=카테고리선택=</option>
+</select>
+<script type="text/javascript">
+$(function() {
+	$('#cateGoods1').multi_select_box('#cateGoods',4,'/share/category_select_json.php','=카테고리선택=');
+	$('#cateGoods2').multi_select_box('#cateGoods',4,'/share/category_select_json.php','=카테고리선택=');
+	$('#cateGoods3').multi_select_box('#cateGoods',4,'/share/category_select_json.php','=카테고리선택=');
+	$('#cateGoods4').multi_select_box('#cateGoods',4,'/share/category_select_json.php','=카테고리선택=');
+});
+
+</script>
+                        <label class="checkbox-inline mgl10">
+                            <input type="checkbox" name="categoryNoneFl" value="y" > 카테고리 미지정 상품
+                        </label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>메인분류</th>
+                <td class="contents" colspan="3">
+                    <div class="form-inline">
+                        <select id="displayTheme1" name="displayTheme[]"  class="form-control multiple-select">
+<option value="">=전체=</option>
+<option value="pc"  >PC쇼핑몰</option>
+<option value="mobile" >모바일쇼핑몰</option>
+</select>
+<select id="displayTheme2" name="displayTheme[]"  class="form-control multiple-select">
+<option value="">=메인페이지 분류 선택=</option>
+</select>
+<script type="text/javascript">
+$(function() {
+	$('#displayTheme1').multi_select_box('#displayTheme',2,'/share/display_theme_search_ajax.php','=메인페이지 분류 선택=');
+	$('#displayTheme2').multi_select_box('#displayTheme',2,'/share/display_theme_search_ajax.php','=메인페이지 분류 선택=');
+});
+
+</script>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>브랜드</th>
+                <td>
+                    <div class="form-inline">
+
+                        <label><input type="button" value="브랜드선택" class="btn btn-sm btn-gray"  onclick="layer_register('brand', 'radio-search')"/></label>
+
+                        <label class="checkbox-inline mgl10"><input type="checkbox" name="brandNoneFl" value="y" ><span id="brandNoneFlText">브랜드 미지정 상품</span></label>
+
+                        <div id="brandLayer" class="selected-btn-group ">
+                            <h5>선택된 브랜드 : </h5>
+                                                    </div>
+
+                    </div>
+                </td>
+                <th>판매가</th>
+                <td>
+                    <div class="form-inline">
+                        <input type="text" name="goodsPrice[]" value="" class="form-control width-sm js-number"/>이상 ~
+                        <input type="text" name="goodsPrice[]" value="" class="form-control width-sm js-number"/>이하
+                    </div>
+                </td>
+            </tr>
+                        <tr>
+                <th>마일리지</th>
+                <td>
+                    <div class="form-inline">
+                        <input type="text" name="mileage[]" value="" class="form-control width-sm js-number"/>이상 ~
+                        <input type="text" name="mileage[]" value="" class="form-control width-sm js-number"/>이하</div>
+                </td>
+                <th>마일리지 지급방법</th>
+                <td>
+                    <label class="radio-inline"><input type="radio" name="mileageFl" value="" checked="checked" />전체</label>
+                    <label class="radio-inline"><input type="radio" name="mileageFl" value="c"  />통합설정</label>
+                    <label class="radio-inline"><input type="radio" name="mileageFl" value="g"  />개별설정</label>
+                </td>
+            </tr>
+                                    <tr>
+                                    <th>상품 재고</th>
+                                <td>
+                    <div class="form-inline">
+                        <input type="text" name="stock[]" value="" class="form-control width-sm"/>개 이상 ~
+                        <input type="text" name="stock[]" value="" class="form-control width-sm"/>개 이하
+                    </div>
+                </td>
+                <th>옵션 사용</th>
+                <td>
+                    <label class="radio-inline"><input type="radio" name="optionFl" value="" checked="checked" />전체</label>
+                    <label class="radio-inline"><input type="radio" name="optionFl" value="y"  />사용함</label>
+                    <label class="radio-inline"><input type="radio" name="optionFl" value="n"  />사용안함</label>
+                </td>
+            </tr>
+            <tr>
+                <th>텍스트옵션 사용</th>
+                <td>
+                    <label class="radio-inline"><input type="radio" name="optionTextFl" value="" checked="checked" />전체</label>
+                    <label class="radio-inline"><input type="radio" name="optionTextFl" value="y"  />사용함</label>
+                    <label class="radio-inline"><input type="radio" name="optionTextFl" value="n"  />사용안함</label>
+                </td>
+                <th>추가상품 사용</th>
+                <td>
+                    <label class="radio-inline"><input type="radio" name="addGoodsFl" value="" checked="checked" />전체</label>
+                    <label class="radio-inline"><input type="radio" name="addGoodsFl" value="y"  />사용함</label>
+                    <label class="radio-inline"><input type="radio" name="addGoodsFl" value="n"  />사용안함</label>
+                </td>
+            </tr>
+            <tr>
+                <th>상품노출 상태</th>
+                <td>
+                    <label class="radio-inline"><input type="radio" name="goodsDisplayFl" value="" checked="checked" />전체</label>
+                    <label class="radio-inline"><input type="radio" name="goodsDisplayFl" value="y"  />노출함</label>
+                    <label class="radio-inline"><input type="radio" name="goodsDisplayFl" value="n"  />노출안함</label>
+                </td>
+                <th>상품판매 상태</th>
+                <td>
+                    <label class="radio-inline"><input type="radio" name="goodsSellFl" value="" checked="checked" />전체</label>
+                    <label class="radio-inline"><input type="radio" name="goodsSellFl" value="y"  />판매함</label>
+                    <label class="radio-inline"><input type="radio" name="goodsSellFl" value="n"  />판매안함</label>
+                </td>
+            </tr>
+            <tr>
+                <th>판매 재고</th>
+                <td>
+                    <label class="radio-inline"><input type="radio" name="stockFl" value="" checked="checked" />전체</label>
+                    <label class="radio-inline"><input type="radio" name="stockFl" value="n"  />무한정 판매</label>
+                    <label class="radio-inline"><input type="radio" name="stockFl" value="y"  />재고량에 따름</label>
+                </td>
+                <th>품절 상태</th>
+                <td>
+                    <label class="radio-inline"><input type="radio" name="soldOut" value="" checked="checked" />전체</label>
+                    <label class="radio-inline"><input type="radio" name="soldOut" value="y"  />품절</label>
+                    <label class="radio-inline"><input type="radio" name="soldOut" value="n"  />정상</label>
+                </td>
+            </tr>
+                        <tr class="js-search-icon">
+                <th>아이콘(기간제한)</th>
+                <td>
+                    <label class="radio-inline"><input type="radio" name="goodsIconCdPeriod" value="" checked="checked" />전체</label>
+                    <label class="radio-inline"><input type="radio" name="goodsIconCdPeriod" value="icon0008"  /><img src="/data/icon/goods_icon/icon_reservation.png"  alt="예약상품" title="예약상품" class="middle"  />&nbsp;</label>
+                </td>
+                <th>아이콘(무제한)</th>
+                <td>
+                    <label class="radio-inline"><input type="radio" name="goodsIconCd" value="" checked="checked" />전체</label>
+                    <label class="radio-inline"><input type="radio" name="goodsIconCd" value="icon0001"  /><img src="/data/icon/goods_icon/icon_best.png"  alt="베스트상품" title="베스트상품" class="middle"  />&nbsp;</label>
+<label class="radio-inline"><input type="radio" name="goodsIconCd" value="icon0002"  /><img src="/data/icon/goods_icon/icon_event.png"  alt="이벤트상품" title="이벤트상품" class="middle"  />&nbsp;</label>
+<label class="radio-inline"><input type="radio" name="goodsIconCd" value="icon0003"  /><img src="/data/icon/goods_icon/icon_new.png"  alt="신상품" title="신상품" class="middle"  />&nbsp;</label>
+<label class="radio-inline"><input type="radio" name="goodsIconCd" value="icon0004"  /><img src="/data/icon/goods_icon/icon_hot.png"  alt="인기상품" title="인기상품" class="middle"  />&nbsp;</label>
+<label class="radio-inline"><input type="radio" name="goodsIconCd" value="icon0005"  /><img src="/data/icon/goods_icon/icon_recommend.png"  alt="추천상품" title="추천상품" class="middle"  />&nbsp;</label>
+<label class="radio-inline"><input type="radio" name="goodsIconCd" value="icon0006"  /><img src="/data/icon/goods_icon/icon_sale.png"  alt="세일상품" title="세일상품" class="middle"  />&nbsp;</label>
+<label class="radio-inline"><input type="radio" name="goodsIconCd" value="icon0007"  /><img src="/data/icon/goods_icon/icon_plan.png"  alt="기획상품" title="기획상품" class="middle"  />&nbsp;</label>
+                </td>
+            </tr>
+            <tr class="js-search-delivery">
+                <th>배송비 조건</th>
+                <td colspan="3">
+                    <div class="radio">
+                        <label class="radio-inline">
+                            <input type="radio" name="goodsDeliveryFl" value="" checked="checked"/> 전체
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="goodsDeliveryFl" value="y" /> 배송비조건별
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="goodsDeliveryFl" value="n" /> 상품별
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="goodsDeliveryFixFl[]" value="all" class="js-not-checkall" data-target-name="goodsDeliveryFixFl[]" checked="checked"> 전체
+                        </label>
+                                            <label>
+                            <input class="checkbox-inline" type="checkbox" name="goodsDeliveryFixFl[]" value="free"  > 배송비무료                        </label>
+                                            <label>
+                            <input class="checkbox-inline" type="checkbox" name="goodsDeliveryFixFl[]" value="price"  > 금액별배송                        </label>
+                                            <label>
+                            <input class="checkbox-inline" type="checkbox" name="goodsDeliveryFixFl[]" value="count"  > 수량별배송                        </label>
+                                            <label>
+                            <input class="checkbox-inline" type="checkbox" name="goodsDeliveryFixFl[]" value="weight"  > 무게별배송                        </label>
+                                            <label>
+                            <input class="checkbox-inline" type="checkbox" name="goodsDeliveryFixFl[]" value="fixed"  > 고정배송비                        </label>
+                                        </div>
+                </td>
+            </tr>
+                                    <tr>
+                <th>매입처</th>
+                <td colspan="3">
+                    <div class="form-inline">
+
+                        <label><input type="button" value="매입처 선택" class="btn btn-sm btn-gray"  onclick="layer_register('purchase', 'checkbox')"/></label>
+
+                        <label class="checkbox-inline mgl10"><input type="checkbox" name="purchaseNoneFl" value="y" ><span id="purchaseNoneFlText">매입처 미지정 상품</span></label>
+
+                        <div id="purchaseLayer" class="selected-btn-group ">
+                            <h5>선택된 매입처 : </h5>
+
+                                                        <label><input type="button" value="전체 삭제" class="btn btn-sm btn-gray" data-toggle="delete" data-target="#purchaseLayer div" data-none="#purchaseNoneFlText"/></label>
+                        </div>
+
+                    </div>
+                </td>
+            </tr>
+                        <tr class="js-search-mileage js-search-price display-none" id="eventSearchArea">
+                <th>기획전 검색</th>
+                <td colspan="3">
+                    <div class="form-inline">
+                        <input type="text" name="event_text" class="form-control" readonly="readonly" value="" />
+                        <button type="button" class="btn btn-sm btn-gray" onclick="javascript:layer_register('event_select', 'search');">기획전 검색</button>
+                        <input type="hidden" name="eventThemeSno" value="" />
+                        <span id="eventGroupSelectArea" class="display-none" >
+                            <select name="eventGroup" id="eventGroupSearchSelect" class="form-control multiple-select">
+                                                            </select>
+                        </span>
+                        <span id="eventSearchResetArea" class="pdl10 display-none">
+                            <button type="button" class="btn btn-icon-delete" onclick="javascript:resetEventSearchCondition();">삭제</button>
+                        </span>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-sm btn-link js-search-toggle bold">상세검색 <span>펼침</span></button>
+    </div>
+
+    <div class="table-btn">
+        <input type="submit" value="검색" class="btn btn-lg btn-black">
+    </div>
+
+
+    <div class="table-header">
+        <div class="pull-left">
+            검색 <strong>22</strong>개 /
+            전체 <strong>22</strong>개
+                    </div>
+        <div class="pull-right form-inline">
+            <select class="form-control " id="sort" name="sort" ><option value="g.goodsNo desc" selected="selected" >등록일 ↓</option><option value="g.goodsNo asc"  >등록일 ↑</option><option value="goodsNm asc"  >상품명 ↓</option><option value="goodsNm desc"  >상품명 ↑</option><option value="companyNm asc"  >공급사 ↓</option><option value="companyNm desc"  >공급사 ↑</option><option value="goodsPrice asc"  >판매가 ↓</option><option value="goodsPrice desc"  >판매가 ↑</option></select>            <select class="form-control " id="pageNum" name="pageNum" ><option value="10"  >10개 보기</option><option value="20"  >20개 보기</option><option value="30"  >30개 보기</option><option value="40"  >40개 보기</option><option value="50"  >50개 보기</option><option value="60"  >60개 보기</option><option value="70"  >70개 보기</option><option value="80"  >80개 보기</option><option value="90"  >90개 보기</option><option value="100"  >100개 보기</option><option value="200"  >200개 보기</option><option value="300"  >300개 보기</option><option value="500"  >500개 보기</option></select>                    </div>
+    </div>
+    <input type="hidden" name="searchFl" value="y">
+    <input type="hidden" name="applyPath" value="/goods/goods_batch_mileage.php">
+</form>
+<script>
+function brand_del(){
+    $('input[name=brandCdNm]').val('');
+}
+</script>
+
+<form id="frmBatchPrice" name="frmBatchPrice" action="./goods_ps.php"    target="ifrmProcess" method="post">
+    <input type="hidden" name="mode" value="batch_mileage" />
+    <input type="hidden" name="modDtUse" value="" />
+    <input type="hidden" name="queryAll[join]" value="YToyOntpOjA7czozMjoiw3+oExpazz1c1W0/BlWjUZVaijDWkQY9i0pTlW1lJLAiO2k6MTtzOjMyOiJhijKlaoPBeT8T4du9ku0jax7I64pfge7mVCKa7Ry8NiI7fQ==" />
+<input type="hidden" name="queryAll[where]" value="YToyOntpOjA7czozMjoivOHm7x1mRgpM6zkOjmOfTl1JqguzT4CDd+18OWIy5cwiO2k6MTtzOjY0OiI14O86FX+oHRqm/53zxYuxUyDjBju6O3IZNLD40xl/kbVHe9h/xlWIfyioBDQ+kt9NDuPpW4MuO9BZUhD/gk7KIjt9" />
+<input type="hidden" name="queryAll[bind]" value="YToyOntpOjA7czozMjoiKjihXXq+doqgD0OWwldds8j5FHmcys6QFn4PkQcgFMwiO2k6MTtzOjMyOiKmZc2NWusCEvkgS3Qeeux2OTRNZg5K5Zf4K+6G+YAh0SI7fQ==" />
+    <div  class="table-responsive">
+        <table class="table table-rows table-fixed">
+            <thead>
+            <tr>
+                <th class="width-2xs center"><input type="checkbox" class="js-checkall" data-target-name="arrGoodsNo[]"></th>
+                <th class="width-2xs center">번호</th>
+                <th class="width-xs center">상품코드</th>
+                <th class="width-xs">이미지</th>
+                <th class="width-lg center">상품명</th>
+                <th class="width-xs center">공급사</th>
+                <th class="width-xs center">노출상태</th>
+                <th class="width-xs center">판매상태</th>
+                <th class="width-md center">판매가</th>
+                <th class="width-md center">마일리지</th>
+                <th class="width-xs center">상품할인</th>
+                <th class="width-xl center">상품혜택</th>
+                <th class="width-2xs center">상세보기</th>
+            </tr>
+            </thead>
+            <tbody>
+                                <tr>
+                        <td class="center number">
+                            <input type="checkbox" name="arrGoodsNo[]" value="1000000022"/>
+                        </td>
+                        <td class="center">22</td>
+                        <td class="center number">1000000022</td>
+                        <td class="center">
+                            <div class="width-2xs">
+                                <a href="http://plus.godomall.com/goods/goods_view.php?goodsNo=1000000022" target="_blank"><img src="/data/goods/17/02/06/1000000022/t50_1000000022_list_085.png" width="40" alt="스웨이드 옥스포드 스니커즈" title="스웨이드 옥스포드 스니커즈" class="middle"  /></a>                            </div>
+                        </td>
+                        <td>
+                            <a href="./goods_register.php?goodsNo=1000000022" target="_blank"><span class="emphasis_text">스웨이드 옥스포드 스니커즈</span></a>
+
+                        </td>
+                        <td class="center">엔에이치엔고도(주)</td>
+                        <td class="center lmenu">노출함</td>
+                        <td class="center lmenu">판매함</td>
+                        <td class="center number">
+                            <div class="form-inline">82,000원</div>
+                        </td>
+                        <td class="center">통합설정<br />(전체회원)</td>
+                        <td class="center">사용안함</td>
+                        <td class="left">개별설정<br/>(사용안함)</td>
+                        <td class="center"><button type="button" class="btn btn-sm btn-white js-benefit-detail" data-goods-no="1000000022">보기</button></td>
+                    </tr>
+                                        <tr>
+                        <td class="center number">
+                            <input type="checkbox" name="arrGoodsNo[]" value="1000000021"/>
+                        </td>
+                        <td class="center">21</td>
+                        <td class="center number">1000000021</td>
+                        <td class="center">
+                            <div class="width-2xs">
+                                <a href="http://plus.godomall.com/goods/goods_view.php?goodsNo=1000000021" target="_blank"><img src="/data/goods/17/02/06/1000000021/t50_1000000021_list_09.png" width="40" alt="지퍼 그레이 카고 팬츠" title="지퍼 그레이 카고 팬츠" class="middle"  /></a>                            </div>
+                        </td>
+                        <td>
+                            <a href="./goods_register.php?goodsNo=1000000021" target="_blank"><span class="emphasis_text">지퍼 그레이 카고 팬츠</span></a>
+
+                        </td>
+                        <td class="center">엔에이치엔고도(주)</td>
+                        <td class="center lmenu">노출함</td>
+                        <td class="center lmenu">판매함</td>
+                        <td class="center number">
+                            <div class="form-inline">113,000원</div>
+                        </td>
+                        <td class="center">통합설정<br />(전체회원)</td>
+                        <td class="center">사용안함</td>
+                        <td class="left">개별설정<br/>(사용안함)</td>
+                        <td class="center"><button type="button" class="btn btn-sm btn-white js-benefit-detail" data-goods-no="1000000021">보기</button></td>
+                    </tr>
+                                        <tr>
+                        <td class="center number">
+                            <input type="checkbox" name="arrGoodsNo[]" value="1000000020"/>
+                        </td>
+                        <td class="center">20</td>
+                        <td class="center number">1000000020</td>
+                        <td class="center">
+                            <div class="width-2xs">
+                                <a href="http://plus.godomall.com/goods/goods_view.php?goodsNo=1000000020" target="_blank"><img src="/data/goods/17/02/06/1000000020/t50_1000000020_list_042.png" width="40" alt="딥블루 스트레이트 데님" title="딥블루 스트레이트 데님" class="middle"  /></a>                            </div>
+                        </td>
+                        <td>
+                            <a href="./goods_register.php?goodsNo=1000000020" target="_blank"><span class="emphasis_text">딥블루 스트레이트 데님</span></a>
+
+                        </td>
+                        <td class="center">엔에이치엔고도(주)</td>
+                        <td class="center lmenu">노출함</td>
+                        <td class="center lmenu">판매함</td>
+                        <td class="center number">
+                            <div class="form-inline">96,000원</div>
+                        </td>
+                        <td class="center">통합설정<br />(전체회원)</td>
+                        <td class="center">사용안함</td>
+                        <td class="left">개별설정<br/>(사용안함)</td>
+                        <td class="center"><button type="button" class="btn btn-sm btn-white js-benefit-detail" data-goods-no="1000000020">보기</button></td>
+                    </tr>
+                                        <tr>
+                        <td class="center number">
+                            <input type="checkbox" name="arrGoodsNo[]" value="1000000019"/>
+                        </td>
+                        <td class="center">19</td>
+                        <td class="center number">1000000019</td>
+                        <td class="center">
+                            <div class="width-2xs">
+                                <a href="http://plus.godomall.com/goods/goods_view.php?goodsNo=1000000019" target="_blank"><img src="/data/goods/17/02/06/1000000019/t50_1000000019_list_033.png" width="40" alt="퀼팅 블랙 스트랩백" title="퀼팅 블랙 스트랩백" class="middle"  /></a>                            </div>
+                        </td>
+                        <td>
+                            <a href="./goods_register.php?goodsNo=1000000019" target="_blank"><span class="emphasis_text">퀼팅 블랙 스트랩백</span></a>
+
+                        </td>
+                        <td class="center">엔에이치엔고도(주)</td>
+                        <td class="center lmenu">노출함</td>
+                        <td class="center lmenu">판매함</td>
+                        <td class="center number">
+                            <div class="form-inline">214,000원</div>
+                        </td>
+                        <td class="center">통합설정<br />(전체회원)</td>
+                        <td class="center">사용안함</td>
+                        <td class="left">개별설정<br/>(사용안함)</td>
+                        <td class="center"><button type="button" class="btn btn-sm btn-white js-benefit-detail" data-goods-no="1000000019">보기</button></td>
+                    </tr>
+                                        <tr>
+                        <td class="center number">
+                            <input type="checkbox" name="arrGoodsNo[]" value="1000000018"/>
+                        </td>
+                        <td class="center">18</td>
+                        <td class="center number">1000000018</td>
+                        <td class="center">
+                            <div class="width-2xs">
+                                <a href="http://plus.godomall.com/goods/goods_view.php?goodsNo=1000000018" target="_blank"><img src="/data/goods/17/02/06/1000000018/t50_1000000018_list_021.png" width="40" alt="아이보리 페도라" title="아이보리 페도라" class="middle"  /></a>                            </div>
+                        </td>
+                        <td>
+                            <a href="./goods_register.php?goodsNo=1000000018" target="_blank"><span class="emphasis_text">아이보리 페도라</span></a>
+
+                        </td>
+                        <td class="center">엔에이치엔고도(주)</td>
+                        <td class="center lmenu">노출함</td>
+                        <td class="center lmenu">판매함</td>
+                        <td class="center number">
+                            <div class="form-inline">92,000원</div>
+                        </td>
+                        <td class="center">통합설정<br />(전체회원)</td>
+                        <td class="center">사용안함</td>
+                        <td class="left">개별설정<br/>(사용안함)</td>
+                        <td class="center"><button type="button" class="btn btn-sm btn-white js-benefit-detail" data-goods-no="1000000018">보기</button></td>
+                    </tr>
+                                        <tr>
+                        <td class="center number">
+                            <input type="checkbox" name="arrGoodsNo[]" value="1000000017"/>
+                        </td>
+                        <td class="center">17</td>
+                        <td class="center number">1000000017</td>
+                        <td class="center">
+                            <div class="width-2xs">
+                                <a href="http://plus.godomall.com/goods/goods_view.php?goodsNo=1000000017" target="_blank"><img src="/data/goods/17/02/06/1000000017/t50_1000000017_list_029.png" width="40" alt="레드 페이즐리 스카프" title="레드 페이즐리 스카프" class="middle"  /></a>                            </div>
+                        </td>
+                        <td>
+                            <a href="./goods_register.php?goodsNo=1000000017" target="_blank"><span class="emphasis_text">레드 페이즐리 스카프</span></a>
+
+                        </td>
+                        <td class="center">엔에이치엔고도(주)</td>
+                        <td class="center lmenu">노출함</td>
+                        <td class="center lmenu">판매함</td>
+                        <td class="center number">
+                            <div class="form-inline">48,000원</div>
+                        </td>
+                        <td class="center">통합설정<br />(전체회원)</td>
+                        <td class="center">사용안함</td>
+                        <td class="left">개별설정<br/>(사용안함)</td>
+                        <td class="center"><button type="button" class="btn btn-sm btn-white js-benefit-detail" data-goods-no="1000000017">보기</button></td>
+                    </tr>
+                                        <tr>
+                        <td class="center number">
+                            <input type="checkbox" name="arrGoodsNo[]" value="1000000016"/>
+                        </td>
+                        <td class="center">16</td>
+                        <td class="center number">1000000016</td>
+                        <td class="center">
+                            <div class="width-2xs">
+                                <a href="http://plus.godomall.com/goods/goods_view.php?goodsNo=1000000016" target="_blank"><img src="/data/goods/16/05/19/1000000016/t50_1000000016_list_099.png" width="40" alt="블랙 스퀘어백" title="블랙 스퀘어백" class="middle"  /></a>                            </div>
+                        </td>
+                        <td>
+                            <a href="./goods_register.php?goodsNo=1000000016" target="_blank"><span class="emphasis_text">블랙 스퀘어백</span></a>
+
+                        </td>
+                        <td class="center">엔에이치엔고도(주)</td>
+                        <td class="center lmenu">노출함</td>
+                        <td class="center lmenu">판매함</td>
+                        <td class="center number">
+                            <div class="form-inline">128,000원</div>
+                        </td>
+                        <td class="center">통합설정<br />(전체회원)</td>
+                        <td class="center">사용안함</td>
+                        <td class="left">개별설정<br/>(사용안함)</td>
+                        <td class="center"><button type="button" class="btn btn-sm btn-white js-benefit-detail" data-goods-no="1000000016">보기</button></td>
+                    </tr>
+                                        <tr>
+                        <td class="center number">
+                            <input type="checkbox" name="arrGoodsNo[]" value="1000000015"/>
+                        </td>
+                        <td class="center">15</td>
+                        <td class="center number">1000000015</td>
+                        <td class="center">
+                            <div class="width-2xs">
+                                <a href="http://plus.godomall.com/goods/goods_view.php?goodsNo=1000000015" target="_blank"><img src="/data/goods/16/05/19/1000000015/t50_1000000015_list_030.png" width="40" alt="빈티지 레더백" title="빈티지 레더백" class="middle"  /></a>                            </div>
+                        </td>
+                        <td>
+                            <a href="./goods_register.php?goodsNo=1000000015" target="_blank"><span class="emphasis_text">빈티지 레더백</span></a>
+
+                        </td>
+                        <td class="center">엔에이치엔고도(주)</td>
+                        <td class="center lmenu">노출함</td>
+                        <td class="center lmenu">판매함</td>
+                        <td class="center number">
+                            <div class="form-inline">198,000원</div>
+                        </td>
+                        <td class="center">통합설정<br />(전체회원)</td>
+                        <td class="center">사용안함</td>
+                        <td class="left">개별설정<br/>(사용안함)</td>
+                        <td class="center"><button type="button" class="btn btn-sm btn-white js-benefit-detail" data-goods-no="1000000015">보기</button></td>
+                    </tr>
+                                        <tr>
+                        <td class="center number">
+                            <input type="checkbox" name="arrGoodsNo[]" value="1000000013"/>
+                        </td>
+                        <td class="center">14</td>
+                        <td class="center number">1000000013</td>
+                        <td class="center">
+                            <div class="width-2xs">
+                                <a href="http://plus.godomall.com/goods/goods_view.php?goodsNo=1000000013" target="_blank"><img src="/data/goods/16/05/19/1000000013/t50_1000000013_list_022.png" width="40" alt="화이트 샌들" title="화이트 샌들" class="middle"  /></a>                            </div>
+                        </td>
+                        <td>
+                            <a href="./goods_register.php?goodsNo=1000000013" target="_blank"><span class="emphasis_text">화이트 샌들</span></a>
+
+                        </td>
+                        <td class="center">엔에이치엔고도(주)</td>
+                        <td class="center lmenu">노출함</td>
+                        <td class="center lmenu">판매함</td>
+                        <td class="center number">
+                            <div class="form-inline">67,000원</div>
+                        </td>
+                        <td class="center">통합설정<br />(전체회원)</td>
+                        <td class="center">사용안함</td>
+                        <td class="left">개별설정<br/>(사용안함)</td>
+                        <td class="center"><button type="button" class="btn btn-sm btn-white js-benefit-detail" data-goods-no="1000000013">보기</button></td>
+                    </tr>
+                                        <tr>
+                        <td class="center number">
+                            <input type="checkbox" name="arrGoodsNo[]" value="1000000012"/>
+                        </td>
+                        <td class="center">13</td>
+                        <td class="center number">1000000012</td>
+                        <td class="center">
+                            <div class="width-2xs">
+                                <a href="http://plus.godomall.com/goods/goods_view.php?goodsNo=1000000012" target="_blank"><img src="/data/goods/16/05/19/1000000012/t50_1000000012_list_051.png" width="40" alt="데일리 스냅백" title="데일리 스냅백" class="middle"  /></a>                            </div>
+                        </td>
+                        <td>
+                            <a href="./goods_register.php?goodsNo=1000000012" target="_blank"><span class="emphasis_text">데일리 스냅백</span></a>
+
+                        </td>
+                        <td class="center">엔에이치엔고도(주)</td>
+                        <td class="center lmenu">노출함</td>
+                        <td class="center lmenu">판매함</td>
+                        <td class="center number">
+                            <div class="form-inline">59,600원</div>
+                        </td>
+                        <td class="center">통합설정<br />(전체회원)</td>
+                        <td class="center">사용안함</td>
+                        <td class="left">개별설정<br/>(사용안함)</td>
+                        <td class="center"><button type="button" class="btn btn-sm btn-white js-benefit-detail" data-goods-no="1000000012">보기</button></td>
+                    </tr>
+                                </tbody>
+        </table>
+
+
+    </div>
+    <div class="center"><nav><ul class="pagination pagination-sm"><li class="active"><span>1</span></li><li><a href="./goods_batch_mileage.php?page=2&amp;&amp;__total=22&amp;__amount=22">2</a></li><li><a href="./goods_batch_mileage.php?page=3&amp;&amp;__total=22&amp;__amount=22">3</a></li></ul></nav></div>
+    <div class="mgt10"></div>
+    <div>
+        <table class="table table-cols">
+            <colgroup><col class="width-md" /><col /></colgroup>
+            <tr>
+                <th class="center">
+                    <select name="type" onchange="view_terms(this.value)" class="form-control">
+                        <option value="mileage">마일리지</option>
+                        <option value="discount">상품할인/제외혜택</option>
+                    </select><br/>
+                    조건설정
+                </th>
+                <td id="display_set">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" id="batchAll" name="batchAll" value="y" />검색된 상품 전체(22개 상품)를 수정합니다.
+                    </label>
+                    <p class="notice-danger mgt5">상품수가 많은 경우 비권장합니다. 가능하면 한 페이지씩 선택하여 수정하세요.</p>
+                    <table class="table table-cols" id="tbl_set_mileage">
+                        <colgroup>
+                            <col class="width-sm">
+                            <col>
+                        </colgroup>
+                        <tbody>
+                        <tr>
+                            <th>지급방법 선택</th>
+                            <td>
+                                <label class="radio-inline"><input type="radio" name="mileageFl" value="c" checked="checked" onclick="display_mileage_set();"/>통합설정</label>
+                                <label class="radio-inline"><input type="radio" name="mileageFl" value="g" onclick="display_mileage_set();"/>개별설정</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>대상 선택</th>
+                            <td class="form-inline">
+                                <label class="radio-inline"><input type="radio" name="mileageGroup" value="all" checked="checked" onclick="display_mileage_set();">전체회원</label>
+                                <label class="radio-inline"><input type="radio" name="mileageGroup" value="group" onclick="display_mileage_set();layer_register('mileage_group','search')">특정회원등급</label>
+                                <label>
+                                    <button type="button" class="btn btn-sm btn-gray js-mileage-group-select">회원등급 선택</button>
+                                </label>
+
+                                <div id="mileage_group" class="selected-btn-group"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>금액 설정</th>
+                            <td>
+                                <div class="mileage-set-c">
+                                                                            구매 금액의 <span>0%</span>를  마일리지로 지급
+                                                                    </div>
+                                <div class="mileage-set-g-all display-none form-inline">
+                                    <span class="goods-title">구매금액의</span>
+                                    <input type="text" name="mileageGoods" class="form-control width-sm">
+                                    <select name="mileageGoodsUnit" class="goods-unit form-control width-2xs">
+                                        <option value="percent" selected="selected">%</option>
+                                        <option value="mileage">원</option>
+                                    </select>
+                                </div>
+                                <div class="mileage-set-g-group display-none">
+                                    <table class="table table-rows" style="width:auto;">
+                                        <thead>
+                                        <tr>
+                                            <th>회원등급</th>
+                                            <th>지급금액</th>
+                                        </tr>
+                                        </thead>
+                                        <tr>
+                                            <td><select class="form-control " id="" name="mileageGroupMemberInfo['groupSno'][]" ><option value="">=회원등급 선택=</option><option value="2"  >우수회원</option><option value="1"  >일반회원</option></select></td>
+                                            <td class="form-inline">
+                                                <span class="goods-title">구매금액의</span>
+                                                <input type="text" name="mileageGroupMemberInfo['mileageGoods'][]" value="" class="form-control width-sm">
+                                                <select name="mileageGroupMemberInfo['mileageGoodsUnit'][]" class="goods-unit form-control width-2xs">
+                                                    <option value="percent" checked="checked">%</option>
+                                                    <option value="mileage">원</option>
+                                                </select>
+                                                <input type="button" value="추가" class="btn btn-sm btn-white btn-icon-plus add-groupSno" data-target="mileage">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colspan="2">
+                                <div class="notice-info">
+                                    통합설정 <a href="../member/member_mileage_give.php" target="_blank" class="btn-link">회원>마일리지/예치금 관리>마일리지 지급설정</a>에서 설정한 기준에 따름 :
+                                                                            구매 금액의 <span>0%</span>를  마일리지로 지급
+                                    <br />
+                                    구매금액 <a href="../member/member_mileage_basic.php" target="_blank" class="btn-link">회원>마일리지/예치금 관리>마일리지 기본설정</a>에서 설정한 기준에 따름 : 판매가<br />
+                                    절사기준 <a href="../policy/base_currency_unit.php" target="_blank" class="btn-link">기본설정>기본정책>금액/단위 기준설정</a>에서 설정한 기준에 따름</span> : 0.1원 단위로 버림                                </div>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+
+                    <div class="pdl5 pdb5 display-none" id="tbl_set_goodsBenefit">
+                        <label class="radio-inline">
+                            <input type="radio" name="goodsBenefitSetFl" value="n"  onclick="display_benefit_set('n', 'goods_benefit_group');" checked />개별설정
+                        </label>
+                                            </div>
+
+                    <div id="goods_benefit_group" class="selected-btn-group" >
+
+                    </div>
+
+                    <div id="goodsBenefitConfig">
+                        <table class="table table-cols display-none" id="tbl_set_discount">
+                            <colgroup>
+                                <col class="width-md">
+                                <col>
+                            </colgroup>
+                            <tbody>
+                            <tr>
+                                <th colspan="2">상품 할인 설정</th>
+                            </tr>
+                            <tr>
+                                <th>사용여부</th>
+                                <td>
+                                    <div class="radio">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="goodsDiscountFl" value="n" onclick="display_toggle_class('goodsDiscountFl', 'goodsDiscountConfig');" checked="checked">사용안함
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="goodsDiscountFl" value="y" onclick="display_toggle_class('goodsDiscountFl', 'goodsDiscountConfig');">사용함
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="goodsDiscountConfig display-none">
+                                <th class="input_title">진행유형</th>
+                                <td class="input_area">
+
+                                    <div>
+                                        <label class="radio-inline">
+                                            <input type="radio" name="benefitUseType" value="nonLimit" checked>제한 없음
+                                        </label>
+                                    </div>
+
+                                    <div class="pdt10">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="benefitUseType" value="newGoodsDiscount">신상품 할인
+                                        </label>
+                                        <div class="form-inline pdt10 pdl20">
+                                            상품 등록일
+                                            <select name="newGoodsRegFl" class="form-control" style="display: none">
+                                                <option value="regDt" checked>등록일</option>
+                                                <!--<option value="modDt">수정일</option>-->
+                                            </select>
+                                            부터
+                                            <input type="text" name="newGoodsDate" value="" class="form-control width-2xs" maxlength="5">
+                                            <select name="newGoodsDateFl" class="form-control">
+                                                <option value="day" selected>일</option>
+                                                <option value="hour">시간</option>
+                                            </select>
+                                            까지
+                                        </div>
+                                    </div>
+
+                                    <div class="pdt10">
+                                        <label class="radio-inline">
+                                            <input type="radio" name="benefitUseType" value="periodDiscount">특정기간 할인
+                                        </label>
+
+                                        <div class="form-inline pdt10 pdl20">
+                                            <div class="input-group js-datetimepicker">
+                                                <input type="text" class="form-control width-sm" name="periodDiscountStart" value="" >
+                                                <span class="input-group-addon">
+                                                        <span class="btn-icon-calendar">
+                                                        </span>
+                                                    </span>
+                                            </div>
+                                            ~
+                                            <div class="input-group js-datetimepicker">
+                                                <input type="text" class="form-control width-sm" name="periodDiscountEnd" value="" >
+                                                <span class="input-group-addon">
+                                                        <span class="btn-icon-calendar">
+                                                        </span>
+                                                    </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <tr class="goodsDiscountConfig display-none">
+                                <th>할인금액 기준</th>
+                                <td>
+                                    <input type="checkbox" checked="checked" disabled="disabled">판매가&nbsp;+&nbsp;(&nbsp;
+                                    <label class="checkbox-inline">
+<input type="checkbox" name="fixedGoodsDiscount[]" value="option" >옵션가
+</label>
+<label class="checkbox-inline">
+<input type="checkbox" name="fixedGoodsDiscount[]" value="text" >텍스트옵션가
+</label>
+                                    &nbsp;)&nbsp;
+                                </td>
+                            </tr>
+                            <tr class="goodsDiscountConfig display-none">
+                                <th>대상 선택</th>
+                                <td>
+                                    <label class="radio-inline"><input type="radio" name="goodsDiscountGroup" value="all" checked="checked" onclick="display_goods_discount_set();">전체(회원+비회원)</label>
+                                    <label class="radio-inline"><input type="radio" name="goodsDiscountGroup" value="member" onclick="display_goods_discount_set();">회원전용(비회원제외)</label>
+                                    <label class="radio-inline"><input type="radio" name="goodsDiscountGroup" value="group" onclick="display_goods_discount_set();">특정회원등급</label>
+                                </td>
+                            </tr>
+                            <tr class="goodsDiscountConfig display-none">
+                                <th>금액 설정</th>
+                                <td>
+                                    <div class="goods-discount-all form-inline">
+                                        <span class="goods-title">구매금액의</span>
+                                        <input type="text" name="goodsDiscount" class="form-control width-sm">
+                                        <select name="goodsDiscountUnit" class="goods-unit form-control width-2xs">
+                                            <option value="percent" selected="selected">%</option>
+                                            <option value="price">원</option>
+                                        </select>
+                                    </div>
+                                    <div class="goods-discount-group hide">
+                                        <table class="table table-rows" style="width:auto;">
+                                            <thead>
+                                            <tr>
+                                                <th>회원등급</th>
+                                                <th>할인금액</th>
+                                            </tr>
+                                            </thead>
+                                            <tr>
+                                                <td><select class="form-control " id="" name="goodsDiscountGroupMemberInfo['groupSno'][]" ><option value="">=회원등급 선택=</option><option value="2"  >우수회원</option><option value="1"  >일반회원</option></select></td>
+                                                <td class="form-inline">
+                                                    <span class="goods-title">구매금액의</span>
+                                                    <input type="text" name="goodsDiscountGroupMemberInfo['goodsDiscount'][]" value="" class="form-control width-sm">
+                                                    <select name="goodsDiscountGroupMemberInfo['goodsDiscountUnit'][]" class="goods-unit form-control width-2xs">
+                                                        <option value="percent" selected="selected">%</option>
+                                                        <option value="price">원</option>
+                                                    </select>
+                                                    <input type="button" value="추가" class="btn btn-sm btn-white btn-icon-plus add-groupSno" data-target="discount">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <td colspan="2">
+                                    <span class="notice-info">절사기준 <a href="../policy/base_currency_unit.php" class="btn-link" target="_blank">[기본설정>기본정책>금액/단위 기준설정]</a>에서 설정한 기준에 따름 : 0.1원 단위로 버림</span>
+                                </td>
+                            </tr>
+                            </tfoot>
+                        </table>
+
+                        <table class="table table-cols display-none" id="tbl_set_except">
+                            <colgroup>
+                                <col class="width-sm">
+                                <col>
+                            </colgroup>
+                            <tbody>
+                            <tr>
+                                <th colspan="2">혜택 제외 설정 <span class="notice-info">상품 할인 설정의 진행유형 및 기간과 상관없이 별도 설정이 가능합니다.</span></th>
+                            </tr>
+                            <tr>
+                                <th>제외 혜택 선택</th>
+                                <td>
+                                    <label class="checkbox-inline">
+<input type="checkbox" name="exceptBenefit[]" value="add" >회원 추가 할인혜택 적용 제외
+</label>
+</br>
+<label class="checkbox-inline">
+<input type="checkbox" name="exceptBenefit[]" value="overlap" >회원 중복 할인혜택 적용 제외
+</label>
+</br>
+<label class="checkbox-inline">
+<input type="checkbox" name="exceptBenefit[]" value="mileage" >회원 추가 마일리지 적립 적용 제외
+</label>
+</br>
+<label class="checkbox-inline">
+<input type="checkbox" name="exceptBenefit[]" value="coupon" >상품쿠폰 할인/적립 혜택 적용 제외
+</label>
+</br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>제외 대상 선택</th>
+                                <td class="form-inline">
+                                    <label class="radio-inline"><input type="radio" name="exceptBenefitGroup" value="all" checked="checked" onclick="display_group_member('all', 'except_benefit_group');">전체회원</label>
+                                    <label class="radio-inline"><input type="radio" name="exceptBenefitGroup" value="group" onclick="display_group_member('group', 'except_benefit_group');layer_register('except_benefit_group','search')">특정회원등급</label>
+                                    <label>
+                                        <button type="button" class="btn btn-sm btn-gray js-except-benefit-group-select">회원등급 선택</button>
+                                    </label>
+
+                                    <div id="except_benefit_group" class="selected-btn-group"></div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</form>
+
+
+<script type="text/javascript">
+    <!--
+
+    $(document).ready(function(){
+
+
+        $( "#batchSubmit" ).click(function() {
+
+            var msg = '';
+
+            var type =  $('select[name="type"]').val();
+
+            if ($('#batchAll:checked').length == 0) {
+                if ($('input[name="arrGoodsNo[]"]:checked').length == 0) {
+                    $.warnUI('항목 체크', '선택된 항목이 없습니다.');
+                    return false;
+                }
+
+                msg += '선택된 상품을 ';
+            } else {
+                msg += '검색된 전체 상품을 ';
+            }
+
+            if(type =='discount')
+            {
+
+                if($('#display_set input[name="goodsDiscountFl"]:checked').val() == 'y' && $('input[name="goodsBenefitSetFl"]:checked').val() != 'y')
+                {
+                    if ($('#display_set input[name="goodsDiscountGroup"]:checked').val() == 'group') {
+                        var discountFl = true;
+                        var goodsDiscountFl = true;
+                        $('#display_set input[name="goodsDiscountGroupMemberInfo[\'goodsDiscount\'][]"]').each(function(index){
+                            if ($('#display_set select[name="goodsDiscountGroupMemberInfo[\'groupSno\'][]"]').eq(index).val() == '' || $(this).val() == '' || parseFloat($(this).val()) <= 0) {
+                                discountFl = false;
+                                return false;
+                            }
+                            if ($('#display_set select[name="goodsDiscountGroupMemberInfo[\'goodsDiscountUnit\'][]"]').eq(index).val() == 'percent' && parseFloat($(this).val()) > 100) {
+                                goodsDiscountFl = false;
+                                return false;
+                            }
+                        });
+                        if (discountFl === false) {
+                            alert('상품 할인 설정의 금액설정 항목을 입력하세요.');
+                            return false;
+                        }
+                        if (goodsDiscountFl === false) {
+                            alert('상품 할인 금액은 100%를 초과할 수 없습니다.');
+                            return false;
+                        }
+                    } else {
+                        if ($('#display_set select[name="goodsDiscountUnit"]').val() == 'percent' && parseFloat($('#display_set input[name="goodsDiscount"]').val()) > 100) {
+                            alert('상품 할인 금액은 100%를 초과할 수 없습니다.');
+                            return false;
+                        }
+                    }
+                }
+
+                if ($('input[name="exceptBenefit[]"]:checked').length > 0 && $('input[name="exceptBenefitGroup"]:checked').val() == 'group') {
+                    if (!$('input[name="exceptBenefitGroupInfo[]"]').length) {
+                        alert('상품 할인/적립 혜택 제외 회원등급을 선택해주세요');
+                        return false;
+                    }
+                }
+
+                if ($('input[name="benefitUseType"]:checked').val() == 'newGoodsDiscount' && $('input[name="goodsBenefitSetFl"]:checked').val() != 'y') {
+                    if ($('input[name="newGoodsDate"]') == '' || $('input[name="newGoodsDate"]').val() < 1) {
+                        alert('신상품 할인 기간을 입력해주세요');
+                        return false;
+                    }
+                }
+
+                if ($('input[name="goodsDiscountFl"]:checked').val() == 'y' && $('input[name="goodsBenefitSetFl"]:checked').val() != 'y' ) {
+                    if ($('[name="goodsDiscountGroup"]:checked').val() != 'group' && $('input[name="goodsDiscount"]').val() < 1) {
+                        alert('상품 할인 설정의 금액설정 항목을 입력하세요');
+                        return false;
+                    }
+                }
+
+
+                if ($('input[name="benefitUseType"]:checked').val() == 'periodDiscount' && $('input[name="goodsBenefitSetFl"]:checked').val() != 'y') {
+
+                    var discountStart = $('input[name="periodDiscountStart"]').val();
+                    var discountEnd = $('input[name="periodDiscountEnd"]').val()
+                    if(discountStart == '' || discountEnd == ''){
+                        alert('특정기간 할인의 시작일/종료일을 확인해 주세요');
+                        return false;
+                    }
+                    var sdt = dateGetTime(discountStart);
+                    var edt = dateGetTime(discountEnd);
+                    if (sdt >= edt) {
+                        alert('특정기간 할인의 시작일/종료일을 확인해 주세요');
+                        return false;
+                    }
+                }
+
+                if ($('input[name="goodsBenefitSetFl"]:checked').val() == 'y') {
+                    var benefitSno = $('input[name="benefitSno"]').val();
+                    if ( typeof benefitSno == "undefined" || benefitSno == "" ){
+                        alert('상품 혜택을 선택해주세요');
+                        return false;
+                    }
+                }
+
+                if ($('#display_set input[name="exceptBenefit[]"]:checked').length > 0 && $('#display_set input[name="exceptBenefitGroup"]:checked').val() == 'group') {
+                    if (!$('#display_set input[name="exceptBenefitGroupInfo[]"]').length) {
+                        alert('상품 할인/적립 혜택 제외 회원등급을 선택해주세요');
+                        return false;
+                    }
+                }
+
+                msg += '설정하신 상품할인 조건으로 \n';
+            }
+            else
+            {
+                if($('#display_set input[name="mileageFl"]:checked').val() == 'g')
+                {
+                    if ($('#display_set input[name="mileageGroup"]:checked').val() == 'group') {
+                        var mileageFl = true;
+                        var mileageDiscountFl = true;
+                        $('#display_set input[name="mileageGroupMemberInfo[\'mileageGoods\'][]"]').each(function(index){
+                            if ($('#display_set select[name="mileageGroupMemberInfo[\'groupSno\'][]"]').eq(index).val() == '' || $(this).val() == '' || parseFloat($(this).val()) <= 0) {
+                                mileageFl = false;
+                                return false;
+                            }
+                            if ($('#display_set select[name="mileageGroupMemberInfo[\'mileageGoodsUnit\'][]"]').eq(index).val() == 'percent' && parseFloat($(this).val()) > 100) {
+                                mileageDiscountFl = false;
+                                return false;
+                            }
+                        });
+                        if (mileageFl === false) {
+                            alert('마일리지 설정의 금액설정 항목을 입력하세요.');
+                            return false;
+                        }
+                        if (mileageDiscountFl === false) {
+                            alert('마일리지 지급금액은 100%를 초과할 수 없습니다.');
+                            return false;
+                        }
+                    } else {
+                        if ($('#display_set select[name="mileageGoodsUnit"]').val() == 'percent' && parseFloat($('#display_set input[name="mileageGoods"]').val()) > 100) {
+                            alert('마일리지 지급금액은 100%를 초과할 수 없습니다.');
+                            return false;
+                        }
+                    }
+                } else if ($('#display_set input[name="mileageFl"]:checked').val() == 'c' && $('#display_set input[name="mileageGroup"]:checked').val() == 'group') {
+                    if (!$('#display_set input[name="mileageGroupInfo[]"]').length) {
+                        alert('마일리지 지급 대상 회원등급을 선택해주세요');
+                        return false;
+                    }
+                }
+                msg += '설정하신 마일리지 조건으로 ';
+            }
+
+            msg += '일괄 수정하시겠습니까?<br />';
+            msg += '[주의] 일괄적용 후에는 이전상태로 복원이 안되므로 신중하게 변경하시기 바랍니다.';
+
+            dialog_confirm(msg, function (result) {
+                if (result) {
+                    //상품수정일 변경 확인 팝업
+                                            //상품 수정일 변경 범위설정 체크
+                                                    $('input[name="modDtUse"]').val('y');
+                                                $( "#frmBatchPrice").submit();
+                                    }
+            });
+
+        });
+
+        except_benefit_disabled();
+
+        $('input[name="exceptBenefit[]"]').click(function () {
+            except_benefit_disabled();
+        });
+
+        $('select[name=\'pageNum\']').change(function () {
+            $('#frmSearchGoods').submit();
+        });
+
+        $('select[name=\'sort\']').change(function () {
+            $('#frmSearchGoods').submit();
+        });
+
+        $( ".js-search-toggle" ).click(function() {
+            onlyDisplayArea();
+        });
+
+        $('.js-mileage-group-select, .js-except-benefit-group-select').bind('click', function () {
+            $(this).closest('td').find('input[type="radio"][value="group"]').trigger('click');
+        });
+
+        $('.add-groupSno').click(function(){
+            var target = $(this).data('target');
+            switch (target) {
+                case 'mileage':
+                    var groupSnoName = 'select[name="mileageGroupMemberInfo[\'groupSno\'][]"]';
+                    var goodsUnitName = 'select[name="mileageGroupMemberInfo[\'mileageGoodsUnit\'][]"]';
+                    var inputName = 'mileageGroupMemberInfo[\'mileageGoods\'][]';
+                    var appendClassName = 'mileage-set-g-group';
+                    break;
+                case 'discount':
+                    var groupSnoName = 'select[name="goodsDiscountGroupMemberInfo[\'groupSno\'][]"]';
+                    var goodsUnitName = 'select[name="goodsDiscountGroupMemberInfo[\'goodsDiscountUnit\'][]"]';
+                    var inputName = 'goodsDiscountGroupMemberInfo[\'goodsDiscount\'][]';
+                    var appendClassName = 'goods-discount-group';
+                    break;
+            }
+
+            var groupCnt = 'Array';
+            var length = $(groupSnoName).length;
+
+            if (length >= groupCnt) {
+                alert('');
+                return;
+            }
+
+            var groupSnoInfo = $(this).closest('tr').find(groupSnoName)[0].outerHTML.replace('selected="selected"', '');
+            var goodsUnitInfo = $(this).closest('tr').find(goodsUnitName)[0].outerHTML.replace('selected="selected"', '');
+
+            var html = '<tr>' +
+                '<td>' + groupSnoInfo + '</td>' +
+                '<td class="form-inline"><span class="goods-title">구매금액의</span> <input type="text" name="' + inputName + '" value="" class="form-control width-sm"> ' + goodsUnitInfo + ' <input type="button" value="삭제" class="btn btn-sm btn-white btn-icon-minus del-groupSno"></td>' +
+                '</tr>';
+            $('.' + appendClassName + ' table').append(html);
+        });
+
+        $(document).on('click', '.del-groupSno', function(){
+            $(this).closest('tr').remove();
+        });
+
+        $(document).on('change', 'select[name="mileageGroupMemberInfo[\'groupSno\'][]"], select[name="goodsDiscountGroupMemberInfo[\'groupSno\'][]"]', function(){
+            var name = this.name;
+            var value = this.value;
+            var flagFl = true;
+            var index = $('select[name="' + name + '"]').index(this);
+
+            $('select[name="' + name + '"]').each(function(idx){
+                if (index != idx && ($(this).val() && value == $(this).val())) {
+                    flagFl = false;
+                    return false;
+                }
+            });
+
+            if (flagFl === false) {
+                alert('이미 선택된 회원등급 입니다.');
+                $(this).val('');
+            }
+        });
+
+        $(document).on('change', '.goods-unit', function(){
+            set_goods_title($(this));
+        });
+
+        $('.js-benefit-detail').click(function(){
+            var goodsNo = $(this).data('goods-no');
+
+            var title = "상품 마일리지/할인 혜택 상세보기";
+            $.get('../goods/benefit_detail.php',{ goodsNo : goodsNo }, function(data){
+
+                data = '<div id="viewInfoForm">'+data+'</div>';
+
+                var layerForm = data;
+
+                BootstrapDialog.show({
+                    title:title,
+                    size: get_layer_size('normal'),
+                    message: $(layerForm),
+                    closable: true
+                });
+            });
+        });
+
+        onlyDisplayArea();
+
+        if($('input[name="goodsBenefitSetFl"]:checked').val() == 'y'){
+            display_benefit_set('y', 'goods_benefit_group');
+        }
+
+        $('.js-goods-benefit-select').bind('click', function () {
+            $(this).closest('td').find('input[name="goodsBenefitSetFl"][value="y"]').trigger('click');
+        });
+
+        $("input[name='newGoodsDate']").number_only(5, 99999, 1);
+        $("input[name='goodsDiscount']").number_only();
+    });
+
+    function set_goods_title(e) {
+        var goodsTitle = '구매금액의';
+        switch (e.val()) {
+            case 'mileage':
+            case 'price':
+                goodsTitle = '구매수량별';
+                break;
+        }
+        e.closest('.form-inline').find('.goods-title').html(goodsTitle);
+    }
+
+    function onlyDisplayArea()
+    {
+        if($('input[name=detailSearch]').val() == 'y'){
+            $('.js-search-detail .js-search-mileage').show();
+        }
+        else {
+            $('.js-search-detail .js-search-mileage').hide();
+        }
+    }
+
+    function resetEventSearchCondition()
+    {
+        $("input[name='event_text']").val('');
+        $("input[name='eventThemeSno']").val('');
+        $("#eventGroupSelectArea").addClass("display-none");
+        $("#eventSearchResetArea").addClass("display-none");
+    }
+
+    /**
+     * 카테고리 연결하기 Ajax layer
+     */
+    function layer_register(typeStr, mode, isDisabled) {
+
+        var addParam = {
+            "mode": mode,
+        };
+
+        if (typeStr == 'scm') {
+            $('input:radio[name=scmFl]:input[value=y]').prop("checked", true);
+        }
+        if (typeStr == 'mileage_group') {
+            if ($('#frmBatchPrice input[name="mileageFl"]:checked').val() == 'g') {
+                return;
+            }
+            addParam['layerFormID'] = 'mileageGroup';
+            addParam['parentFormID'] = 'mileage_group';
+            addParam['dataFormID'] = 'info_mileage_group';
+            addParam['dataInputNm'] = 'mileageGroupInfo';
+            typeStr = 'member_group';
+        }
+        if (typeStr == 'except_benefit_group') {
+            addParam['layerFormID'] = 'exceptBenefitGroup';
+            addParam['parentFormID'] = 'except_benefit_group';
+            addParam['dataFormID'] = 'info_except_benefit_group';
+            addParam['dataInputNm'] = 'exceptBenefitGroupInfo';
+            typeStr = 'member_group';
+        }
+        if (typeStr == 'goods_benefit') {
+            addParam['layerFormID'] = 'goodsBenefitGroup';
+            addParam['parentFormID'] = 'goods_benefit_group';
+            addParam['dataFormID'] = 'info_goods_benefit_group';
+            addParam['dataInputNm'] = 'benefitSno';
+        }
+
+        if (!_.isUndefined(isDisabled) && isDisabled == true) {
+            addParam.disabled = 'disabled';
+        }
+
+        layer_add_info(typeStr,addParam);
+    }
+
+
+
+    /**
+     * 출력 여부
+     *
+     * @param string arrayID 해당 ID
+     * @param string modeStr 출력 여부 (show or hide)
+     */
+    function display_toggle(thisID, modeStr)
+    {
+        if (modeStr == 'show') {
+            $('#'+thisID).attr('class','display-block');
+        } else if (modeStr == 'hide') {
+            $('#'+thisID).attr('class','display-none');
+        }
+    }
+
+    function display_toggle_class(thisName, thisClass) {
+        var modeStr = $('input[name="' + thisName + '"]:checked').val();console.log(modeStr);
+        if (modeStr == 'y') {
+            $('.' + thisClass).removeClass('display-none');
+            // !중요! 숨겨진 엘리먼트를 보여지게 할 경우 maxlength 표시 부분의 위치가 어긋난다. 이에 아래 트리거를 사용해 위치를 재 설정한다.
+        } else if (modeStr == 'n') {
+            $('.' + thisClass).addClass('display-none');
+        }
+    }
+
+
+    function view_terms(id)
+    {
+        $("#display_set .table-cols").hide();
+        if(id == 'discount'){
+            $("#tbl_set_discount").show();
+            $("#tbl_set_except").show();
+            $("#tbl_set_goodsBenefit").show();
+        }else{
+            $("#tbl_set_"+id).show();
+        }
+
+    }
+
+    function display_mileage_set() {
+        $('#frmBatchPrice div[class^="mileage-set"]').addClass('display-none');
+
+        var mileageFl = $('#frmBatchPrice input[name="mileageFl"]:checked').val();
+        var mileageGroup = $('#frmBatchPrice input[name="mileageGroup"]:checked').val();console.log(mileageFl, mileageGroup);
+        if (mileageFl == 'g') {
+            $('#frmBatchPrice #mileage_group').removeClass('active').empty();
+            $('#frmBatchPrice .js-mileage-group-select').closest('label').hide();
+            $('#frmBatchPrice .mileage-set-' + mileageFl + '-' + mileageGroup).removeClass('display-none');
+        } else {
+            $('#frmBatchPrice .js-mileage-group-select').closest('label').show();
+            $('#frmBatchPrice .mileage-set-' + mileageFl).removeClass('display-none');
+        }
+        display_group_member(mileageGroup, 'mileage_group');
+    }
+
+    function display_goods_discount_set() {
+        $('div[class^="goods-discount"]').addClass('hide');
+
+        var goodsDiscountGroup = $('input[name="goodsDiscountGroup"]:checked').val();
+        switch (goodsDiscountGroup) {
+            case 'all':
+            case 'member':
+                $('.goods-discount-all').removeClass('hide');
+                break;
+            case 'group':
+                $('.goods-discount-group').removeClass('hide');
+                break;
+        }
+    }
+
+    function display_group_member(value, target) {
+        if (value == 'all') {
+            $('#frmBatchPrice #' + target).empty().removeClass('active');
+        } else {
+            $('#frmBatchPrice #' + target).addClass('active');
+        }
+    }
+
+    /*
+     * 상품할인 혜택 세팅
+     */
+    function display_benefit_set(value, target){
+        if (value == 'n') {
+            $('#' + target).empty().removeClass('active');
+            display_toggle('goodsBenefitConfig','show');
+        } else {
+            $('#' + target).addClass('active');
+            display_toggle('goodsBenefitConfig','hide')
+        }
+    }
+    /*
+     * 상품할인 혜택 수정 팝업
+     */
+    function goods_benefit_popup(sno) {
+
+        var url = '/goods/goods_benefit_register.php?popupMode=yes&sno=' + sno;
+
+        win = popup({
+            url: url,
+            target: '',
+            width: 900,
+            height: 600,
+            scrollbars: 'yes',
+            resizable: 'yes'
+        });
+        win.focus();
+        return win;
+    };
+
+    function except_benefit_disabled() {
+
+        var length = $('input[name="exceptBenefit[]"]:checked').length;
+
+        if (length > 0) {
+            $('input[name="exceptBenefitGroup"], .js-except-benefit-group-select').prop('disabled', false);
+        } else {
+            $('input[name="exceptBenefitGroup"], .js-except-benefit-group-select').prop('disabled', true);
+        }
+    }
+
+    //-->
+</script>
+
+                    <div class="information ">
+    <h4>안내</h4>
+    <div class="content">
+        <span style="font-family:;" 8pt;"="" 나눔고딕",nanumgothic;=""><span style="font-family:;" 8pt;"="" 나눔고딕",nanumgothic;=""><font color="#ff0000"><span style="font-family: 맑은고딕,MalgunGothic; font-size: 8pt;"><p style="line-height: 1.8;"><span style="color: rgb(255, 0, 0);"><span style="color: rgb(0, 0, 0); font-family: 나눔고딕, NanumGothic;" 9pt;"="" 나눔고딕",nanumgothic;=""><strong>[상품 정보] 조건설정은 무엇인가요?</strong></span><br><span style="color: rgb(0, 0, 0); font-family: 나눔고딕, NanumGothic;" 9pt;"="" 나눔고딕",nanumgothic;="">· "마일리지" 또는 "상품할인/제외혜택" 중 선택하여 검색된 전체 또는 일부 상품의 정보를 일괄 수정 가능합니다.<span style="color: rgb(0, 0, 0); font-family:;" 8pt;"="" 나눔고딕",nanumgothic;=""></span></span></span></p><p style="line-height: 1.8;"><span style="font-family: 나눔고딕, NanumGothic;" 9pt;"="" 나눔고딕",nanumgothic;="">&nbsp; <font color="#ff0000"><span style="font-family: 나눔고딕, NanumGothic; font-size: 9pt;">- 검색된 상품수가 많은 경우 전체 상품의&nbsp;정보를 일괄로 수정하는 것은 권장하지 않습니다.</span></font></span></p><p style="line-height: 1.8;"><span style="font-family: 나눔고딕, NanumGothic;" 9pt;"="" 나눔고딕",nanumgothic;=""><font color="#ff0000">&nbsp;&nbsp;&nbsp;&nbsp; 가능하면 한 페이지씩 선택하여 수정하시는 것을 권장합니다.</font></span></p><p style="line-height: 1.8;"><span style="font-family: 나눔고딕, NanumGothic;" 9pt;"="" 나눔고딕",nanumgothic;=""><font color="#ff0000">&nbsp; - 수정 후에는 이전 상태로 복원이 되지 않으므로 설정 시 유의하시기 바랍니다.&nbsp;</font></span></p></span></font></span><p style="line-height: 1.8;"><font color="#ff0000"><span style="color: rgb(0, 0, 0); font-family: 나눔고딕, NanumGothic;" 9pt;"="" 나눔고딕",nanumgothic;="">&nbsp;</span></font></p><p style="line-height: 1.8;"><font color="#ff0000"><span style="color: rgb(0, 0, 0); font-family: 나눔고딕, NanumGothic;" 9pt;"="" 나눔고딕",nanumgothic;="">· 마일리지는 "통합설정" 또는 "개별설정"이 가능합니다.</span><br><span style="color: rgb(0, 0, 0); font-family: 나눔고딕, NanumGothic;" 9pt;"="" 나눔고딕",nanumgothic;="">&nbsp; - 통합설정 : 상품 구매 시 지급되는 마일리지를 "회원 &gt; 마일리지/예치금 관리 &gt; 마일리지 지급 설정"에서 설정한 기준으로 지급합니다.</span></font></p><p style="line-height: 1.8;"><font color="#ff0000"><span style="color: rgb(0, 0, 0); font-family: 나눔고딕, NanumGothic;" 9pt;"="" 나눔고딕",nanumgothic;="">&nbsp;&nbsp;&nbsp; └ "상품 구매 시 기본 지급 마일리지"에 설정된 정보가 노출됩니다.</span><br><span style="color: rgb(0, 0, 0); font-family: 나눔고딕, NanumGothic;" 9pt;"="" 나눔고딕",nanumgothic;="">&nbsp; - 개별설정 : 상품 구매 시 지급되는 마일리지를 상품별로 다르게&nbsp;지급합니다.</span></font></p><p style="line-height: 1.8;"><font color="#ff0000"><span style="color: rgb(0, 0, 0); font-family: 나눔고딕, NanumGothic;" 9pt;"="" 나눔고딕",nanumgothic;="">&nbsp;&nbsp;&nbsp;&nbsp; └ 마일리지 지급 금액을 "정률(%)" 또는 "정액(원)" 중 선택하여 설정이 가능합니다.</span><br><span style="color: rgb(0, 0, 0); font-family: 나눔고딕, NanumGothic;" 9pt;"="" 나눔고딕",nanumgothic;="">&nbsp; - 등록된 마일리지 지급 금액은 쇼핑몰 상품 상세페이지 내 구매혜택 부분에 노출됩니다.</span></font></p><p style="line-height: 1.8;"><font color="#ff0000"><span style="color: rgb(0, 0, 0); font-family: 나눔고딕, NanumGothic;" 9pt;"="" 나눔고딕",nanumgothic;="">&nbsp;&nbsp;</span></font></p><p style="line-height: 1.8;"><font color="#ff0000"><span style="color: rgb(0, 0, 0); font-family: 나눔고딕, NanumGothic;" 9pt;"="" 나눔고딕",nanumgothic;="">· 상품할인/제외혜택은 "개별설정" 또는 "상품 혜택 적용" 중 선택 가능합니다.</span><br><span style="color: rgb(0, 0, 0); font-family: 나눔고딕, NanumGothic;" 9pt;"="" 나눔고딕",nanumgothic;="">&nbsp; -&nbsp;개별설정 : 상품 개별로 상품 할인 조건을 설정할 수 있습니다.<br>&nbsp;&nbsp;&nbsp; └ <font size="2"><span style="font-family: 나눔고딕, NanumGothic; font-size: 9pt;">"상품 할인 설정 &gt; 사용여부"에서 "사용함" 설정 시 하단에 상품할인을 등록할 수 있는 영역이 노출됩니다.</span></font></span><br><span style="color: rgb(0, 0, 0); font-family: 나눔고딕, NanumGothic;" 9pt;"="" 나눔고딕",nanumgothic;="">&nbsp; - <font size="2"><span style="font-family: 나눔고딕, NanumGothic; font-size: 9pt;">상품 혜택 적용 : "상품 &gt; 상품 관리 &gt; 상품 혜택 관리"에 미리 등록된 상품 혜택을 설정할 수 있습니다.</span></font></span></font></p><p style="line-height: 1.8;"><font color="#ff0000"><span style="color: rgb(0, 0, 0); font-family:;" 8pt;"="" 나눔고딕",nanumgothic;=""><font size="2"><span style="font-family: 나눔고딕, NanumGothic; font-size: 9pt;">&nbsp; - </span></font></span><font face="나눔고딕" size="2"><span style="color: rgb(0, 0, 0); font-family: 나눔고딕, NanumGothic; font-size: 9pt;">혜택&nbsp;제외 설정&nbsp;: 상품 할인 혜택을 제외할 수 있는 조건을 설정할 수 있습니다. </span></font></font></p><p style="line-height: 1.8;"><font color="#ff0000"><font face="나눔고딕" size="2"><span style="color: rgb(0, 0, 0); font-family: 나눔고딕, NanumGothic; font-size: 9pt;">&nbsp;&nbsp;&nbsp; 상품 할인 설정의 진행유형 및 기간과 상관없이 별도 설정이 가능합니다.&nbsp;</span></font></font></p><p style="line-height: 1.8;"><font color="#ff0000"><span style="color: rgb(0, 0, 0); font-family: 나눔고딕, NanumGothic;" 9pt;"="" 나눔고딕",nanumgothic;="">&nbsp;</span></font></p><p style="line-height: 1.8;"><font color="#ff0000"><span style="color: rgb(0, 0, 0); font-family: 나눔고딕, NanumGothic;" 9pt;"="" 나눔고딕",nanumgothic;="">· 절사기준 : 마일리지, 상품할인 혜택 제공시 일정 단위 미만의 금액을 잘라 버리고 지급하고자 할때의 기준이 됩니다.</span><br><span style="color: rgb(0, 0, 0); font-family: 나눔고딕, NanumGothic;" 9pt;"="" 나눔고딕",nanumgothic;="">&nbsp;&nbsp;- <a class="btn-link" href="/policy/base_currency_unit.php" target="_blank"><span style="font-family: 나눔고딕, NanumGothic;"> <u>기본설정 &gt; 기본정책 &gt; 금액 / 단위 기준 설정</u></span></a>에서 설정된 정보가 기준이 됩니다.</span><span style="color: rgb(0, 0, 0); font-family: 나눔고딕, NanumGothic; font-size: 9pt;">&nbsp;</span></font></p></span>    </div>
+</div>
+                </div>
+            </div>
+
+
+
+</th:block>
+
+
+</html>
