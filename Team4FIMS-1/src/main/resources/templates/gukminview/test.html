@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<script src="/gukmin/include/js/jquery-3.2.1.min.js"></script>
+<section>
+
+</section>
+
+<Script>
+	$(document).ready(function() {
+		$("#test").click(function () {
+			console.log("gogogo")
+			var data = {};
+			data.keyword = $('#txet').val();
+			console.log(data.keyword);
+			$.ajax({
+                url : "/api/searchKeyword",
+                dataType : "json",
+                contentType : "application/json",
+                data : JSON.stringify(data),
+                type : "POST",
+                async : false
+            }).done(function(data) {
+
+                console.log(data);
+                $('#re').empty();
+                $(data.response.body.items.item).each((index,item)=>{
+                	
+                	$('#re').append("<a>"+item.title+"</a><br>"+
+                			(item.firstimage?"<img src='"+item.firstimage+"'>":"<a>이미지없음</a>")+"<br>")	                   
+	            });
+                
+                
+                
+            });
+		
+		})
+
+	
+	});
+</Script>
+
+<input type="text" id="txet" name="txet">
+<input type="button" id="test" name="test" value="눌러라">
+
+<div id="re"></div>
+
+</th:block>
+
+</html>

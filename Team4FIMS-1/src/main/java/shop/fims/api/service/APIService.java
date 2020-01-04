@@ -6,9 +6,6 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 import org.springframework.stereotype.Service;
 
 import shop.fims.vo.ApiVo;
@@ -16,7 +13,7 @@ import shop.fims.vo.ApiVo;
 @Service
 public class APIService {
 
-	public JSONObject call(ApiVo apiVo) throws IOException, ParseException {
+	public String call(ApiVo apiVo) throws IOException {
 		
 		System.out.println("call 메서드 APIService.java");
 
@@ -27,7 +24,7 @@ public class APIService {
 
 		switch (apiVo.getType()) {
 		case "detailCommon":// 공통정보조회
-
+			System.out.println("detailCommon공통정보조회");
 			
 			parameter = parameter + "&" + "numOfRows=" + apiVo.getNumOfRows(); 
   			parameter = parameter + "&" + "pageNo=" + apiVo.getPageNo(); 
@@ -44,24 +41,31 @@ public class APIService {
   			parameter = parameter + "&" + "overviewYN=" + apiVo.getOverviewYN(); 
   			parameter = parameter + "&" + "transGuideYN=" + apiVo.getTransGuideYN(); 
   			parameter = parameter + "&" + "_type=json";
+  			System.out.println(parameter);
 			 
 
 			/*//TEST
-			 * parameter = parameter + "&" + "numOfRows=" + "10"; parameter = parameter +
-			 * "&" + "pageNo=" + "1"; parameter = parameter + "&" + "MobileOS=" + "ETC";
-			 * parameter = parameter + "&" + "MobileApp=" + "AppTest"; parameter = parameter
-			 * + "&" + "contentId=" + 336061; parameter = parameter + "&" + "contentTypeId="
-			 * + 76; parameter = parameter + "&" + "defaultYN=" + "Y"; parameter = parameter
-			 * + "&" + "firstImageYN=" + "Y"; parameter = parameter + "&" + "areacodeYN=" +
-			 * "Y"; parameter = parameter + "&" + "catcodeYN=" + "Y"; parameter = parameter
-			 * + "&" + "addrinfoYN=" + "Y"; parameter = parameter + "&" + "mapinfoYN=" +
-			 * "Y"; parameter = parameter + "&" + "overviewYN=" + "Y"; parameter = parameter
-			 * + "&" + "transGuideYN=" + "Y"; parameter = parameter + "&" + "_type=json";
+			 * parameter = parameter + "&" + "numOfRows=" + "10"; 
+			 * parameter = parameter + "&" + "pageNo=" + "1"; 
+			 * parameter = parameter + "&" + "MobileOS=" + "ETC";
+			 * parameter = parameter + "&" + "MobileApp=" + "AppTest"; 
+			 * parameter = parameter + "&" + "contentId=" + 336061; 
+			 * parameter = parameter + "&" + "contentTypeId=" + 76; 
+			 * parameter = parameter + "&" + "defaultYN=" + "Y"; 
+			 * parameter = parameter + "&" + "firstImageYN=" + "Y"; 
+			 * parameter = parameter + "&" + "areacodeYN=" + "Y"; 
+			 * parameter = parameter + "&" + "catcodeYN=" + "Y"; 
+			 * parameter = parameter + "&" + "addrinfoYN=" + "Y"; 
+			 * parameter = parameter + "&" + "mapinfoYN=" + "Y"; 
+			 * parameter = parameter + "&" + "overviewYN=" + "Y"; 
+			 * parameter = parameter + "&" + "transGuideYN=" + "Y"; 
+			 * parameter = parameter + "&" + "_type=json";
 			 */
 
 			break;
 
 		case "detailImage":// 이미지정보조회
+			System.out.println("detailImage이미지정보조회");
 			parameter = parameter + "&" + "numOfRows=" + apiVo.getNumOfRows();
 			parameter = parameter + "&" + "pageNo=" + apiVo.getPageNo();
 			parameter = parameter + "&" + "MobileOS=" + apiVo.getMobileOS();
@@ -71,9 +75,11 @@ public class APIService {
 			parameter = parameter + "&" + "subImageYN=" + apiVo.getSubImageYN();
 
 			parameter = parameter + "&" + "_type=json";
+			System.out.println(parameter);
 			break;
 
 		case "detailIntro":// 소개정보조회
+			System.out.println("detailIntro소개정보조회");
 			parameter = parameter + "&" + "numOfRows=" + apiVo.getNumOfRows();
 			parameter = parameter + "&" + "pageNo=" + apiVo.getPageNo();
 			parameter = parameter + "&" + "MobileOS=" + apiVo.getMobileOS();
@@ -82,9 +88,11 @@ public class APIService {
 			parameter = parameter + "&" + "contentTypeId=" + apiVo.getContentTypeId();
 
 			parameter = parameter + "&" + "_type=json";
+			System.out.println(parameter);
 			break;
 
 		case "detailInfo":// 반복정보조회
+			System.out.println("detailInfo반복정보조회");
 			parameter = parameter + "&" + "numOfRows=" + apiVo.getNumOfRows();
 			parameter = parameter + "&" + "pageNo=" + apiVo.getPageNo();
 			parameter = parameter + "&" + "MobileOS=" + apiVo.getMobileOS();
@@ -93,9 +101,11 @@ public class APIService {
 			parameter = parameter + "&" + "contentTypeId=" + apiVo.getContentTypeId();
 
 			parameter = parameter + "&" + "_type=json";
+			System.out.println(parameter);
 			break;
 
 		case "locationBasedList":// 위치기반 관광정보조회
+			System.out.println("locationBasedList위치기반 관광정보조회");
 			parameter = parameter + "&" + "numOfRows=" + apiVo.getNumOfRows();
 			parameter = parameter + "&" + "pageNo=" + apiVo.getPageNo();
 			parameter = parameter + "&" + "MobileOS=" + apiVo.getMobileOS();
@@ -109,9 +119,11 @@ public class APIService {
 			parameter = parameter + "&" + "radius=" + apiVo.getRadius();
 
 			parameter = parameter + "&" + "_type=json";
+			System.out.println(parameter);
 			break;
 
 		case "areaBasedList":// 지역기반 관광정보조회
+			System.out.println("areaBasedList지역기반 관광정보조회");
 			parameter = parameter + "&" + "numOfRows=" + apiVo.getNumOfRows();
 			parameter = parameter + "&" + "pageNo=" + apiVo.getPageNo();
 			parameter = parameter + "&" + "MobileOS=" + apiVo.getMobileOS();
@@ -130,9 +142,11 @@ public class APIService {
 				}
 			}
 			parameter = parameter + "&" + "_type=json";
+			System.out.println(parameter);
 			break;
 
 		case "searchStay":// 숙박정보조회
+			System.out.println("searchStay숙박정보조회");
 			parameter = parameter + "&" + "numOfRows=" + apiVo.getNumOfRows();
 			parameter = parameter + "&" + "pageNo=" + apiVo.getPageNo();
 			parameter = parameter + "&" + "MobileOS=" + apiVo.getMobileOS();
@@ -150,9 +164,11 @@ public class APIService {
 			if (apiVo.getGoodStay() != null)
 				parameter = parameter + "&" + "goodStay=" + apiVo.getGoodStay();
 			parameter = parameter + "&" + "_type=json";
+			System.out.println(parameter);
 			break;
 
 		case "searchFestival":// 행사정보조회
+			System.out.println("searchFestival행사정보조회");
 			parameter = parameter + "&" + "numOfRows=" + apiVo.getNumOfRows();
 			parameter = parameter + "&" + "pageNo=" + apiVo.getPageNo();
 			parameter = parameter + "&" + "MobileOS=" + apiVo.getMobileOS();
@@ -166,16 +182,19 @@ public class APIService {
 			parameter = parameter + "&" + "eventStartDate=" + apiVo.getEventStartDate();
 			parameter = parameter + "&" + "eventEndDate=" + apiVo.getEventEndDate();
 			parameter = parameter + "&" + "_type=json";
+			System.out.println(parameter);
 			break;
 
 		case "searchKeyword":// 키워드조회
-			parameter = parameter + "&" + "numOfRows=" + apiVo.getNumOfRows();
-			parameter = parameter + "&" + "pageNo=" + apiVo.getPageNo();
-			parameter = parameter + "&" + "MobileOS=" + apiVo.getMobileOS();
-			parameter = parameter + "&" + "MobileApp=" + apiVo.getMobileApp();
-			parameter = parameter + "&" + "listYN=" + apiVo.getListYN();
-			parameter = parameter + "&" + "arrange=" + apiVo.getArrange();
-			parameter = parameter + "&" + "contentTypeId=" + apiVo.getContentTypeId();
+			System.out.println("searchKeyword키워드조회");
+			parameter = parameter + "&" + "numOfRows=" + (apiVo.getNumOfRows()!=null?apiVo.getNumOfRows():"10");
+			parameter = parameter + "&" + "pageNo=" + (apiVo.getPageNo()!=null?apiVo.getPageNo():"1");
+			parameter = parameter + "&" + "MobileOS=" + (apiVo.getMobileOS()!=null?apiVo.getMobileOS():"ETC");
+			parameter = parameter + "&" + "MobileApp=" + (apiVo.getMobileApp()!=null?apiVo.getMobileApp():"AppTest");
+			parameter = parameter + "&" + "listYN=" + (apiVo.getListYN()!=null?apiVo.getListYN():"Y");
+			parameter = parameter + "&" + "arrange=" + (apiVo.getArrange()!=null?apiVo.getArrange():"B");
+			if (apiVo.getContentTypeId() != null)
+				parameter = parameter + "&" + "contentTypeId=" + apiVo.getContentTypeId();
 			if (apiVo.getAreaCode() != null)
 				parameter = parameter + "&" + "areaCode=" + apiVo.getAreaCode();
 			if (apiVo.getSigunguCode() != null)
@@ -190,9 +209,11 @@ public class APIService {
 			}
 			parameter = parameter + "&" + "keyword=" + apiVo.getKeyword();
 			parameter = parameter + "&" + "_type=json";
+			System.out.println(parameter);
 			break;
 
 		case "categoryCode":// 서비스분류코드조회
+			System.out.println("categoryCode서비스분류코드조회");
 			parameter = parameter + "&" + "numOfRows=" + apiVo.getNumOfRows();
 			parameter = parameter + "&" + "pageNo=" + apiVo.getPageNo();
 			parameter = parameter + "&" + "MobileOS=" + apiVo.getMobileOS();
@@ -207,17 +228,20 @@ public class APIService {
 				}
 			}
 			parameter = parameter + "&" + "_type=json";
+			System.out.println(parameter);
 			break;
 
 		case "areaCode":// 지역코드조회
+			System.out.println("areaCode지역코드조회");
 			parameter = parameter + "&" + "numOfRows=" + apiVo.getNumOfRows();
 			parameter = parameter + "&" + "pageNo=" + apiVo.getPageNo();
 			parameter = parameter + "&" + "MobileOS=" + apiVo.getMobileOS();
 			parameter = parameter + "&" + "MobileApp=" + apiVo.getMobileApp();
 			parameter = parameter + "&" + "areaCode=" + apiVo.getAreaCode();
 			parameter = parameter + "&" + "_type=json";
+			System.out.println(parameter);
 			break;
-
+        
 		default:
 			break;
 		}
@@ -226,7 +250,9 @@ public class APIService {
 		String result = "";
 
 		URL url = new URL(addr = addr + apiVo.getType() + sevicekey + parameter);
+		System.out.println(addr);
 		BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
+		System.out.println(url.openStream());
 		while ((line = br.readLine()) != null) {
 			result = result.concat(line);
 		}
@@ -235,10 +261,9 @@ public class APIService {
 
 		System.out.println(result);
 
-		JSONParser parser = new JSONParser();
-		JSONObject obj = (JSONObject) parser.parse(result);
-
-		return obj;
+		return result;
+		
+		
 	}
 }
 	
