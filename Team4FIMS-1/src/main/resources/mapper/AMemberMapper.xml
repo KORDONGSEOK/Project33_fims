@@ -14,6 +14,15 @@
 		<result property="MemBirth" column="mem_birth"/>
 		<result property="MemJoinDt" column="mem_join_dt"/>
 	</resultMap>
+	
+	<resultMap type="shop.fims.vo.Login" id="LoginResultMap">
+	<result property="LoginCd" column="login_cd"/>
+	<result property="MemCd" column="mem_cd"/>
+	<result property="MemLevCd" column="mem_lev_cd"/>
+	<result property="LoginPw" column="login_pw"/>
+	<result property="MemNm" column="mem_nm"/>
+	<result property="MemLevNm" column="mem_lev_nm"/>
+	</resultMap>
 
 	<!-- 모든 회원 조회 -->
 	 <select id="getMemberList" resultMap="MemberResultMap">
