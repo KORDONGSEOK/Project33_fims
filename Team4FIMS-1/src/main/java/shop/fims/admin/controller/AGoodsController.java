@@ -1,11 +1,16 @@
 package shop.fims.admin.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import shop.fims.admin.service.AGoodsService;
 
 @Controller
 public class AGoodsController {
 	
+	@Autowired
+	private AGoodsService aGoodsService; 
 	/**
 	 * @param 없음
 	 * @file AGoodsController.java

@@ -1,11 +1,16 @@
 package shop.fims.gukmin.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import shop.fims.gukmin.service.CommunityService;
 
 @Controller
 public class CommunityController {
 
+	@Autowired
+	private CommunityService communityService;
 	/**
 	 * @param 없음
 	 * @file CommunityController.java

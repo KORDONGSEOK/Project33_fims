@@ -1,11 +1,16 @@
 package shop.fims.gukmin.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import shop.fims.gukmin.service.SiteTermService;
+
 @Controller
 public class SiteTermController {
-
+	
+	@Autowired
+	private SiteTermService siteTermService;
 	/**
 	 * @param 없음
 	 * @file SiteTermController.java

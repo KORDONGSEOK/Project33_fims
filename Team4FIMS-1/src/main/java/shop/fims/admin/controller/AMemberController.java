@@ -1,22 +1,37 @@
 package shop.fims.admin.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import shop.fims.admin.service.AMemberService;
+import shop.fims.vo.Member;
 
 @Controller
 public class AMemberController {
 
+	@Autowired
+	private AMemberService aMemberService;
 	/**
 	 * @param 없음
 	 * @file AMemberController.java
-	 * @name gukminMainLogin
+	 * @name getMemberList
 	 * @brief 관리자 회원리스트
 	 * @author ksmart33 김동석
 	 * @return adminview/member/loginForm
 	 */
 	@GetMapping("adminview/member/memberList")
-	public String memberList() {
-		System.out.println("---관리자 회원리스트 : memberList AMemberController.java-------");
+	public String memberList(Model model) {
+		System.out.println("---관리자 회원리스트 : getMemberList 메서드 AMemberController.java-------");
+		System.out.println(model + "<--model getMemberList 메서드 AMemberController.java-------");
+		
+		List<Member> list = aMemberService.getMemberList();
+		
+		model.addAttribute("memberList", list);
+		
 		return "/adminview/member/memberList";
 	}
 	
