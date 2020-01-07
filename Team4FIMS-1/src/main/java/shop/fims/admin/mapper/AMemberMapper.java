@@ -1,6 +1,7 @@
 package shop.fims.admin.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -21,6 +22,16 @@ public interface AMemberMapper {
 	
 	public Member getMemberLogin(Member member);
 	
-	public List<Member> getMemberSearchList (String sk, String sv);	
+	public List<Member> getMemberSearchList (String sk, String sv);
+	
+	//조회수?
+	/* public Member getMemberByNo(String login_cd); */
+	
+	//페이징카운트
+	public int getMemberAllCount(); 
+	
+	//페이징작업 추가
+	public List<Member> getMemberListpage(Map<String, Integer> map);
+	
 
 }

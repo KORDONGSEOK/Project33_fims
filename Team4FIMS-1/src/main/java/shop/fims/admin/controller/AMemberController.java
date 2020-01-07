@@ -1,11 +1,13 @@
 package shop.fims.admin.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import shop.fims.admin.service.AMemberService;
 import shop.fims.vo.Member;
@@ -34,6 +36,22 @@ public class AMemberController {
 		
 		return "/adminview/member/memberList";
 	}
+	
+	@GetMapping("adminview/member/memberListpage")
+	public String memberListpageing(Model model
+							,@RequestParam(value="currentPage"
+							, required = false
+							, defaultValue = "1") int currentPage) {
+		Map<String, Object> map = aMemberService.getMemberListpage(currentPage);
+		
+		model.addAttribute("memberListpageing", map.get("list"));
+		model.addAttribute("currentPage", map.get("currentPage"));
+		model.addAttribute("lastPage", map.get("lastPage"));
+		model.addAttribute("startPageNum", map.get("startPageNum"));
+		model.addAttribute("lastPageNum", map.get("lastPageNum"));
+		return "/adminview/member/memberList";
+	}
+	
 	
 	/**
 	 * @param 없음
