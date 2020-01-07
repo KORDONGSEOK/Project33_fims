@@ -3,6 +3,7 @@ package shop.fims.gukmin.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import shop.fims.gukmin.service.CommunityService;
 
@@ -96,6 +97,11 @@ public class CommunityController {
 	}
 	
 
+	@RequestMapping("/test/test")
+	public String test() {
+		System.out.println("ajax json test");
+		return "/gukmin";
+	}
 }
 
 
