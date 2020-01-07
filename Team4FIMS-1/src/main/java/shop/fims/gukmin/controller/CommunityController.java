@@ -100,7 +100,7 @@ public class CommunityController {
 	@RequestMapping("/test/test")
 	public String test() {
 		System.out.println("ajax json test");
-		return "/gukminview/test";
+		return "/gukmin";
 	}
 }
 
