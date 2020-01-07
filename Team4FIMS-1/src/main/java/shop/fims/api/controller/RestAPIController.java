@@ -2,8 +2,6 @@ package shop.fims.api.controller;
 
 import java.io.IOException;
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,10 +18,14 @@ public class RestAPIController {
 	
 	
 	@RequestMapping(value ="/api/{type}")
-	public JSONObject apiCall(@PathVariable String type,@RequestBody(required = false) ApiVo apiVo) throws IOException, ParseException {
+	public String apiCall(@PathVariable("type") String type,@RequestBody(required = false) ApiVo apiVo) throws IOException {
 		System.out.println("apiCall 메서드 RestAPIController.java");
-		if(apiVo==null) return null;
+		if(apiVo==null) {
+			System.out.println(type);
+			return null;
+		}
 		apiVo.setType(type);
+		System.out.println(apiVo.getKeyword());
 		return apiService.call(apiVo);	
 	}
 }
