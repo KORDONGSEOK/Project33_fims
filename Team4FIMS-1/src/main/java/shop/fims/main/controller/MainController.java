@@ -23,6 +23,21 @@ public class MainController {
 	/**
 	 * @param 없음
 	 * @file MainController.java
+	 * @name gukminMainView
+	 * @brief 국민메인화면
+	 * @author ksmart33 김동석
+	 * @return index
+	 */
+	
+	@GetMapping("/gukmin")
+	public String gukmin() {
+		System.out.println("---국민메인화면 : gukminMainView MainController.java-------");
+		return "gukmin";
+	}
+	
+	/**
+	 * @param 없음
+	 * @file MainController.java
 	 * @name siteMapView
 	 * @brief 국민 사이트앱
 	 * @author ksmart33 김동석

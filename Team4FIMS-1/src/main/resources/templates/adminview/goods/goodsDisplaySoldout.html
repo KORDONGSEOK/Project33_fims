@@ -1,0 +1,342 @@
+﻿<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/admin/goodsdefault}">
+
+<th:block layout:fragment="adminMainContents">
+
+<div id="content" class="row">
+                <div class="col-xs-12">
+                    <script type="text/javascript">
+    <!--
+    $(document).ready(function () {
+        $("#frmGoods").validate({
+            submitHandler: function (form) {
+                form.target = 'ifrmProcess';
+                form.submit();
+                return false;
+            },
+            rules: {
+                pc_soldout_overlay : {
+                    required : function(){
+                        return $("input[name='pc[soldout_overlay]'][value=custom]").is(':checked') && $('input[name=isPcCustomImage]').val() == 'n';
+                    }
+                },
+                mobile_soldout_overlay : {
+                    required : function(){
+                        return $("input[name='mobile[soldout_overlay]'][value=custom]").is(':checked') && $('input[name=isMobileCustomImage]').val() == 'n';
+                    }
+                },
+            },
+            messages: {
+                pc_soldout_overlay : {
+                    required : "사용자 이미지를 업로드해주세요.",
+                },
+                mobile_soldout_overlay : {
+                    required : "모바일 사용자 이미지를 업로드해주세요.",
+                }
+            }
+        });
+
+                        
+                        
+        // maxlength의 경우 display none으로 되어있으면 정상작동 하지 않는다 따라서 페이지 로딩 후 maxlength가 적용된 후 display none으로 강제 처리 (임시방편 처리)
+        setTimeout(function () {
+            $('#frmGoods').find('input[name="pc[soldout_price_text]"]').next('span.bootstrap-maxlength').css({top: '1px', left: '170px'});
+            $('#frmGoods').find('input[name="mobile[soldout_price_text]"]').next('span.bootstrap-maxlength').css({top: '1px', left: '170px'});
+
+        }, 1000);
+
+    });
+
+    function display_switch(prefix, state) {
+        if (state == 'show')  $('.' + prefix).show();
+        else $('.' + prefix).hide();
+    }
+    //-->
+</script>
+<form id="frmGoods" name="frmGoods" action="./display_ps.php" method="post"
+      enctype="multipart/form-data">
+    <input type="hidden" name="mode" value="soldout_register"/>
+    <input type="hidden" name="isMobile" value="1"/>
+
+    <div class="page-header js-affix">
+        <h3>품절상품 진열설정 </h3>
+        <div class="btn-group">
+            <input type="submit" value="저장" class="btn btn-red"/>
+
+        </div>
+    </div>
+
+
+    <div class="table-title gd-help-manual">
+        PC 품절상품 표시 설정
+    </div>
+    <div>
+        <table class="table table-cols">
+            <colgroup>
+                <col class="width-md"/>
+                <col/>
+            </colgroup>
+            <tr>
+                <th class="require">상품 이미지 <br/>오버레이</th>
+                <td>
+
+                    <table border="0" cellpadding="5">
+                        <tr>
+                            <td align="center" class="noline width-md" style="border:0px;">
+                                <div style="width:130px;height:130px; margin-bottom:10px;border:1px solid #CCCCCC;padding-top:55px">사용안함</div>
+                                <input type="radio" name="pc[soldout_overlay]" value="0"
+                                       onclick="display_switch('div_pc_overlay','hide')"  >
+                            </td>
+                                                            <td align="center" class="noline width-md" style="border:0px;">
+                                    <div
+                                        style="width:130px;height:130px; margin-bottom:10px; background:url('https://gdadmin.plus.godomall.com:14003/data/icon/goods_icon/soldout-1.png') no-repeat center center;border:1px solid #CCCCCC;"></div>
+                                    <input type="radio" name="pc[soldout_overlay]" value="1"
+                                           onclick="display_switch('div_pc_overlay','hide')" checked >
+                                </td>
+                                                            <td align="center" class="noline width-md" style="border:0px;">
+                                    <div
+                                        style="width:130px;height:130px; margin-bottom:10px; background:url('https://gdadmin.plus.godomall.com:14003/data/icon/goods_icon/soldout-2.png') no-repeat center center;border:1px solid #CCCCCC;"></div>
+                                    <input type="radio" name="pc[soldout_overlay]" value="2"
+                                           onclick="display_switch('div_pc_overlay','hide')"  >
+                                </td>
+                                                            <td align="center" class="noline width-md" style="border:0px;">
+                                    <div
+                                        style="width:130px;height:130px; margin-bottom:10px; background:url('https://gdadmin.plus.godomall.com:14003/data/icon/goods_icon/soldout-3.png') no-repeat center center;border:1px solid #CCCCCC;"></div>
+                                    <input type="radio" name="pc[soldout_overlay]" value="3"
+                                           onclick="display_switch('div_pc_overlay','hide')"  >
+                                </td>
+                                                            <td align="center" class="noline width-md" style="border:0px;">
+                                    <div
+                                        style="width:130px;height:130px; margin-bottom:10px; background:url('https://gdadmin.plus.godomall.com:14003/data/icon/goods_icon/soldout-4.png') no-repeat center center;border:1px solid #CCCCCC;"></div>
+                                    <input type="radio" name="pc[soldout_overlay]" value="4"
+                                           onclick="display_switch('div_pc_overlay','hide')"  >
+                                </td>
+                                                            <td align="center" class="noline width-md" style="border:0px;">
+                                    <div
+                                        style="width:130px;height:130px; margin-bottom:10px; background:url('https://gdadmin.plus.godomall.com:14003/data/icon/goods_icon/soldout-5.png') no-repeat center center;border:1px solid #CCCCCC;"></div>
+                                    <input type="radio" name="pc[soldout_overlay]" value="5"
+                                           onclick="display_switch('div_pc_overlay','hide')"  >
+                                </td>
+                                                            <td align="center" class="noline width-md" style="border:0px;">
+                                    <div
+                                        style="width:130px;height:130px; margin-bottom:10px; background:url('https://gdadmin.plus.godomall.com:14003/data/icon/goods_icon/soldout-6.png') no-repeat center center;border:1px solid #CCCCCC;"></div>
+                                    <input type="radio" name="pc[soldout_overlay]" value="6"
+                                           onclick="display_switch('div_pc_overlay','hide')"  >
+                                </td>
+                                                            <td align="center" class="noline width-md" style="border:0px;">
+                                    <div
+                                        style="width:130px;height:130px; margin-bottom:10px; background:url('https://gdadmin.plus.godomall.com:14003/data/icon/goods_icon/soldout-7.png') no-repeat center center;border:1px solid #CCCCCC;"></div>
+                                    <input type="radio" name="pc[soldout_overlay]" value="7"
+                                           onclick="display_switch('div_pc_overlay','hide')"  >
+                                </td>
+                                                        <td align="center" class="noline width-md" style="border:0px;">
+                                                                    <div style="width:130px;height:130px;padding-top:55px; margin-bottom:10px; border:1px solid #CCCCCC;" id="el-user-soldout-overlay">
+                                        사용자 설정
+                                                                </div>
+                                <div style="position: relative">
+                                  <input type="radio" name="pc[soldout_overlay]" value="custom"
+                                       onclick="display_switch('div_pc_overlay','show')"  >
+                                                                 </div>
+                            </td>
+                    </table>
+
+                    <div class="div_pc_overlay form-inline"  style="display:none;" >
+                        <br/>
+                        사용자 이미지 <input type="file" name="pc_soldout_overlay" class="form-control"> <span>(권장 사이즈 : 300px)</span>
+                        <input type="hidden" name="isPcCustomImage" value="n" />
+                        <div class="notice-ref notice-sm">* 사용자 이미지 업로드시 반드시 배경이 투명처리된 png, gif 파일로 업로드 하셔야 합니다.</div>
+
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <th class="require">품절 아이콘</th>
+                <td>
+                    <div class="form-inline mgt5">
+                        <label class="radio-inline">
+                            <input type="radio" name="pc[soldout_icon]" value="disable"
+                                   onclick="display_switch('div_pc_icon','hide')" checked >
+                            사용안함
+                        </label>
+                    </div>
+                    <div class="form-inline mgt5">
+                        <label class="radio-inline"><input type="radio" name="pc[soldout_icon]" value="basic"
+                                                           onclick="display_switch('div_pc_icon','hide')"  >
+                            기본 아이콘 <img src="https://gdadmin.plus.godomall.com:14003/data/icon/goods_icon/icon_soldout.gif">
+                        </label>
+                    </div>
+                    <div class="form-inline mgt5">
+                        <label class="radio-inline">
+                            <input type="radio" name="pc[soldout_icon]" value="custom"                                    onclick="display_switch('div_pc_icon','show')"> 대체 아이콘 <span class="div_pc_icon display-none">
+                        </label>
+                        <input type="file" name="pc_soldout_icon" class="form-control">
+                                                </span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th class="require">가격 표시 설정</th>
+                <td>
+                    <div><label class="radio-inline"><input type="radio" name="pc[soldout_price]" value="price" checked                                                            onclick="display_switch('div_pc_price','hide')"> 가격 표시</div>
+                    </label>
+
+                    <div class="form-inline mgt5"><label class="radio-inline"><input type="radio" name="pc[soldout_price]"
+                                                                                     value="text"                                                                                      onclick="display_switch('div_pc_price','hide');display_switch('div_pc_price_text','show')"> 가격
+                            대체 문구 <span class="div_pc_price div_pc_price_text display-none"><input type="text" name="pc[soldout_price_text]" class="form-control js-maxlength"
+                                                                                                   value="" maxlength="30"></span></label>
+                    </div>
+                    <div class="form-inline mgt5"><label class="radio-inline"><input type="radio" name="pc[soldout_price]"
+                                                                                     value="custom"                                                                                      onclick="display_switch('div_pc_price','hide');display_switch('div_pc_price_icon','show')">이미지
+                            노출  <span class="display-none div_pc_price div_pc_price_icon">
+                    <input type="file" name="pc_soldout_price" class="form-control">
+                                                </span></label></div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+    <div class="table-title gd-help-manual">
+        모바일 품절상품 표시 설정
+    </div>
+    <div>
+        <table class="table table-cols">
+            <colgroup>
+                <col class="width-md"/>
+                <col/>
+            </colgroup>
+            <tr>
+                <th class="require">상품 이미지 <br/>오버레이</th>
+                <td>
+
+                    <table border="0" style="" cellpadding="5">
+                        <tr>
+                            <td align="center" class="noline width-md" style="border:0px;">
+                                <div style="width:130px;height:130px; margin-bottom:10px;border:1px solid #CCCCCC;padding-top:55px">사용안함</div>
+                                <input type="radio" name="mobile[soldout_overlay]" value="0"
+                                       onclick="display_switch('div_mobile_overlay','hide')"  >
+                            </td>
+                                                            <td align="center" class="noline width-md" style="border:0px;">
+                                    <div
+                                        style="width:130px;height:130px; margin-bottom:10px; background:url(https://gdadmin.plus.godomall.com:14003/data/icon/goods_icon/m-soldout-1.png) no-repeat center center;background-size:100%;border:1px solid #CCCCCC;"></div>
+                                    <input type="radio" name="mobile[soldout_overlay]" value="1"
+                                           onclick="display_switch('div_mobile_overlay','hide')" checked >
+                                </td>
+                                                            <td align="center" class="noline width-md" style="border:0px;">
+                                    <div
+                                        style="width:130px;height:130px; margin-bottom:10px; background:url(https://gdadmin.plus.godomall.com:14003/data/icon/goods_icon/m-soldout-2.png) no-repeat center center;background-size:100%;border:1px solid #CCCCCC;"></div>
+                                    <input type="radio" name="mobile[soldout_overlay]" value="2"
+                                           onclick="display_switch('div_mobile_overlay','hide')"  >
+                                </td>
+                                                            <td align="center" class="noline width-md" style="border:0px;">
+                                    <div
+                                        style="width:130px;height:130px; margin-bottom:10px; background:url(https://gdadmin.plus.godomall.com:14003/data/icon/goods_icon/m-soldout-3.png) no-repeat center center;background-size:100%;border:1px solid #CCCCCC;"></div>
+                                    <input type="radio" name="mobile[soldout_overlay]" value="3"
+                                           onclick="display_switch('div_mobile_overlay','hide')"  >
+                                </td>
+                                                            <td align="center" class="noline width-md" style="border:0px;">
+                                    <div
+                                        style="width:130px;height:130px; margin-bottom:10px; background:url(https://gdadmin.plus.godomall.com:14003/data/icon/goods_icon/m-soldout-4.png) no-repeat center center;background-size:100%;border:1px solid #CCCCCC;"></div>
+                                    <input type="radio" name="mobile[soldout_overlay]" value="4"
+                                           onclick="display_switch('div_mobile_overlay','hide')"  >
+                                </td>
+                                                            <td align="center" class="noline width-md" style="border:0px;">
+                                    <div
+                                        style="width:130px;height:130px; margin-bottom:10px; background:url(https://gdadmin.plus.godomall.com:14003/data/icon/goods_icon/m-soldout-5.png) no-repeat center center;background-size:100%;border:1px solid #CCCCCC;"></div>
+                                    <input type="radio" name="mobile[soldout_overlay]" value="5"
+                                           onclick="display_switch('div_mobile_overlay','hide')"  >
+                                </td>
+                                                            <td align="center" class="noline width-md" style="border:0px;">
+                                    <div
+                                        style="width:130px;height:130px; margin-bottom:10px; background:url(https://gdadmin.plus.godomall.com:14003/data/icon/goods_icon/m-soldout-6.png) no-repeat center center;background-size:100%;border:1px solid #CCCCCC;"></div>
+                                    <input type="radio" name="mobile[soldout_overlay]" value="6"
+                                           onclick="display_switch('div_mobile_overlay','hide')"  >
+                                </td>
+                                                            <td align="center" class="noline width-md" style="border:0px;">
+                                    <div
+                                        style="width:130px;height:130px; margin-bottom:10px; background:url(https://gdadmin.plus.godomall.com:14003/data/icon/goods_icon/m-soldout-7.png) no-repeat center center;background-size:100%;border:1px solid #CCCCCC;"></div>
+                                    <input type="radio" name="mobile[soldout_overlay]" value="7"
+                                           onclick="display_switch('div_mobile_overlay','hide')"  >
+                                </td>
+                                                        <td align="center" class="noline width-md" style="border:0px;">
+                                                                    <div style="width:130px;height:130px;padding-top:55px; margin-bottom:10px; border:1px solid #CCCCCC;" id="el-user-soldout-overlay">
+                                        사용자 설정
+                                                                    </div>
+                                    <div style="position: relative">
+                                <input type="radio" name="mobile[soldout_overlay]" value="custom"
+                                       onclick="display_switch('div_mobile_overlay','show')"  >
+                                                                    </div>
+                            </td>
+                    </table>
+
+                    <div class="div_mobile_overlay form-inline" style="display:none;">
+                        <br/>
+                        사용자 이미지 <input type="file" name="mobile_soldout_overlay" class="form-control"> <span>(권장 사이즈 : 300px)</span>
+                        <input type="hidden" name="isMobileCustomImage" value="n" />
+                        <div class="notice-ref notice-sm">* 사용자 이미지 업로드시 반드시 배경이 투명처리된 png, gif 파일로 업로드 하셔야 합니다.</div>
+
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <th class="require">품절 아이콘</th>
+                <td>
+                    <div class="form-inline mgt5">
+                        <label class="radio-inline">
+                            <input type="radio" name="mobile[soldout_icon]" value="disable"
+                                   onclick="display_switch('div_mobile_icon','hide')" checked >
+                            사용안함
+                        </label>
+                    </div>
+                    <div class="form-inline mgt5">
+                        <label class="radio-inline">
+                            <input type="radio" name="mobile[soldout_icon]" value="basic" onclick="display_switch('div_mobile_icon','hide')"  > 기본 아이콘
+                            <img src="https://gdadmin.plus.godomall.com:14003/data/icon/goods_icon/icon_soldout.gif"></label>
+                    </div>
+                    <div class="form-inline mgt5">
+                        <label class="radio-inline">
+                            <input type="radio" name="mobile[soldout_icon]" value="custom"                                    onclick="display_switch('div_mobile_icon','show')"> 대체 아이콘
+                            <span class="div_mobile_icon display-none">
+                            <input type="file" name="mobile_soldout_icon" class="form-control">
+                                                            </span>
+                        </label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th class="require">가격 표시 설정</th>
+                <td>
+                    <div><label class="radio-inline"><input type="radio" name="mobile[soldout_price]" value="price" checked                                                            onclick="display_switch('div_mobile_price','hide')"> 가격 표시</label></div>
+
+                    <div class="form-inline mgt5"><label class="radio-inline"><input type="radio" name="mobile[soldout_price]"
+                                                                                     value="text"                                                                                      onclick="display_switch('div_mobile_price','hide');display_switch('div_mobile_price_text','show')">
+                            가격 대체 문구 <span class="div_mobile_price div_mobile_price_text display-none"><input type="text" class="form-control js-maxlength"
+                                                                                                              name="mobile[soldout_price_text]"
+                                                                                                              value=""
+                                                                                                              maxlength="30"></span></label></div>
+                    <div class="form-inline mgt5"><label class="radio-inline"><input type="radio" name="mobile[soldout_price]"
+                                                                                     value="custom"                                                                                      onclick="display_switch('div_mobile_price','hide');display_switch('div_mobile_price_icon','show')">이미지
+                            노출  <span class="display-none div_mobile_price div_mobile_price_icon">
+                                <input type="file" name="mobile_soldout_price" class="form-control">
+                                                     </span>
+                        </label>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+</form>
+
+                                    </div>
+            </div>
+
+</th:block>
+
+
+</html>

@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/admin/goodsdefault}">
+
+<th:block layout:fragment="adminMainContents">
+
+<div id="content" class="row">
+                <div class="col-xs-12">
+                    <script type="text/javascript">
+    <!--
+    $(document).ready(function () {
+
+        $('input[name*=\'goodsPrice\']').number_only();
+
+        delivery_switch('');
+
+        // 삭제
+        $('button.checkDelete').click(function () {
+            var chkCnt = $('input[name*="goodsNo"]:checked').length;
+            if (chkCnt == 0) {
+                alert('선택된 상품이 없습니다.');
+                return;
+            }
+
+            dialog_confirm('선택한 ' + chkCnt + '개 상품을  정말로 삭제하시겠습니까?<br/>삭제시 정보는 복구 되지 않습니다.', function (result) {
+                if (result) {
+                    $('#frmList input[name=\'mode\']').val('delete');
+                    $('#frmList').attr('method', 'post');
+                    $('#frmList').attr('action', './goods_ps.php');
+                    $('#frmList').submit();
+                }
+            });
+        });
+
+        //복구선택
+        $('button.checkReStore').click(function () {
+            var chkCnt = $('input[name*="goodsNo"]:checked').length;
+            if (chkCnt == 0) {
+                alert('선택된 상품이 없습니다.');
+                return;
+            }
+
+            var data = '<div class="text-center">선택한 ' + chkCnt + '개 상품을  정말로 복구 하시겠습니까?<div>';
+
+            layer_popup(data+$("#lay_reStore").html(), '선택상품 복구');
+        });
+
+        $('select[name=\'pageNum\']').change(function(){
+            $('#frmSearchGoods').submit();
+        });
+
+        $('select[name=\'sort\']').change(function(){
+            $('#frmSearchGoods').submit();
+        });
+
+    });
+
+
+    //복구
+    function sumbit_restore() {
+
+        $('#frmList input[name=\'goodsDisplayFl\']').val($(".bootstrap-dialog-body input:radio[name='chkGoodsDisplayFl']:checked").val());
+        $('#frmList input[name=\'goodsSellFl\']').val($(".bootstrap-dialog-body input:radio[name='chkGoodsSellFl']:checked").val());
+
+        $('#frmList input[name=\'mode\']').val('goods_restore');
+        $('#frmList').attr('method', 'post');
+        $('#frmList').attr('action', './goods_ps.php');
+        $('#frmList').submit();
+
+    }
+
+    /**
+     * 배송 정책 종류 선택
+     *
+     * @param string thisID 종류 ID
+     */
+    function delivery_switch(thisID) {
+        if (thisID == 'free') {
+            $('#deliveryConf_free').show();
+        } else {
+            $('#deliveryConf_free').hide();
+        }
+    }
+
+    /*
+     **
+     * 카테고리 연결하기 Ajax layer
+     */
+    function layer_register(typeStr, mode, isDisabled) {
+
+        var addParam = {
+            "mode": mode,
+        };
+
+        if (typeStr == 'scm') {
+            $('input:radio[name=scmFl]:input[value=y]').prop("checked", true);
+        }
+
+        if (!_.isUndefined(isDisabled) && isDisabled == true) {
+            addParam.disabled = 'disabled';
+        }
+
+        layer_add_info(typeStr,addParam);
+    }
+    //-->
+</script>
+
+
+<div class="page-header js-affix">
+    <h3>삭제 상품 관리 </h3>
+</div>
+
+
+
+<form id="frmSearchGoods" name="frmSearchGoods" method="get" class="js-form-enter-submit">
+    <div class="table-title gd-help-manual">
+        삭제 상품 검색
+                <span class="search"><button type="button" class="btn btn-sm btn-black" onclick="set_search_config(this.form)">검색설정저장</button></span>
+            </div>
+
+    <div class="search-detail-box">
+        <input type="hidden" name="detailSearch" value=""/>
+        <input type="hidden" name="delFl" value="y"/>
+        <table class="table table-cols">
+            <colgroup>
+                <col class="width-md"/>
+                <col>
+                <col class="width-md"/>
+                <col/>
+            </colgroup>
+            <tbody>
+                                    <tr>
+                <th>공급사 구분</th>
+                <td colspan="3">
+                                        <label class="radio-inline">
+                        <input type="radio" name="scmFl" value="all" checked="checked" onclick="$('#scmLayer').html('');"/>전체
+                    </label>
+                                        <label class="radio-inline">
+                        <input type="radio" name="scmFl" value="n"  onclick="$('#scmLayer').html('')" ;/>본사
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="scmFl" value="y"  onclick="layer_register('scm', 'checkbox')"/>공급사
+                    </label>
+                    <label>
+                        <button type="button" class="btn btn-sm btn-gray" onclick="layer_register('scm','checkbox')">공급사 선택</button>
+                    </label>
+
+                    <div id="scmLayer" class="selected-btn-group ">
+                        <h5>선택된 공급사 : </h5>
+                                            </div>
+                </td>
+            </tr>
+                                    <tr>
+                <th>검색어</th>
+                <td colspan="3">
+                    <div class="form-inline">
+                        <select class="form-control " id="key" name="key" ><option value="goodsNm"  >상품명</option><option value="goodsNo"  >상품코드</option><option value="goodsCd"  >자체상품코드</option><option value="goodsSearchWord"  >검색 키워드</option><option value="__disable1"  disabled>==========</option><option value="makerNm"  >제조사</option><option value="originNm"  >원산지</option><option value="goodsModelNo"  >모델번호</option><option value="hscode"  >HS코드</option><option value="addInfo"  >추가항목</option><option value="__disable2"  disabled>==========</option><option value="memo"  >관리자 메모</option><option value="companyNm"  >공급사명</option><option value="purchaseNm"  >매입처명</option></select>                        <input type="text" name="keyword" value="" class="form-control"/>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>기간검색</th>
+                <td colspan="3">
+                    <div class="form-inline">
+                        <select name="searchDateFl" class="form-control">
+                                                            <option value="delDt" selected='selected'>삭제일</option>
+                                                        <option value="regDt" >등록일</option>
+                            <option value="modDt" >수정일</option>
+                        </select>
+
+                        <div class="input-group js-datepicker">
+                            <input type="text" class="form-control width-xs" name="searchDate[]" value="" />
+                            <span class="input-group-addon"><span class="btn-icon-calendar"></span></span>
+                        </div>
+                        ~
+                        <div class="input-group js-datepicker">
+                            <input type="text" class="form-control width-xs" name="searchDate[]" value="" />
+                            <span class="input-group-addon"><span class="btn-icon-calendar"></span></span>
+                        </div>
+                        <div class="btn-group js-dateperiod" data-toggle="buttons" data-target-name="searchDate"><label class="btn btn-white btn-sm hand "><input type="radio" name="searchPeriod" value="0"  >오늘</label><label class="btn btn-white btn-sm hand "><input type="radio" name="searchPeriod" value="6"  >7일</label><label class="btn btn-white btn-sm hand "><input type="radio" name="searchPeriod" value="14"  >15일</label><label class="btn btn-white btn-sm hand "><input type="radio" name="searchPeriod" value="29"  >1개월</label><label class="btn btn-white btn-sm hand "><input type="radio" name="searchPeriod" value="89"  >3개월</label><label class="btn btn-white btn-sm hand "><input type="radio" name="searchPeriod" value="-1"  >전체</label> </div >                     </div>
+                </td>
+            </tr>
+            </tbody>
+            <tbody class="js-search-detail" style="display: none;">
+			<tr>
+                <th>카테고리</th>
+                <td class="contents" colspan="3">
+                    <div class="form-inline">
+                        <select id="cateGoods1" name="cateGoods[]"  class="form-control multiple-select">
+<option value="">=카테고리선택=</option>
+<option value="001"  data-flag="kr,us,cn,jp" data-mall-name="기준몰,영문몰,중문몰,일문몰">TOP</option>
+<option value="002"  data-flag="kr,us,cn,jp" data-mall-name="기준몰,영문몰,중문몰,일문몰">BOTTOM</option>
+<option value="003"  data-flag="kr,us,cn,jp" data-mall-name="기준몰,영문몰,중문몰,일문몰">OUTER</option>
+<option value="006"  data-flag="kr,us,cn,jp" data-mall-name="기준몰,영문몰,중문몰,일문몰">BAG</option>
+<option value="007"  data-flag="kr,us,cn,jp" data-mall-name="기준몰,영문몰,중문몰,일문몰">SHOES</option>
+<option value="004"  data-flag="kr,us,cn,jp" data-mall-name="기준몰,영문몰,중문몰,일문몰">ACC</option>
+</select>
+<select id="cateGoods2" name="cateGoods[]"  class="form-control multiple-select">
+<option value="">=카테고리선택=</option>
+</select>
+<select id="cateGoods3" name="cateGoods[]"  class="form-control multiple-select">
+<option value="">=카테고리선택=</option>
+</select>
+<select id="cateGoods4" name="cateGoods[]"  class="form-control multiple-select">
+<option value="">=카테고리선택=</option>
+</select>
+<script type="text/javascript">
+$(function() {
+	$('#cateGoods1').multi_select_box('#cateGoods',4,'/share/category_select_json.php','=카테고리선택=');
+	$('#cateGoods2').multi_select_box('#cateGoods',4,'/share/category_select_json.php','=카테고리선택=');
+	$('#cateGoods3').multi_select_box('#cateGoods',4,'/share/category_select_json.php','=카테고리선택=');
+	$('#cateGoods4').multi_select_box('#cateGoods',4,'/share/category_select_json.php','=카테고리선택=');
+});
+
+</script>
+                        <label class="checkbox-inline mgl10">
+                            <input type="checkbox" name="categoryNoneFl" value="y" > 카테고리 미지정 상품
+                        </label>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>메인분류</th>
+                <td class="contents" colspan="3">
+                    <div class="form-inline">
+                        <select id="displayTheme1" name="displayTheme[]"  class="form-control multiple-select">
+<option value="">=전체=</option>
+<option value="pc">PC쇼핑몰</option>
+<option value="mobile">모바일쇼핑몰</option>
+</select>
+<select id="displayTheme2" name="displayTheme[]"  class="form-control multiple-select">
+<option value="">=메인페이지 분류 선택=</option>
+</select>
+<script type="text/javascript">
+$(function() {
+	$('#displayTheme1').multi_select_box('#displayTheme',2,'/share/display_theme_search_ajax.php','=메인페이지 분류 선택=');
+	$('#displayTheme2').multi_select_box('#displayTheme',2,'/share/display_theme_search_ajax.php','=메인페이지 분류 선택=');
+});
+
+</script>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>브랜드</th>
+                <td>
+                    <div class="form-inline">
+
+                        <label><input type="button" value="브랜드선택" class="btn btn-sm btn-gray"  onclick="layer_register('brand', 'radio-search')"/></label>
+
+                        <label class="checkbox-inline mgl10"><input type="checkbox" name="brandNoneFl" value="y" ><span id="brandNoneFlText">브랜드 미지정 상품</span></label>
+
+                        <div id="brandLayer" class="selected-btn-group ">
+                            <h5>선택된 브랜드 : </h5>
+                                                    </div>
+
+                    </div>
+                </td>
+                <th>판매가</th>
+                <td>
+                    <div class="form-inline">
+                        <input type="text" name="goodsPrice[]" value="" class="form-control width-sm js-number"/>이상 ~
+                        <input type="text" name="goodsPrice[]" value="" class="form-control width-sm js-number"/>이하
+                    </div>
+                </td>
+            </tr>
+                        <tr>
+                <th>마일리지</th>
+                <td>
+                    <div class="form-inline">
+                        <input type="text" name="mileage[]" value="" class="form-control width-sm js-number"/>이상 ~
+                        <input type="text" name="mileage[]" value="" class="form-control width-sm js-number"/>이하</div>
+                </td>
+                <th>마일리지 지급방법</th>
+                <td>
+                    <label class="radio-inline"><input type="radio" name="mileageFl" value="" checked="checked" />전체</label>
+                    <label class="radio-inline"><input type="radio" name="mileageFl" value="c"  />통합설정</label>
+                    <label class="radio-inline"><input type="radio" name="mileageFl" value="g"  />개별설정</label>
+                </td>
+            </tr>
+                                    <tr>
+                                    <th>상품 재고</th>
+                                <td>
+                    <div class="form-inline">
+                        <input type="text" name="stock[]" value="" class="form-control width-sm"/>개 이상 ~
+                        <input type="text" name="stock[]" value="" class="form-control width-sm"/>개 이하
+                    </div>
+                </td>
+                <th>옵션 사용</th>
+                <td>
+                    <label class="radio-inline"><input type="radio" name="optionFl" value="" checked="checked" />전체</label>
+                    <label class="radio-inline"><input type="radio" name="optionFl" value="y"  />사용함</label>
+                    <label class="radio-inline"><input type="radio" name="optionFl" value="n"  />사용안함</label>
+                </td>
+            </tr>
+            <tr>
+                <th>텍스트옵션 사용</th>
+                <td>
+                    <label class="radio-inline"><input type="radio" name="optionTextFl" value="" checked="checked" />전체</label>
+                    <label class="radio-inline"><input type="radio" name="optionTextFl" value="y"  />사용함</label>
+                    <label class="radio-inline"><input type="radio" name="optionTextFl" value="n"  />사용안함</label>
+                </td>
+                <th>추가상품 사용</th>
+                <td>
+                    <label class="radio-inline"><input type="radio" name="addGoodsFl" value="" checked="checked" />전체</label>
+                    <label class="radio-inline"><input type="radio" name="addGoodsFl" value="y"  />사용함</label>
+                    <label class="radio-inline"><input type="radio" name="addGoodsFl" value="n"  />사용안함</label>
+                </td>
+            </tr>
+            <tr>
+                <th>상품노출 상태</th>
+                <td>
+                    <label class="radio-inline"><input type="radio" name="goodsDisplayFl" value="" checked="checked" />전체</label>
+                    <label class="radio-inline"><input type="radio" name="goodsDisplayFl" value="y"  />노출함</label>
+                    <label class="radio-inline"><input type="radio" name="goodsDisplayFl" value="n"  />노출안함</label>
+                </td>
+                <th>상품판매 상태</th>
+                <td>
+                    <label class="radio-inline"><input type="radio" name="goodsSellFl" value="" checked="checked" />전체</label>
+                    <label class="radio-inline"><input type="radio" name="goodsSellFl" value="y"  />판매함</label>
+                    <label class="radio-inline"><input type="radio" name="goodsSellFl" value="n"  />판매안함</label>
+                </td>
+            </tr>
+            <tr>
+                <th>판매 재고</th>
+                <td>
+                    <label class="radio-inline"><input type="radio" name="stockFl" value="" checked="checked" />전체</label>
+                    <label class="radio-inline"><input type="radio" name="stockFl" value="n"  />무한정 판매</label>
+                    <label class="radio-inline"><input type="radio" name="stockFl" value="y"  />재고량에 따름</label>
+                </td>
+                <th>품절 상태</th>
+                <td>
+                    <label class="radio-inline"><input type="radio" name="soldOut" value="" checked="checked" />전체</label>
+                    <label class="radio-inline"><input type="radio" name="soldOut" value="y"  />품절</label>
+                    <label class="radio-inline"><input type="radio" name="soldOut" value="n"  />정상</label>
+                </td>
+            </tr>
+                        <tr class="js-search-icon">
+                <th>아이콘(기간제한)</th>
+                <td>
+                    <label class="radio-inline"><input type="radio" name="goodsIconCdPeriod" value="" checked="checked" />전체</label>
+                    <label class="radio-inline"><input type="radio" name="goodsIconCdPeriod" value="icon0008"  /><img src="https://gdadmin.plus.godomall.com:14003/data/icon/goods_icon/icon_reservation.png"  alt="예약상품" title="예약상품" class="middle"  />&nbsp;</label>
+                </td>
+                <th>아이콘(무제한)</th>
+                <td>
+                    <label class="radio-inline"><input type="radio" name="goodsIconCd" value="" checked="checked" />전체</label>
+                    <label class="radio-inline"><input type="radio" name="goodsIconCd" value="icon0001"  /><img src="https://gdadmin.plus.godomall.com:14003/data/icon/goods_icon/icon_best.png"  alt="베스트상품" title="베스트상품" class="middle"  />&nbsp;</label>
+<label class="radio-inline"><input type="radio" name="goodsIconCd" value="icon0002"  /><img src="https://gdadmin.plus.godomall.com:14003/data/icon/goods_icon/icon_event.png"  alt="이벤트상품" title="이벤트상품" class="middle"  />&nbsp;</label>
+<label class="radio-inline"><input type="radio" name="goodsIconCd" value="icon0003"  /><img src="https://gdadmin.plus.godomall.com:14003/data/icon/goods_icon/icon_new.png"  alt="신상품" title="신상품" class="middle"  />&nbsp;</label>
+<label class="radio-inline"><input type="radio" name="goodsIconCd" value="icon0004"  /><img src="https://gdadmin.plus.godomall.com:14003/data/icon/goods_icon/icon_hot.png"  alt="인기상품" title="인기상품" class="middle"  />&nbsp;</label>
+<label class="radio-inline"><input type="radio" name="goodsIconCd" value="icon0005"  /><img src="https://gdadmin.plus.godomall.com:14003/data/icon/goods_icon/icon_recommend.png"  alt="추천상품" title="추천상품" class="middle"  />&nbsp;</label>
+<label class="radio-inline"><input type="radio" name="goodsIconCd" value="icon0006"  /><img src="https://gdadmin.plus.godomall.com:14003/data/icon/goods_icon/icon_sale.png"  alt="세일상품" title="세일상품" class="middle"  />&nbsp;</label>
+<label class="radio-inline"><input type="radio" name="goodsIconCd" value="icon0007"  /><img src="https://gdadmin.plus.godomall.com:14003/data/icon/goods_icon/icon_plan.png"  alt="기획상품" title="기획상품" class="middle"  />&nbsp;</label>
+                </td>
+            </tr>
+            <tr class="js-search-delivery">
+                <th>배송비 조건</th>
+                <td colspan="3">
+                    <div class="radio">
+                        <label class="radio-inline">
+                            <input type="radio" name="goodsDeliveryFl" value="" checked="checked"/> 전체
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="goodsDeliveryFl" value="y" /> 배송비조건별
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="goodsDeliveryFl" value="n" /> 상품별
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="goodsDeliveryFixFl[]" value="all" class="js-not-checkall" data-target-name="goodsDeliveryFixFl[]" checked="checked"> 전체
+                        </label>
+                                            <label>
+                            <input class="checkbox-inline" type="checkbox" name="goodsDeliveryFixFl[]" value="free"  > 배송비무료                        </label>
+                                            <label>
+                            <input class="checkbox-inline" type="checkbox" name="goodsDeliveryFixFl[]" value="price"  > 금액별배송                        </label>
+                                            <label>
+                            <input class="checkbox-inline" type="checkbox" name="goodsDeliveryFixFl[]" value="count"  > 수량별배송                        </label>
+                                            <label>
+                            <input class="checkbox-inline" type="checkbox" name="goodsDeliveryFixFl[]" value="weight"  > 무게별배송                        </label>
+                                            <label>
+                            <input class="checkbox-inline" type="checkbox" name="goodsDeliveryFixFl[]" value="fixed"  > 고정배송비                        </label>
+                                        </div>
+                </td>
+            </tr>
+                                    <tr>
+                <th>매입처</th>
+                <td colspan="3">
+                    <div class="form-inline">
+
+                        <label><input type="button" value="매입처 선택" class="btn btn-sm btn-gray"  onclick="layer_register('purchase', 'checkbox')"/></label>
+
+                        <label class="checkbox-inline mgl10"><input type="checkbox" name="purchaseNoneFl" value="y" ><span id="purchaseNoneFlText">매입처 미지정 상품</span></label>
+
+                        <div id="purchaseLayer" class="selected-btn-group ">
+                            <h5>선택된 매입처 : </h5>
+
+                                                        <label><input type="button" value="전체 삭제" class="btn btn-sm btn-gray" data-toggle="delete" data-target="#purchaseLayer div" data-none="#purchaseNoneFlText"/></label>
+                        </div>
+
+                    </div>
+                </td>
+            </tr>
+                        <tr class="js-search-mileage js-search-price display-none" id="eventSearchArea">
+                <th>기획전 검색</th>
+                <td colspan="3">
+                    <div class="form-inline">
+                        <input type="text" name="event_text" class="form-control" readonly="readonly" value="" />
+                        <button type="button" class="btn btn-sm btn-gray" onclick="javascript:layer_register('event_select', 'search');">기획전 검색</button>
+                        <input type="hidden" name="eventThemeSno" value="" />
+                        <span id="eventGroupSelectArea" class="display-none" >
+                            <select name="eventGroup" id="eventGroupSearchSelect" class="form-control multiple-select">
+                                                            </select>
+                        </span>
+                        <span id="eventSearchResetArea" class="pdl10 display-none">
+                            <button type="button" class="btn btn-icon-delete" onclick="javascript:resetEventSearchCondition();">삭제</button>
+                        </span>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-sm btn-link js-search-toggle bold">상세검색 <span>펼침</span></button>
+    </div>
+
+    <div class="table-btn">
+        <input type="submit" value="검색" class="btn btn-lg btn-black">
+    </div>
+
+
+    <div class="table-header">
+        <div class="pull-left">
+            검색 <strong>1</strong>개 /
+            전체 <strong>1</strong>개
+                    </div>
+        <div class="pull-right form-inline">
+            <select class="form-control " id="sort" name="sort" ><option value="delDt desc, g.goodsNo desc"  >삭제일 ↓</option><option value="delDt asc"  >삭제일 ↑</option><option value="g.goodsNo desc"  >등록일 ↓</option><option value="g.goodsNo asc"  >등록일 ↑</option><option value="goodsNm asc"  >상품명 ↓</option><option value="goodsNm desc"  >상품명 ↑</option><option value="goodsPrice asc"  >판매가 ↓</option><option value="goodsPrice desc"  >판매가 ↑</option><option value="companyNm asc"  >공급사 ↓</option><option value="companyNm desc"  >공급사 ↑</option><option value="makerNm asc"  >제조사 ↓</option><option value="makerNm desc"  >제조사 ↑</option><option value="orderGoodsCnt desc"  >결제 ↑</option><option value="hitCnt desc"  >조회 ↑</option><option value="orderRate desc"  >구매율 ↑</option><option value="cartCnt desc"  >담기 ↑</option><option value="wishCnt desc"  >관심 ↑</option><option value="reviewCnt desc"  >후기 ↑</option></select>            <select class="form-control " id="pageNum" name="pageNum" ><option value="10"  >10개 보기</option><option value="20"  >20개 보기</option><option value="30"  >30개 보기</option><option value="40"  >40개 보기</option><option value="50"  >50개 보기</option><option value="60"  >60개 보기</option><option value="70"  >70개 보기</option><option value="80"  >80개 보기</option><option value="90"  >90개 보기</option><option value="100"  >100개 보기</option><option value="200"  >200개 보기</option><option value="300"  >300개 보기</option><option value="500"  >500개 보기</option></select>                    </div>
+    </div>
+    <input type="hidden" name="searchFl" value="y">
+    <input type="hidden" name="applyPath" value="/goods/goods_list_delete.php">
+</form>
+<script>
+function brand_del(){
+    $('input[name=brandCdNm]').val('');
+}
+</script>
+<div style="width: 100%;overflow: hidden;background: #f6f6f6;">
+    <div class="pull-right" style="margin-bottom : 10px;">
+        <button type="button" class="js-layer-register btn btn-sm btn-black" style="height: 27px !important;" data-type="goods_grid_config" data-goods-grid-mode="goods_list_delete">조회항목설정</button>
+    </div>
+</div>
+<div>
+    <form id="frmList" action="" method="get" target="ifrmProcess" >
+        <input type="hidden" name="mode" value="">
+        <input type="hidden" name="goodsDisplayFl" value="">
+        <input type="hidden" name="goodsSellFl" value="">
+        <div class="table-responsive">
+            <table class="table table-rows">
+                <thead>
+                    <tr>
+                        <!-- 상품리스트 그리드 항목 시작-->
+                        <th><input type='checkbox' value='y' class='js-checkall' data-target-name='goodsNo'/></th><th >번호</th><th >상품코드</th><th >이미지</th><th  style='min-width: 300px !important;' >상품명</th><th >판매가</th><th >매입처</th><th >공급사</th><th  style='min-width: 120px !important;' >노출상태</th><th  style='min-width: 120px !important;' >판매상태</th><th >재고</th><th >등록일/삭제일</th>                    </tr>
+                </thead>
+                <tbody>
+                                        <tr>
+                            <!-- 주문리스트 그리드 항목 시작-->
+                                                                    <!--선택-->
+                                        <td class="center"><input type="checkbox" name="goodsNo[1000000014]" value="1000000014"  /></td>
+                                                                            <!--번호-->
+                                        <td class="center number">1</td>
+                                                                            <!--상품코드번호-->
+                                        <td class="center number">1000000014</td>
+                                                                            <!--상품이미지-->
+                                        <td class="width-2xs center">
+                                            <a href="http://plus.godomall.com/goods/goods_view.php?goodsNo=1000000014" target="_blank"><img src="https://gdadmin.plus.godomall.com:14003/data/goods/16/05/19/1000000014/t50_1000000014_list_022.jpg" width="40" alt="Stripe Canvas Bag" title="Stripe Canvas Bag" class="middle"  /></a>                                        </td>
+                                                                            <!--상품명-->
+                                        <td>
+                                            <div><a class="text-blue hand" onclick="goods_register_popup('1000000014' );">Stripe Canvas Bag</a>
+                                            </div>
+                                            <div class="notice-ref notice-sm"></div>
+                                                <div>
+                                                                                                    </div>
+                                                <!--아이콘-->
+                                                                                    </td>
+                                                                            <!--판매가-->
+                                        <td class="center text-nowrap">
+                                            <div><span class="font-num">240,000원</span></div>
+                                        </td>
+                                                                                                                        <!--매입처-->
+                                            <td class="center lmenu text-nowrap"></td>
+                                                                                                                    <!--공급사-->
+                                        <td class="center text-nowrap">엔에이치엔고도(주)</td>
+                                                                            <!--노출상태-->
+                                        <td class="center">PC | 노출함<br/> 모바일 | 노출함</td>
+                                                                            <!--판매상태-->
+                                        <td class="center">PC | 판매함<br/> 모바일 | 판매함</td>
+                                                                            <!--재고-->
+                                        <td class="center">∞</td>
+                                                                        <!--등록일 수정일-->
+                                        <td class="center date">
+                                            2020-01-01                                             / <br/>2017-02-12                                        </td>
+                                                            </tr>
+                                        </tbody>
+            </table>
+        </div>
+
+        <div class="table-action">
+            <div class="pull-left">
+                <button type="button" class="btn btn-white checkReStore">상품복구</button>
+                <button type="button" class="btn btn-white checkDelete">완전삭제</button>
+            </div>
+            <div class="pull-right">
+                <button type="button" class="btn btn-white btn-icon-excel js-excel-download" data-target-form="frmSearchGoods" data-search-count="1" data-total-count="1" data-target-list-form="frmList" data-target-list-sno="goodsNo">엑셀다운로드</button>
+            </div>
+        </div>
+    </form>
+
+    <div class="center"><nav><ul class="pagination pagination-sm"><li class="active"><span>1</span></li></ul></nav></div>
+
+
+
+    <div class="display-none"  id="lay_reStore">
+        <table class="table table-cols">
+            <tbody>
+            <tr>
+                <th>노출상태</th>
+                <td><label><input type="radio" name="chkGoodsDisplayFl"  value="y"  checked='checked' />노출함</label>
+                    <label><input type="radio" name="chkGoodsDisplayFl"  value="n"  />노출안함</label>
+                </td>
+            </tr>
+            <tr>
+                <th>판매상태</th>
+                <td><label><input type="radio" name="chkGoodsSellFl"  value="y"  checked='checked'/>판매함</label>
+                    <label><input type="radio" name="chkGoodsSellFl"  value="n" />판매안함</label>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div><button class="btn  btn-default checkReStoreConfirm" type="button" onclick="sumbit_restore();">확인</button></div>
+    </div>
+
+</div>
+
+                    <div class="information ">
+    <h4>안내</h4>
+    <div class="content">
+        <p><span style='font-family: "나눔고딕",NanumGothic; font-size: 9pt;'><strong>[상품 정보] 상품복구는 무엇인가요?</strong></span><br><span style='font-family: "나눔고딕",NanumGothic; font-size: 9pt;'>· 상품리스트 내 운영자가 선택한 삭제상품을 기존 경로로 복구합니다.</span><br><span style='font-family: "나눔고딕",NanumGothic; font-size: 9pt;'>· 복구된 상품은 삭제상품 관리 메뉴에서 검색되지 않습니다.</span><span style='line-height: 1.5; font-family: "나눔고딕",NanumGothic; font-size: 9pt;'>&nbsp;</span></p><p><span style='line-height: 1.5; font-family: "나눔고딕",NanumGothic; font-size: 9pt;'>&nbsp;</span></p><p><span style='font-family: "나눔고딕",NanumGothic; font-size: 9pt;'><strong>[상품 정보] 완전삭제는 무엇인가요?</strong></span><br><span style='font-family: "나눔고딕",NanumGothic; font-size: 9pt;'>· 상품리스트 내 운영자가 선택한 상품이 관리자 화면에서 검색 / 확인 불가능한 상태로 삭제됩니다.</span><br><span style='color: rgb(255, 0, 0); font-family: "나눔고딕",NanumGothic; font-size: 9pt;'><strong>&nbsp; - 완전삭제된 상품 정보는 복구가 불가능하므로 삭제 시 유의하시기 바랍니다.</strong></span></p>    </div>
+</div>
+                </div>
+            </div>
+
+
+
+</th:block>
+
+
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/admin/goodsdefault}">
+
+<th:block layout:fragment="adminMainContents">
+
+<div id="content" class="row">
+                <div class="col-xs-12">
+                    
+<script type="text/javascript">
+    <!--
+    /**
+     * 폼 체크
+     */
+    $(document).ready(function () {
+
+        $('select[name=\'pageNum\']').change(function () {
+            $('input[name=\'pageNum\']').val($(this).val());
+            $('#frmSearchGoods').submit();
+        });
+
+        $(document).on("click", "#tbl_add_goods_result tbody tr", function(e){
+            if(e.target.type != 'checkbox') {
+                if ($(this).find("input[name='itemGoodsNo[]']").is(":checked")) {
+                    $(this).find("input[name='itemGoodsNo[]']").prop("checked", false);
+                    $(this).css('background-color', '');
+                } else {
+                    $(this).find("input[name='itemGoodsNo[]']").prop("checked", true);
+                    $(this).css('background-color', '#f7f7f7');
+                }
+            }
+        })
+
+    });
+
+    function form_process(sortMode) {
+                alert("카테고리를 먼저 선택해주세요.");
+            }
+
+
+
+    //-->
+</script>
+<style>
+    .add_goods_fix{background:#E8E8E8;}
+    .goodsChoice_outlineTable .goodsChoice_registeredTdArea #goodsChoice_registerdOutlineDiv {
+        min-height:590px;
+        overflow-y:auto;
+    }
+</style>
+<div class="page-header js-affix">
+    <h3>카테고리페이지 상품진열 </h3>
+    <div class="btn-group">
+        <input type="button"   onclick="form_process('save');" value="저장" class="btn btn-red" />
+
+    </div>
+</div>
+
+<form id="frmSearchGoods" name="frmSearchGoods" method="get">
+    <input type="hidden" name="pageNum"/>
+    <div class="table-title gd-help-manual">
+        카테고리 선택
+    </div>
+    <table class="table table-cols">
+        <colgroup><col class="width-sm" /><col/></colgroup>
+        <tr>
+            <th>카테고리 선택</th>
+            <td> <div class="form-inline">
+                    <select id="cateGoods1" name="cateGoods[]"  class="form-control multiple-select">
+<option value="">=카테고리선택=</option>
+<option value="001"  data-flag="kr,us,cn,jp" data-mall-name="기준몰,영문몰,중문몰,일문몰">TOP</option>
+<option value="002"  data-flag="kr,us,cn,jp" data-mall-name="기준몰,영문몰,중문몰,일문몰">BOTTOM</option>
+<option value="003"  data-flag="kr,us,cn,jp" data-mall-name="기준몰,영문몰,중문몰,일문몰">OUTER</option>
+<option value="006"  data-flag="kr,us,cn,jp" data-mall-name="기준몰,영문몰,중문몰,일문몰">BAG</option>
+<option value="007"  data-flag="kr,us,cn,jp" data-mall-name="기준몰,영문몰,중문몰,일문몰">SHOES</option>
+<option value="004"  data-flag="kr,us,cn,jp" data-mall-name="기준몰,영문몰,중문몰,일문몰">ACC</option>
+</select>
+<select id="cateGoods2" name="cateGoods[]"  class="form-control multiple-select">
+<option value="">=카테고리선택=</option>
+</select>
+<select id="cateGoods3" name="cateGoods[]"  class="form-control multiple-select">
+<option value="">=카테고리선택=</option>
+</select>
+<select id="cateGoods4" name="cateGoods[]"  class="form-control multiple-select">
+<option value="">=카테고리선택=</option>
+</select>
+<script type="text/javascript">
+$(function() {
+	$('#cateGoods1').multi_select_box('#cateGoods',4,'/share/category_select_json.php','=카테고리선택=');
+	$('#cateGoods2').multi_select_box('#cateGoods',4,'/share/category_select_json.php','=카테고리선택=');
+	$('#cateGoods3').multi_select_box('#cateGoods',4,'/share/category_select_json.php','=카테고리선택=');
+	$('#cateGoods4').multi_select_box('#cateGoods',4,'/share/category_select_json.php','=카테고리선택=');
+});
+
+</script>
+                    <input type="submit" value="검색" class="btn btn-sm btn-black" /></div>
+            </td>
+        </tr>
+    </table>
+
+    <div class="table-title gd-help-manual">
+        선택된 카테고리 정보
+    </div>
+
+    <table class="table table-cols">
+        <colgroup><col class="width-md" /><col/><col class="width-md" /><col/><col class="width-md" /><col/><col class="width-md" /><col/><col class="width-md" /><col/></colgroup>
+        <tr>
+            <th >진열타입</th>
+            <td ></td>
+            <th >진열방법</th>
+            <td ></td>
+            <th >PC쇼핑몰 테마</th>
+            <td ></td>
+            <th >모바일쇼핑몰 테마</th>
+            <td ></td>
+            <th >상품개수</th>
+            <td ></td>
+        </tr>
+    </table>
+
+    <div class="table-btn clearfix">
+        <div class="pull-right">
+            <a href="/goods/category_tree.php?cateCd=" class="btn btn-black" target="_blank">진열방법 수정</a>
+        </div>
+    </div>
+</form>
+
+
+
+<div class="table-title gd-help-manual">
+    진열 상품 설정
+</div>
+
+<form id="frmSort" name="frmSort" action="./goods_ps.php" method="post" target="ifrmProcess">
+    <input type="hidden" name="mode" value="goods_sort_change" />
+    <input type="hidden" name="sortAutoFl" value="" />
+    <input type="hidden" name="cateMode" value="category" />
+    <input type="hidden" name="sortMode" value="" />
+    <input type="hidden" name="cateCd" value="" />
+    <input type="hidden" name="totalGoodsSort" value="0" />
+    <input type="hidden" name="fixCount" value="" />
+    <input type="hidden" name="pageNow" value="1" />
+    <input type="hidden" name="pagePnum" value="10" />
+    <input type="hidden" name="startNum" value="1" />
+    <input type="hidden" id="goodsMoveChk" value="" />
+
+    <div class="table-responsive">
+        <table cellpadding="0" cellspacing="0" width="100%" border="0" class="goodsChoice_outlineTable" style="width:100%;" >
+            <colgroup>
+                <col />
+            </colgroup>
+
+            <tr>
+
+                <!-- 상품선택 리스트-->
+
+                <!-- 등록상품 리스트-->
+                <td valign="top" class="goodsChoice_outlineTd" >
+                    <table cellpadding="0" width="100%" style="">
+                                                <tr>
+                            <td valign="top" class="goodsChoice_registeredTdArea" style="width:100%">
+                                <table cellpadding="0"  width="100%" class="table table-cols" style="margin:0;">
+                                    <colgroup>
+                                        <col class="width3p center">
+                                        <col class="width5p">
+                                        <col class="width5p">
+                                        <col>
+                                        <col class="width10p">
+                                        <col class="width10p">
+                                        <col class="width5p">
+                                        <col class="width5p">
+                                        <col class="width8p">
+                                        <col class="width8p">
+                                        <col class="width8p">
+                                    </colgroup>
+                                    <thead>
+                                    <tr id="goodsRegisteredTrArea">
+                                        <th><input type="checkbox" id="allCheck" value="y" onclick="check_toggle(this.id,'itemGoodsNo');"/></th>
+                                        <th>진열순서</th>
+                                        <th>이미지</th>
+                                        <th>상품명</th>
+                                        <th>판매가</th>
+                                        <th>공급사</th>
+                                        <th>재고</th>
+                                        <th>품절상태</th>
+                                        <th>등록일/수정일</th>
+                                        <th>PC쇼핑몰 노출상태</th>
+                                        <th>모바일쇼핑몰 노출상태</th>
+                                    </tr>
+                                    </thead>
+                                </table>
+                                <div id="goodsChoice_registerdOutlineDiv" style="width:100%">
+                                    <table cellpadding="0"  width="100%" id="tbl_add_goods_result" class="table table-cols" style="border-top:none; width:1613px;" data-result="self">
+                                        <colgroup>
+                                            <col class="width3p center">
+                                            <col class="width5p center number">
+                                            <col class="width5p">
+                                            <col>
+                                            <col class="width10p center">
+                                            <col class="width10p center">
+                                            <col class="width5p center">
+                                            <col class="width5p center">
+                                            <col class="width8p center">
+                                            <col class="width8p center">
+                                            <col class="width8p center">
+                                        </colgroup>
+                                        <tbody>
+                                                                                    <tr id="tbl_add_goods_tr_none"><td colspan="11" class="no-data">선택된 상품이 없습니다.</td></tr>
+                                                                                    </tbody>
+                                    </table>
+                                </div>
+                            </td></tr>
+                                            </table>
+                </td>
+                <!-- 등록상품 리스트-->
+            </tr>
+        </table>
+    </div>
+</form>
+
+<div class="center mgt10"><nav><ul class="pagination pagination-sm"></ul></nav></div>
+
+
+                                    </div>
+            </div>
+
+</th:block>
+
+
+</html>

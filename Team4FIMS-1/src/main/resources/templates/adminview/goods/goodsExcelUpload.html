@@ -1,0 +1,898 @@
+﻿<html xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/admin/goodsdefault}">
+
+<th:block layout:fragment="adminMainContents">
+
+<div id="content" class="row">
+                <div class="col-xs-12">
+                    <script type="text/javascript">
+$(document).ready(function(){
+
+
+	$(".excel-submit").click(function () {
+
+		if($("input[name='excel']").val() =='') {
+			alert("엑셀 파일을 선택해주세요.");
+			return false;
+		} else {
+            //상품수정일 변경 확인 팝업
+                            //상품 수정일 변경 범위설정 체크
+                                    $('input[name="modDtUse"]').val('y');
+                                $("#frmExcelGoods").submit();
+            		}
+
+	});
+
+	$("input[name='scmFl']").click(function () {
+		if ($(this).val() == 'n') {
+			$("#scmLayer").html('');
+		}
+	});
+});
+
+/**
+ * 카테고리 연결하기 Ajax layer
+ */
+function layer_register(typeStr, mode, isDisabled) {
+
+	var addParam = {
+		"mode": mode,
+	};
+
+	if (typeStr == 'scm') {
+		$('input:radio[name=scmFl]:input[value=y]').prop("checked", true);
+	}
+
+	if (!_.isUndefined(isDisabled) && isDisabled == true) {
+		addParam.disabled = 'disabled';
+	}
+	layer_add_info(typeStr, addParam);
+
+}
+</script>
+<style>
+.information span { padding:0px;display:inline; }
+.information .content ul li a.btn-link { color : #117ef9; }
+.information .content ul li a.btn-link:hover { color: #004ab9;text-decoration: underline;background-color: transparent; }
+</style>
+
+
+<form id="frmExcelGoods" name="frmExcelGoods" action="excel_goods_ps.php" method="post" enctype="multipart/form-data">
+	<div class="page-header js-affix">
+		<h3>상품 엑셀 업로드</h3>
+	</div>
+
+	<div class="table-title gd-help-manual">
+		상품 업로드	</div>
+
+
+
+	<input type="hidden" name="mode" value="excel_up" />
+<input type="hidden" name="preFix" value="Goods_Result" />
+    <input type="hidden" name="modDtUse" value="" />
+<div>
+<table class="table table-cols">
+<colgroup><col class="width-sm" /><col/></colgroup>
+	<tr>
+		<th>엑셀파일 업로드</th>
+		<td> <div class="form-inline">
+				<input type="file" name="excel" value="" class="form-control width50p" />
+				<input type="button"  class="btn btn-white btn-sm excel-submit" value="엑셀업로드"></div>
+		</td>
+	</tr>
+	<tr>
+									<th>공급사 구분</th>
+				<td>
+					<label class="radio-inline"><input type="radio" name="scmFl"
+													   value="n" checked />본사
+					</label>
+					<label class="radio-inline">
+						<input type="radio" name="scmFl" value="y"
+							   onclick="layer_register('scm','radio',true)"/>공급사
+					</label>
+					<label>
+						<button type="button" class="btn btn-sm btn-gray" onclick="layer_register('scm','radio',true)">공급사 선택</button>
+					</label>
+					<div id="scmLayer" class="selected-btn-group ">
+					</div>
+				</td>
+						</tr>
+</table>
+</div>
+</form>
+
+
+<div class="information">
+	<div class="helper_left"><div class="helper_right"><div class="helper_bottom"><div class="helper_right_top"><div class="helper_right_bottom">
+
+						<div class="content">
+							<ul class="pdl0">
+								<li>
+									<h3>상품 엑셀 샘플 다운로드</h3>
+									1. 아래 &quot;상품 엑셀 샘플 다운로드&quot; 버튼을 눌러 샘플을 참고하시기 바랍니다.<br />
+									2. 엑셀 파일 저장은 반드시 &quot;Excel 97-2003 통합문서&quot;로 저장을 하셔야 합니다. 그외 csv 나 xlsx파일 등은 지원이 되지 않습니다.<br />
+									<form id="frmExcelGoods" name="frmExcelGoods" action="excel_goods_ps.php" method="post">
+										<input type="hidden" name="mode" value="excel_sample_down" />
+										<input type="hidden" name="preFix" value="Goods_Sample" />
+										<input type="submit" value="상품 엑셀 샘플 다운로드"  class="btn btn-white btn-icon-excel mgt10"/>
+									</form>
+								</li>
+								<li>
+									<h3>상품 업로드 방법</h3>
+									1. 아래 항목 설명되어 있는 것을 기준으로 엑셀 파일을 작성을 합니다.<br />
+									2. 상품 다운로드에서 받은 엑셀이나 &quot;상품 엑셀 샘플 다운로드&quot;에서 받은 엑셀을 기준으로 파일을 작성을 합니다.<br />
+									3. 엑셀 파일 저장은 반드시 &quot;Excel 97-2003 통합문서&quot;로 저장을 하셔야 합니다. 절대 csv 파일이 아닌 진짜 엑셀 파일입니다.(xls)<br />
+									4. 작성된 엑셀 파일을 업로드 합니다.<br />
+								</li>
+								<li>
+									<h3>주의사항</h3>
+									1.엑셀 파일 저장은 반드시 &quot;Excel 97-2003 통합문서&quot;만 가능하며, csv 파일은 업로드가 되지 않습니다.<br />
+									2.엑셀 2003 사용자의 경우는 그냥 저장을 하시면 되고, 엑셀 2007 이나 엑셀 2010 인 경우는 새이름으로 저장을 선택해서 &quot;Excel 97-2003 통합문서&quot;로 저장을 하십시요.<br />
+									3.엑셀의 내용이 너무 많은 경우 업로드가 불가능 할수 있으므로 100개나 200개 단위로 나누어 올리시기 바랍니다.<br />
+									4.엑셀 파일이 작성이 완료 되었다면 하나의 상품만 테스트로 업로드하여 확인후 이상이 없으시면 나머지를 올리시기 바랍니다.<br />
+									5.엑셀 내용 중 &quot;1번째 줄은 설명&quot;, &quot;2번째 줄은 excel DB 코드&quot;, &quot;3번째 줄은 설명&quot; 이며, &quot;4번째 줄부터&quot; 데이터 입니다.<br />
+									6.엑셀 내용 중 2번째 줄 &quot;excel DB&quot; 코드부터 3번째 줄 &quot;설명&quot;은 필수 데이터 입니다. 그리고 <span class="text-danger">반드시 내용은 &quot;4번째 줄부터&quot; 작성</span> 하셔야 합니다.<br />
+									7.<span class="text-danger">신규상품 등록 시 필수 데이터인 &quot;상품코드, 상품명&quot; 정보 외 등록을 원하지 않는 항목의 필드는 삭제 또는 공란으로 남겨두고 올리시기 바랍니다.<br />
+									&nbsp;(삭제 또는 공란으로 남겨두고 업로드할 경우, 해당 항목의 정보는 기본값으로 등록됩니다.)</span><br />
+									8.상품 수정은 [상품관리>상품 엑셀 관리>상품 다운로드]에서 다운로드하여 상품정보를 수정하여 올리시기 바랍니다.<br />
+									9.<span class="text-danger">상품의 일부 내용만 수정할 경우, 수정을 원하지 않는 항목의 필드를 삭제하고 올리시기 바랍니다.<br />
+									&nbsp;(필드를 삭제하지 않고 공란으로 남겨둘 경우, 입력항목의 정보는 공란으로 등록되며 선택항목은 시스템 기본값으로 등록됩니다.)</span><br />
+                                    10.<span class="text-danger"><b>엑셀로 등록한 상품의 이미지는 "디자인>이미지 브라우저>이미지 브라우저 (Web FTP)" 메뉴의 "/data/goods/tmp/"폴더에 업로드 후 일괄처리해야 합니다.</b></span><br />
+                                    &nbsp;(상품 이미지 일괄처리는 <a href="./goods_image_batch.php" target="_blank" class="btn-link">상품>상품 일괄 관리>상품 이미지 일괄 처리</a>에서 등록할 수 있습니다.)
+								</li>
+								<li>
+									<h3>항목 설명</h3>
+									1. 아래 설명된 내용을 확인후 작성을 해주세요.<br />
+								</li>
+							</ul>
+							<table class="input">
+								<colgroup><col class="width-sm" /><col/></colgroup>
+								<tr>
+									<th>항목 설명</th>
+									<td>
+										<table class="content_table">
+											<colgroup>
+												<col class="width-sm" /><col class="width-xs"/><col />
+											</colgroup>
+											<thead>
+											<tr>
+												<th>한글필드명</th>
+												<th>영문필드명</th>
+												<th>설명</th>
+											</tr>
+											</thead>
+																							<tr>
+													<th class="desc01">상품번호</td>
+													<td class="desc02">goods_no</td>
+													<td>숫자 10자리의 unique 코드, 등록시에는 자동 생성 되므로 등록시에는 넣지 마세요.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">상품명_기본</td>
+													<td class="desc02">goods_name</td>
+													<td>250자 이내의 상품명, html 테그 사용 가능</td>
+												</tr>
+																								<tr>
+													<th class="desc01">수수료</td>
+													<td class="desc02">commission</td>
+													<td>수수료를 입력합니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">자체상품코드</td>
+													<td class="desc02">goods_cd</td>
+													<td>30자 이내, 영문 대소문자/숫자/특수문자를 이용하여 입력합니다. (단, 특수문자는 “_”(언더바) 외 입력 불가)</td>
+												</tr>
+																								<tr>
+													<th class="desc01">상품명_메인</td>
+													<td class="desc02">name_main</td>
+													<td>메인에 노출되는 250자 이내의 상품명, html 테그 사용 가능</td>
+												</tr>
+																								<tr>
+													<th class="desc01">상품명_리스트</td>
+													<td class="desc02">name_list</td>
+													<td>각종 리스트에 노출되는 250자 이내의 상품명, html 테그 사용 가능</td>
+												</tr>
+																								<tr>
+													<th class="desc01">상품명_상세</td>
+													<td class="desc02">name_detail</td>
+													<td>상품 상세 설명에 노출되는 250자 이내의 상품명, html 테그 사용 가능</td>
+												</tr>
+																								<tr>
+													<th class="desc01">상품명_제휴</td>
+													<td class="desc02">name_partner</td>
+													<td>상품 제휴 설명에 노출되는 250자 이내의 상품명, html 테그 사용 가능</td>
+												</tr>
+																								<tr>
+													<th class="desc01">상품명_영문몰</td>
+													<td class="desc02">global_data_2_goodsnm</td>
+													<td>입력시 별도의 해외상점 상품명이 등록됩니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">상품명_중문몰</td>
+													<td class="desc02">global_data_3_goodsnm</td>
+													<td>입력시 별도의 해외상점 상품명이 등록됩니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">상품명_일문몰</td>
+													<td class="desc02">global_data_4_goodsnm</td>
+													<td>입력시 별도의 해외상점 상품명이 등록됩니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">검색 키워드</td>
+													<td class="desc02">search_word</td>
+													<td>250자 이내의 검색어를 ","(콤마)로 구분해서 넣으세요</td>
+												</tr>
+																								<tr>
+													<th class="desc01">상품 노출 시간</td>
+													<td class="desc02">goods_open_dt</td>
+													<td>"yyyy-mm-dd 00:00" 형태로 넣으세요</td>
+												</tr>
+																								<tr>
+													<th class="desc01">상품 상태</td>
+													<td class="desc02">goods_state</td>
+													<td>n: 신상품 u:중고 r : 반품 f: 리퍼 d:전시 b : 스크래치</td>
+												</tr>
+																								<tr>
+													<th class="desc01">상품 대표색상</td>
+													<td class="desc02">goods_color</td>
+													<td> 대표색상 등록시 [기본설정>기본정책>코드관리] 메뉴의 상품 대표색상 16진수 색상값을 입력합니다. 다중구분 : ^|^ / 예시) 8E562E^|^E91818</td>
+												</tr>
+																								<tr>
+													<th class="desc01">결제 수단 설정</td>
+													<td class="desc02">pay_limit_fl</td>
+													<td>n: 통합설정 y : 개별설정</td>
+												</tr>
+																								<tr>
+													<th class="desc01">사용가능 결제수단</td>
+													<td class="desc02">pay_limit</td>
+													<td>개별설정 시 사용가능한 결제수단 입력 (통합설정 시에는 넣지 마세요)<br/>무통장 사용:gb, PG결제 사용:pg, 마일리지 사용:gm, 예치금 사용:gd / 다중구분 : ^|^ 예시) gb^|^pg</td>
+												</tr>
+																								<tr>
+													<th class="desc01">모델번호</td>
+													<td class="desc02">model_no</td>
+													<td>30자 이내, 영문 대소문자/숫자/특수문자를 이용하여 입력합니다. (단, 특수문자는 “_”(언더바) 외 입력 불가)</td>
+												</tr>
+																								<tr>
+													<th class="desc01">카테고리 코드</td>
+													<td class="desc02">category_code</td>
+													<td>대표 카테고리 및 다중 카테고리 코드, 첫번째 코드가 대표 카테고리임, 다중인경우 &quot;Alt+Enter(개행)&quot;로 구분</td>
+												</tr>
+																								<tr>
+													<th class="desc01">매입처 상품명</td>
+													<td class="desc02">purchase_goods_name</td>
+													<td>입력시 별도의 매입처 상품명이 등록됩니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">브랜드 코드</td>
+													<td class="desc02">brand_code</td>
+													<td>브랜드명이 아닌 브랜드 코드를 넣으세요</td>
+												</tr>
+																								<tr>
+													<th class="desc01">제조사</td>
+													<td class="desc02">maker_name</td>
+													<td>30자 이내의 제조사명을 넣으세요</td>
+												</tr>
+																								<tr>
+													<th class="desc01">원산지</td>
+													<td class="desc02">origin_name</td>
+													<td>30자 이내의 원산지명을 넣으세요</td>
+												</tr>
+																								<tr>
+													<th class="desc01">제조일</td>
+													<td class="desc02">make_date</td>
+													<td>필요시에만 입력하세요, 입력 형식은 "yyyy-mm-dd"</td>
+												</tr>
+																								<tr>
+													<th class="desc01">출시일</td>
+													<td class="desc02">launch_date</td>
+													<td>필요시에만 입력하세요, 입력 형식은 "yyyy-mm-dd"</td>
+												</tr>
+																								<tr>
+													<th class="desc01">유효일자 시작일</td>
+													<td class="desc02">effective_start_ymd</td>
+													<td>필요시에만 입력하세요, 입력 형식은 "yyyy-mm-dd"</td>
+												</tr>
+																								<tr>
+													<th class="desc01">유효일자 종료일</td>
+													<td class="desc02">effective_end_ymd</td>
+													<td>필요시에만 입력하세요, 입력 형식은 "yyyy-mm-dd"</td>
+												</tr>
+																								<tr>
+													<th class="desc01">구매가능 회원등급 설정</td>
+													<td class="desc02">goods_permission</td>
+													<td>all:전체(회원+비회원),member:회원전용(비회원제외),group:특정회원등급</td>
+												</tr>
+																								<tr>
+													<th class="desc01">구매가능 회원등급</td>
+													<td class="desc02">goods_permission_group</td>
+													<td>구매가능 회원등급 설정시 회원등급 코드를 입력하세요.  구분은 &quot;||&quot; 입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">구매불가 고객 가격 대체문구 사용</td>
+													<td class="desc02">goods_permission_price_string_fl</td>
+													<td>구매불가 고객 가격 대체문구사용이 필요한 경우 입력해주세요. y:사용함, n:사용안함, 기본은 n(사용안함)입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">구매불가 고객 가격 대체문구</td>
+													<td class="desc02">goods_permission_price_string</td>
+													<td>30자 이내의 구매불가 고객 가격 대체문구를 입력해주세요.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">성인인증 여부 </td>
+													<td class="desc02">only_adult_fl</td>
+													<td>성인인증이 필요한 경우 입력해주세요.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">미인증 고객 상품 노출함</td>
+													<td class="desc02">only_adult_display_fl</td>
+													<td>미인증 고객 상품 노출함이 필요한 경우 입력해주세요.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">미인증 고객 상품 이미지 노출함</td>
+													<td class="desc02">only_adult_image_fl</td>
+													<td>미인증 고객 상품 이미지 노출함이 필요한 경우 입력해주세요.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">접근권한 회원등급 설정</td>
+													<td class="desc02">goods_access</td>
+													<td>all:전체(회원+비회원),member:회원전용(비회원제외),group:특정회원등급</td>
+												</tr>
+																								<tr>
+													<th class="desc01">접근권한 회원등급</td>
+													<td class="desc02">goods_access_group</td>
+													<td>구매가능 회원등급 설정시 회원등급 코드를 입력하세요.  구분은 &quot;||&quot; 입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">접근불가 고객 상품 노출함</td>
+													<td class="desc02">goods_access_display_fl</td>
+													<td>접근불가 고객 상품 노출이 필요한 경우 입력해주세요.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">추가항목</td>
+													<td class="desc02">add_info</td>
+													<td>필요시에만 입력하세요, 입력형식은 "항목^|^내용", 다중구분:Alt+Enter(개행)</td>
+												</tr>
+																								<tr>
+													<th class="desc01">상품필수정보</td>
+													<td class="desc02">goods_must_info</td>
+													<td>4칸인 경우 : 항목^|^내용^|^항목^|^내용, 2칸인 경우 : 항목^|^내용, 다중구분:Alt+Enter(개행)</td>
+												</tr>
+																								<tr>
+													<th class="desc01">KC인증 표시 여부</td>
+													<td class="desc02">kcmark_fl</td>
+													<td>y:사용함, n:사용안함, 기본은 n(사용안함)입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">KC인증 구분</td>
+													<td class="desc02">kcmark_div_fl</td>
+													<td>전기용품 안전관리법의 인증 대상을 선택합니다. 상품 엑셀 업로드 시, 아래 코드에서 선택하여 업로드 합니다.<br>[어린이제품] 공급자적합성검사 : kcCd01 / [어린이제품] 안전인증 : kcCd02 / [어린이제품] 안전확인 : kcCd03 / [방송통신기자재] 잠정인증 : kcCd04 / [방송통신기자재] 적합등록 : kcCd05 / [방송통신기자재] 적합인증 : kcCd06 / [생활용품] 공급자적합성확인 : kcCd07 / [생활용품] 안전인증 : kcCd08 / [생활용품] 안전확인 : kcCd09 / [생활용품] 어린이보호포장 : kcCd10 / [전기용품] 공급자적합성확인 : kcCd11 / [전기용품] 안전인증 : kcCd12 / [전기용품] 안전확인 : kcCd13
+</td>
+												</tr>
+																								<tr>
+													<th class="desc01">KC인증 번호</td>
+													<td class="desc02">kcmark_no</td>
+													<td>20자 이내, 영문 대소문자/숫자/특수문자를 이용하여 입력합니다. (단, 특수문자는 “-”(하이픈) 외 입력 불가)</td>
+												</tr>
+																								<tr>
+													<th class="desc01">아이콘 기간(시작)</td>
+													<td class="desc02">icon_start</td>
+													<td>기간 제한용 아이콘의 시작일자를 입력하세요, 입력형식는 "yyyy-mm-dd HH:ii:ss"</td>
+												</tr>
+																								<tr>
+													<th class="desc01">아이콘 기간(끝)</td>
+													<td class="desc02">icon_end</td>
+													<td>기간 제한용 아이콘의 만료일자를 입력하세요, 입력형식는 "yyyy-mm-dd HH:ii:ss"</td>
+												</tr>
+																								<tr>
+													<th class="desc01">아이콘 코드</td>
+													<td class="desc02">icon_period</td>
+													<td>기간 제한용 아이콘 코드를 입력하세요. 구분은 &quot;||&quot; 입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">아이콘 코드</td>
+													<td class="desc02">icon_code</td>
+													<td>무제한용 아이콘 코드를 입력하세요. 구분은 &quot;||&quot; 입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">무게</td>
+													<td class="desc02">weight</td>
+													<td>상품의 무게를 입력하세요.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">용량</td>
+													<td class="desc02">volume</td>
+													<td>상품의 용량을 입력하세요.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">재고 설정</td>
+													<td class="desc02">stock_type</td>
+													<td>y:재고, n:무한, 기본은 n(무한)입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">마일리지 정책</td>
+													<td class="desc02">mileage_type</td>
+													<td>g:개별, c:통합, 기본은 c(통합)입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">마일리지 지급대상</td>
+													<td class="desc02">mileage_group</td>
+													<td>all:전체회원, group:특정회원등급, 기본은 all(전체회원)입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">마일리지 지급 회원등급</td>
+													<td class="desc02">mileage_group_info</td>
+													<td>마일리지 지급 회원등급 설정 시 회원등급 코드를 입력하세요. 구분은 "||" 입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">상품 개별 마일리지</td>
+													<td class="desc02">mileage_goods</td>
+													<td>개별설정-특정회원등급 설정 시 마일리지 금액 값을 입력하세요. 다중구분 : Alt+Enter (개행)</td>
+												</tr>
+																								<tr>
+													<th class="desc01">상품 개별 마일리지 단위</td>
+													<td class="desc02">mileage_goods_unit</td>
+													<td>개별설정-특정회원등급 설정 시 입력한 마일리지 금액의 단위입니다. 다중구분 : Alt+Enter(개행) <br /> percent : %(퍼센트) mileage : 마일리지 설정 단위 문구</td>
+												</tr>
+																								<tr>
+													<th class="desc01">상품 할인설정 사용 여부</td>
+													<td class="desc02">goods_discount_fl</td>
+													<td>y:사용함, n:사용안함</td>
+												</tr>
+																								<tr>
+													<th class="desc01">상품 할인가</td>
+													<td class="desc02">goods_discount</td>
+													<td></td>
+												</tr>
+																								<tr>
+													<th class="desc01">상품 할인가 단위</td>
+													<td class="desc02">goods_discount_unit</td>
+													<td>percent : %(퍼센트) price : 상품 할인가 설정 단위 문구</td>
+												</tr>
+																								<tr>
+													<th class="desc01">묶음주문기준</td>
+													<td class="desc02">fixed_sales</td>
+													<td>옵션기준 또는 상품기준으로 묶음주문단위를 설정할 수 있습니다. option : 옵션기준 goods : 상품기준, 기본은 option(옵션기준)입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">묶음주문단위</td>
+													<td class="desc02">sales_unit</td>
+													<td>설정된 개수 단위로 주문 되며, 장바구니에 담깁니다. </td>
+												</tr>
+																								<tr>
+													<th class="desc01">품절 설정</td>
+													<td class="desc02">soldout_yn</td>
+													<td>y:품절, n:정상, 기본은 n(정상)입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">과세/면세</td>
+													<td class="desc02">tax_free_type</td>
+													<td>t:과세, f:면세 기본은 t(과세)입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">과세율</td>
+													<td class="desc02">tax_percent</td>
+													<td>과세인경우 과세율을 나타내며, 기본은 10 입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">PC 노출 여부</td>
+													<td class="desc02">display_pc_yn</td>
+													<td>PC 상품 노출여부입니다. y:노출함, n:노출안함, 기본은 y(노출함)입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">모바일 노출 여부</td>
+													<td class="desc02">display_mobile_yn</td>
+													<td>모바일 상품 노출여부입니다. y:노출함, n:노출안함, 기본은 y(노출함)입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">PC 판매 여부</td>
+													<td class="desc02">sell_pc_yn</td>
+													<td>PC 상품의 판매여부를 나타냅니다. y:판매함, n:판매안함, 기본은 y(판매함)입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">모바일 판매 여부</td>
+													<td class="desc02">sell_mobile_yn</td>
+													<td>모바일 상품의 판매여부를 나타냅니다. y:판매함, n:판매안함, 기본은 y(판매함)입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">배송비 고유번호</td>
+													<td class="desc02">deliverySno</td>
+													<td>배송비 코드를 입력해주세요. 기본코드는 1 입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">가격대체 문구</td>
+													<td class="desc02">goods_price_string</td>
+													<td>가격을 대체할 문구 입니다. 해당 문구 작성시 해당상품은 구매가 되지 않습니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">구매수량기준</td>
+													<td class="desc02">fixed_cnt</td>
+													<td>옵션기준, 상품기준, ID기준으로 최소/최대 구매수량을 설정할 수 있습니다. option : 옵션기준 goods : 상품기준 id : ID기준, 기본은 option(옵션기준)입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">최소 구매 수량</td>
+													<td class="desc02">min_cnt</td>
+													<td>최소 구매수량입니다. 기본은 1입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">최대 구매 수량</td>
+													<td class="desc02">max_cnt</td>
+													<td>최대 구매수량입니다. 기본은 0이며, 0은 무한 구매 입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">상품판매기간 시작일</td>
+													<td class="desc02">sales_start_ymd</td>
+													<td>필요시에만 입력하세요, 입력 형식은 "yyyy-mm-dd 00:00"</td>
+												</tr>
+																								<tr>
+													<th class="desc01">상품판매기간 종료일</td>
+													<td class="desc02">sales_end_ymd</td>
+													<td>필요시에만 입력하세요, 입력 형식은 "yyyy-mm-dd 00:00"</td>
+												</tr>
+																								<tr>
+													<th class="desc01">도서공연비 소득공제 상품 적용 여부</td>
+													<td class="desc02">culture_benefit_fl</td>
+													<td>도서공연비 소득공제 상품 적용 여부를 설정합니다.  y: 적용, n: 미적용, 기본은 n(미적용)입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">외부동영상 연동 여부</td>
+													<td class="desc02">external_video_fl</td>
+													<td>y:사용함, n:사용안함</td>
+												</tr>
+																								<tr>
+													<th class="desc01">외부동영상 주소</td>
+													<td class="desc02">external_video_url</td>
+													<td></td>
+												</tr>
+																								<tr>
+													<th class="desc01">외부동영상 너비</td>
+													<td class="desc02">external_video_width</td>
+													<td>"너비"와 "높이"를 모두 입력하지 않으면 시스템 기본 사이즈 (640X360)로 등록됩니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">외부동영상 높이</td>
+													<td class="desc02">external_video_height</td>
+													<td>"너비"와 "높이"를 모두 입력하지 않으면 시스템 기본 사이즈 (640X360)로 등록됩니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">판매가</td>
+													<td class="desc02">goods_price</td>
+													<td>판매 가격입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">정가</td>
+													<td class="desc02">fixed_price</td>
+													<td>정가입니다. </td>
+												</tr>
+																								<tr>
+													<th class="desc01">매입가</td>
+													<td class="desc02">cost_price</td>
+													<td>매입가입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">옵션 사용 여부</td>
+													<td class="desc02">option_yn</td>
+													<td>옵션 사용여부입니다. y:옵션, n:일반, 기본은 n 이며, 일반적인 옵션 없는 상품입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">옵션 표시 방법</td>
+													<td class="desc02">option_display</td>
+													<td>s:일체형, d:분리형, 기본은 s(일체형)입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">옵션명</td>
+													<td class="desc02">option_name</td>
+													<td>옵션 사용시 옵션명입니다. 구분은 &quot;^|^&quot; 입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">옵션값</td>
+													<td class="desc02">option_value</td>
+													<td>옵션명을 여러 개 사용할 경우 조합된 상태의 옵션값을 입력하세요, 입력형식은 "옵션값^|^옵션값", 다중구분:Alt+Enter(개행)</td>
+												</tr>
+																								<tr>
+													<th class="desc01">옵션이미지</td>
+													<td class="desc02">option_image</td>
+													<td>입력형식은 "옵션값^|^이미지명", 다중구분:Alt+Enter(개행)</td>
+												</tr>
+																								<tr>
+													<th class="desc01">옵션매입가격</td>
+													<td class="desc02">option_cost_price</td>
+													<td>다중구분:Alt+Enter(개행)</td>
+												</tr>
+																								<tr>
+													<th class="desc01">옵션가격</td>
+													<td class="desc02">option_price</td>
+													<td>상품의 판매가 기준 추가될 옵션가는 양수, 차감될 옵션가는 음수(마이너스)로 입력 합니다. 다중구분:Alt+Enter(개행)</td>
+												</tr>
+																								<tr>
+													<th class="desc01">재고</td>
+													<td class="desc02">stock_cnt</td>
+													<td>재고 이며, 옵션이 있는 경우는 각 옵션별로 &quot;Alt+Enter(개행)&quot;로 구분을 합니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">옵션 노출여부</td>
+													<td class="desc02">option_view_fl</td>
+													<td>옵션노출여부 이며, 옵션이 있는 경우는 각 옵션별로 &quot;Alt+Enter(개행)&quot;로 구분을 합니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">옵션 품절여부</td>
+													<td class="desc02">option_sell_fl</td>
+													<td>옵션품절여부 이며, 옵션이 있는 경우는 각 옵션별로 &quot;Alt+Enter(개행)&quot;로 구분을 합니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">옵션 배송상태</td>
+													<td class="desc02">option_delivery_fl</td>
+													<td>y:정상 n:배송지연 다중구분:Alt+Enter(개행)</td>
+												</tr>
+																								<tr>
+													<th class="desc01">자체옵션코드</td>
+													<td class="desc02">option_code</td>
+													<td>30자 이내, 영문 대소문자/숫자/특수문자를 이용하여 입력합니다. (단, 특수문자는 “_”(언더바) 외 입력 불가), 다중구분:Alt+Enter(개행)</td>
+												</tr>
+																								<tr>
+													<th class="desc01">옵션 메모</td>
+													<td class="desc02">option_memo</td>
+													<td>다중구분:Alt+Enter(개행)</td>
+												</tr>
+																								<tr>
+													<th class="desc01">텍스트 옵션 사용여부</td>
+													<td class="desc02">text_option_yn</td>
+													<td>y:사용함, n:사용안함, 기본은 n(사용안함)입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">텍스트 옵션</td>
+													<td class="desc02">text_option</td>
+													<td>입력형식은 "옵션명^|^필수여부^|^옵션금액^|^입력제한수", 필수여부(y:필수, n:비필수), 다중구분:Alt+Enter(개행)</td>
+												</tr>
+																								<tr>
+													<th class="desc01">관련상품</td>
+													<td class="desc02">relation_yn</td>
+													<td>n:사용안함, a:자동, m:수동, 기본은 n(사용안함)입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">관련상품 서로 등록 여부</td>
+													<td class="desc02">relation_same_fl</td>
+													<td>관심상품을 서로 등록할지 여부를 등록합니다. n:사용안함, y:전체상품 사용함, s:선택상품 사용함, 기본은 n(사용안함 입니다)</td>
+												</tr>
+																								<tr>
+													<th class="desc01">관련상품 코드</td>
+													<td class="desc02">relation_code</td>
+													<td>수동인 경우 출력할 상품 코드입니다.구분은 &quot;||&quot; 입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">관련상품 노출기간</td>
+													<td class="desc02">relation_goods_date</td>
+													<td>입력형식은 "상품코드^|^노출 시작일자^|^노출 만료일자", 다중구분:Alt+Enter(개행)</td>
+												</tr>
+																								<tr>
+													<th class="desc01">관련상품 서로등록 상품코드</td>
+													<td class="desc02">relation_goods_each</td>
+													<td>관련상품 서로 등록이 선택상품 사용함인 경우 서로등록 할 상품 코드입니다. 구분은 "||" 입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">추가상품 사용여부</td>
+													<td class="desc02">add_goods_fl</td>
+													<td>y:사용함, n:사용안함, 기본은 n(사용안함)입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">추가상품 설정</td>
+													<td class="desc02">add_goods</td>
+													<td>입력형식은 "추가상품 표시명^|^필수여부^|^추가상품코드^|^추가상품코드", 필수여부(y:필수, n:비필수), 다중구분:Alt+Enter(개행)</td>
+												</tr>
+																								<tr>
+													<th class="desc01">이미지 돋보기 사용여부</td>
+													<td class="desc02">imgDetail_view_fl</td>
+													<td>y:사용함, n:사용안함, 기본은 n(사용안함)입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">이미지 저장소</td>
+													<td class="desc02">image_storage</td>
+													<td>기본 저장소 : local / 외부 저장소 : HTTP 경로 입력</td>
+												</tr>
+																								<tr>
+													<th class="desc01">이미지 경로</td>
+													<td class="desc02">image_path</td>
+													<td>등록시에는 자동 연결 되므로 넣지 마세요<br>(이미지URL 직접 등록 시 빈값으로 입력)</td>
+												</tr>
+																								<tr>
+													<th class="desc01">이미지명</td>
+													<td class="desc02">image_name</td>
+													<td> 이미지 종류와 이미지 명은 "^|^"로 구분하며 이미지 명은 파일형식까지 입력합니다. 다중구분:Alt+Enter(개행) 이미지 종류는 main(리스트), list(썸네일), detail(상품상세), magnify(확대), add1(추가 리스트) 입니다.<br/>"기본설정>상품정책>상품 이미지 사이즈 설정" 메뉴의 "리스트 이미지 종류 추가"항목에서 리스트 이미지 종류를 추가한 경우 "이미지 종류"에는 add1, add2, add3의 형식으로 입력합니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">짧은 설명</td>
+													<td class="desc02">short_desc</td>
+													<td>250자 이내의 간단한 상품 설명</td>
+												</tr>
+																								<tr>
+													<th class="desc01">짧은_설명_영문몰</td>
+													<td class="desc02">global_data_2_short_description</td>
+													<td>입력시 별도의 해외상점 짧은설명이 등록됩니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">짧은_설명_중문몰</td>
+													<td class="desc02">global_data_3_short_description</td>
+													<td>입력시 별도의 해외상점 짧은설명이 등록됩니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">짧은_설명_일문몰</td>
+													<td class="desc02">global_data_4_short_description</td>
+													<td>입력시 별도의 해외상점 짧은설명이 등록됩니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">이벤트 문구</td>
+													<td class="desc02">event_description</td>
+													<td></td>
+												</tr>
+																								<tr>
+													<th class="desc01">PC쇼핑몰 상세 설명</td>
+													<td class="desc02">goods_desc_pc</td>
+													<td>상품에 대한 상세한 설명 입력</td>
+												</tr>
+																								<tr>
+													<th class="desc01">모바일쇼핑몰 상세 설명</td>
+													<td class="desc02">goods_desc_mobile</td>
+													<td>상품에 대한 상세한 설명(모바일용) 입력</td>
+												</tr>
+																								<tr>
+													<th class="desc01">PC/모바일 상세설명 동일사용 여부</td>
+													<td class="desc02">goods_desc_same_flag</td>
+													<td>y : 동일사용, n : 개별사용 (기본값 : y)</td>
+												</tr>
+																								<tr>
+													<th class="desc01">쇼핑하우 노출여부</td>
+													<td class="desc02">daum_flag</td>
+													<td>다음 쇼핑하우 노출여부 설정, y : 노출(기본값), n : 노출안함</td>
+												</tr>
+																								<tr>
+													<th class="desc01">네이버쇼핑 노출여부</td>
+													<td class="desc02">naver_flag</td>
+													<td>네이버 쇼핑 노출여부 설정, y : 노출(기본값), n : 노출안함</td>
+												</tr>
+																								<tr>
+													<th class="desc01">수입 및 제작 여부</td>
+													<td class="desc02">naver_import_flag</td>
+													<td>f:해외구매대행 d:병행수입 o:주문제작</td>
+												</tr>
+																								<tr>
+													<th class="desc01">판매 방식 구분</td>
+													<td class="desc02">naver_product_flag</td>
+													<td>w : 도매 r: 렌탈 h:대여 i:할부 s: 예약판매 b: 구매대행</td>
+												</tr>
+																								<tr>
+													<th class="desc01">주요사용연령대</td>
+													<td class="desc02">naver_age_group</td>
+													<td>a : 성인 y : 청소년 c: 아동 b:유아</td>
+												</tr>
+																								<tr>
+													<th class="desc01">주요사용성별</td>
+													<td class="desc02">naver_gender</td>
+													<td>m : 남성 w : 여성 c: 공용</td>
+												</tr>
+																								<tr>
+													<th class="desc01">검색태그</td>
+													<td class="desc02">naver_tag</td>
+													<td></td>
+												</tr>
+																								<tr>
+													<th class="desc01">속성정보</td>
+													<td class="desc02">naver_attribute</td>
+													<td></td>
+												</tr>
+																								<tr>
+													<th class="desc01">네이버카테고리ID</td>
+													<td class="desc02">naver_category</td>
+													<td></td>
+												</tr>
+																								<tr>
+													<th class="desc01">가격비교페이지ID</td>
+													<td class="desc02">naver_product_id</td>
+													<td></td>
+												</tr>
+																								<tr>
+													<th class="desc01">배송 안내 입력선택</td>
+													<td class="desc02">detail_delivery_fl</td>
+													<td>no:사용안함, n:직접입력,selection:선택입력, 기본은 no(사용안함)입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">배송 안내</td>
+													<td class="desc02">detail_delivery</td>
+													<td>배송 안내 입력선택이 직접입력(direct)인 경우 : 배송안내 내용을 입력합니다.<br/>배송 안내 입력선택이 선택입력(selection)인 경우 : [기본설정>상품정책>상품 상세 이용안내 관리] 메뉴에 등록된 배송안내의 6자리 코드를 입력합니다.기본코드는 002001 입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">AS 안내 입력선택</td>
+													<td class="desc02">detail_as_fl</td>
+													<td>no:사용안함, n:직접입력,selection:선택입력, 기본은 no(사용안함)입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">AS 안내</td>
+													<td class="desc02">detail_as</td>
+													<td>AS 안내 입력선택이 직접입력(direct)인 경우 : AS안내 내용을 입력합니다.<br/>AS 안내 입력선택이 선택입력(selection)인 경우 : [기본설정>상품정책>상품 상세 이용안내 관리] 메뉴에 등록된 AS안내의 6자리 코드를 입력합니다.기본코드는 003001 입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">환불 안내 입력선택</td>
+													<td class="desc02">detail_refund_fl</td>
+													<td>no:사용안함, n:직접입력,selection:선택입력, 기본은 no(사용안함)입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">환불 안내</td>
+													<td class="desc02">detail_refund</td>
+													<td>환불 안내 입력선택이 직접입력(direct)인 경우 : 환불안내 내용을 입력합니다.<br/>환불 안내 입력선택이 선택입력(selection)인 경우 : [기본설정>상품정책>상품 상세 이용안내 관리] 메뉴에 등록된 환불안내의 6자리 코드를 입력합니다.기본코드는 004001 입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">교환 안내 입력선택</td>
+													<td class="desc02">detail_exchange_fl</td>
+													<td>no:사용안함, n:직접입력,selection:선택입력, 기본은 no(사용안함)입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">교환 안내</td>
+													<td class="desc02">detail_exchange</td>
+													<td>교환 안내 입력선택이 직접입력(direct)인 경우 : 교환안내 내용을 입력합니다.<br/>교환 안내 입력선택이 선택입력(selection)인 경우 : [기본설정>상품정책>상품 상세 이용안내 관리] 메뉴에 등록된 교환안내의 6자리 코드를 입력합니다.기본코드는 005001 입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">상품 관리 메모</td>
+													<td class="desc02">memo</td>
+													<td>관리자 메모를 입력</td>
+												</tr>
+																								<tr>
+													<th class="desc01">HS 코드</td>
+													<td class="desc02">hscode</td>
+													<td>해외상점 사용시 HS코드를 입력해 주세요.<br/>국가명^|^HS코드<br/>다중구분:Alt+Enter(개행)<br/>kr : 대한민국 us : 미국 cn : 중국 jp : 일본<br/>예시) kr^|^0101</td>
+												</tr>
+																								<tr>
+													<th class="desc01">상품 개별 SEO 설정 사용여부</td>
+													<td class="desc02">seo_tag_fl</td>
+													<td>y:사용함, n:사용안함, 기본은 n(사용안함)입니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">타이틀</td>
+													<td class="desc02">set_tag_title</td>
+													<td>해당 상품의 브라우저 타이틀 개별 문구. 한글기준 10자 이내 작성을 권장합니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">메타태그 작성자</td>
+													<td class="desc02">set_tag_author</td>
+													<td>해당 상품 페이지의 개별 작성자</td>
+												</tr>
+																								<tr>
+													<th class="desc01">메타태그 설명</td>
+													<td class="desc02">set_tag_description</td>
+													<td>해당 상품의 개별 요약내용. 공백 포함 80자 이내 작성을 권장합니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">메타태그 키워드</td>
+													<td class="desc02">set_tag_keyword</td>
+													<td>해당 상품의 개별 검색어. ＂,＂(콤마)로 구분하여 10개 이내로 입력하는 것을 권장합니다.</td>
+												</tr>
+																								<tr>
+													<th class="desc01">페이스북 제품 피드 설정</td>
+													<td class="desc02">fb_vn</td>
+													<td>페이스북 제품 피드 설정</td>
+												</tr>
+																								<tr>
+													<th class="desc01">페이스북 광고 제품 피드 이미지명</td>
+													<td class="desc02">fb_image_name</td>
+													<td>페이스북 광고 이미지명</td>
+												</tr>
+																								<tr>
+													<th class="desc01">매입처 코드</td>
+													<td class="desc02">purchaseNo</td>
+													<td>매입처 사용시 매입처 코드를 입력해 주세요.</td>
+												</tr>
+																						</table>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div></div></div></div></div>
+</div>
+
+
+
+                                    </div>
+            </div>
+
+
+</th:block>
+
+
+</html>

@@ -1,0 +1,2 @@
+https://gdadmin.plus.godomall.com:14003/admin/gd_share/script/jquery/jstree/themes/summer/icons.gif
+https://gdadmin.plus.godomall.com:14003/admin/gd_share/script/jquery/jstree/themes/summer/throbber.gif

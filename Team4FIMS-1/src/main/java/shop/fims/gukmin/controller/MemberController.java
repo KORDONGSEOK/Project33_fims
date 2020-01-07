@@ -1,11 +1,16 @@
 package shop.fims.gukmin.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import shop.fims.gukmin.service.MemberService;
 
 @Controller
 public class MemberController {
 
+	@Autowired
+	private MemberService memberService;
 	/**
 	 * @param 없음
 	 * @file MemberController.java

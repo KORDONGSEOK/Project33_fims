@@ -1,0 +1,2110 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <title>고도:체험샵 :: 쇼핑몰 관리자 - 고도몰5</title>
+    <meta name="description" content="고도몰만의 특별한 서비스! 새로워진 쇼핑몰 관리자 앱은 모바일 전용 페이지를 통해 운영 중인 쇼핑몰을 언제, 어디서든 관리하실 수 있는 서비스입니다.
+	고도몰의 쇼핑몰 솔루션 e나무 임대형, e나무 무료형, e나무 독립형 고객님 모두 제한 없이 이용하실 수 있습니다. " />
+    <meta name="author" content="qnibus" />
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta http-equiv="cleartype" content="on">
+    
+    <!-- Latest compiled and minified CSS -->
+    <link type="text/css" href="/admin/gd_share/css/bootstrap.css?ts=1531816402" rel="stylesheet"/>
+    <link type="text/css" href="/admin/gd_share/css/bootstrap-datetimepicker.css?ts=1525753067" rel="stylesheet"/>
+    <link type="text/css" href="/admin/gd_share/css/bootstrap-datetimepicker-standalone.css?ts=1525753067" rel="stylesheet"/>
+    <link type="text/css" href="/admin/gd_share/css/bootstrap-dialog.css?ts=1525753067" rel="stylesheet"/>
+    <link type="text/css" href="/admin/gd_share/script/jquery/jquery-ui/jquery-ui.css?ts=1525753067" rel="stylesheet"/>
+    <link type="text/css" href="/admin/gd_share/css/style.css?ts=1535616065" rel="stylesheet"/>
+    <link type="text/css" href="/admin/gd_share/css/non-responsive.css?ts=1525753067" rel="stylesheet"/>
+    <link type="text/css" href="/admin/gd_share/css/flags.css?ts=1525753067" rel="stylesheet"/>
+    <link type="text/css" href="/admin/gd_share/css/jquery.countdownTimer.css?ts=1525753067" rel="stylesheet"/>
+        <link type="text/css" href="/admin/gd_share/css/gd5-style.css?ts=1574204051" rel="stylesheet"/>
+    <link type="text/css" href="/admin/css/admin-custom.css?ts=1468220054" rel="stylesheet"/>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript" src="/admin/gd_share/script/underscore/underscore-min.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/jquery/jquery.min.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/jquery/jquery-ui/jquery-ui.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/bootstrap/bootstrap.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/moment/moment.min.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/numeral/numeral.min.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/bootstrap/bootstrap-datetimepicker.min.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/bootstrap/bootstrap-dialog.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/bootstrap/bootstrap-filestyle.min.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/copyclipboard/ZeroClipboard.min.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/copyclipboard/clipboard.min.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/copyclipboard/clipboard-2.0.0.min.js?ts=1536816430"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/jquery/jquery-browser/dist/jquery.browser.min.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/jquery/jquery.serialize-object.min.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/jquery/jquery.countdownTimer.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/jquery/validation/jquery.validate.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/jquery/validation/localization/messages_ko.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/jquery/validation/additional-methods.min.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/jquery/datasaver/jquery.DataSaver.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/jquery/jquery.number_only.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/jquery/jquery-cookie/jquery.cookie.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/common2.js?ts=1535616065"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/common.js?ts=1574204051"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/schedule.js?ts=1525753067"></script>
+    <script type="text/javascript" src="/admin/gd_share/script/admin_panel_api.js?ts=1556493394"></script>
+                <script type="text/javascript" src="/admin/gd_share/script/member.js"></script>
+                        <script type="text/javascript" src="/admin/gd_share/script/sms.js"></script>
+                        
+                <script type="text/javascript" src="/admin/script/admin-custom.js?ts=1468220054"></script>
+	
+    <script type="text/javascript">
+        <!--
+        $(document).ready(function () {
+            
+            
+            // 메뉴얼 링크
+            $(".gd-help-manual").each(function() {
+                var linkText = $(this).text().trim().replace(/\s/g, ''); // 타이틀의 문자열의 공백을 제거함
+                var manualUrl = 'http://manual.godomall5.godomall.com/data/manual_view.php?category=member__member___member_list#' + linkText;
+                $(this).append(' <a href="' + manualUrl + '" target="_blank" class="link-help">페이지 도움말</a>');
+            });
+            
+            
+            // 툴팁 데이터
+            var tooltipData = [{"title":"회원검색","attribute":"생일","content":"&lt;p&gt;&lt;span style=&quot;font-family: 나눔고딕, NanumGothic;&quot;&gt;&lt;b&gt;- 날짜를 수기로 입력할 경우, 년-월-일(2000-01-01) 또는 월-일(01-01)로 검색이 가능합니다.&lt;\/b&gt;&lt;\/span&gt;&lt;\/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: 나눔고딕, NanumGothic; font-size: 8pt; color: rgb(0, 117, 200);&quot;&gt;&amp;nbsp; &amp;nbsp;ex) 2000년 출생 회원 검색&lt;\/span&gt;&lt;\/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: 나눔고딕, NanumGothic; font-size: 8pt; color: rgb(0, 117, 200);&quot;&gt;&amp;nbsp; &amp;nbsp;&lt;img src=&quot;http:\/\/manual.godomall5.godomall.com\/common\/javascript\/smarteditor\/upload\/1507696749447533.jpg&quot; title=&quot;1507696749447533.jpg&quot;&gt;&lt;\/span&gt;&lt;\/p&gt;&lt;p&gt;&lt;font color=&quot;#0075c8&quot; face=&quot;나눔고딕, NanumGothic&quot;&gt;&lt;span style=&quot;font-size: 10.6667px;&quot;&gt;&amp;nbsp; &amp;nbsp;ex) 1월 출생 회원 검색&lt;\/span&gt;&lt;\/font&gt;&lt;\/p&gt;&lt;p&gt;&lt;font color=&quot;#0075c8&quot; face=&quot;나눔고딕, NanumGothic&quot;&gt;&lt;span style=&quot;font-size: 10.6667px;&quot;&gt;&amp;nbsp; &amp;nbsp;&lt;\/span&gt;&lt;\/font&gt;&lt;img src=&quot;http:\/\/manual.godomall5.godomall.com\/common\/javascript\/smarteditor\/upload\/1507696758940987.jpg&quot; title=&quot;1507696758940987.jpg&quot;&gt;&lt;\/p&gt;&lt;p&gt;&amp;nbsp;&lt;\/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: 나눔고딕, NanumGothic;&quot;&gt;&lt;b&gt;- 특정일 검색 체크 시 날짜를 지정하여 검색이 가능합니다.&lt;\/b&gt;&lt;\/span&gt;&lt;\/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: 나눔고딕, NanumGothic; font-size: 8pt; color: rgb(0, 117, 200);&quot;&gt;&amp;nbsp; &amp;nbsp;ex) 2000년 1월 1일 출생 회원 검색&lt;\/span&gt;&lt;\/p&gt;&lt;p&gt;&lt;span style=&quot;font-family: 나눔고딕, NanumGothic; font-size: 8pt; color: rgb(0, 117, 200);&quot;&gt;&amp;nbsp; &amp;nbsp;&lt;img src=&quot;http:\/\/manual.godomall5.godomall.com\/common\/javascript\/smarteditor\/upload\/1507696772103875.jpg&quot; title=&quot;1507696772103875.jpg&quot;&gt;&amp;nbsp;&lt;\/span&gt;&lt;\/p&gt;&lt;p&gt;&lt;font color=&quot;#0075c8&quot; face=&quot;나눔고딕, NanumGothic&quot;&gt;&lt;span style=&quot;font-size: 10.6667px;&quot;&gt;&amp;nbsp; &amp;nbsp;ex) 1월 1일 출생 회원 검색&lt;\/span&gt;&lt;\/font&gt;&lt;\/p&gt;&lt;p&gt;&lt;font color=&quot;#0075c8&quot; face=&quot;나눔고딕, NanumGothic&quot;&gt;&lt;span style=&quot;font-size: 10.6667px;&quot;&gt;&amp;nbsp; &amp;nbsp;&lt;img src=&quot;http:\/\/manual.godomall5.godomall.com\/common\/javascript\/smarteditor\/upload\/1507696782991780.jpg&quot; title=&quot;1507696782991780.jpg&quot;&gt;&lt;br&gt;&lt;\/span&gt;&lt;\/font&gt;&lt;\/p&gt;","cntWidth":""}];
+            var sectionEle = null;
+            $('#content .table.table-cols th').each(function(idx){
+                if ($(this).closest('table').siblings('.table-title').length) {
+                    sectionEle = $(this).closest('table').prevAll('.table-title:first');
+                } else if ($(this).closest('table').parent('div').siblings('.table-title').length) {
+                    sectionEle = $(this).closest('table').parent('div').prevAll('.table-title:first');
+                } else {
+                    sectionEle = $(this).closest('table').parent('div').parent('div').prevAll('.table-title:first');
+                }
+                if (typeof sectionEle[0] !== "undefined") {
+                    var sectionTitle = $(sectionEle[0]).html().replace(/\(?<\/?[^*]+>/gi, '').trim().replace(/ /gi, '').replace(/\n/gi, '');
+                    var titleName = $(this).text().trim().replace(/ /gi, '').replace(/\n/gi, '');
+                    for (var i in tooltipData) {
+                        if (tooltipData[i].title == sectionTitle) {
+                            if (tooltipData[i].attribute == titleName) {
+                                $(this).append('<button type="button" class="btn btn-xs js-tooltip" title="' + tooltipData[i].content + '" data-placement="right" data-width="' + tooltipData[i].cntWidth + '"><span title="" class="icon-tooltip"></span></button>');
+                            }
+                        }
+                    }
+                }
+            });
+
+            if ($('.js-tooltip').length > 0) {
+                // 툴팁 초기화
+                $(document).on({
+                    'click': function() {
+                        if ($(this).attr('aria-describedby')) {
+                            $(this).tooltip('destroy');
+                        } else {
+                            var option = {
+                                trigger: 'click',
+                                container: '#content',
+                                html: true,
+                                template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div><button class="tooltip-close">close</button></div>',
+                            };
+                            $(this).on('shown.bs.tooltip', function () {
+                                $(".tooltip.in").css({
+                                    width: $(this).data('width'),
+                                    maxWidth: "none",
+                                });
+                            });
+                            $(this).tooltip(option).tooltip('show');
+                        }
+                    }
+                }, '.js-tooltip');
+                $(document).on('click', '.tooltip.in .tooltip-close', function () {
+                    $('.js-tooltip[aria-describedby=' + $(this).parent().attr('id') + ']').trigger('click');
+                });
+            }
+
+            // 레이어 생성/제거시에 툴팁 제거
+            $(document).on('shown.bs.modal hidden.bs.modal', '.modal', function () {
+                if ($('.tooltip.in').length) {
+                    $('.tooltip.in').tooltip('destroy');
+                }
+            });
+                    });
+        //-->
+    </script>
+
+</head>
+
+<body class="goods category-tree layout-basic">
+	<div id="container-wrap" class="container-fluid">
+		<div id="container" class="row">
+			<div id="header" class="col-xs-12">
+            <nav class="navbar">
+    <div class="container">
+        <div class="navbar-inner">
+
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/adminview/adminMainView">!Godomall5</a>
+                <span class="standard"></span>
+                                                    
+            </div>
+
+            <div class="gnb">
+                <ul class="list-inline">
+                    <li class="no-bar">
+                        <div class="dropdown">
+                            <!--js-btn-layer-sub-menu-->
+                            <a href="#" class="dropdown-toggle gnb-idinfo" id="headerSubMenuManager" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+                                <span>#전체관리자</span>님 (
+                                <span>#freeadm</span>
+                                ) </a>
+                            <ul class="dropdown-menu gnb-dropdown-menu" aria-labelledby="headerSubMenuManager">
+                                <li class="dropdown-item"><a href="#">#운영자정보</a></li>
+                                <li class="dropdown-item"><a href="#">#로그아웃</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="pos-r no-bar">
+                        <a href="javascript:Schedule.addToday()" class="schedule-a"> <img src="https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_bell.png" style="margin-right: 6px;">
+                                                    </a>
+                    </li>
+                    <li class="no-bar">
+                        <span class="dropdown" style="margin: 0; padding: 0;">
+                                                            <a href="/" class="dropdown-toggle gnb-myshop" id="headerMyShop" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">#내쇼핑몰</a>
+                                <ul class="dropdown-menu gnb-dropdown-menu" aria-labelledby="headerMyShop">
+                                                                    <li class="dropdown-item"><a href="#" target="_blank"><span class="flag flag-16 flag-kr"></span> #기준몰</a></li>
+                                                                    <li class="dropdown-item"><a href="#" target="_blank"><span class="flag flag-16 flag-us"></span> #영문몰</a></li>
+                                                                    <li class="dropdown-item"><a href="#" target="_blank"><span class="flag flag-16 flag-cn"></span> #중문몰</a></li>
+                                                                    <li class="dropdown-item"><a href="#" target="_blank"><span class="flag flag-16 flag-jp"></span> #일문몰</a></li>
+                                                            </ul>
+                                                    </span>
+                                                <span style="margin: 0; padding: 0;">
+                            <a href="/" target="_blank" class="gnb-myshop text-red">!축제홈페이지</a>
+                        </span>
+                        <span style="margin: 0; padding: 0;">
+                            <a href="#" class="gnb-myshop pdr0">#마켓연동</a>
+                        </span>
+                                            </li>
+                                        <li class="no-bar new">
+                        <div class="dropdown gnb-orderinfo" id="dropDownOrderPresentation">
+                            <a href="#" class="dropdown-toggle dropdown-toggle-arr" id="headerSubMenuOrderPresentation" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+                                <span class="js-oder-count-new display-none">
+                                    <img src="https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_new.png" width="14">
+                                </span>
+                                주문현황
+                            </a>
+                            <ul class="dropdown-menu gnb-dropdown-menu" aria-labelledby="headerSubMenuOrderPresentation">
+                                <li class="dropdown-head">#주문상태설정
+                                    <div class="pull-right">
+                                        <a href="#" class="js-setting-order" data-role="orderPresentation"> <img src="https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_gear.png" alt=""> </a>
+                                    </div>
+                                </li>
+                                <li class="dropdown-noitem">조회할 주문상태를<br>선택해주세요.</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="devide"></li>
+                                        <li class="no-bar">
+                        <div class="dropdown gnb-favorite" id="dropDownFavoriteMenu">
+                            <a href="#" class="dropdown-toggle dropdown-toggle-arr" id="headerSubMenuFavoriteMenu" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false"> 자주쓰는메뉴 </a>
+                            <ul class="dropdown-menu gnb-dropdown-menu" aria-labelledby="headerSubMenuFavoriteMenu">
+                                <li class="dropdown-head">#메뉴설정
+                                    <div class="pull-right">
+                                        <a href="#" class="js-setting-favorite-menu"> <img src="https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/icon_gear.png" alt=""> </a>
+                                    </div>
+                                </li>
+                                <li class="dropdown-noitem">자주쓰는 메뉴를<br>설정해주세요.</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="devide"></li>
+                    <li class="no-bar">
+                        <div class="dropdown gnb-btn-more">
+                            <a href="#" class="dropdown-toggle dropdown-toggle-arr" id="headerSubMenuMore" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">#더보기</a>
+                            <ul class="dropdown-menu gnb-dropdown-menu" aria-labelledby="headerSubMenuMore">
+                                <li class="dropdown-item"><a href="#" target="_blank" class="pdr0">#마이고도</a></li><li class="dropdown-item"><a href="#" target="_blank" class="pdr0">#매뉴얼</a></li>
+                                <li class="dropdown-item"><a href="#" class="pdr0">#사이트맵</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                                        <li class="no-bar">
+                        <div class="form-inline gnb-search">
+                            <div class="gnb-search-head">
+                                                                    <select id="headerSearchType" name="headerSearchType" class="header-select">
+                                        <option value="menu">메뉴</option>
+                                        <option value="member">회원</option>
+                                    </select>
+                                                            </div>
+                            <div class="gnb-search-body">
+                                <span class="icon-magni"><img src="https://gdadmin.plus.godomall.com:14003/admin/gd_share/img/ico_search_btn.png" alt=""></span>
+                                <input type="text" id="headerSearchKeyword" class="form-control" name="headerSearchKeyword" placeholder="메뉴검색"/>
+                                <div class="gnb-search-hint form-inline display-none">
+                                    <select class="form-control multiple-select" size="5" id="headerSearchMenuList" style="height:100px;"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <!--<a href="#" class="js-btn-layer-search-member pdr0 ">회원검색</a>-->
+                    </li>
+                    <!-- 스타일 안보임 처리 : 컨트롤러 제거는 하지 않음. 직접 URL 입력시 접속됨 -->
+                    <!-- <li><a href="../bootstrap/index" style="color:yellow;" target="_blank">스타일</a></li>-->
+                </ul>
+            </div>
+        </div>
+
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav reform">
+                                            <li class="">
+                                <a href="#" id="menu_policy"
+                                   style="width:89.615384615385px;">#기본설정</a>
+                            </li>
+                                                        <li class="">
+                                <a href="/adminview/goods/goodsList" id="menu_goods"
+                                   style="width:89.615384615385px;">!상품</a>
+                            </li>
+                                                        <li class="">
+                                <a href="#" id="menu_order"
+                                   style="width:89.615384615385px;">#주문/배송</a>
+                            </li>
+                                                        <li class="">
+                                <a href="/adminview/member/memberList" id="menu_member"
+                                   style="width:89.615384615385px;">!회원</a>
+                            </li>
+                                                        <li class="">
+                                <a href="#" id="menu_board"
+                                   style="width:89.615384615385px;">#게시판</a>
+                            </li>
+                                                        <li class="">
+                                <a href="#" id="menu_promotion"
+                                   style="width:89.615384615385px;">#프로모션</a>
+                            </li>
+                                                        <li class="">
+                                <a href="#" id="menu_design"
+                                   style="width:89.615384615385px;">#디자인</a>
+                            </li>
+                                                        <li class="">
+                                <a href="#" id="menu_service"
+                                   style="width:89.615384615385px;">#부가서비스</a>
+                            </li>
+                                                        <li class="">
+                                <a href="#" id="menu_marketing"
+                                   style="width:89.615384615385px;">#마케팅</a>
+                            </li>
+                                                        <li class="">
+                                <a href="#" id="menu_mobile"
+                                   style="width:89.615384615385px;">#모바일샵</a>
+                            </li>
+                                                        <li class="">
+                                <a href="#" id="menu_scm"
+                                   style="width:89.615384615385px;">#공급사</a>
+                            </li>
+                                                        <li class="">
+                                <a href="#" id="menu_statistics"
+                                   style="width:89.615384615385px;">#통계</a>
+                            </li>
+                                                        <li class="">
+                                <a href="#" id="menu_myapp"
+                                   style="width:89.615384615385px;">#모바일앱</a>
+                            </li>
+                                        </ul>
+        </div><!-- /.navbar-collapse -->
+
+    </div>
+</nav>
+
+<ol class="breadcrumb text-small clearfix">
+          <li>!회원</li>
+          <li>!회원 관리</li>
+          <li>!회원 리스트</li>
+</ol>
+
+<!-- 고도 사이트로 이동 시작 -->
+<form name="frmGotoGodomall" action="" method="post">
+    <input type="hidden" name="pageKey" value="321783">
+    <input type="hidden" name="sno" value="321783">
+    <input type="hidden" name="mode" value="">
+</form>
+<!-- 고도 사이트로 이동 끝 -->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var gd_main_layer = {
+            presentation: {id: "presentation", selector: "#layerPresentation", title: "주요현황 조회설정"},
+            order_presentation: {id: "orderPresentation", get_id: "getOrderPresentation", title: "주문현황 조회설정"},
+            order_setting: {id: "orderSetting", title: "주문관리 조회설정"},
+            favorite_menu: {id: "favoriteMenu", get_id: "getFavoriteMenu", selector: "#layerFavorite", title: "자주쓰는 메뉴 설정"}
+        };
+        var _bootstrap_dialog = BootstrapDialog;
+
+        $('#dropDownFavoriteMenu').on('show.bs.dropdown', function () {
+            var dropdown_container = $(this);
+            var dropdown_menu = dropdown_container.find('.dropdown-menu');
+            $.ajax('../base/main_setting_ps.php', {
+                method: "post",
+                data: {mode: gd_main_layer.favorite_menu.get_id},
+                global_complete: false,
+                success: function () {
+                    if (arguments[0].success === 'OK') {
+                        var result = arguments[0].result;
+                        if (result.length > 0) {
+                            var html = [];
+                            $.each(result, function (idx, item) {
+                                var menuName = 'none';
+                                var menuLink = '';
+                                if (typeof item.tName === 'string') {
+                                    menuName = item.tName;
+                                } else if (typeof item.sName === 'string') {
+                                    menuName = item.sName;
+                                } else if (typeof item.fName === 'string') {
+                                    menuName = item.fName;
+                                }
+                                if (typeof item.tUrl === 'string') {
+                                    menuLink = '/' + item.tUrl;
+                                } else if (typeof item.sUrl === 'string') {
+                                    menuLink = '/' + item.sUrl;
+                                } else {
+                                    menuLink = '/index.php';
+                                }
+                                if (typeof item.fCode === 'string') {
+                                    menuLink = item.fCode + menuLink;
+                                }
+                                // html.push('<li role="separator" class="divider"></li>');
+                                html.push('<li class="dropdown-item"><a href="../' + menuLink + '">' + menuName + '</a></li>');
+                            });
+                            dropdown_menu.find('li:gt(0)').remove();
+                            dropdown_menu.append(html.join(''));
+                        } else {
+                            if (dropdown_menu.find('.dropdown-noitem').length == 0) {
+                                dropdown_menu.find('li:gt(0)').remove();
+                                dropdown_menu.append('<li class="dropdown-noitem">자주쓰는 메뉴를<br>설정해주세요.</li>');
+                            }
+                        }
+                    } else {
+                        console.log(arguments);
+                    }
+                }
+            });
+        });
+
+        $('#dropDownOrderPresentation').on('show.bs.dropdown', function () {
+            var dropdown_container = $(this);
+            $.ajax('../base/main_setting_ps.php', {
+                method: "post",
+                data: {mode: gd_main_layer.order_presentation.get_id},
+                global_complete: false,
+                success: function () {
+                    if (arguments[0].success === 'OK') {
+                        var result = arguments[0].result;
+                        if (result.length > 0) {
+                            var html = [];
+                            $.each(result, function (idx, item) {
+                                // html.push('<li role="separator" class="divider"></li>');
+                                html.push('<li class="dropdown-item"><a href="' + item.link + '">' + item.name + '<span class="dropdown-item-val"><span class="text-red">' + item.count + '</span>건</span></a></li>');
+                            });
+                            var dropdown_menu = dropdown_container.find('.dropdown-menu');
+                            dropdown_menu.find('li:gt(0)').remove();
+                            dropdown_menu.append(html.join(''));
+                        }
+                    } else {
+                        console.log(arguments);
+                    }
+                }
+            });
+        });
+
+        $('.js-setting-presentation').click(function () {
+            $.post('/share/layer_presentation_setting.php', {mode: gd_main_layer.presentation.id}, function (data) {
+                var options = {title: gd_main_layer.presentation.title, message: $(data), size: _bootstrap_dialog.SIZE_WIDE};
+                _bootstrap_dialog.show(options);
+            });
+        });
+
+        $('.js-setting-cs').bind('click', function () {
+            $.post('/share/layer_cs_setting.php', null, function (data) {
+                _bootstrap_dialog.show({
+                    title: '문의/답변관리 조회설정 ',
+                    message: $(data)
+                });
+            });
+        });
+
+        $('.js-setting-order').bind('click', function () {
+            var layer_id = this.dataset.role;
+            var title = (layer_id === gd_main_layer.order_presentation.id) ? gd_main_layer.order_presentation.title : gd_main_layer.order_setting.title;
+            $.post('../base/layer_order_setting.php', {mode: layer_id}, function (data) {
+                var options = {title: title, message: $(data)};
+                _bootstrap_dialog.show(options);
+            });
+        });
+
+        $('.js-setting-favorite-menu').bind('click', function () {
+            $.post('/share/layer_favorite_menu.php', {mode: gd_main_layer.favorite_menu.id}, function (data) {
+                var options = {title: gd_main_layer.favorite_menu.title, message: $(data), size: _bootstrap_dialog.SIZE_WIDE};
+                _bootstrap_dialog.show(options);
+            });
+        });
+
+        $('#headerSearchType').change(function () {
+            if (this.value === 'member') {
+                layer_member_search();
+                document.getElementById('headerSearchType').options[0].selected = true;
+            }
+        });
+
+        $('#headerSearchKeyword').keyup(function (e) {
+            if (e.keyCode === 13 && this.value.length > 1) {
+                $.ajax('../base/main_setting_ps.php', {
+                    method: "post",
+                    global_complete: false,
+                    data: {mode: "searchMenu", keyword: this.value},
+                    success: function () {
+                        var result = arguments[0].result;
+                        var optionHtml = [];
+                        $.each(result, function (idx, item) {
+                            var link = '../' + item.fCode + '/' + item.tUrl;
+                            optionHtml.push('<option value="' + link + '">' + item.tName + '</option>');
+                        });
+                        var $headerSearchMenuList = $('#headerSearchMenuList');
+                        $headerSearchMenuList.closest('div').removeClass('display-none');
+                        $headerSearchMenuList.find('option').remove();
+                        if (optionHtml.length == 0) {
+                            $headerSearchMenuList.append('<option>검색된 메뉴가 없습니다.</option>');
+                        } else {
+                            $headerSearchMenuList.append(optionHtml.join(''));
+                        }
+                    }
+                });
+            }
+        });
+
+        $('#headerSearchMenuList').on('click', function () {
+            location.href = this.value;
+        });
+
+        $(window).click(function () {
+            var $headerSearchMenuList = $('#headerSearchMenuList').closest('div');
+            if ($headerSearchMenuList.hasClass('display-none') === false) {
+                $headerSearchMenuList.addClass('display-none');
+            }
+        });
+
+        $('.endDatetime').datetimepicker().on('dp.show', function (e) {
+            var dateNow = new Date();
+            $(this).children().val(moment(dateNow).hours(23).minutes(59).format("YYYY-MM-DD HH:mm"));
+        });
+    });
+</script>
+            <div id="panel_popupPanel"></div>
+        </div>
+	
+		    <div id="content-wrap">
+		           <div id="menu">
+		                <!-- close/open -->
+						<div class="js-adminmenu-toggle"></div>
+						<div class="js-listgroup-toggle"></div>
+						<!-- //close/open -->
+						<div class="menu-header goods">
+						    <h2>상품</h2>
+						</div>
+							<div class="panel ">
+                    <div class="panel-heading menu-icon-minus active">!상품 관리</div>
+                <ul class="list-group">                    <li class="list-group-item active">
+                        <a href="/adminview/goods/goodsList">!상품 리스트</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="/adminview/goods/goodsRegister">!상품 등록</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="/adminview/goods/goodsOptionList">!자주쓰는 옵션 관리</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="#">#상품 혜택 관리</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="/adminview/goods/goodsIconList">!상품 아이콘 관리</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="/adminview/goods/goodsMustInfoList">!상품 필수정보 관리</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="/adminview/goods/goodsDeleteList">!삭제 상품 관리</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="/adminview/goods/goodsRestock">!상품 재입고 알림 신청 관리</a>                     </li>
+                    </ul>                <div class="panel-heading menu-icon-minus ">!상품 일괄 관리</div>
+                <ul class="list-group">                    <li class="list-group-item ">
+                        <a href="/adminview/goods/goodsBatchPrice">!상품 가격 관리</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="/adminview/goods/goodsBatchMileage">!상품 마일리지/혜택 관리</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="/adminview/goods/goodsBatchStock">!상품 품절/노출/재고 관리</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="/adminview/goods/goodsBatchLink">!상품 이동/복사/삭제 관리</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="/adminview/goods/goodsBatchIcon">!상품 아이콘/대표색상 관리</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="/adminview/goods/goodsBatchDelivery">!상품 배송비 관리</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="/adminview/goods/goodsBatchImage">!상품 이미지 일괄 처리</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="/adminview/goods/goodsBatchImageHostingReplace">!이미지호스팅 일괄전환</a>                     </li>
+                    </ul>                <div class="panel-heading menu-icon-minus ">!상품 진열 관리</div>
+                <ul class="list-group">                    <li class="list-group-item ">
+                        <a href="/adminview/goods/goodsDisplayMainList">!메인페이지 상품진열</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="/adminview/goods/goodsDisplayCategory">!카테고리페이지 상품진열</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="/adminview/goods/goodsDisplayBrand">!브랜드페이지 상품진열</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="/adminview/goods/goodsDisplaySearch">!검색페이지 상품진열</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="/adminview/goods/goodsDisplaySoldout">!품절상품 진열설정</a>                     </li>
+                    </ul>                <div class="panel-heading menu-icon-minus ">!상품 분류 관리</div>
+                <ul class="list-group">                    <li class="list-group-item ">
+                        <a href="/adminview/goods/goodsSortConfigNavi">!분류 설정 관리</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="/adminview/goods/goodsSortCategoryTree">!카테고리 관리</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="#">#브랜드 관리</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="/adminview/goods/goodsSortPurchaseList">!매입처 관리</a>                     </li>
+                    </ul>                <div class="panel-heading menu-icon-minus ">!상품 노출형태 관리</div>
+                <ul class="list-group">                    <li class="list-group-item ">
+                        <a href="/adminview/goods/goodsExposureThemeList">!테마 관리</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="#">#관련상품 노출 설정</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="#">#상품상세 노출항목 설정</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="#">#상품상세 공통정보 관리</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="/adminview/goods/goodsExposureSearchSettings">!검색창 관련 설정</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="#">#인기상품 노출 관리</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="#">#검색창 추천상품 노출 설정</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="#">#밴드왜건 푸시 설정</a>                     </li>
+                    </ul>                <div class="panel-heading menu-icon-minus ">!추가상품 관리</div>
+                <ul class="list-group">                    <li class="list-group-item ">
+                        <a href="#">#추가상품 관리</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="#">#추가상품 그룹 관리</a>                     </li>
+                    </ul>                <div class="panel-heading menu-icon-minus ">!사은품 관리</div>
+                <ul class="list-group">                    <li class="list-group-item ">
+                        <a href="#">#사은품 지급 설정</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="#">#사은품 관리</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="#">#사은품 지급조건 관리</a>                     </li>
+                    </ul>                <div class="panel-heading menu-icon-minus ">!상품 엑셀 관리</div>
+                <ul class="list-group">                    <li class="list-group-item ">
+                        <a href="/adminview/goods/goodsExcelDown">!상품 다운로드</a>                     </li>
+                                        <li class="list-group-item ">
+                        <a href="#">#상품 업로드</a>                     </li>
+                        </ul>
+    </div>			
+					</div>			
+				
+
+<div id="content" class="row">
+                <div class="col-xs-12">
+                    <div class="page-header js-affix">
+	<h3>상품 엑셀 다운로드</h3>
+</div>
+
+<div class="table-title gd-help-manual">
+	상품 다운로드</div>
+
+<form id="frmExcelGoods" name="frmExcelGoods" action="excel_goods_ps.php" method="post">
+<input type="hidden" name="mode" value="excel_down" />
+<input type="hidden" name="preFix" value="goods" />
+<input type="hidden" name="downType" value="all" />
+	<ul class="nav nav-tabs mgb30" role="tablist">
+		<li class="active">
+			<a href="#methodAll" data-toggle="tab">전체 상품 다운로드</a>
+		</li>
+		<li>
+			<a href="#methodSearch" data-toggle="tab">검색 상품 다운로드</a>
+		</li>
+	</ul>
+	<div class="tab-content">
+		<div id="methodAll" class="tab-pane fade in active">
+			<div class="table-title gd-help-manual">
+				상품 전체를 다운로드 받습니다.
+			</div>
+			<table class="table table-cols">
+			<colgroup><col class="width-md" /><col/></colgroup>
+			<tr>
+				<th>다운로드</th>
+				<td>
+					<input type="submit" class="btn btn-white btn-icon-excel" value="엑셀 다운로드" />
+				</td>
+			</tr>
+			<tr id="methodAllScm">
+															<th>공급사 구분</th>
+						<td>
+							<label class="radio-inline"><input type="radio" name="scmFl"
+															   value="n" checked />본사
+							</label>
+							<label class="radio-inline">
+								<input type="radio" name="scmFl" value="y"
+									   onclick="layer_register('scm','radio',true)"/>공급사
+							</label>
+							<label>
+								<button type="button" class="btn btn-sm btn-gray" onclick="layer_register('scm','radio',true)">공급사 선택</button>
+							</label>
+							<div id="scmLayer" class="selected-btn-group ">
+							</div>
+						</td>
+												</tr>
+			<tr>
+				<th>다운로드 범위</th>
+				<td class="form-inline">
+					<label class="radio-inline">
+						<input type="radio" name="downRangeAll" value="all" checked="checked" />전체
+					</label>
+					<label class="radio-inline">
+						<input type="radio" name="downRangeAll" value="part" />부분
+					</label>
+					<input type="text" name="partStartAll" value="1" class="form-control" /> 번째 부터
+					<input type="text" name="partCntAll" value="300" class="form-control" /> 개의 상품
+				</td>
+			</tr>
+			</table>
+		</div>
+
+		<div id="methodSearch" class="tab-pane fade">
+			<div class="table-title gd-help-manual">
+				상품 검색과 원하는 항목체크 후 다운로드 받기
+			</div>
+			<table class="table table-cols">
+			<colgroup><col class="width-md" /><col class="width-2xl"/><col class="width-md" /><col/></colgroup>
+			<tr>
+				<th>다운로드</th>
+				<td class="contents" colspan="3">
+					<input type="submit" class="btn btn-white btn-icon-excel" value="엑셀 다운로드" />
+				</td>
+			</tr>
+				<tr  id="methodSearchScm">
+
+				</tr>
+			<tr>
+				<th>검색어</th>
+				<td class="contents" colspan="3"><div class="form-inline">
+					<select class="form-control " id="key" name="key" ><option value="all"  >=통합검색=</option><option value="goodsNm"  >상품명</option><option value="goodsNo"  >상품코드</option><option value="goodsCd"  >자체상품코드</option><option value="goodsSearchWord"  >검색 키워드</option></select>					<input type="text" name="keyword" value="" class="form-control" />
+						</div>
+				</td>
+			</tr>
+			<tr>
+				<th>분류선택</th>
+				<td class="contents" colspan="3">
+					<div class="form-inline"><select id="cateGoods1" name="cateGoods[]"  class="form-control multiple-select">
+<option value="">=카테고리선택=</option>
+<option value="001"  data-flag="kr,us,cn,jp" data-mall-name="기준몰,영문몰,중문몰,일문몰">TOP</option>
+<option value="002"  data-flag="kr,us,cn,jp" data-mall-name="기준몰,영문몰,중문몰,일문몰">BOTTOM</option>
+<option value="003"  data-flag="kr,us,cn,jp" data-mall-name="기준몰,영문몰,중문몰,일문몰">OUTER</option>
+<option value="006"  data-flag="kr,us,cn,jp" data-mall-name="기준몰,영문몰,중문몰,일문몰">BAG</option>
+<option value="007"  data-flag="kr,us,cn,jp" data-mall-name="기준몰,영문몰,중문몰,일문몰">SHOES</option>
+<option value="004"  data-flag="kr,us,cn,jp" data-mall-name="기준몰,영문몰,중문몰,일문몰">ACC</option>
+</select>
+<select id="cateGoods2" name="cateGoods[]"  class="form-control multiple-select">
+<option value="">=카테고리선택=</option>
+</select>
+<select id="cateGoods3" name="cateGoods[]"  class="form-control multiple-select">
+<option value="">=카테고리선택=</option>
+</select>
+<select id="cateGoods4" name="cateGoods[]"  class="form-control multiple-select">
+<option value="">=카테고리선택=</option>
+</select>
+<script type="text/javascript">
+$(function() {
+	$('#cateGoods1').multi_select_box('#cateGoods',4,'/share/category_select_json.php','=카테고리선택=');
+	$('#cateGoods2').multi_select_box('#cateGoods',4,'/share/category_select_json.php','=카테고리선택=');
+	$('#cateGoods3').multi_select_box('#cateGoods',4,'/share/category_select_json.php','=카테고리선택=');
+	$('#cateGoods4').multi_select_box('#cateGoods',4,'/share/category_select_json.php','=카테고리선택=');
+});
+
+</script>
+</div>
+				</td>
+			</tr>
+			<tr>
+				<th>브랜드 선택</th>
+				<td class="contents" colspan="3">
+					<div class="form-inline"><select id="brand1" name="brand[]"  class="form-control multiple-select">
+<option value="">=브랜드선택=</option>
+<option value="001"  data-flag="kr,us,cn,jp" data-mall-name="기준몰,영문몰,중문몰,일문몰">고도몰</option>
+<option value="002"  data-flag="kr,us,cn,jp" data-mall-name="기준몰,영문몰,중문몰,일문몰">시크릿블루</option>
+</select>
+<select id="brand2" name="brand[]"  class="form-control multiple-select">
+<option value="">=브랜드선택=</option>
+</select>
+<select id="brand3" name="brand[]"  class="form-control multiple-select">
+<option value="">=브랜드선택=</option>
+</select>
+<script type="text/javascript">
+$(function() {
+	$('#brand1').multi_select_box('#brand',3,'/share/category_select_json.php?cateType=brand','=브랜드선택=');
+	$('#brand2').multi_select_box('#brand',3,'/share/category_select_json.php?cateType=brand','=브랜드선택=');
+	$('#brand3').multi_select_box('#brand',3,'/share/category_select_json.php?cateType=brand','=브랜드선택=');
+});
+
+</script>
+</div>
+				</td>
+			</tr>
+			<tr>
+				<th>상품가격</th>
+				<td><div class="form-inline">
+					<input type="text" name="goodsPrice[]" value="" class="form-control width-2xs" />원 ~
+					<input type="text" name="goodsPrice[]" value="" class="form-control width-2xs" />원</div>
+				</td>
+				<th>마일리지</th>
+				<td><div class="form-inline">
+					<input type="text" name="mileage[]" value="" class="form-control width-2xs" /> ~
+					<input type="text" name="mileage[]" value="" class="form-control width-2xs" /> </div>
+				</td>
+			</tr>
+			<tr>
+				<th>옵션 여부</th>
+				<td>
+					<label class="radio-inline"><input type="radio" name="optionFl" value="" checked="checked" />전체</label>
+					<label class="radio-inline"><input type="radio" name="optionFl" value="y" />옵션사용</label>
+					<label class="radio-inline"><input type="radio" name="optionFl" value="n" />옵션미사용</label>
+				</td>
+				<th>마일리지 정책</th>
+				<td>
+					<label class="radio-inline"><input type="radio" name="mileageFl" value="" checked="checked" />전체</label>
+					<label class="radio-inline"><input type="radio" name="mileageFl" value="c" />통합설정</label>
+					<label class="radio-inline"><input type="radio" name="mileageFl" value="g" />개별설정</label>
+				</td>
+			</tr>
+			<tr>
+				<th>추가상품 여부</th>
+				<td>
+					<label class="radio-inline"><input type="radio" name="addGoodsFl" value="" checked="checked" />전체</label>
+					<label class="radio-inline"><input type="radio" name="addGoodsFl" value="y" />옵션사용</label>
+					<label class="radio-inline"><input type="radio" name="addGoodsFl" value="n" />옵션미사용</label>
+				</td>
+				<th>텍스트옵션 여부</th>
+				<td>
+					<label class="radio-inline"><input type="radio" name="optionTextFl" value="" checked="checked" />전체</label>
+					<label class="radio-inline"><input type="radio" name="optionTextFl" value="y" />옵션사용</label>
+					<label class="radio-inline"><input type="radio" name="optionTextFl" value="n" />옵션미사용</label>
+				</td>
+			</tr>
+			<tr>
+				<th>상품출력 여부</th>
+				<td>
+					<label class="radio-inline"><input type="radio" name="goodsDisplayFl" value="" checked="checked" />전체</label>
+					<label class="radio-inline"><input type="radio" name="goodsDisplayFl" value="y" />출력</label>
+					<label class="radio-inline"><input type="radio" name="goodsDisplayFl" value="n" />미출력</label>
+				</td>
+				<th>상품판매 여부</th>
+				<td>
+					<label class="radio-inline"><input type="radio" name="goodsSellFl" value="" checked="checked" />전체</label>
+					<label class="radio-inline"><input type="radio" name="goodsSellFl" value="y" />판매</label>
+					<label class="radio-inline"><input type="radio" name="goodsSellFl" value="n" />판매중지</label>
+				</td>
+			</tr>
+			<tr>
+				<th>상품 정렬 방식</th>
+				<td>
+	<select class="form-control " id="orderBy" name="orderBy" ><option value="g.goodsNo asc"  >등록일↑</option><option value="g.goodsNo desc"  >등록일↓</option><option value="g.goodsNm asc"  >상품명↑</option><option value="g.goodsNm desc"  >상품명↓</option><option value="go.goodsPrice asc"  >가격순↑</option><option value="go.goodsPrice desc"  >가격순↓</option></select>				</td>
+				<th>다운로드 범위</th>
+				<td>
+					<div class="form-inline">
+						<label class="radio-inline"><input type="radio" name="downRange" value="all" />전체</label>
+						<label class="radio-inline"><input type="radio" name="downRange" value="part" checked="checked" />부분</label>
+						<input type="text" name="partStart" value="1" class="form-control" /> 번째 부터
+						<input type="text" name="partCnt" value="100" class="form-control" /> 개의 상품
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th>항목 선택</th>
+				<td colspan="3">
+					<table class="table table-rows goods-excel-down-item">
+						<colgroup>
+								<col class="width-2xs" /><col class="width-xs"/><col class="width-xs"/>
+								<col class="width-2xs" /><col class="width-xs"/><col class="width-xs"/>
+								<col class="width-2xs" /><col class="width-xs"/><col class="width-xs"/>
+							</colgroup>
+						<thead>
+						<tr>
+								<th><input type="checkbox" class="js-checkall" name="fieldCheckAll" data-target-id="fieldCheck_0"></th>
+							<th>한글필드명</th>
+							<th>영문필드명</th>
+								<th><input type="checkbox" class="js-checkall" name="fieldCheckAll" data-target-id="fieldCheck_1"></th>
+							<th>한글필드명</th>
+							<th>영문필드명</th>
+								<th><input type="checkbox" class="js-checkall" name="fieldCheckAll" data-target-id="fieldCheck_2"></th>
+							<th>한글필드명</th>
+							<th>영문필드명</th>
+							</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_goodsNo" value="goodsNo" /></td>
+							<td>상품번호</td>
+							<td>goods_no</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_goodsNm" value="goodsNm" /></td>
+							<td>상품명_기본</td>
+							<td>goods_name</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_commission" value="commission" /></td>
+							<td>수수료</td>
+							<td>commission</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_goodsCd" value="goodsCd" /></td>
+							<td>자체상품코드</td>
+							<td>goods_cd</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_goodsNmMain" value="goodsNmMain" /></td>
+							<td>상품명_메인</td>
+							<td>name_main</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_goodsNmList" value="goodsNmList" /></td>
+							<td>상품명_리스트</td>
+							<td>name_list</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_goodsNmDetail" value="goodsNmDetail" /></td>
+							<td>상품명_상세</td>
+							<td>name_detail</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_goodsNmPartner" value="goodsNmPartner" /></td>
+							<td>상품명_제휴</td>
+							<td>name_partner</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_globalData_2_goodsNm" value="globalData_2_goodsNm" /></td>
+							<td>상품명_영문몰</td>
+							<td>global_data_2_goodsnm</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_globalData_3_goodsNm" value="globalData_3_goodsNm" /></td>
+							<td>상품명_중문몰</td>
+							<td>global_data_3_goodsnm</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_globalData_4_goodsNm" value="globalData_4_goodsNm" /></td>
+							<td>상품명_일문몰</td>
+							<td>global_data_4_goodsnm</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_goodsSearchWord" value="goodsSearchWord" /></td>
+							<td>검색 키워드</td>
+							<td>search_word</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_goodsOpenDt" value="goodsOpenDt" /></td>
+							<td>상품 노출 시간</td>
+							<td>goods_open_dt</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_goodsState" value="goodsState" /></td>
+							<td>상품 상태</td>
+							<td>goods_state</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_goodsColor" value="goodsColor" /></td>
+							<td>상품 대표색상</td>
+							<td>goods_color</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_payLimitFl" value="payLimitFl" /></td>
+							<td>결제 수단 설정</td>
+							<td>pay_limit_fl</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_payLimit" value="payLimit" /></td>
+							<td>사용가능 결제수단</td>
+							<td>pay_limit</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_goodsModelNo" value="goodsModelNo" /></td>
+							<td>모델번호</td>
+							<td>model_no</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_cateCd" value="cateCd" /></td>
+							<td>카테고리 코드</td>
+							<td>category_code</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_purchaseGoodsNm" value="purchaseGoodsNm" /></td>
+							<td>매입처 상품명</td>
+							<td>purchase_goods_name</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_brandCd" value="brandCd" /></td>
+							<td>브랜드 코드</td>
+							<td>brand_code</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_makerNm" value="makerNm" /></td>
+							<td>제조사</td>
+							<td>maker_name</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_originNm" value="originNm" /></td>
+							<td>원산지</td>
+							<td>origin_name</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_makeYmd" value="makeYmd" /></td>
+							<td>제조일</td>
+							<td>make_date</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_launchYmd" value="launchYmd" /></td>
+							<td>출시일</td>
+							<td>launch_date</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_effectiveStartYmd" value="effectiveStartYmd" /></td>
+							<td>유효일자 시작일</td>
+							<td>effective_start_ymd</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_effectiveEndYmd" value="effectiveEndYmd" /></td>
+							<td>유효일자 종료일</td>
+							<td>effective_end_ymd</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_goodsPermission" value="goodsPermission" /></td>
+							<td>구매가능 회원등급 설정</td>
+							<td>goods_permission</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_goodsPermissionGroup" value="goodsPermissionGroup" /></td>
+							<td>구매가능 회원등급</td>
+							<td>goods_permission_group</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_goodsPermissionPriceStringFl" value="goodsPermissionPriceStringFl" /></td>
+							<td>구매불가 고객 가격 대체문구 사용</td>
+							<td>goods_permission_price_string_fl</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_goodsPermissionPriceString" value="goodsPermissionPriceString" /></td>
+							<td>구매불가 고객 가격 대체문구</td>
+							<td>goods_permission_price_string</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_onlyAdultFl" value="onlyAdultFl" /></td>
+							<td>성인인증 여부 </td>
+							<td>only_adult_fl</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_onlyAdultDisplayFl" value="onlyAdultDisplayFl" /></td>
+							<td>미인증 고객 상품 노출함</td>
+							<td>only_adult_display_fl</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_onlyAdultImageFl" value="onlyAdultImageFl" /></td>
+							<td>미인증 고객 상품 이미지 노출함</td>
+							<td>only_adult_image_fl</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_goodsAccess" value="goodsAccess" /></td>
+							<td>접근권한 회원등급 설정</td>
+							<td>goods_access</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_goodsAccessGroup" value="goodsAccessGroup" /></td>
+							<td>접근권한 회원등급</td>
+							<td>goods_access_group</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_goodsAccessDisplayFl" value="goodsAccessDisplayFl" /></td>
+							<td>접근불가 고객 상품 노출함</td>
+							<td>goods_access_display_fl</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_addInfo" value="addInfo" /></td>
+							<td>추가항목</td>
+							<td>add_info</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_goodsMustInfo" value="goodsMustInfo" /></td>
+							<td>상품필수정보</td>
+							<td>goods_must_info</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_kcmarkFl" value="kcmarkFl" /></td>
+							<td>KC인증 표시 여부</td>
+							<td>kcmark_fl</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_kcmarkDivFl" value="kcmarkDivFl" /></td>
+							<td>KC인증 구분</td>
+							<td>kcmark_div_fl</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_kcmarkNo" value="kcmarkNo" /></td>
+							<td>KC인증 번호</td>
+							<td>kcmark_no</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_goodsIconStartYmd" value="goodsIconStartYmd" /></td>
+							<td>아이콘 기간(시작)</td>
+							<td>icon_start</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_goodsIconEndYmd" value="goodsIconEndYmd" /></td>
+							<td>아이콘 기간(끝)</td>
+							<td>icon_end</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_goodsIconCdPeriod" value="goodsIconCdPeriod" /></td>
+							<td>아이콘 코드</td>
+							<td>icon_period</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_goodsIconCd" value="goodsIconCd" /></td>
+							<td>아이콘 코드</td>
+							<td>icon_code</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_goodsWeight" value="goodsWeight" /></td>
+							<td>무게</td>
+							<td>weight</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_goodsVolume" value="goodsVolume" /></td>
+							<td>용량</td>
+							<td>volume</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_stockFl" value="stockFl" /></td>
+							<td>재고 설정</td>
+							<td>stock_type</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_mileageFl" value="mileageFl" /></td>
+							<td>마일리지 정책</td>
+							<td>mileage_type</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_mileageGroup" value="mileageGroup" /></td>
+							<td>마일리지 지급대상</td>
+							<td>mileage_group</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_mileageGroupInfo" value="mileageGroupInfo" /></td>
+							<td>마일리지 지급 회원등급</td>
+							<td>mileage_group_info</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_mileageGoods" value="mileageGoods" /></td>
+							<td>상품 개별 마일리지</td>
+							<td>mileage_goods</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_mileageGoodsUnit" value="mileageGoodsUnit" /></td>
+							<td>상품 개별 마일리지 단위</td>
+							<td>mileage_goods_unit</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_goodsDiscountFl" value="goodsDiscountFl" /></td>
+							<td>상품 할인설정 사용 여부</td>
+							<td>goods_discount_fl</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_goodsDiscount" value="goodsDiscount" /></td>
+							<td>상품 할인가</td>
+							<td>goods_discount</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_goodsDiscountUnit" value="goodsDiscountUnit" /></td>
+							<td>상품 할인가 단위</td>
+							<td>goods_discount_unit</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_fixedSales" value="fixedSales" /></td>
+							<td>묶음주문기준</td>
+							<td>fixed_sales</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_salesUnit" value="salesUnit" /></td>
+							<td>묶음주문단위</td>
+							<td>sales_unit</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_soldOutFl" value="soldOutFl" /></td>
+							<td>품절 설정</td>
+							<td>soldout_yn</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_taxFreeFl" value="taxFreeFl" /></td>
+							<td>과세/면세</td>
+							<td>tax_free_type</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_taxPercent" value="taxPercent" /></td>
+							<td>과세율</td>
+							<td>tax_percent</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_goodsDisplayFl" value="goodsDisplayFl" /></td>
+							<td>PC 노출 여부</td>
+							<td>display_pc_yn</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_goodsDisplayMobileFl" value="goodsDisplayMobileFl" /></td>
+							<td>모바일 노출 여부</td>
+							<td>display_mobile_yn</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_goodsSellFl" value="goodsSellFl" /></td>
+							<td>PC 판매 여부</td>
+							<td>sell_pc_yn</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_goodsSellMobileFl" value="goodsSellMobileFl" /></td>
+							<td>모바일 판매 여부</td>
+							<td>sell_mobile_yn</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_deliverySno" value="deliverySno" /></td>
+							<td>배송비 고유번호</td>
+							<td>deliverySno</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_goodsPriceString" value="goodsPriceString" /></td>
+							<td>가격대체 문구</td>
+							<td>goods_price_string</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_fixedOrderCnt" value="fixedOrderCnt" /></td>
+							<td>구매수량기준</td>
+							<td>fixed_cnt</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_minOrderCnt" value="minOrderCnt" /></td>
+							<td>최소 구매 수량</td>
+							<td>min_cnt</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_maxOrderCnt" value="maxOrderCnt" /></td>
+							<td>최대 구매 수량</td>
+							<td>max_cnt</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_salesStartYmd" value="salesStartYmd" /></td>
+							<td>상품판매기간 시작일</td>
+							<td>sales_start_ymd</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_salesEndYmd" value="salesEndYmd" /></td>
+							<td>상품판매기간 종료일</td>
+							<td>sales_end_ymd</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_cultureBenefitFl" value="cultureBenefitFl" /></td>
+							<td>도서공연비 소득공제 상품 적용 여부</td>
+							<td>culture_benefit_fl</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_externalVideoFl" value="externalVideoFl" /></td>
+							<td>외부동영상 연동 여부</td>
+							<td>external_video_fl</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_externalVideoUrl" value="externalVideoUrl" /></td>
+							<td>외부동영상 주소</td>
+							<td>external_video_url</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_externalVideoWidth" value="externalVideoWidth" /></td>
+							<td>외부동영상 너비</td>
+							<td>external_video_width</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_externalVideoHeight" value="externalVideoHeight" /></td>
+							<td>외부동영상 높이</td>
+							<td>external_video_height</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_goodsPrice" value="goodsPrice" /></td>
+							<td>판매가</td>
+							<td>goods_price</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_fixedPrice" value="fixedPrice" /></td>
+							<td>정가</td>
+							<td>fixed_price</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_costPrice" value="costPrice" /></td>
+							<td>매입가</td>
+							<td>cost_price</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_optionFl" value="optionFl" /></td>
+							<td>옵션 사용 여부</td>
+							<td>option_yn</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_optionDisplayFl" value="optionDisplayFl" /></td>
+							<td>옵션 표시 방법</td>
+							<td>option_display</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_optionName" value="optionName" /></td>
+							<td>옵션명</td>
+							<td>option_name</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_optionValue" value="optionValue" /></td>
+							<td>옵션값</td>
+							<td>option_value</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_optionImage" value="optionImage" /></td>
+							<td>옵션이미지</td>
+							<td>option_image</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_optionCostPrice" value="optionCostPrice" /></td>
+							<td>옵션매입가격</td>
+							<td>option_cost_price</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_optionPrice" value="optionPrice" /></td>
+							<td>옵션가격</td>
+							<td>option_price</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_stockCnt" value="stockCnt" /></td>
+							<td>재고</td>
+							<td>stock_cnt</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_optionViewFl" value="optionViewFl" /></td>
+							<td>옵션 노출여부</td>
+							<td>option_view_fl</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_optionSellFl" value="optionSellFl" /></td>
+							<td>옵션 품절여부</td>
+							<td>option_sell_fl</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_optionDeliveryFl" value="optionDeliveryFl" /></td>
+							<td>옵션 배송상태</td>
+							<td>option_delivery_fl</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_optionCode" value="optionCode" /></td>
+							<td>자체옵션코드</td>
+							<td>option_code</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_optionMemo" value="optionMemo" /></td>
+							<td>옵션 메모</td>
+							<td>option_memo</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_optionTextFl" value="optionTextFl" /></td>
+							<td>텍스트 옵션 사용여부</td>
+							<td>text_option_yn</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_optionText" value="optionText" /></td>
+							<td>텍스트 옵션</td>
+							<td>text_option</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_relationFl" value="relationFl" /></td>
+							<td>관련상품</td>
+							<td>relation_yn</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_relationSameFl" value="relationSameFl" /></td>
+							<td>관련상품 서로 등록 여부</td>
+							<td>relation_same_fl</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_relationGoodsNo" value="relationGoodsNo" /></td>
+							<td>관련상품 코드</td>
+							<td>relation_code</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_relationGoodsDate" value="relationGoodsDate" /></td>
+							<td>관련상품 노출기간</td>
+							<td>relation_goods_date</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_relationGoodsNo" value="relationGoodsNo" /></td>
+							<td>관련상품 서로등록 상품코드</td>
+							<td>relation_goods_each</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_addGoodsFl" value="addGoodsFl" /></td>
+							<td>추가상품 사용여부</td>
+							<td>add_goods_fl</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_addGoods" value="addGoods" /></td>
+							<td>추가상품 설정</td>
+							<td>add_goods</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_imgDetailViewFl" value="imgDetailViewFl" /></td>
+							<td>이미지 돋보기 사용여부</td>
+							<td>imgDetail_view_fl</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_imageStorage" value="imageStorage" /></td>
+							<td>이미지 저장소</td>
+							<td>image_storage</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_imagePath" value="imagePath" /></td>
+							<td>이미지 경로</td>
+							<td>image_path</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_imageName" value="imageName" /></td>
+							<td>이미지명</td>
+							<td>image_name</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_shortDescription" value="shortDescription" /></td>
+							<td>짧은 설명</td>
+							<td>short_desc</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_globalData_2_shortDescription" value="globalData_2_shortDescription" /></td>
+							<td>짧은_설명_영문몰</td>
+							<td>global_data_2_short_description</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_globalData_3_shortDescription" value="globalData_3_shortDescription" /></td>
+							<td>짧은_설명_중문몰</td>
+							<td>global_data_3_short_description</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_globalData_4_shortDescription" value="globalData_4_shortDescription" /></td>
+							<td>짧은_설명_일문몰</td>
+							<td>global_data_4_short_description</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_eventDescription" value="eventDescription" /></td>
+							<td>이벤트 문구</td>
+							<td>event_description</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_goodsDescription" value="goodsDescription" /></td>
+							<td>PC쇼핑몰 상세 설명</td>
+							<td>goods_desc_pc</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_goodsDescriptionMobile" value="goodsDescriptionMobile" /></td>
+							<td>모바일쇼핑몰 상세 설명</td>
+							<td>goods_desc_mobile</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_goodsDescriptionSameFl" value="goodsDescriptionSameFl" /></td>
+							<td>PC/모바일 상세설명 동일사용 여부</td>
+							<td>goods_desc_same_flag</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_daumFl" value="daumFl" /></td>
+							<td>쇼핑하우 노출여부</td>
+							<td>daum_flag</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_naverFl" value="naverFl" /></td>
+							<td>네이버쇼핑 노출여부</td>
+							<td>naver_flag</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_naverImportFlag" value="naverImportFlag" /></td>
+							<td>수입 및 제작 여부</td>
+							<td>naver_import_flag</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_naverProductFlag" value="naverProductFlag" /></td>
+							<td>판매 방식 구분</td>
+							<td>naver_product_flag</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_naverAgeGroup" value="naverAgeGroup" /></td>
+							<td>주요사용연령대</td>
+							<td>naver_age_group</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_naverGender" value="naverGender" /></td>
+							<td>주요사용성별</td>
+							<td>naver_gender</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_naverTag" value="naverTag" /></td>
+							<td>검색태그</td>
+							<td>naver_tag</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_naverAttribute" value="naverAttribute" /></td>
+							<td>속성정보</td>
+							<td>naver_attribute</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_naverCategory" value="naverCategory" /></td>
+							<td>네이버카테고리ID</td>
+							<td>naver_category</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_naverProductId" value="naverProductId" /></td>
+							<td>가격비교페이지ID</td>
+							<td>naver_product_id</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_detailInfoDeliveryFl" value="detailInfoDeliveryFl" /></td>
+							<td>배송 안내 입력선택</td>
+							<td>detail_delivery_fl</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_detailInfoDelivery" value="detailInfoDelivery" /></td>
+							<td>배송 안내</td>
+							<td>detail_delivery</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_detailInfoASFl" value="detailInfoASFl" /></td>
+							<td>AS 안내 입력선택</td>
+							<td>detail_as_fl</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_detailInfoAS" value="detailInfoAS" /></td>
+							<td>AS 안내</td>
+							<td>detail_as</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_detailInfoRefundFl" value="detailInfoRefundFl" /></td>
+							<td>환불 안내 입력선택</td>
+							<td>detail_refund_fl</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_detailInfoRefund" value="detailInfoRefund" /></td>
+							<td>환불 안내</td>
+							<td>detail_refund</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_detailInfoExchangeFl" value="detailInfoExchangeFl" /></td>
+							<td>교환 안내 입력선택</td>
+							<td>detail_exchange_fl</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_detailInfoExchange" value="detailInfoExchange" /></td>
+							<td>교환 안내</td>
+							<td>detail_exchange</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_memo" value="memo" /></td>
+							<td>상품 관리 메모</td>
+							<td>memo</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_hscode" value="hscode" /></td>
+							<td>HS 코드</td>
+							<td>hscode</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_seoTagFl" value="seoTagFl" /></td>
+							<td>상품 개별 SEO 설정 사용여부</td>
+							<td>seo_tag_fl</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_seoTagTitle" value="seoTagTitle" /></td>
+							<td>타이틀</td>
+							<td>set_tag_title</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_seoTagAuthor" value="seoTagAuthor" /></td>
+							<td>메타태그 작성자</td>
+							<td>set_tag_author</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_seoTagDescription" value="seoTagDescription" /></td>
+							<td>메타태그 설명</td>
+							<td>set_tag_description</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_seoTagKeyword" value="seoTagKeyword" /></td>
+							<td>메타태그 키워드</td>
+							<td>set_tag_keyword</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_2_fbVn" value="fbVn" /></td>
+							<td>페이스북 제품 피드 설정</td>
+							<td>fb_vn</td>
+						</tr>
+					<tr>
+							<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_0_fbImageName" value="fbImageName" /></td>
+							<td>페이스북 광고 제품 피드 이미지명</td>
+							<td>fb_image_name</td>
+								<td class="center"><input type="checkbox" name="fieldCheck[]" id="fieldCheck_1_purchaseNo" value="purchaseNo" /></td>
+							<td>매입처 코드</td>
+							<td>purchaseNo</td>
+							</tbody>
+					</table>
+				</td>
+			</tr>
+			</table>
+		</div>
+	</div>
+
+</form>
+
+
+
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#pricePercent').number_only();
+
+		$('.nav-tabs a').click(function (e) {
+			if($(this).attr('href') == '#methodAll') {
+
+				$('#methodAll').attr('class','display-block');
+				$('#methodSearch').attr('class','display-none');
+
+				$('input[name=\'downType\']').val('all');
+
+				if($("#methodAllScm").html().trim() =='') {
+					$("#methodAllScm").html($("#methodSearchScm").html());
+					$("#methodSearchScm").html('');
+					$("#scmLayer").html('');
+				}
+
+			} else {
+
+				$('#methodAll').attr('class','display-none');
+				$('#methodSearch').attr('class','display-block');
+
+				$('input[name=\'downType\']').val('search');
+
+				if($("#methodSearchScm").html().trim() =='') {
+					$("#methodSearchScm").html($("#methodAllScm").html());
+					$("#methodAllScm").html('');
+					$("#scmLayer").html('');
+				}
+
+			}
+
+			$('.nav-tabs li').removeClass('active');
+			$(this).closest('li').addClass('active');
+
+			return false;
+		});
+
+		$("input[name='scmFl']").click(function () {
+			if ($(this).val() == 'n') {
+				$("#scmLayer").html('');
+			}
+		});
+
+        $('input[name="fieldCheckAll"]:checkbox').trigger('click');
+		//글로벌 데이터는 기본체크 안됨
+		$('input[id*="globalData_"]:checkbox').prop("checked",false);
+        //KC인증마크 관련 데이터는 기본체크 안됨
+        $('input[id*="kcmark"]:checkbox').prop("checked",false);
+	});
+
+		/**
+	 * 카테고리 연결하기 Ajax layer
+	 */
+	function layer_register(typeStr, mode, isDisabled) {
+
+		var addParam = {
+			"mode": mode,
+		};
+
+		if (typeStr == 'scm') {
+			$('input:radio[name=scmFl]:input[value=y]').prop("checked", true);
+		}
+
+		if (!_.isUndefined(isDisabled) && isDisabled == true) {
+			addParam.disabled = 'disabled';
+		}
+		layer_add_info(typeStr, addParam);
+
+	}
+
+</script>
+
+                                    </div>
+            </div>
+
+
+
+					
+					
+			</div>
+			<div id="footer" class="col-xs-12">
+            <!-- //gnbAnchor_wrap -->
+<div class="ly_setting sub_type" style="display:none;">
+    <div class="setting_header">
+        <h4>쇼핑몰 필수 설정</h4>
+        <p>
+                    설정이 완료된 항목은 체크해주세요
+                </p>
+        <label for="check1" class="check_label">
+            <div class="input_check_box">
+                <input type="checkbox" name="" value="" id="check1" class="check-origin" >
+                <span class="check-clone"></span>
+            </div>
+            <span class="label_txt">체크된 항목  숨김</span>
+        </label>
+        <ul class="tab_list">
+            <li class="active"><a href="#necessary">필수 설정</a></li>
+            <li><a href="#operation">쇼핑몰 운영</a></li>
+            <li><a href="#recommend">추천 서비스</a></li>
+        </ul>
+        <span class="btn_close"><img src="../admin/gd_share/img/icon_ly_close.png" alt="닫기 버튼"/></span>
+    </div>
+    <!-- //setting_header -->
+    <div class="inner">
+        <div class="cont_wrap">
+            <div id="necessary" class="setting_cont">
+                <h5>필수 설정</h5>
+                <div class="setting_box">
+                    <!--N:체크 항목 리스트 노출-->
+                    <ul class="setting_list">
+                                                <li>
+                            <div class="input_area">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="necessary" value="base_info"  >
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="text_area">
+                                <a href="/policy/base_info.php" target="_blank">
+                                        <span class="txt">
+                                            <strong>사업자 정보 입력</strong>
+                                            <span class="s_txt">상호 / 대표자명 / 사업장 주소 / 전화번호 / 사업자등록번호 / 통신판매신고번호 등 사업자 정보 필수 기재</span>
+                                        </span>
+                                </a>
+                            </div>
+                        </li>
+                                                <li>
+                            <div class="input_area">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="necessary" value="private"  >
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="text_area">
+                                <a href="/policy/base_agreement_with_private.php?mallSno=1&mode=private" target="_blank">
+                                        <span class="txt">
+                                            <strong>개인정보처리방침 설정</strong>
+                                            <span class="s_txt">개인정보처리방침 내용 입력 및 개인정보 보호책임자 입력</span>
+                                        </span>
+                                </a>
+                            </div>
+                        </li>
+                                                <li>
+                            <div class="input_area">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="necessary" value="base_agreement_with_private"  >
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="text_area">
+                                <a href="/policy/base_agreement_with_private.php?mallSno=1&mode=privateItem" target="_blank">
+                                        <span class="txt">
+                                            <strong>제3자 제공 및 개인정보 처리 위탁 설정</strong>
+                                            <span class="s_txt">제3자 제공 및 처리 위탁 내역 고지 및 동의 여부 선택권 제공</span>
+                                        </span>
+                                </a>
+                            </div>
+                        </li>
+                                                <li>
+                            <div class="input_area">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="necessary" value="ssl_admin_setting"  >
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="text_area">
+                                <a href="/policy/ssl_admin_setting.php" target="_blank">
+                                        <span class="txt">
+                                            <strong>보안 서버 설치</strong>
+                                            <span class="s_txt">개인정보 취급 페이지 내 보안서버 의무 적용</span>
+                                        </span>
+                                </a>
+                            </div>
+                        </li>
+                                                <li>
+                            <div class="input_area">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="necessary" value="manage_security"  >
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="text_area">
+                                <a href="/policy/manage_security.php" target="_blank">
+                                        <span class="txt">
+                                            <strong>운영 보안 설정</strong>
+                                            <span class="s_txt">관리자 2차 인증 및 관리자 IP 접속 제한 설정</span>
+                                        </span>
+                                </a>
+                            </div>
+                        </li>
+                                                <li>
+                            <div class="input_area">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="necessary" value="member_join"  >
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="text_area">
+                                <a href="/member/member_join.php" target="_blank">
+                                        <span class="txt">
+                                            <strong>회원 가입 정책 설정</strong>
+                                            <span class="s_txt">14세 미만 회원가입 시 법정대리인 동의 후 가입 가능</span>
+                                        </span>
+                                </a>
+                            </div>
+                        </li>
+                                                <li>
+                            <div class="input_area">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="necessary" value="member_password_change"  >
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="text_area">
+                                <a href="/policy/member_password_change.php" target="_blank">
+                                        <span class="txt">
+                                            <strong>비밀번호 변경 주기 설정</strong>
+                                            <span class="s_txt">비밀번호 유효기간 설정하여 6개월에 1회 이상 변경하도록 안내</span>
+                                        </span>
+                                </a>
+                            </div>
+                        </li>
+                                                <li>
+                            <div class="input_area">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="necessary" value="sms_auto"  >
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="text_area">
+                                <a href="/member/sms_auto.php" target="_blank">
+                                        <span class="txt">
+                                            <strong>sms 발신번호 등록</strong>
+                                            <span class="s_txt">거짓 전화번호로 인한 피해 예방을 위해 사전 등록한 발신번호로만 sms 발송 가능</span>
+                                        </span>
+                                </a>
+                            </div>
+                        </li>
+                                                <li>
+                            <div class="input_area">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="necessary" value="sms080_config"  >
+                                    <span></span>
+                                </label>
+                            </div>
+                            <div class="text_area">
+                                <a href="/member/sms080_config" target="_blank">
+                                        <span class="txt">
+                                            <strong>080 수신거부 설정</strong>
+                                            <span class="s_txt">광고성 정보 전송 시, 수신거부의사 표시 기능 의무제공</span>
+                                        </span>
+                                </a>
+                            </div>
+                        </li>
+                                            </ul>
+                    <!--//N-->
+
+                    <!--N:모든 항목 숨김 처리시 노출-->
+                    <p class="empty_notice" style="display:none;">모든 항목의 설정이 완료 되었습니다.</p>
+                    <!--//N-->
+                </div>
+                <!-- //setting_box -->
+            </div>
+            <!-- //setting_cont -->
+
+            <div id="operation" class="setting_cont">
+                <h5>쇼핑몰 운영</h5>
+                <div class="setting_box">
+                    <!--N:체크 항목 리스트 노출-->
+                    <ul class="setting_list">
+                                                    <li>
+                                <div class="input_area">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="operation" value="manage_list"  >
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="text_area">
+                                    <a href="/policy/manage_list.php" target="_blank">
+                                        <span class="txt">
+                                            <strong>쇼핑몰 운영자 관리</strong>
+                                            <span class="s_txt">고객 개인정보 보호를 위해 운영자별 권한 설정</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                                                    <li>
+                                <div class="input_area">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="operation" value="admin_log_list"  >
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="text_area">
+                                    <a href="/policy/admin_log_list.php" target="_blank">
+                                        <span class="txt">
+                                            <strong>관리자 접속 기록 확인</strong>
+                                            <span class="s_txt">월 1회 이상 개인정보처리시스템 접속 기록 확인 · 감독</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                                                    <li>
+                                <div class="input_area">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="operation" value="goods_must_info_list"  >
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="text_area">
+                                    <a href="/goods/goods_must_info_list.php" target="_blank">
+                                        <span class="txt">
+                                            <strong>상품정보제공 고시 설정</strong>
+                                            <span class="s_txt">판매 상품의 필수(상세) 정보 등록 필요</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                                                    <li>
+                                <div class="input_area">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="operation" value="sms_auto"  >
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="text_area">
+                                    <a href="/member/sms_auto.php" target="_blank">
+                                        <span class="txt">
+                                            <strong>광고 수신거부 처리 결과 통보</strong>
+                                            <span class="s_txt">수신거부 의사 표시 받은 날로 부터 14일 이내 처리 결과 통보</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                                                    <li>
+                                <div class="input_area">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="operation" value="member_modify_event_list"  >
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="text_area">
+                                    <a href="/member/member_modify_event_list.php" target="_blank">
+                                        <span class="txt">
+                                            <strong>회원정보수정 이벤트</strong>
+                                            <span class="s_txt">회원 비밀번호 변경 유도 및 고객 정보 업데이트 가능</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                                                    <li>
+                                <div class="input_area">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="operation" value="member_sleep_list"  >
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="text_area">
+                                    <a href="/member/member_sleep_list.php" target="_blank">
+                                        <span class="txt">
+                                            <strong>휴면 회원 데이터 분리</strong>
+                                            <span class="s_txt">1년 이상 서비스를 사용하지 않는 고객은 휴면상태로 별도 보관</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                                            </ul>
+                    <!--//N-->
+
+                    <!--N:모든 항목 숨김 처리시 노출-->
+                    <p class="empty_notice" style="display:none;">모든 항목의 설정이 완료 되었습니다.</p>
+                    <!--//N-->
+                </div>
+                <!-- //setting_box -->
+            </div>
+            <!-- //setting_cont -->
+
+            <div id="recommend" class="setting_cont">
+                <h5>추천 서비스</h5>
+                <div class="setting_box">
+                    <!--N:체크 항목 리스트 노출-->
+                    <ul class="setting_list">
+                                                    <li>
+                                <div class="input_area">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="recommend" value="pg_info"  >
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="text_area">
+                                    <a href="/service/service_info.php?menu=pg_info" target="_blank">
+                                        <span class="txt">
+                                            <strong>통합 전자결제 서비스</strong>
+                                            <span class="s_txt">구매안전 (에스크로) 서비스 적용 의무화</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                                                    <li>
+                                <div class="input_area">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="recommend" value="member_auth_info"  >
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="text_area">
+                                    <a href="/service/service_info.php?menu=member_auth_info" target="_blank">
+                                        <span class="txt">
+                                            <strong>휴대폰본인확인 서비스</strong>
+                                            <span class="s_txt">본인명의의 휴대폰으로 회원 가입자의 식별 및 성인인증 가능</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                                                    <li>
+                                <div class="input_area">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="recommend" value="member_ipin_info"  >
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="text_area">
+                                    <a href="/service/service_info.php?menu=member_ipin_info" target="_blank">
+                                        <span class="txt">
+                                            <strong>아이핀 서비스</strong>
+                                            <span class="s_txt">아이핀 ID와 패스워드로 회원 가입자의 식별 및 성인인증 가능</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                                                    <li>
+                                <div class="input_area">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="recommend" value="convenience_refusal_info"  >
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div class="text_area">
+                                    <a href="/service/service_info.php?menu=convenience_refusal_info" target="_blank">
+                                        <span class="txt">
+                                            <strong>080 수신거부 서비스</strong>
+                                            <span class="s_txt">광고성 정보 전달 시, 고객의 수신거부 요청 ARS로 자동처리</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                                            </ul>
+                    <!--//N-->
+
+                    <!--N:모든 항목 숨김 처리시 노출-->
+                    <p class="empty_notice" style="display:none;">모든 항목의 설정이 완료 되었습니다.</p>
+                    <!--//N-->
+                </div>
+                <!-- //setting_box -->
+            </div>
+            <!-- //setting_cont -->
+
+        </div>
+    </div>
+
+</div>
+<script>
+
+    $(function(){
+        var header_h = $('#header').outerHeight();
+        var location_h = $('#header .breadcrumb').outerHeight();
+        var pageheader_h = $('.page-header').outerHeight();
+        var sub_h = header_h + location_h + 76;
+
+        $(window).resize(resizeContents);
+        resizeContents();
+
+
+        function resizeContents() {
+            if($('.ly_setting').hasClass('sub_type')){
+                if($('.ly_setting').hasClass('on')){
+                    var ly_sub_h3 = ($(window).height())-pageheader_h;
+                    $(".ly_setting").css({'height':ly_sub_h3});
+                }else{
+                    var ly_sub_h2 = ($(window).height())-sub_h;
+                    $(".ly_setting").css({'height':ly_sub_h2});
+                }
+            }else{
+                if($('.ly_setting').hasClass('on')){
+                    $(".ly_setting").css('height','100%');
+                }else{
+                    var ly_h = ($(window).height())-header_h;
+                    $(".ly_setting").css('height', ly_h);
+                }
+            }
+        }
+
+        if($('.ly_setting').hasClass('sub_type')){
+            $(".sub_type").css('top', sub_h);
+        }else{
+            $(".ly_setting").css('top', header_h);
+        }
+
+        $(window).scroll(function() {
+            var position = $(window).scrollTop();
+            if($('.ly_setting').hasClass('sub_type')){
+                var ly_sub_h = ($(window).height())-59;
+                if(position >= 130) {
+                    $(".ly_setting").addClass('on');
+                    $(".ly_setting").addClass('active');
+                    $(".ly_setting").css({'height':ly_sub_h,'top':59});
+                }else{
+                    $(".ly_setting").removeClass('on');
+                    $(".ly_setting").removeClass('active');
+                    resizeContents();
+                    $(".sub_type").css('top', sub_h);
+
+                    if(1 <= position <= 129){
+                        $(".ly_setting").css({'height':ly_sub_h});
+                        $(".sub_type").css('top', sub_h-position);
+                    }else{
+                        var ly_sub_h2 = ($(window).height())-sub_h;
+                        $(".ly_setting").css({'height':ly_sub_h2});
+                    }
+                }
+            }else{
+                if(position >= 1) {
+                    $(".ly_setting").addClass('on');
+                    $(".ly_setting").css({'height':'100%','top':'0px'});
+                } else {
+                    $(".ly_setting").removeClass('on');
+                    resizeContents();
+                    $(".ly_setting").css('top', header_h);
+                }
+            }
+
+
+        });
+
+        //setting_button
+        $('.btn_setting').on('click',function(){
+            $('.ly_setting').show();
+            listSort();
+            var data = {
+                'mode': 'saveLegalRequirementsConfig',
+                'key': 'displayFl',
+                'val': 'true'
+            }
+            $.ajax('/base/layer_legal_requirements_ps.php', {type: "post", data: data});
+        });
+        function listSort() {
+            var checked = $( ".setting_header .input_check_box input[type=checkbox]" ).is(':checked');
+            $('.cont_wrap li').each(function(){
+                var parentsId = $(this).parents('div.setting_cont').attr('id');
+                if($(this).find('input[type=checkbox]').is(':checked') == true) {
+                    var li = $(this).clone();
+                    $('#'+parentsId+' ul').append(li);
+                    if(checked) $(li).attr('style', "display:none;");
+                    $(this).remove();
+                }
+            }).promise().done(function(){
+                if(checked) displayChecked();
+                if ($("#necessary li").length == $("#necessary li input[type=checkbox]:checked").length) {
+                    if ($("#operation li").length == $("#operation li input[type=checkbox]:checked").length) {
+                        if ($("#recommend li").length != $("#recommend li input[type=checkbox]:checked").length) {
+                            $('a[href=#recommend]').get(0).click();
+                        }
+                    } else {
+                        $('a[href=#operation]').get(0).click();
+                    }
+                }
+            });
+        }
+
+        //close_button
+        $('.btn_close').on('click',function(){
+            $('.ly_setting').hide();
+            var data = {
+                'mode': 'saveLegalRequirementsConfig',
+                'key': 'displayFl',
+                'val': 'false'
+            }
+            $.ajax('/base/layer_legal_requirements_ps.php', {type: "post", data: data});
+        });
+
+        // checkbox checked
+        $(document).on('click', '.ly_setting .cont_wrap input[type="checkbox"]', function(event){
+                        var name = $(this).attr('name');
+            var key = $(this).val();
+            var checked = $(this).is(':checked');
+            var data = {
+                'mode': 'saveLegalRequirements',
+                'name': name,
+                'key': key,
+                'val': checked
+            }
+            $.ajax('/base/layer_legal_requirements_ps.php', {type: "post", data: data});
+                    })
+
+        //check_hidden
+        function displayChecked() {
+            var checked = $( ".setting_header .input_check_box input[type=checkbox]" ).is(':checked');
+            if(checked == true) {
+                $('.ly_setting .cont_wrap input[type="checkbox"]:checked').parents('li').hide();
+                if($("input[name=necessary]").length == $("input[name=necessary]:checked").length) $('#necessary .empty_notice').show();
+                if($("input[name=operation]").length == $("input[name=operation]:checked").length) $('#operation .empty_notice').show();
+                if($("input[name=recommend]").length == $("input[name=recommend]:checked").length) $('#recommend .empty_notice').show();
+                $(".setting_header .label_txt").text(" 체크된 항목 노출");
+            } else {
+                $('ul.setting_list li').show();
+                $('.ly_setting .empty_notice').hide();
+                $(".setting_header .label_txt").text(" 체크된 항목 숨김");
+            }
+        };
+
+        $(".setting_header .input_check_box input[type=checkbox]").on("click", function() {
+            displayChecked();
+            var checked = $( ".setting_header .input_check_box input[type=checkbox]" ).is(':checked');
+            var data = {
+                'mode': 'saveLegalRequirementsConfig',
+                'key': 'checkedFl',
+                'val': checked
+            }
+            $.ajax('/base/layer_legal_requirements_ps.php', {type: "post", data: data});
+        });
+        listSort();
+    });
+</script>
+<!-- //pub_190802 -->
+
+<div class="footer">
+    <div class="copyright">
+        &copy; NHN <a href="https://www.godo.co.kr" target="_blank">godo
+            <span>:</span>
+        </a> Corp All Rights Reserved. (ver : <span class="version">5.1.19.1223.6f4e77b1</span>)
+    </div>
+</div>
+<script type="text/javascript">
+    <!--
+    $(document).ready(function () {
+                
+        $.ajax('../base/main_setting_ps.php', {
+            method: "post",
+            data: {mode: 'orderPresentationNew'},
+            global_complete: false,
+            beforeSend: function () {
+                $('.js-oder-count-new').addClass('display-none')
+            },
+            success: function () {
+                if (arguments[0].success === 'OK') {
+                    var result = arguments[0].result;
+                    if (result === true) {
+                        $('.js-oder-count-new').removeClass('display-none');
+                    }
+                }
+            }
+        });
+    });
+    //-->
+</script>
+
+        </div>
+		</div>
+	</div>
+	<div class="gnbAnchor_wrap">
+        <span class="btn_setting"><img src="/admin/gd_share/img/button_setting.png" alt="필수설정 버튼"/></span>
+        <div id="gnbAnchor">
+        <div class="scrollTop" style="display:none;">
+            <a href="#top"><img src="/admin/gd_share/img/scroll_top_btn.png"></a>
+        </div>
+        <div class="scrollDown" style="display:block;">
+            <a href="#down"><img src="/admin/gd_share/img/scroll_down_btn.png"></a>
+        </div>
+    </div>
+</div>
+<iframe name="ifrmProcess" src="/blank.php" width="100%" height="200" class="display-none"></iframe>
+
+
+	<script type="text/javascript">
+    $(function(){
+        adminPanelApiAjax('member', 'member', 'member_list');
+        // 탑버튼 클릭
+        /*$(document).on("click", "a[href=#top]", function(e) {
+            $('html body').animate({scrollTop: 0}, 'fast');
+        });*/
+
+        // 스크롤 최하단시 탑아이콘 출력 (실제 컨텐츠 $('#content > .col-xs-12').height())
+        /*$(window).scroll(function() {
+            if ($(window).height() < $(document).height()) {
+                if ($(window).scrollTop() >= 1) {
+                    $("#gnbTopAnchor").slideDown(150);
+                } else {
+                    $("#gnbTopAnchor").slideUp(100);
+                }
+            }
+        });*/
+
+        $('#gnbAnchor').css('display','block');
+
+        // 탑버튼 클릭
+        $(document).on("click", "a[href=#top]", function(e) {
+            $('html body').animate({scrollTop: 0}, 'fast');
+            $('.scrollDown').css('display','block');
+            $('.scrollTop').css('display','none');
+        });
+
+        // 다운버튼 클릭
+        $(document).on("click", "a[href=#down]", function(e) {
+            $('html body').animate({scrollTop: $(document).scrollTop($(document).height())}, 'fast');
+            $('.scrollDown').css('display','none');
+            $('.scrollTop').css('display','block');
+        });
+
+        $(window).scroll(function() {
+            if($(window).scrollTop() >= 1){
+                // 탑,다운버튼 노출
+                $('.scrollTop').css('display','block');
+                $('.scrollDown').css('display','block');
+
+            }else{
+                $('.scrollTop').css('display','none');
+            }
+
+            if (Math.round($(window).scrollTop()) >= $(document).height() - $(window).height()) {
+                $('.scrollDown').css('display','none');
+            }
+        });
+    });
+</script>	
+</body>
+
+
+</html>
