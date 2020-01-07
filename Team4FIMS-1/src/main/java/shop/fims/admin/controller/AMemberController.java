@@ -1,6 +1,5 @@
 package shop.fims.admin.controller;
 
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,34 +9,37 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import shop.fims.admin.service.AMemberService;
-import shop.fims.vo.Member;
 
 @Controller
 public class AMemberController {
 
 	@Autowired
 	private AMemberService aMemberService;
+	
+
+	/*
+	 * @GetMapping("adminview/member/memberList") public String memberList(Model
+	 * model) { System.out.
+	 * println("---관리자 회원리스트 : getMemberList 메서드 AMemberController.java-------");
+	 * System.out.println(model +
+	 * "<--model getMemberList 메서드 AMemberController.java-------");
+	 * 
+	 * List<Member> list = aMemberService.getMemberList();
+	 * 
+	 * model.addAttribute("memberList", list);
+	 * 
+	 * return "/adminview/member/memberList"; }
+	 */
+	
 	/**
 	 * @param 없음
 	 * @file AMemberController.java
-	 * @name getMemberList
+	 * @name memberListpageing
 	 * @brief 관리자 회원리스트
 	 * @author ksmart33 김동석
 	 * @return adminview/member/loginForm
 	 */
-	@GetMapping("adminview/member/memberList")
-	public String memberList(Model model) {
-		System.out.println("---관리자 회원리스트 : getMemberList 메서드 AMemberController.java-------");
-		System.out.println(model + "<--model getMemberList 메서드 AMemberController.java-------");
-		
-		List<Member> list = aMemberService.getMemberList();
-		
-		model.addAttribute("memberList", list);
-		
-		return "/adminview/member/memberList";
-	}
-	
-	@GetMapping("adminview/member/memberListpage")
+	@GetMapping("/adminview/member/memberList")
 	public String memberListpageing(Model model
 							,@RequestParam(value="currentPage"
 							, required = false
