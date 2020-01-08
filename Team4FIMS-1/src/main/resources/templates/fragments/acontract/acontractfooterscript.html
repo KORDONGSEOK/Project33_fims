@@ -1,0 +1,106 @@
+			<script>
+				webzineEmailSaveBtn = function(){
+					var swd_email_addr = $("#swd_email_addr").val();
+					if(swd_email_addr == ""){
+						wAlert("이메일 주소를 입력하세요.");
+					}else{
+						// 웹진 이메일 등록
+						$.ajax({
+							type:"POST",
+				            url:"/webzine/email/insert.do",
+							dataType: 'text',
+							data: {swd_email_addr:swd_email_addr},
+				            success:function(data){
+				            	if(data == "SUCCESS"){
+				            		sAlert("", "구독신청이 완료되었습니다.");
+				            		$("#swd_email_addr").val("");
+				        		}else{
+				        			wAlert("이메일 형식을 확인해주세요.");
+				        		}
+				            },
+				            error:function(request,status,error){
+				            	errorAlert("데이터 수신중 오류가 발생 했습니다. 잠시후 시도해주세요.");
+				            }
+				        });
+					}
+				}
+				
+				contentsModalView = function(key){
+					$.ajax({
+						type:"GET",
+			            url:"/contents/"+key+"/get.do",
+			            dataType: 'json',
+			            contentType: "application/json; charset=utf-8",
+			            success:function(vo){
+			            	$('#bottomSiteContentsModalHeadTitle').html("<strong>"+vo.cpi_page_name+"</strong>");
+			            	$('#bottomSiteContentsInfo').html(vo.cpi_page_cont);
+			            	$('#bottomSiteContentsModal').modal('show');
+			            },
+			            error:function(request,status,error){
+			            	errorAlert("데이터 수신중 오류가 발생 했습니다. 잠시후 시도해주세요.");
+			            }
+			        });
+				}
+				
+				contentsDivView = function(key, id){
+					$.ajax({
+						type:"GET",
+			            url:"/contents/"+key+"/get.do",
+			            dataType: 'json',
+			            contentType: "application/json; charset=utf-8",
+			            success:function(vo){
+			            	$('#'+id).html(vo.cpi_page_cont);
+			            },
+			            error:function(request,status,error){
+			            	errorAlert("데이터 수신중 오류가 발생 했습니다. 잠시후 시도해주세요.");
+			            }
+			        });
+				}
+
+				contentsModalUrlView = function(url, title){
+					$.ajax({
+						type:"GET",
+			            url:url,
+			            dataType: 'html',
+			            contentType: "application/json; charset=utf-8",
+			            success:function(data){
+			            	$('#bottomSpeedModalTitle').html("<strong>"+title+"</strong>");
+			    			$('#bottomSpeedInfo').html(data);
+			            },
+			            error:function(request,status,error){
+			            	errorAlert("데이터 수신중 오류가 발생 했습니다. 잠시후 시도해주세요.");
+			            }
+			        });
+				}
+				
+				contentsModalKeySeqView = function(key, seq){
+					$.ajax({
+						type:"GET",
+			            url:'/contents/'+key+'/'+seq+'/selectCntsJsonInfo.do',
+			            success:function(data){
+			            	$('#bottomSiteContentsModalHeadTitle').html("<strong>"+data.cpi_page_name+"</strong>");
+			            	$('#bottomSiteContentsInfo').html(data.cpi_page_cont);
+			            	$('#bottomSiteContentsModal').modal('show');
+			            },
+			            error:function(request,status,error){
+			            	errorAlert("데이터 수신중 오류가 발생 했습니다. 잠시후 시도해주세요.");
+			            }
+			        });
+
+				}
+				
+				// 동 주민센터 이동
+				centerMove = function() {
+					val = $("#centerMove option:selected").val();
+					if(val != ""){
+						$("#centerMoveBtn").attr("href", val);
+						return true;
+					}
+					
+					infoSweetAlert("동 주민센터를 선택해주세요.");
+					$("#centerMove").focus();
+					return false;
+				}
+				
+			</script>
+		<!-- //gnWrap -->

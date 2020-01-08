@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="acontractHeadFragment">
+		<meta http-equiv='X-UA-Compatible' content="IE=edge" />
+		<!-- start: META -->
+		<!-- 
+				<meta http-equiv='X-UA-Compatible' content="IE=9" />
+		-->
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+		<meta name="format-detection" content="telephone=no, address=no, email=no">
+
+		<title>강남구청 > 함께강남 > 수의계약 > 발주계획</title>
+		<link rel="image_src" href="/acontract/assets/images/icon/touch/og_image_src.png" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="title" content="강남구청 > 함께강남 > 수의계약 > 발주계획" />
+		<meta name="keywords" content="강남구 포털, 함께강남, 수의계약, 발주계획" />
+		<meta name="description" content="강남구 포털, 함께강남, 수의계약, 발주계획" />
+	
+		<meta name="robots" content="index,follow" />
+	
+		<meta name="author" content="강남구청"/>
+		<meta name="publisher" content="강남구청 | GANGNAM OFFICE" />
+		<!-- facebook meta tag -->
+		<meta property="og:locale" content="ko_KR" />
+		<meta property="og:site_name" content="강남구청 | GANGNAM OFFICE" />
+		<meta property="og:title" content="강남구청 > 함께강남 > 수의계약 > 발주계획" />
+		<meta property="og:type" content="article" />
+		<meta property="og:description" content="강남구 포털, 함께강남, 수의계약, 발주계획" />
+		<meta property="og:url" content="http://www.gangnam.go.kr/contract/list.do?mid=FM041501" />
+		<meta property="og:image" content="/acontract/assets/images/icon/touch/og_image_src.png" />
+		<meta property="article:tag" content="강남구 포털, 함께강남, 수의계약, 발주계획" />
+		<!-- twitter meta tag -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="강남구청 > 함께강남 > 수의계약 > 발주계획" />
+		<meta name="twitter:description" content="강남구 포털, 함께강남, 수의계약, 발주계획" />
+		<meta name="twitter:url" content="http://www.gangnam.go.kr/contract/list.do?mid=FM041501" />
+		<meta name="twitter:image:src" content="/acontract/assets/images/icon/touch/og_image_src.png" />
+		<link rel="apple-touch-icon" sizes="57x57" href="/acontract/assets/images/icon/touch/touch-icon-114.png" />
+		<link rel="apple-touch-icon" sizes="72x72" href="/acontract/assets/images/icon/touch/touch-icon-144.png" />
+		<link rel="apple-touch-icon" sizes="114x114" href="/acontract/assets/images/icon/touch/touch-icon-114.png" />
+		<link rel="apple-touch-icon" sizes="144x144" href="/acontract/assets/images/icon/touch/touch-icon-144.png" />
+		<link rel="icon" sizes="192x192" href="/acontract/assets/images/icon/touch/icon-192.png">
+		<link rel="icon" type="image/png" href="/acontract/assets/images/icon/favicon.png" />
+		<link rel="apple-touch-startup-image" href="/acontract/assets/images/icon/touch/startup_320x480.png">		
+				
+		<link rel="stylesheet" type="text/css" href="/acontract/assets/vendor/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="/acontract/assets/vendor/fontawesome/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="/acontract/assets/vendor/themify-icons/themify-icons.min.css">
+		<link rel="stylesheet" type="text/css" href="/acontract/assets/vendor/animate.css/animate.min.css" media="screen">
+		
+			<link rel="stylesheet" type="text/css" href="/acontract/assets/vendor/perfect-scrollbar/perfect-scrollbar.min.css" media="screen">
+		
+		<link rel="stylesheet" type="text/css" href="/acontract/assets/vendor/switchery/switchery.min.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="/acontract/assets/vendor/jstree/themes/default/style.min.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="/acontract/assets/vendor/sweetalert/sweet-alert.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="/acontract/assets/vendor/sweetalert/ie9.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="/acontract/assets/vendor/toastr/toastr.min.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="/acontract/assets/vendor/DataTables/css/DT_bootstrap.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="/acontract/assets/vendor/flexslider/flexslider.css" media="screen">
+		<link rel="stylesheet" type="text/css" href="/acontract/assets/vendor/swiper/swiper.min.css" media="screen">
+
+		<link rel="stylesheet" type="text/css" href="/acontract/assets/css_new/style.css">
+		<link rel="stylesheet" type="text/css" href="/acontract/assets/css/print.css" media="print">
+
+		<script src="/acontract/assets/vendor/jquery/jquery.min.js"></script>
+		<script src="/acontract/assets/vendor/bxslider/jquery.bxslider.min.js"></script>
+		<script src="/acontract/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+		<script src="/acontract/assets/vendor/jquery-cookie/jquery.cookie.js"></script>
+		
+			<script src="/acontract/assets/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+		
+		<script src="/acontract/assets/vendor/switchery/switchery.min.js"></script>
+		<script src="/acontract/assets/vendor/jquery.sparkline/jquery.sparkline.min.js"></script>
+		<script src="/acontract/assets/vendor/jstree/jstree.js"></script>
+		<script src="/acontract/assets/vendor/sweetalert/sweet-alert.js"></script>
+		<script src="/acontract/assets/vendor/toastr/toastr.min.js"></script>	
+		<script src="/acontract/assets/vendor/DataTables/jquery.dataTables.js"></script>	
+		<script src="/acontract/assets/vendor/DataTables/fnReloadAjax.js"></script>
+		<script src="/acontract/assets/vendor/ckeditor_4.6.0/ckeditor.js"></script>
+		<script src="/acontract/assets/vendor/ckeditor_4.6.0/adapters/jquery.js"></script>
+		<script src="/acontract/assets/js/site-notificationis.js"></script>
+		<script src="/acontract/assets/js/ui-notifications.js"></script>
+		<script src="/acontract/assets/js/table-data.js"></script>
+		<script src="/acontract/assets/js/util.js"></script>
+		<script src="/acontract/assets/js/css_browser_selector.min.js"></script>
+		
+		<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+		
+		<!--[if lt IE 9]>
+			<script src="/assets/vendor/html5shiv/html5shiv.js"></script>
+			<script src="/assets/vendor/respond/respond.src.js"></script>
+		<![endif]-->
+		
+		<script src="/acontract/assets/vendor/jquery-ui/jquery-ui.js"></script>
+		<script src="/acontract/assets/vendor/jquery-fancytree/jquery.fancytree.js"></script>
+		<script src="/acontract/assets/vendor/jquery-konan/jquery.konan.sf.js"></script>
+		<script src="/acontract/assets/vendor/jquery-konan/jquery.konan.sf-ko.js"></script>
+		<script src="/acontract/assets/vendor/flexslider/jquery.flexslider-min.js"></script>
+		<script src="/acontract/assets/vendor/swiper/swiper.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="/acontract/assets/css_new/sub.css">
+		<script type="text/javascript">
+			$(document).ready(function(){
+				
+				$('.top_layer_close').click(function() {
+					var id = $(this).attr('id');
+					var popup_id = $("input:checkbox[id='checkbox_"+id+"']").val();
+					if($("input:checkbox[id='checkbox_"+id+"']").is(":checked") == true){
+						//set_cookie("top_layer_"+popup_id, 1, 168, "gangnam.go.kr");
+						set_cookie("top_layer_"+popup_id, 1, 24, "gangnam.go.kr");
+					}
+					$("#top_layer_"+popup_id).hide();
+				});
+				
+				$('.popup_layer_close').click(function() {
+					var id = $(this).attr('id');
+					var popup_id = $("input:checkbox[id='checkbox_"+id+"']").val();
+					if($("input:checkbox[id='checkbox_"+id+"']").is(":checked") == true){
+						set_cookie("popup_layer_"+popup_id, 1, 24, "gangnam.go.kr");
+					}
+					$("#popup_layer_"+popup_id).hide();
+				});
+				
+				$('.login-btn a').click(function() {
+					var returnUrl = "";
+					if(returnUrl == ""){
+						returnUrl = location.pathname+location.search;
+					}
+					location.href = $(this).attr("href")+"?returnUrl="+encodeURIComponent(returnUrl);
+					return false;
+				});
+				
+				$( "#ieclose" ).click(function() {
+				  $('.ie-up').css('display','none');
+				});
+				
+				//19/07/09 탑버튼
+				$(window).scroll(function() {
+				    if ($(this).scrollTop() > 400) {
+				        $('#scroll-top').fadeIn();
+					    } else {
+					        $('#scroll-top').fadeOut();
+					    }
+					});
+
+				$("#scroll-top").click(function() {
+				    $('html, body').animate({
+				        scrollTop : 0
+				    }, 400);
+				    return false;
+				});
+			});
+			
+			function mostSearch(keyword){
+				$('#topKwd').val(keyword);
+				var form = $('#serchForm')[0];
+				form.submit();
+			}
+			
+			$(function() {
+				// 자동완성 위젯 초기화
+				$('input[name=kwd]').autocomplete({ source: 'http://211.35.57.75:7612/ksf/api/suggest?target=complete'});
+			});
+			
+			
+			//2019/6/11
+			$(function(){
+				$('.subtitleSw').click(function(){
+					if ($(this).hasClass('on')){
+						$(this).removeClass('on');
+						$(this).parents('.subtitleZone').find('.subtitleBlock').hide();
+					}else{
+						$(this).parents('.subtitleZone').find('.subtitleBlock').show();
+						$(this).addClass('on');
+					}
+				});
+			});
+		</script>
+	</head>
+</html>
