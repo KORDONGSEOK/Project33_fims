@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" lang="ko">
+
+<head th:replace="fragments/acontract/acontracthead :: acontractHeadFragment"></head>
+
+<body>
+		<div class="header-top hd-top-wrap">
+			<div class="wid" style="width: 1148px;">
+				<script type='text/javascript'>
+				//<![CDATA[
+					var g3_u = (location.protocol=='https:'?'/main/getHeaderTab.do':'/main/getHeaderTab.do');
+					var g3_r = Math.floor(Math.random()*99999999999);
+					document.write("<scr"+"ipt type='text/javascript' src='"+g3_u);
+					document.write("?siteId=1");					// 탭의 위치 (보건소 : 2)
+					document.write('&amp;siteSubId=www');			// 사이트 고유 아이디 (ex health, www, medicaltour)
+					document.write('&amp;siteSch=N');				// 검색사용여부
+					document.write('&amp;cb=' + g3_r);
+					document.write("'><\/scr"+"ipt>");
+					var g3_s = document.createElement("script");
+					g3_s.src = "//www.gangnam.go.kr/assets/js/office_info/tab.js"; 
+					document.head.appendChild(g3_s);
+					var g3_c = document.createElement("link");
+					g3_c.href = "//www.gangnam.go.kr/assets/css/office_info/tab.css";
+					g3_c.rel = "stylesheet";
+					g3_c.media = "screen";
+					document.head.appendChild(g3_c);
+				//]]>
+				</script>
+			</div>
+		</div>	
+		<!--  explorer up  -->
+		<div class="ie-up" id="ie-up">
+			<div class="container">
+				<div class="iebg">
+					<p class="ietxt">인터넷 이용환경 개선과 사용자의 안전을 위해 최신 브라우저 설치<br>
+					또는 보안에 취약한 브라우저의 업그레이드를 적극 권장합니다.<br>
+					<!-- <a href="/portal/main/contents.do?menuNo=201205" class="upbtn">관련내용 자세히 보기</a> --></p>
+					<ul class="bro-list">
+						<li><a href="http://windows.microsoft.com/ko-kr/internet-explorer/download-ie" target="_blank"><img src="http://www.gangnam.go.kr/assets/images/common/ie7/ie-icon.jpg" alt="보다 안전하고 빠른 익스플로러 최신버전으로 업그레이드 하세요"></a></li>
+						<li><a href="https://www.google.com/chrome/browser/desktop/index.html" target="_blank"><img src="http://www.gangnam.go.kr/assets/images/common/ie7/ch-icon.jpg" alt="보다 안전하고 빠른  크롬 최신버전으로 업그레이드 하세요"></a></li>
+						<li><a href="https://support.apple.com/ko_KR/downloads/safari" target="_blank"><img src="http://www.gangnam.go.kr/assets/images/common/ie7/sa-icon.jpg" alt="보다 안전하고 빠른 사파리 최신버전으로 업그레이드 하세요"></a></li>
+						<li><a href="http://www.mozilla.or.kr/ko/firefox/new/" target="_blank"><img src="http://www.gangnam.go.krt/assets/images/common/ie7/fire-icon.jpg" alt="보다 안전하고 빠른 파이거폭스 최신버전으로 업그레이드 하세요"></a></li>
+					</ul>
+					<p id="ieclose" class="ieclose"><img src="http://www.gangnam.go.kr/assets/images/common/ie7/close-icon.jpg" alt="닫기"></p>
+				</div>
+			</div>
+		</div>
+		
+		<!-- start app @see bottom -->
+	<div id="gnWrap" class="wrap sub">
+		<div class="black-wrap"></div>	
+			<header id="gnHead" class="header" th:replace="fragments/acontract/acontractheader :: acontractHeaderFragment"> </header>
+			<!-- <th:block th:include="fragments/acontract/acontractgnWrap"></th:block> -->
+			<th:block th:include="fragments/acontract/acontractmobilescript"></th:block>
+			<div id="sub-wrap" class="sub" th:replace="fragments/acontract/acontractgnWrap :: acontractsubwrapFragment"></div> 
+			<footer id="gnFoot" class="footer" th:replace="fragments/acontract/acontractfooter :: acontractFooterFragment"></footer>
+			<th:block th:include="fragments/acontract/acontractfooterscript"></th:block>
+	</div>
+		<!-- <th:block layout:fragment="acontractMainContents"></th:block> -->
+		<th:block th:include="fragments/acontract/acontractgnmMenu"></th:block>
+		<th:block th:include="fragments/acontract/acontracthadan"></th:block>	
+	 <!-- <footer th:replace="fragments/acontract/acontractfooter :: acontractFooterFragment"></footer> -->
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

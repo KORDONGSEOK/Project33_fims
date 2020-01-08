@@ -6,8 +6,9 @@ package shop.fims.vo;
  * @brief 모든 회원관리
  * @author ksmart33 김동석
  */
-public class Member {
+public class Member extends Login{
 
+	private int memberNo; //조회수?
 	private String MemCd ; //회원코드 
 	private String MemLevCd ; //모든 회원 레벨코드 
 	private String MemNm ; //이름 
@@ -17,6 +18,18 @@ public class Member {
 	private String MemBirth ; //생년월일 
 	private String MemJoinDt ; //가입일자 
 	
+	public Member(){
+		super();
+	}
+	
+	public int getMemberNo() {
+		return memberNo;
+	}
+
+	public void setMemberNo(int memberNo) {
+		this.memberNo = memberNo;
+	}
+
 	public String getMemCd() {
 		return MemCd;
 	}
@@ -73,13 +86,15 @@ public class Member {
 		System.out.println(memJoinDt + "<--memJoinDt변수 setMemJoinDt 메서드 Member.java");
 		MemJoinDt = memJoinDt;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Member [MemCd=" + MemCd + ", MemLevCd=" + MemLevCd + ", MemNm=" + MemNm + ", MemAddr=" + MemAddr
-				+ ", MemPhone=" + MemPhone + ", MemEmail=" + MemEmail + ", MemBirth=" + MemBirth + ", MemJoinDt="
-				+ MemJoinDt + "]";
+		return "Member [memberNo=" + memberNo + ", MemCd=" + MemCd + ", MemLevCd=" + MemLevCd + ", MemNm=" + MemNm
+				+ ", MemAddr=" + MemAddr + ", MemPhone=" + MemPhone + ", MemEmail=" + MemEmail + ", MemBirth="
+				+ MemBirth + ", MemJoinDt=" + MemJoinDt + "]";
 	}
+	
+
 	
 	
 

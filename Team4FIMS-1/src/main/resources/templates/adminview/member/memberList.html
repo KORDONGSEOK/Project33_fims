@@ -612,13 +612,13 @@ layout:decorate="~{layout/admin/memberdefault}">
     })
 </script>
 </form>
-<form id="frmList" action="" method="get" target="ifrmProcess">
+<form id="frmList" action="/adminview/member/memberListpage" method="get" target="ifrmProcess">
     <div class="table-header form-inline">
         <div class="pull-left">
             검색
-            <strong>2</strong>
+            <strong th:text="${#lists.size(memberListpageing)}"></strong>
             명 / 전체
-            <strong>2</strong>
+            <strong th:text="${memberTotalCount}"></strong>
             명
         </div>
         <div class="pull-right">
@@ -658,7 +658,7 @@ layout:decorate="~{layout/admin/memberdefault}">
         </div>
     </div>
 
-    <table class="table table-rows">
+    <table class="table table-rows" id="myTable">
         <colgroup>
             <col class="width-xs"/>
                             <col/>
@@ -682,150 +682,67 @@ layout:decorate="~{layout/admin/memberdefault}">
                 <input type="checkbox" id="chk_all" class="js-checkall" data-target-name="chk"/>
             </th>
             <th>번호</th>
-                            <th>상점 구분</th>
-                        <th>아이디/닉네임</th>
+            <th>아이디</th>
             <th>이름</th>
-            <th>등급</th>
-            <th>마일리지</th>
-            <th>예치금</th>
-            <th>상품주문건수</th>
-            <th>주문금액</th>
-            <th>회원가입일</th>
-            <th>최종로그인</th>
-            <th>휴면해제일</th>
-            <th>가입승인</th>
-            <th>메일/SMS 발송</th>
-            <th>정보수정</th>
+            <th>권한</th>
+            <th>주소</th>
+            <th>연락처</th>
+            <th>이메일</th>
+            <th>생년월일</th>
+            <th>가입일자</th>
+            <th>수정</th>
+            <th>삭제</th>
         </tr>
         </thead>
         <tbody>
-                        <tr class="center" data-member-no="2">
-                    <td>
-                        <input type="checkbox" name="chk[]" value="2"
-                               data-memid="test_id_2"
-                               data-memnm="이회원"
-                               data-deposit="2000.00"
-                               data-mileage="2150.00"
-                               data-couponcount="0"
-                               data-appfl="y"
-                               data-maillingfl="y"
-                               data-smsfl="y"
-                               data-cellphone="010-1234-1234"
-                               data-email="test02@godo.co.kr"/>
-                    </td>
-                    <td class="font-num">
-                        <span class="number js-layer-crm hand">2</span>
-                    </td>
-                                            <td class="">
-                            <span class="flag flag-16 flag-kr"></span>기준몰                        </td>
-                                        <td>
-                        <span class="font-eng js-layer-crm hand">test_id_2                                                                                        <div class="notice-ref notice-sm">이회원</div>                        </span>
-                    </td>
-                    <td>
-                        <span class="js-layer-crm hand">이회원</span>
-                    </td>
-                    <td>
-                        <span class="js-layer-crm hand">일반회원</span>
-                    </td>
-                    <td>
-                        <span class="font-num js-layer-crm hand">2,150원</span>
-                    </td>
-                    <td>
-                        <span class="font-num js-layer-crm hand">2,000원</span>
-                    </td>
-                    <td>
-                        <span class="font-num js-layer-crm hand">7건</span>
-                    </td>
-                    <td>
-                        <span class="font-num js-layer-crm hand">268,000원</span>
-                    </td>
-                    <td>
-                        <span class="font-date js-layer-crm hand">10-09-01</span>
-                    </td>
-                    <td>
-                        <span class="font-date js-layer-crm hand">16-05-10</span>
-                    </td>
-                    <td>
-                        <span class="font-date js-layer-crm hand">00-00-00</span>
-                    </td>
-                    <td class="">
-                        <span class="js-layer-crm hand">승인</span>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-white btn-sm btnSendMail">메일
-                        </button>
-                                                    <button type="button" class="btn btn-white btn-sm js-sms-send" data-type="select" data-opener="member" data-target-selector=":checkbox[name='chk[]']">SMS
-                            </button>
-                                            </td>
-                    <td>
-                        <button type="button" class="btn btn-white btn-sm btnModify">수정
-                        </button>
-                    </td>
-                </tr>
-                                <tr class="center" data-member-no="7">
-                    <td>
-                        <input type="checkbox" name="chk[]" value="7"
-                               data-memid="test_id_7"
-                               data-memnm="황회원"
-                               data-deposit="2000.00"
-                               data-mileage="2000.00"
-                               data-couponcount="0"
-                               data-appfl="y"
-                               data-maillingfl="y"
-                               data-smsfl="y"
-                               data-cellphone="010-1234-1234"
-                               data-email="test07@godo.co.kr"/>
-                    </td>
-                    <td class="font-num">
-                        <span class="number js-layer-crm hand">1</span>
-                    </td>
-                                            <td class="">
-                            <span class="flag flag-16 flag-kr"></span>기준몰                        </td>
-                                        <td>
-                        <span class="font-eng js-layer-crm hand">test_id_7                                                                                        <div class="notice-ref notice-sm">황회원</div>                        </span>
-                    </td>
-                    <td>
-                        <span class="js-layer-crm hand">황회원</span>
-                    </td>
-                    <td>
-                        <span class="js-layer-crm hand">우수회원</span>
-                    </td>
-                    <td>
-                        <span class="font-num js-layer-crm hand">2,000원</span>
-                    </td>
-                    <td>
-                        <span class="font-num js-layer-crm hand">2,000원</span>
-                    </td>
-                    <td>
-                        <span class="font-num js-layer-crm hand">1건</span>
-                    </td>
-                    <td>
-                        <span class="font-num js-layer-crm hand">12,000원</span>
-                    </td>
-                    <td>
-                        <span class="font-date js-layer-crm hand">10-09-01</span>
-                    </td>
-                    <td>
-                        <span class="font-date js-layer-crm hand">16-05-10</span>
-                    </td>
-                    <td>
-                        <span class="font-date js-layer-crm hand">00-00-00</span>
-                    </td>
-                    <td class="">
-                        <span class="js-layer-crm hand">승인</span>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-white btn-sm btnSendMail">메일
-                        </button>
-                                                    <button type="button" class="btn btn-white btn-sm js-sms-send" data-type="select" data-opener="member" data-target-selector=":checkbox[name='chk[]']">SMS
-                            </button>
-                                            </td>
-                    <td>
-                        <button type="button" class="btn btn-white btn-sm btnModify">수정
-                        </button>
-                    </td>
-                </tr>
-                        </tbody>
+ 	       <th:block th:if="${#lists.size(memberListpageing)} > 0">
+           <tr class="center" data-member-no="2" th:each="memberListpageing, l : ${memberListpageing}">
+           <td>
+           <input type="checkbox" name="chk[]" value="2"
+                  data-memid="test_id_2"
+                  data-memnm="이회원"
+                  data-deposit="2000.00"
+                  data-mileage="2150.00"
+                  data-couponcount="0"
+                  data-appfl="y"
+                  data-maillingfl="y"
+                  data-smsfl="y"
+                  data-cellphone="010-1234-1234"
+                  data-email="test02@godo.co.kr"/>
+           </td>
+           <td class="font-num" th:text="${l.count}"></td>
+           <td>
+               <span class="js-layer-crm hand" th:text="${memberListpageing.LoginCd}"></span>
+           </td>
+           <td>
+               <span class="js-layer-crm hand" th:text="${memberListpageing.MemNm}"></span>
+           </td>
+           <td>
+               <span class="font-num js-layer-crm hand" th:text="${memberListpageing.MemLevNm}"></span>
+           </td>
+           <td>
+               <span class="font-num js-layer-crm hand" th:text="${memberListpageing.MemAddr}"></span>
+           </td>
+           <td>
+               <span class="font-num js-layer-crm hand" th:text="${memberListpageingMemPhone}"></span>
+           </td>
+           <td>
+               <span class="font-num js-layer-crm hand" th:text="${memberListpageing.MemEmail}"></span>
+           </td>
+           <td>
+               <span class="font-date js-layer-crm hand" th:text="${memberListpageing.MemBirth}"></span>
+           </td>
+           <td>
+               <span class="font-date js-layer-crm hand" th:text="${memberListpageing.MemJoinDt}"></span>
+           </td>
+           <td>
+          	 <button type="button" class="btn btn-white btn-sm btnModify">수정</button>
+           </td>
+           <td>
+          	 <button type="button" class="btn btn-white btn-sm btnModify">삭제</button>
+           </td>
+       </tr>
+       </th:block>
     </table>
 
     <div class="table-action clearfix">
@@ -840,8 +757,35 @@ layout:decorate="~{layout/admin/memberdefault}">
         </div>
 
     </div>
-
-    <div class="center"><nav><ul class="pagination pagination-sm"><li class="active"><span>1</span></li></ul></nav></div>
+    <div class="center">
+    	<nav>
+    		<ul class="pagination pagination-sm">
+    			<li>
+    				<a th:href="@{/adminview/member/memberList}">맨처음</a>
+    			</li>
+    			<li>
+    				<a  class="prev" th:if="${currentPage > 1}" 
+					th:href="@{//adminview/member/memberList(currentPage=${currentPage - 1})}">이전</a>
+    			</li>
+    			<th:block th:each="num:${#numbers.sequence(startPageNum,lastPageNum)}">
+    			<li>
+    				<span  th:if="${currentPage == num}" 
+					th:text="${num}"></span>
+					<a  th:unless="${currentPage == num}" 
+					th:text="${num}" 
+					th:href="@{/adminview/member/memberList(currentPage=${num})}"></a>
+    			</li>
+    			</th:block>
+    			<li>
+    				<a th:if="${currentPage < lastPage}" 
+					th:href="@{/adminview/member/memberList(currentPage=${currentPage + 1})}">다음</a>
+    			</li>
+    			<li>
+    				<a th:href="@{/adminview/member/memberList(currentPage=${lastPage})}">마지막</a>
+    			</li>
+    		</ul>
+    	</nav>
+    </div>
 </form>
 
 
@@ -972,7 +916,5 @@ layout:decorate="~{layout/admin/memberdefault}">
 
 
 </th:block>
-
-
 
 </html>

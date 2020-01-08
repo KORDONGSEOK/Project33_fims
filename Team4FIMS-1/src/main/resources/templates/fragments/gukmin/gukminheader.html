@@ -12,9 +12,15 @@
 				<ul>
 					<li id="mainli"><a href="/" id="mainhref">!전체</a></li>
 					<li id="festivalli"><a href="/gukminview/festival/festivalAndEventView" id="festivalhref">!축제·이벤트</a></li>
+<<<<<<< HEAD
 					<li id="marketli"><a href="/test/test" id="markethref">#뭘로할까?</a></li>
 					<li id="promotionli"><a href="Promotion.festa"
 						id="promotionhref">#뭘로할까?</a></li>
+=======
+					<li id="marketli"><a href="/acontractview/private/orderingPlanView" id="markethref">!계약공시</a></li>
+					<li id="promotionli"><a href="/ebudgetview/budget/budgetMainView"
+						id="promotionhref">!경영공시</a></li>
+>>>>>>> branch 'develop' of https://github.com/KORDONGSEOK/Project33_fims.git
 					<li id="communityli"><a href="/gukminview/community/communityView"
 						id="communityhref">!커뮤니티</a>
 						<ul>
@@ -26,43 +32,25 @@
 			</nav>
 			<div class="etcRight">
 				<ul>
-						<li class="ico_spot"><a href="/adminview/adminMainView">!관리자홈페이지</a></li>
-						<li class="ico_spot"><a href="/gukminview/festival/hostSpotRegisterForm">!스팟등록하기</a></li>
-					
-					
+					<li class="ico_spot"><a href="/adminview/adminMainView">!관리자홈페이지</a></li>
+					<li class="ico_spot"><a href="/gukminview/festival/hostSpotRegisterForm">!스팟등록하기</a></li>
 				</ul>
-				
-				
-					<!--
-					<a href="javascript:void(0)" class="pMy"><img
-						src="../../include/img/etc/etc_mimg.png" /><span class="t01">게스트
-							님</span></a> 
-				 -->
-					<a href="/gukminview/login/loginForm" class="pLogout"><span>!로그인</span></a>
-				
-<!-- 			</div>
-			
-						<div class="etcRight">
+					<a th:href="@{/gukminview/login/loginForm}" th:if="${session.SID eq null}" class="pLogout"><span>!로그인</span></a>
+			</div>
+			<th:block th:unless="${session.SID eq null}">
+			<div class="etcRight">
 				<ul>
-					
-					
-						<li class="ico_jjimList"><a href="MyBookmark.festa">찜 목록</a></li>
-					
+					<li class="ico_jjimList"><a href="#">#찜 목록</a></li>
 				</ul>
-				
 					<a title="마이페이지 이동" href="MyPage.festa" class="pMy"><img
 						src="https://joyfesta.kr/include/img/etc/etc_mimg.png" /><span class="t01">
-							 
-								김동석
-							 님
+								[[${session.SNAME}]] 님 [[${session.SLEVEL}]] 권한
 					</span></a>
-					<a href="javascript:void(0)"
+					<a th:href="@{/logout}"
 						onclick="logout('0');"
 						class="pLogout"><span>로그아웃</span> </a>
-				
-				
-			</div> -->
-			
+			</div>
+			</th:block>
 		</div>
 		<form id="searchform" name="searchform" action="/Search.festa" method="post">
 			<input type="hidden" name="searchkeyword" value="" id="searchkeyword"/>
@@ -88,61 +76,51 @@
 					src="https://joyfesta.kr/include/img/ico/ico_search01.png" /></a>
 			</div>
 			<a href="javascript:void(0)" class="totalMenu"><span>!전체메뉴</span></a>
-
 			<!--일반검색 -->
 			<div class="norSearchBox">
 				<p class="tit">인기해시태그</p>
 				<div class="tagBox">
 					<ul class="tagList">
-						
 							<li> 
 									<a href="javascript:void(0)"
 										onclick="searchHashtag('Search.festa?searchkeyword=해외');"
 										class="tag01">#해외</a>
 								</li>
-						
 							<li>
 									<a href="javascript:void(0)"
 										onclick="searchHashtag('https://joyfesta.kr/FestivalDetail.festa?festivalseq=843');"
 										class="tag02">#호미곶해맞이</a>
 								 </li>
-						
 							<li> 
 									<a href="javascript:void(0)"
 										onclick="searchHashtag('Search.festa?searchkeyword=크리스마스');"
 										class="tag03">#크리스마스</a>
 								</li>
-						
 							<li>
 									<a href="javascript:void(0)"
 										onclick="searchHashtag('부산새해맞이 시민의 종 타종행사 2020');"
 										class="tag04">#연말연시</a>
 								 </li>
-						
 							<li>
 									<a href="javascript:void(0)"
 										onclick="searchHashtag('https://joyfesta.kr/FestivalDetail.festa?festivalseq=1174');"
 										class="tag05">#서울랜드겨울빛축제</a>
 								 </li>
-						
 							<li>
 									<a href="javascript:void(0)"
 										onclick="searchHashtag('https://joyfesta.kr/FestivalDetail.festa?festivalseq=1082');"
 										class="tag01">#해운대빛축제</a>
 								 </li>
-						
 							<li>
 									<a href="javascript:void(0)"
 										onclick="searchHashtag('https://joyfesta.kr/FestivalDetail.festa?festivalseq=1127');"
 										class="tag02">#연말연시</a>
 								 </li>
-						
 							<li>
 									<a href="javascript:void(0)"
 										onclick="searchHashtag('https://joyfesta.kr/FestivalDetail.festa?festivalseq=1451');"
 										class="tag03">#소원을말해봐</a>
 								 </li>
-						
 					</ul>
 				</div>
 				<div class="keywordBar">
@@ -155,7 +133,6 @@
 				</div>
 			</div>
 			<!--일반검색 -->
-
 			<!--스마트검색 -->
 			<div class="smartSearchBox">
 				<div class="desc">
@@ -254,51 +231,39 @@
 								<div class="radioBtn">
 									<a href="javascript:void(0)" id="allfestivaltypes"
 										onclick="setFestivalTypes('');">전체</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setFestivalTypes('23');">먹거리</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setFestivalTypes('24');">지역ㆍ특산물</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setFestivalTypes('25');">민속ㆍ전통문화</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setFestivalTypes('26');">미술ㆍ예술</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setFestivalTypes('27');">음악ㆍ공연</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setFestivalTypes('28');">생태계ㆍ자연</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setFestivalTypes('29');">레저ㆍ스포츠</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setFestivalTypes('30');">과학ㆍ기술</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setFestivalTypes('31');">교육ㆍ체험</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setFestivalTypes('32');">종교ㆍ역사</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setFestivalTypes('33');">기타</a>
-									
 								</div>
 							</td>
 						</tr>
@@ -308,31 +273,24 @@
 								<div class="radioBtn">
 									<a href="javascript:void(0)" id="allfestivalsituations"
 										onclick="setFestivalSituations('');">전체</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setFestivalSituations('1');">나홀로</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setFestivalSituations('2');">친구</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setFestivalSituations('3');">연인</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setFestivalSituations('4');">가족</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setFestivalSituations('5');">비즈니스</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setFestivalSituations('6');">모임</a>
-									
 								</div>
 							</td>
 						</tr>
@@ -342,23 +300,18 @@
 								<div class="radioBtn">
 									<a href="javascript:void(0)" id="allfestivalseasons"
 										onclick="setFestivalSeasons('');">전체</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setFestivalSeasons('1');">봄</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setFestivalSeasons('2');">여름</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setFestivalSeasons('3');">가을</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setFestivalSeasons('4');">겨울</a>
-									
 								</div>
 							</td>
 						</tr>
@@ -368,27 +321,21 @@
 								<div class="radioBtn">
 									<a href="javascript:void(0)" id="allfestivalterms"
 										onclick="setFestivalTerms('');">전체</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setFestivalTerms('1');">당일치기</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setFestivalTerms('2');">2일이상</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setFestivalTerms('3');">주말</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setFestivalTerms('4');">평일</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setFestivalTerms('5');">연휴</a>
-									
 								</div>
 							</td>
 						</tr>
@@ -461,35 +408,27 @@
 								<div class="radioBtn">
 									<a href="javascript:void(0)" id="allmarkettypes"
 										onclick="setMarketTypes('');">전체</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setMarketTypes('1');">농수축산</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setMarketTypes('2');">패션의류</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setMarketTypes('3');">한약재</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setMarketTypes('4');">잡화</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setMarketTypes('5');">철물</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setMarketTypes('6');">전자</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setMarketTypes('7');">기타</a>
-									
 								</div>
 							</td>
 						</tr>
@@ -499,67 +438,51 @@
 								<div class="radioBtn">
 									<a href="javascript:void(0)" id="allstoretypes"
 										onclick="setStoreTypes('');">전체</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setStoreTypes('8');">음식/식품</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setStoreTypes('9');">수산/횟집</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setStoreTypes('10');">축산물</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setStoreTypes('11');">농산물/반찬</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setStoreTypes('12');">제과/제빵/떡</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setStoreTypes('13');">마트/과일</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setStoreTypes('14');">방앗간</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setStoreTypes('15');">건강원</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setStoreTypes('16');">화장품</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setStoreTypes('17');">의류</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setStoreTypes('18');">분식</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setStoreTypes('19');">이불/가방/신발</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setStoreTypes('20');">건어물/젓갈</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setStoreTypes('21');">꽃집/귀금속</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setStoreTypes('22');">기타</a>
-									
 								</div>
 							</td>
 						</tr>
@@ -569,31 +492,24 @@
 								<div class="radioBtn">
 									<a href="javascript:void(0)" id="allmarketsituations"
 										onclick="setMarketSituations('');">전체</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setMarketSituations('1');">나홀로</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setMarketSituations('2');">친구</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setMarketSituations('3');">연인</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setMarketSituations('4');">가족</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setMarketSituations('5');">비즈니스</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setMarketSituations('6');">모임</a>
-									
 								</div>
 							</td>
 						</tr>
@@ -603,23 +519,18 @@
 								<div class="radioBtn">
 									<a href="javascript:void(0)" id="allmarketseasons"
 										onclick="setMarketSeasons('');">전체</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setMarketSeasons('1');">봄</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setMarketSeasons('2');">여름</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setMarketSeasons('3');">가을</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setMarketSeasons('4');">겨울</a>
-									
 								</div>
 							</td>
 						</tr>
@@ -629,27 +540,21 @@
 								<div class="radioBtn">
 									<a href="javascript:void(0)" id="allmarketterms"
 										onclick="setMarketTerms('');">전체</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setMarketTerms('1');">당일치기</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setMarketTerms('2');">2일이상</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setMarketTerms('3');">주말</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setMarketTerms('4');">평일</a>
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setMarketTerms('5');">연휴</a>
-									
 								</div>
 							</td>
 						</tr>
@@ -665,11 +570,7 @@
 				</div>
 			</div>
 		</form>
-
-
-
 		<!--스마트검색 -->
 	</div>
 </header>
-
 </html>

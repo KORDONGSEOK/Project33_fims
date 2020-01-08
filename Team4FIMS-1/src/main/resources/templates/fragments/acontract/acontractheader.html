@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org" >
+
+<!-- start: header -->  
+<header id="gnHead" class="header" th:fragment="acontractHeaderFragment">
+				<div class="nav_top">
+					<div class="h_center">
+						<div class="logo">
+							<h1 class="web_logo"><a href="/"><img src="//www.gangnam.go.kr/assets/images/common/main_logo.gif" alt="강남구청 로고" width="240" height="81"/></a></h1>
+							<h1 class="mobile_logo"><a href="/"><img src="//www.gangnam.go.kr/assets/images/common/m_logo.png" alt="강남구청 로고"/></a></h1>
+						</div>
+						<div class="serch-form-area">
+							<form method="get" id="serchForm" action="http://search.gangnam.go.kr/search.jsp" target="_blank">
+								<input type="text" autocomplete="off" id="topKwd" class="keyword-txt" name="kwd" title="검색어 입력" placeholder="검색어를 입력하세요" />
+								<div class="search-btn">
+									<button type="submit" title="검색결과 새창열기"><i class="fa fa-search" aria-hidden="true"><span class="blind">검색</span></i></button>
+								</div>
+							</form>
+						</div>
+						<div class="sns">
+							<ul>
+								<li class="facebook"><a href="#" target="_blank" title="새창열림"><i class="fa fa-facebook" aria-hidden="true"></i><span class="sr-only">#페이스북</span></a></li>
+								<li class="twitter"><a href="#" target="_blank" title="새창열림"><i class="fa fa-twitter" aria-hidden="true"></i><span class="sr-only">#트위터</span></a></li>
+								<li class="instagram"><a href="#" target="_blank" title="새창열림"><i class="fa fa-instagram" aria-hidden="true"></i><span class="sr-only">#인스타그램</span></a></li>
+								<li class="youtube"><a href="#" target="_blank" title="새창열림"><i class="fa fa-youtube-play" aria-hidden="true"></i><span class="sr-only">#유튜브</span></a></li>
+								<li class="blog"><a href="#" target="_blank" title="새창열림">#네이버 블로그</a></li>
+							</ul>
+						</div>
+						<div class="lang-btn">
+							<a href="javascript:;" class="btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							KOR	<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#" target="_blank" title="새창열림">#ENG</a></li>
+								<li><a href="#" target="_blank" title="새창열림">#CHN</a></li>
+								<li><a href="#" target="_blank" title="새창열림">#JPN</a></li>
+							</ul>
+						</div>
+						<div class="most_search bannerArea">
+							  <ul class="list_slider banner">
+								<li><a onclick="mostSearch('여권'); return false;" href="#" target="_blank" title="새창열림">#여권</a></li>
+								<li><a onclick="mostSearch('폐기물배출'); return false;" href="#" target="_blank" title="새창열림">#폐기물배출</a></li>
+								<li><a onclick="mostSearch('민방위'); return false;" href="#" target="_blank" title="새창열림">#민방위</a></li>
+								<li><a onclick="mostSearch('건축과'); return false;" href="#" target="_blank" title="새창열림">#건축과</a></li>
+								<li><a onclick="mostSearch('자전거'); return false;" href="#" target="_blank" title="새창열림">#자전거</a></li>
+								<li><a onclick="mostSearch('보건증'); return false;" href="#" target="_blank" title="새창열림">#보건증</a></li>
+								<li><a onclick="mostSearch('옥외광고물'); return false;" href="#" target="_blank" title="새창열림">#옥외광고물</a></li>
+								<li><a onclick="mostSearch('조직도'); return false;" href="#" target="_blank" title="새창열림">#조직도</a></li>
+								<li><a onclick="mostSearch('재산세'); return false;" href="#" target="_blank" title="새창열림">#재산세</a></li>
+							</ul>
+						</div>
+<!-- 						<div class="most_search bannerArea">
+							  <ul class="list_slider banner">
+								<li><a onclick="mostSearch('여권'); return false;" href="http://search.gangnam.go.kr/search.jsp?kwd=여권" target="_blank" title="새창열림">여권</a></li>
+								<li><a onclick="mostSearch('폐기물배출'); return false;" href="http://search.gangnam.go.kr/search.jsp?kwd=폐기물배출" target="_blank" title="새창열림">폐기물배출</a></li>
+								<li><a onclick="mostSearch('민방위'); return false;" href="http://search.gangnam.go.kr/search.jsp?kwd=민방위" target="_blank" title="새창열림">민방위</a></li>
+								<li><a onclick="mostSearch('건축과'); return false;" href="http://search.gangnam.go.kr/search.jsp?kwd=건축과" target="_blank" title="새창열림">건축과</a></li>
+								<li><a onclick="mostSearch('자전거'); return false;" href="http://search.gangnam.go.kr/search.jsp?kwd=자전거" target="_blank" title="새창열림">자전거</a></li>
+								<li><a onclick="mostSearch('보건증'); return false;" href="http://search.gangnam.go.kr/search.jsp?kwd=보건증" target="_blank" title="새창열림">보건증</a></li>
+								<li><a onclick="mostSearch('옥외광고물'); return false;" href="http://search.gangnam.go.kr/search.jsp?kwd=옥외광고물" target="_blank" title="새창열림">옥외광고물</a></li>
+								<li><a onclick="mostSearch('조직도'); return false;" href="http://search.gangnam.go.kr/search.jsp?kwd=조직도" target="_blank" title="새창열림">조직도</a></li>
+								<li><a onclick="mostSearch('재산세'); return false;" href="http://search.gangnam.go.kr/search.jsp?kwd=재산세" target="_blank" title="새창열림">재산세</a></li>
+							</ul>
+						</div> -->
+						<ul class="slider_btn">
+							<li class="prev-btn"><a href="javascript:;"><i class="fa fa-chevron-left" aria-hidden="true"></i><span class="sr-only">이전</span></a></li>
+							<li class="play-btn" style="display: none;"><a href="javascript:;"><i class="fa fa-play" aria-hidden="true"></i><span class="sr-only">재생</span></a></li>
+							<li class="pause-btn" style="display: list-item;"><a href="javascript:;"><i class="fa fa-pause" aria-hidden="true"></i><span class="sr-only">일시정지</span></a></li>
+							<li class="next-btn"><a href="javascript:;"><i class="fa fa-chevron-right" aria-hidden="true"></i><span class="sr-only">다음</span></a></li>
+						</ul>
+						
+						<script type="text/javascript">
+							//헤더 검색어 슬라이더
+						/*var mySlider = $( '.list_slider' ).bxSlider({
+								auto: true,
+								mode: 'horizontal',
+								minSlides: 6,
+								maxSlides: 6,
+								pager: false,
+								moveSlides: 1,
+								slideWidth: 70,
+								controls: false,
+								autoHover: true,
+							});
+						 	$( '.slider_btn .prev-btn a' ).on( 'click', function () {
+								mySlider.goToPrevSlide();  //이전 슬라이드 배너로 이동
+								return false;              //<a>에 링크 차단
+							 });
+	
+							    //다음 버튼을 클릭하면 다음 슬라이드로 전환
+							 $( '.slider_btn .next-btn a' ).on( 'click', function () {
+								mySlider.goToNextSlide();  //다음 슬라이드 배너로 이동
+								return false;
+							 });
+							 $('.slider_btn .pause-btn a').click(function(){
+								 mySlider.stopAuto();
+								$(this).parents('.pause-btn').hide();
+						        $('.slider_btn .play-btn').show();
+						    });
+							$('.slider_btn .play-btn a').click(function(){
+								mySlider.startAuto();
+								$(this).parents('.play-btn').hide();
+						        $('.slider_btn .pause-btn').show();
+							});*/
+							
+							$(document).ready(function() {
+								bannerArea();
+								$(".slider_btn .pause-btn a").click(function(){
+									$(".slider_btn .pause-btn").hide();
+									$(".slider_btn .play-btn").show();
+									$(".slider_btn .play-btn a").focus();
+								});
+								$(".slider_btn .play-btn a").click(function(){
+									$(".slider_btn .play-btn").hide();
+									$(".slider_btn .pause-btn").show();
+									$(".slider_btn .pause-btn a").focus();
+								});
+							});
+
+							function bannerArea() {
+								var $bannerArea = $(".bannerArea"),
+									$controlArea = $bannerArea.children(".controlArea"),
+									$prev = $(".slider_btn .prev-btn").children("a"),
+									$next = $(".slider_btn .next-btn").children("a"),
+									$play = $(".slider_btn .play-btn").children("a"),
+									$stop = $(".slider_btn .pause-btn").children("a"),
+									$outerWrap = $("<div />",{"class" : "outerWrap"}).appendTo($bannerArea),
+									$innerWrap = $bannerArea.children(".banner").appendTo($outerWrap),
+									$item = $innerWrap.find("li"),
+									itemLength = $item.length,
+									movingWidth = $item.first().width(),
+									currentIdx = 0,
+									visibleItem = 6,
+									lastIdx = itemLength - visibleItem - 1,
+									rollTimer,
+									rollDelay = 5000,	
+									clickable = true,
+									rolling = true;
+
+								if ( itemLength ) mainFunc();  // > visibleItem
+
+								// mainFunc
+								function mainFunc() {
+
+									if ( rollTimer ) rollTimer;
+									rollTimer = setInterval(rollingDirect, rollDelay);
+
+									$stop.on({
+										click : function() {
+											clearInterval(rollTimer);
+											rolling =  false;				
+											return false;
+											
+										}
+									});
+
+									$play.on({
+										click : function() {
+											if ( !rolling ) {
+												if ( rollTimer ) rollTimer;
+												rollTimer = setInterval(rollingDirect, rollDelay);
+											}
+											return false;
+										}
+									});
+
+									$prev.on({
+										click : function() {
+											if ( clickable ) {
+												clearInterval(rollTimer);
+												rolling = false;				
+												rollReverse();
+											}
+											return false;
+										}
+									});
+
+									$next.on({
+										click : function() {
+											if ( clickable ) {
+												clearInterval(rollTimer);
+												rolling = false;				
+												rollingDirect();
+											}
+											return false;
+										}
+									});
+
+								}
+
+								// rolling
+								function rollingDirect() {		
+									clickable = false;
+									currentIdx += 1;		
+									if ( currentIdx == itemLength ) currentIdx = 0;
+									$innerWrap.stop(true, true).animate({
+										"margin-left" : - movingWidth
+									}, 250, function() {
+										$(this).find("li").first().appendTo($(this));
+										$(this).css("margin-left",0);
+										clickable = true;
+									});
+								}
+
+								// rollReverse
+								function rollReverse() {		
+									clickable = false;
+									currentIdx -= 1;
+									if ( currentIdx < 0 ) currentIdx = $item.length - 1;
+									$innerWrap.find("li").last().prependTo($innerWrap);
+									$innerWrap.css("margin-left", - movingWidth);
+									$innerWrap.stop(true, true).animate({
+										"margin-left" : 0
+									}, 250, function() {
+										clickable = true;
+									});
+								}
+
+								// setButton
+								function setButton() {
+
+								}
+
+
+							}
+							
+							
+						</script>
+						
+						<div class="nav-button">
+							<div class="hamburger">
+								<div class="hamburger-box">
+									<div class="hamburger-inner"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<nav class="navbar">
+					<div class="nav_center">
+						<div class="gnb">
+							<ul>
+									<li class="depth1">
+										<a href="#!" id="gnmainMenu" title="품격강남">#품격강남</a>
+												<div class="sub-outer">
+													<div class="sub_container">
+														<div class="lbox">
+															<img class="title" src="http://www.gangnam.go.kr/assets/images/common/gnb_lbox-title.png" alt="GLOBAL GANGNAM-GU KOREA"/>
+															<p class="detail">세계속의 강남으로<br/><span>새롭게 시작</span>합니다!</p>
+														</div>
+														<div class="sub-box">
+															<ol>
+																<li><a href="#" target="_self" title="전체">#전체</a></li>
+																<li><a href="#" target="_self" title="기획재정">#기획재정</a></li>
+																<li><a href="#" target="_self" title="복지생활">복지생활</a></li>
+																<li><a href="#" target="_self" title="뉴디자인">#뉴디자인</a></li>
+																<li><a href="#" target="_self" title="도시환경">#도시환경</a></li>
+															</ol>
+															<ol>
+																<li><a href="#" target="_self" title="안전교통">#안전교통</a></li>
+																<li><a href="#" target="_self" title="행정">#행정</a></li>
+																<li><a href="#" target="_self" title="보건">#보건</a></li>
+																<li><a href="#" target="_self" title="기타">#기타</a></li>
+																<li><a href="#" target="_self" title="사업이행현황">#사업이행현황</a></li>
+															</ol>
+															<ol>
+																<li><a href="#" target="_self" title="해외홍보방송">#해외홍보방송</a></li>
+															</ol>
+														</div>
+														<div class="rbox">
+																<div class="banner-style" style="display: none;">
+																	<a href="#"><img src="http://www.gangnam.go.kr/assets/images/main/meun_1st.jpg" alt="민선 7기 첮돌 성과"></a>
+																</div>
+														</div>
+													</div>
+												</div>
+									</li>
+									<li class="depth1">
+										
+										<a href="#!"  title="분야별정보">분야별정보</a>
+												<div class="sub-outer">
+													<div class="sub_container">
+														<div class="lbox">
+															<img class="title" src="http://www.gangnam.go.kr/assets/images/common/gnb_lbox-title.png" alt="GLOBAL GANGNAM-GU KOREA"/>
+															<p class="detail">세계속의 강남으로<br/><span>새롭게 시작</span>합니다!</p>
+														</div>
+														<div class="sub-box">
+															<ol>
+																<li><a href="#" target="_self" title="공약&매니페스토">#공약&매니페스토</a></li>
+																<li><a href="#" target="_self" title="민원">#민원</a></li>
+																<li><a href="#" target="_self" title="기획재정">#기획재정</a></li>
+																<li><a href="#" target="_self" title="세금">#세금</a></li>
+																<li><a href="#" target="_self" title="문화/관광">#문화/관광</a></li>
+															</ol>
+															<ol>
+																<li><a href="#" target="_self" title="복지">#복지</a></li>
+																<li><a href="#" target="_self" title="교육">#교육</a></li>
+																<li><a href="#" target="_self" title="보건/위생">#보건/위생</a></li>
+																<li><a href="#" target="_self" title="산업고용">#산업고용</a></li>
+																<li><a href="#" target="_self" title="도로교통">#도로교통</a></li>
+															</ol>
+															<ol>
+																<li><a href="#" target="_self" title="재난안전">#재난안전</a></li>
+																<li><a href="#" target="_self" title="환경">#환경</a></li>
+																<li><a href="#" target="_self" title="토지관리">#토지관리</a></li>
+																<li><a href="#" target="_self" title="도시계획">#도시계획</a></li>
+																<li><a href="#" target="_self" title="공공데이터개방">#공공데이터개방</a></li>
+															</ol>
+														</div>
+														<div class="rbox">
+																<div class="quick-style">
+																	<!-- 오버시의 이미지는 ~~~~~_on으로 저장할것 -->
+																	<a href="#" class="quick col-md-6">
+																		<div class="icon"><img src="http://www.gangnam.go.kr/assets/images/main/1depth_icon01.png" alt="" /></div>
+																		<div class="title">#여권발급</div>
+																	</a>
+																	<a href="#" class="quick col-md-6">
+																		<div class="icon"><img src="http://www.gangnam.go.kr/assets/images/main/1depth_icon02.png" alt=""/></div>
+																		<div class="title">#정보화교실</div>
+																	</a>
+																</div>
+														</div>
+													</div>
+												</div>
+									</li>
+									<li class="depth1">
+										<a href="#!"  title="소통">소통</a>
+												<div class="sub-outer">
+													<div class="sub_container">
+														<div class="lbox">
+															<img class="title" src="http://www.gangnam.go.kr/assets/images/common/gnb_lbox-title.png" alt="GLOBAL GANGNAM-GU KOREA"/>
+															<p class="detail">세계속의 강남으로<br/><span>새롭게 시작</span>합니다!</p>
+														</div>
+														<div class="sub-box">
+															<ol>
+																<li><a href="#" target="_blank" title="정순균입니다">#정순균입니다</a></li>
+																<li><a href="#" target="_self" title="구청장에게바란다">#구청장에게바란다</a></li>
+																<li><a href="#" target="_blank" title="새올전자민원창구">#새올전자민원창구</a></li>
+																<li><a href="#" target="_self" title="자유게시판">#자유게시판</a></li>
+																<li><a href="#" target="_self" title="주민참여예산">#주민참여예산</a></li>
+															</ol>
+															<ol>
+																<li><a href="#" target="_self" title="청렴">#청렴</a></li>
+																<li><a href="#" target="_self" title="신고">#신고</a></li>
+																<li><a href="#" target="_self" title="설문과참여">#설문과참여</a></li>
+																<li><a href="#" target="_self" title="신청">#신청</a></li>
+																<li><a href="#" target="_self" title="상담">#상담</a></li>
+															</ol>
+															<ol>
+																<li><a href="#" target="_self" title="궁금하세요?(FAQ)">#궁금하세요?(FAQ)</a></li>
+																<li><a href="#" target="_self" title="홈페이지오류문의">#홈페이지오류문의</a></li>
+															</ol>
+														</div>
+														<div class="rbox">
+																<div class="quick-style">
+																	<a href="#" class="quick col-md-6">
+																		<div class="icon"><img src="http://www.gangnam.go.kr/assets/images/main/2depth_icon01.png" alt="" /></div>
+																		<div class="title">#대형폐기물</div>
+																	</a>
+																	<a href="#" class="quick col-md-6">
+																		<div class="icon"><img src="http://www.gangnam.go.kr/assets/images/main/2depth_icon02.png" alt=""/></div>
+																		<div class="title">#이벤트</div>
+																	</a>
+																</div>
+														</div>
+													</div>
+												</div>
+									</li>
+									<li class="depth1">
+										<a href="#!"  title="뉴스룸">뉴스룸</a>
+												<div class="sub-outer">
+													<div class="sub_container">
+														<div class="lbox">
+															<img class="title" src="http://www.gangnam.go.kr/assets/images/common/gnb_lbox-title.png" alt="GLOBAL GANGNAM-GU KOREA"/>
+															<p class="detail">세계속의 강남으로<br/><span>새롭게 시작</span>합니다!</p>
+														</div>
+														<div class="sub-box">
+															<ol>
+																<li><a href="#" target="_self" title="생활정보">#생활정보</a></li>
+																<li><a href="#" target="_self" title="영상뉴스">#영상뉴스</a></li>
+																<li><a href="#" target="_self" title="소식지(강남라이프)">#소식지(강남라이프)</a></li>
+																<li><a href="#" target="_self" title="기획특집">#기획특집</a></li>
+																<li><a href="#" target="_self" title="웹진">#웹진</a></li>
+															</ol>
+															<ol>
+																<li><a href="#" target="_self" title="카드뉴스">#카드뉴스</a></li>
+																<li><a href="#" target="_self" title="구정백서">#구정백서</a></li>
+																<li><a href="#" target="_self" title="인포그래픽">#인포그래픽</a></li>
+																<li><a href="#" target="_self" title="간행물">#간행물</a></li>
+															</ol>
+														</div>
+														<div class="rbox">
+																<div class="banner-style">
+																	<a href="#" class="banner"><img src="http://www.gangnam.go.kr/assets/images/common/gnb_rbox_banner.png" alt="강남구청 카드뉴스 보러가기!"/></a>
+																</div>
+														</div>
+													</div>
+												</div>
+									</li>
+									<li class="depth1">
+										<a href="#!"  title="함께강남">함께강남</a>
+												<div class="sub-outer">
+													<div class="sub_container">
+														<div class="lbox">
+															<img class="title" src="http://www.gangnam.go.kr/assets/images/common/gnb_lbox-title.png" alt="GLOBAL GANGNAM-GU KOREA"/>
+															<p class="detail">세계속의 강남으로<br/><span>새롭게 시작</span>합니다!</p>
+														</div>
+														<div class="sub-box">
+															<ol>
+																<li><a href="#" target="_self" title="공지사항">#공지사항</a></li>
+																<li><a href="#" target="_self" title="고시공고">#고시공고</a></li>
+																<li><a href="#" target="_self" title="보도자료">#보도자료</a></li>
+																<li><a href="#" target="_self" title="언론보도">#언론보도</a></li>
+																<li><a href="#" target="_self" title="오늘의 포토">#오늘의 포토</a></li>
+															</ol>
+															<ol>
+																<li><a href="/acontractview/private/orderingPlanView" target="_self" title="수의계약">!수의계약</a></li>
+																<li><a href="/acontractview/private/generalContractOrdPlan" target="_self" title="일반계약">!일반계약</a></li>
+																<li><a href="#" target="_self" title="구보/입법예고">#구보/입법예고</a></li>
+																<li><a href="#" target="_self" title="강남구소개">#강남구소개</a></li>
+																<li><a href="#" target="_self" title="조직안내">#조직안내</a></li>
+															</ol>
+															<ol>
+																<li><a href="#" target="_self" title="청사안내">#청사안내</a></li>
+																<li><a href="#" target="_self" title="공공시설">#공공시설</a></li>
+																<li><a href="#" target="_self" title="자매결연도시">#자매결연도시</a></li>
+																<li><a href="#" target="_self" title="타기관공시송달">#타기관공시송달</a></li>
+																<li><a href="#" target="_self" title="홈페이지이용안내">#홈페이지이용안내</a></li>
+															</ol>
+														</div>
+														<div class="rbox">
+																<div class="quick-style">
+																	<a href="#" class="quick col-md-6">
+																		<div class="icon"><img src="http://www.gangnam.go.kr/assets/images/main/4depth_icon01.png" alt="" /></div>
+																		<div class="title">#주민센터안내</div>
+																	</a>
+																	<a href="#" class="quick col-md-6">
+																		<div class="icon"><img src="http://www.gangnam.go.kr/assets/images/main/4depth_icon02.png" alt=""/></div>
+																		<div class="title">#조직도</div>
+																	</a>
+																</div>
+														</div>
+													</div>
+												</div>
+									</li>
+								<!-- <li class="nav_petition"><a href="http://www.gangnam.go.kr/petition/list.do" target=_blank class="text-skyblue">천명청원</a></li> -->
+							</ul>
+						</div>
+						<div class="right-header">
+							<div class="btn-wrap clearfix">
+										<div class="login-btn">
+											<a href="#" class="btn" title="로그인">#로그인</a>
+										</div>
+							</div>
+						</div>
+					</div>
+				</nav>
+			</header>
+			<!-- end: header -->
+</html>

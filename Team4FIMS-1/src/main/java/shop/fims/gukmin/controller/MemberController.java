@@ -1,16 +1,28 @@
 package shop.fims.gukmin.controller;
 
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import shop.fims.gukmin.service.MemberService;
+import shop.fims.vo.Member;
 
 @Controller
 public class MemberController {
 
+	private static final Logger log = LoggerFactory.getLogger(MemberController.class);
+
 	@Autowired
 	private MemberService memberService;
+	
 	/**
 	 * @param 없음
 	 * @file MemberController.java
@@ -19,10 +31,40 @@ public class MemberController {
 	 * @author ksmart33 김동석
 	 * @return gukminview/login/loginForm
 	 */
-	@GetMapping("gukminview/login/loginForm")
+	@GetMapping("/gukminview/login/loginForm")
 	public String gukminLogin() {
 		System.out.println("---국민로그인 : gukminLogin MemberController.java-------");
 		return "/gukminview/login/loginForm";
+	}
+	
+	
+	//로그인하기
+	@PostMapping("/gukminview/login/loginForm")
+	public String login(Member member, HttpSession session, Model model) {
+		//입력된 아이디 비밀번호
+		System.out.println(member.toString() + "<--입력된 정보");
+		log.error(member.toString());
+		Map<String,Object> map = memberService.getMemberLogin(member);
+		String result 		= (String) map.get("result"); 
+		Member loginMember 	= (Member) map.get("loginMember");
+		
+		//로그인 실패 화면 login
+		if(!result.equals("로그인 성공")) {
+			model.addAttribute("result", result);
+			return "/gukminview/login/loginForm";
+		}
+		session.setAttribute("SID"		, loginMember.getLoginCd());
+		session.setAttribute("SLEVEL"	, loginMember.getMemLevNm());
+		session.setAttribute("SNAME"	, loginMember.getMemNm());
+		
+		//로그인 성공 화면 index
+		return "redirect:/";
+	}
+	
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
 	}
 	
 	/**
