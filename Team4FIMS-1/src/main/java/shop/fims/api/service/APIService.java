@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.net.URLEncoder;
 
 import org.springframework.stereotype.Service;
 
@@ -153,7 +154,7 @@ public class APIService {
 						parameter = parameter + "&" + "cat3=" + apiVo.getCat3();
 				}
 			}
-			parameter = parameter + "&" + "keyword=" + apiVo.getKeyword();
+			parameter = parameter + "&" + "keyword=" + URLEncoder.encode(apiVo.getKeyword(), "UTF-8");
 
 
 			break;
@@ -191,8 +192,7 @@ public class APIService {
 
 		URL url = new URL(addr = addr + apiVo.getType() + sevicekey + parameter);
 		System.out.println(addr);
-		BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
-		System.out.println(url.openStream());
+		BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream(),"UTF-8"));
 		while ((line = br.readLine()) != null) {
 			result = result.concat(line);
 		}

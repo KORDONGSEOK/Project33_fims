@@ -14,7 +14,49 @@
 	$(document).ready(function() {
 		statlist();//기간 별 리스트 호출
 
+		$('#keywordsearchbutton').on('click',function(){
+			searchKeyword();
+		})
+		
+		$('#searchKeyword').on('keyup',function(){
+			if(event.keyCode==13){//엔터 누르면 실행
+				searchKeyword();
+			}
+		})
+		
 	});
+	
+
+	function searchKeyword(){
+		var data={};
+		data.keyword = $('#searchKeyword').val();
+		data.arrange = "P"
+		$.ajax({
+            url : "/api/searchKeyword",
+            dataType : "json",
+            contentType : "application/json;charset=UTF-8",
+            data : JSON.stringify(data),
+            type : "POST",
+            async : false
+        }).done(function(data) {
+
+            console.log(data);
+            $('#homtitle').empty();
+            $('#homtitle').append('키워드 <strong>검색 목록</strong>');
+            $('#homelist').empty();
+            $(data.response.body.items.item).each((index,item)=>{
+            	
+            	$('#homelist').append(
+            			"<div class='list'><div class='pic_area'><a href=''#' class='pic'><img src='"+item.firstimage+"'/><div class='sts_area'><span class='sts_be'>진행<br />중</span></div></a></div>"
+						+"<div class='cont'><p class='t01'><a href='#'>"
+						+item.title.substring(item.title.indexOf('\(')+1,item.title.indexOf('\)'))//( )사이의 문자열만 추출
+						+"</a></p><div class='t02'>"
+						+"</span><span class='gps'>"+item.addr1+"</span></div></div></div>"		
+            	)	                   
+            });
+                  
+        });
+	}
 	
 	function statlist(){
 		//메인 화면 축제 검색 리스트
@@ -26,7 +68,7 @@
 		if(dd<10)dd='0'+dd;
 		if(mm<10)mm='0'+mm;
 		
-		data={};
+		var data={};
 		data.arrange = "O"
 		data.eventStartDate = ''+yyyy+mm+dd
 		data.eventEndDate = ''+yyyy+(mm+1)+dd //한달동안
@@ -41,6 +83,8 @@
         }).done(function(data) {
 
             console.log(data);
+            $('#homtitle').empty();
+            $('#homtitle').append('이달의 <strong>축제 목록</strong>');
             $('#homelist').empty();
             $(data.response.body.items.item).each((index,item)=>{
             	
@@ -93,15 +137,12 @@
 						<li class="ico_spot"><a href="/gukminview/festival/hostSpotRegisterForm">!스팟등록하기</a></li>
 				</ul>
 					<a href="/gukminview/login/loginForm" class="pLogout"><span>!로그인</span></a>
-			<form id="searchform" name="searchform" action="#" method="post">
+			<form>
 				<div class="searchBox">
-					<input type="text" autocomplete="off" id="tagSearch"
-						name="tagSearch"
-						placeholder="#무엇을 찾고 싶으세요?" /> <a href="javascript:void(0)"
-						class="btnSearch"><img
-						src="https://joyfesta.kr/include/img/ico/ico_search.png" id="keywordsearchbutton" /></a>
-					<a href="javascript:void(0)" class="btnSmartSearch"><img
-						src="https://joyfesta.kr/include/img/ico/ico_search01.png" /></a>
+					<input type="text" id="searchKeyword" name="searchKeyword" placeholder="검색 하고자 하는 키워드를 입력해주세요"/> 
+					<a href="javascript:void(0)" class="btnSearch">
+					<img src="https://joyfesta.kr/include/img/ico/ico_search.png" id="keywordsearchbutton" />
+					</a>
 				</div>
 			</form>
 			</div>
@@ -114,7 +155,7 @@
 		</ul>
 	</div>
 	<div class="obgBox" style="padding-top: 150px">
-		<h2 class="mtit">
+		<h2 class="mtit" id='homtitle'>
 			#오늘의 <strong>핫 스팟!</strong>
 		</h2>
 		<div class="hotSlideBox">
@@ -122,12 +163,6 @@
 				<div class="item" id="homelist">
 
 		</div>
-	</div>
-	<div class="hotRela">
-		<a href="javascript:void(0)" class="detLeft"><img
-			src="https://joyfesta.kr/include/img/ico/ico_prev03.png" /></a> <a
-			href="javascript:void(0)" class="detRight"><img
-			src="https://joyfesta.kr/include/img/ico/ico_next03.png" /></a>
 	</div>
 	</div>
 	</div>
