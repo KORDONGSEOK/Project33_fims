@@ -9,14 +9,14 @@ public class MainController {
 	/**
 	 * @param 없음
 	 * @file MainController.java
-	 * @name gukminMainView
-	 * @brief 국민메인화면
+	 * @name projectIntro
+	 * @brief 국민프로젝트소개
 	 * @author ksmart33 김동석
 	 * @return index
 	 */
 	@GetMapping("/")
-	public String gukminMainView() {
-		System.out.println("---국민메인화면 : gukminMainView MainController.java-------");
+	public String projectIntro() {
+		System.out.println("---국민 fims프로젝트소개 : projectIntro MainController.java-------");
 		return "index";
 	}
 	
@@ -53,15 +53,15 @@ public class MainController {
 	/**
 	 * @param 없음
 	 * @file MainController.java
-	 * @name projectIntro
-	 * @brief 국민 축제통합관리시스템 프로젝트 소개
+	 * @name gukminMainView
+	 * @brief 국민메인화면
 	 * @author ksmart33 김동석
-	 * @return gukminview/fimsproject/projectIntro
+	 * @return gukminview/gukminMainView
 	 */
-	@GetMapping("gukminview/fimsproject/projectIntro")
-	public String projectIntro() {
-		System.out.println("---국민 fims프로젝트소개 : projectIntro MainController.java-------");
-		return "/gukminview/fimsproject/projectIntro";
+	@GetMapping("gukminview/gukminMainView")
+	public String gukminMainView() {
+		System.out.println("---국민메인화면 : gukminMainView MainController.java-------");
+		return "/gukminview/gukminMainView";
 	}
 	
 	/**
