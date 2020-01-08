@@ -16,25 +16,33 @@ public class AMemberService {
 	@Autowired
 	private AMemberMapper aMemberMapper;
 	
-	/*
-	 * public Map<String, Object> getMemberLogin(Member member) {
-	 * 
-	 * String result = "";
-	 * 
-	 * Map<String, Object> map = new HashMap<String,Object>();
-	 * 
-	 * Member memberCheck = aMemberMapper.getMemberLogin(member);
-	 * 
-	 * if(memberCheck == null) { Member memberIdCheck = aMemberMapper.getMemberById(
-	 * member.getMemberId()); if(memberIdCheck == null) { result =
-	 * "등록된 아이디의 정보가 없습니다."; }else { result = "비밀번호가 일치하지 않습니다."; }
-	 * 
-	 * }else { result = "로그인 성공"; map.put("loginMember", memberCheck); }
-	 * 
-	 * map.put("result", result);
-	 * 
-	 * return map; }
-	 */
+	public Map<String, Object> getMemberLogin(Member member) {
+		
+		String result = "";
+		
+		Map<String, Object> map = new HashMap<String,Object>();
+		
+		Member memberCheck = aMemberMapper.getMemberLogin(member);
+		
+		if(memberCheck == null) {
+			Member memberIdCheck = aMemberMapper.getMemberById(
+					member.getLoginCd());
+			if(memberIdCheck == null) {
+				result = "등록된 아이디의 정보가 없습니다.";
+			}else {
+				result = "비밀번호가 일치하지 않습니다.";
+			}
+
+		}else {
+			result = "로그인 성공";
+			map.put("loginMember", memberCheck);
+		}
+		
+		map.put("result", result);
+		
+		return map;
+	}
+
 	
 	public List<Member> getMemberList(){
 		System.out.println("getMemberList 메서드 AMemberService.java ");
@@ -99,6 +107,7 @@ public class AMemberService {
 		map.put("rowPerPage", ROW_PER_PAGE);
 		
 		// 전체행의 갯수를 가져오는 쿼리
+		int memberTotalCount = aMemberMapper.getMemberAllCount();
 		double memberCount = aMemberMapper.getMemberAllCount();
 		
 		int lastPage = (int)(Math.ceil(memberCount/ROW_PER_PAGE));
@@ -113,7 +122,8 @@ public class AMemberService {
 		resultMap.put("lastPage", lastPage);
 		resultMap.put("startPageNum", startPageNum);
 		resultMap.put("lastPageNum", lastPageNum);
-		
+		resultMap.put("memberTotalCount", memberTotalCount);
+
 		return resultMap;
 	}
 }

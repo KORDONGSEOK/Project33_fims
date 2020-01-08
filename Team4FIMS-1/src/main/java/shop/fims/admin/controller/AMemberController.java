@@ -2,6 +2,8 @@ package shop.fims.admin.controller;
 
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,8 +15,18 @@ import shop.fims.admin.service.AMemberService;
 @Controller
 public class AMemberController {
 
+	private static final Logger log = LoggerFactory.getLogger(AMemberController.class);
+	
 	@Autowired
 	private AMemberService aMemberService;
+	
+	@GetMapping("/login")
+	public String login() {
+		
+		return "/login/login";
+	}
+	
+	
 	
 
 	/*
@@ -46,6 +58,7 @@ public class AMemberController {
 							, defaultValue = "1") int currentPage) {
 		Map<String, Object> map = aMemberService.getMemberListpage(currentPage);
 		
+		model.addAttribute("memberTotalCount", map.get("memberTotalCount"));
 		model.addAttribute("memberListpageing", map.get("list"));
 		model.addAttribute("currentPage", map.get("currentPage"));
 		model.addAttribute("lastPage", map.get("lastPage"));

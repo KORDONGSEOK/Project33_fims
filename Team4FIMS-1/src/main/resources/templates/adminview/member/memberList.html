@@ -616,9 +616,9 @@ layout:decorate="~{layout/admin/memberdefault}">
     <div class="table-header form-inline">
         <div class="pull-left">
             검색
-            <strong>2</strong>
+            <strong th:text="${#lists.size(memberListpageing)}"></strong>
             명 / 전체
-            <strong>2</strong>
+            <strong th:text="${memberTotalCount}"></strong>
             명
         </div>
         <div class="pull-right">
