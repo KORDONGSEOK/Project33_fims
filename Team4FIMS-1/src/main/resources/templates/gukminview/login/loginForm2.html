@@ -10,12 +10,12 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 		<input type="hidden" name="redirectUrl" id="redirectUrl"
 			value="">
 		<section>
-			<p class="loginTit">로그인</p>
-			<p class="loginTxt">공무원, 거래처, 국민, 개발사 버튼을 누르면 권한별로 로그인이 가능합니다.</p>
+			<p class="loginTit">#로그인</p>
+			<p class="loginTxt">#반갑습니다! 조이페스타에 로그인해주세요.</p>
 			<div class="loginBox">
 				<div class="fl">
 					<input type="text" id="loginid" name="LoginCd" class="inp"
-						placeholder="아이디" /> <input type="password" id="password"
+						placeholder="아이디" value="id003" /> <input type="password" id="password"
 						name="LoginPw" class="inp"
 						onkeydown="javascript:if(event.keyCode==13){$.fn.login();}"
 						placeholder="비밀번호" />
@@ -23,7 +23,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 						<input type="checkbox" id="idsave" name="idsave" /> <label
 							for="idsave">로그인기억하기</label>
 					</div>
-					<button type="submit" id="loginbutton" class="btnLogin">!로그인</button>
+					<button type="submit" id="loginbutton" class="btnLogin">!공무원 로그인</button>
 					<div class="ebox">
 						<a href="javascript:void(0)" class="txtLink">#가입정보를 잊으셨나요?</a> <a
 							href="javascript:void(0)"
@@ -31,19 +31,15 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 							class="btnLink">#비밀번호 찾기</a>
 					</div>
 				</div>
-				<div class="fr" style="text-align: center">
-					<span>↓권한별 로그인 버튼 클릭↓</span>
+				<div class="fr">
 					<ul class="snsLoginList">
-						<li>
-							<button type="button" value="0">!공무원 로그인</button>
-						</li>					
-						<li>
+						<li class="ico02">
 							<button type="button" value="1">!거래처 로그인</button>
 						</li>
-						<li>
+						<li class="ico03">
 							<button type="button" value="2">!국민 로그인</button>
 						</li>
-						<li>
+						<li class="ico04">
 							<button type="button" value="3">!개발사 로그인</button>
 						</li>
 					</ul>
@@ -161,6 +157,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 			</div>
 		</div>
 	</table>
+	<label th:if="${result ne null}" th:text="${result}"></label>
 </form>
 
 <!-- <script>
@@ -528,45 +525,26 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 		});
 	};
 	//]]>
-
 </script>
-<!-- 거래처, 국민, 개발사 로그인 초기값 -->
 <script type="text/javascript">
 $(document).ready(function() {
 	$('[type="button"]').click(function() {
 		var a = $(this).val()
 		if(a=="1"){
-			$('[name="LoginCd"]').val("id013")
-			$('[name="LoginPw"]').val("pw013")
+			$('[name="h_id"]').val("id013")
+			$('[name="h_pw"]').val("pw013")
 		}else if(a=="2"){
-			$('[name="LoginCd"]').val("id024")
-			$('[name="LoginPw"]').val("pw024")
+			$('[name="h_id"]').val("id024")
+			$('[name="h_pw"]').val("pw024")
 		}else if(a=="3"){
-			$('[name="LoginCd"]').val("id002")
-			$('[name="LoginPw"]').val("pw002")
-		}else if(a=="0"){
-			$('[name="LoginCd"]').val("id003")
-			$('[name="LoginPw"]').val("pw003")
+			$('[name="h_id"]').val("id002")
+			$('[name="h_pw"]').val("pw002")
 		}
-	});
-	
-		$('#loginbutton').click(function() {
-		var loginid = $('input[name="LoginCd"]');
-		var LoginPw = $('input[name="LoginPw"]');
-		if(loginid.val() == ""){
-			alert('아이디를 입력해주세요')
-			loginid.focus();
-			return false;
-		}else if(LoginPw.val() == ""){
-			alert('패스워드를 입력해주세요')
-			LoginPw.focus();
-			return false;
-		}
-	
-
 	})
 })
 </script>
+
+
 </th:block>
 
 </html>
