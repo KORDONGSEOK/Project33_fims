@@ -39,7 +39,7 @@ public class MemberController {
 	
 	
 	//로그인하기
-	@PostMapping("/gukminview/login/loginForm")
+	@PostMapping("/gukminview/member/myPageView")
 	public String login(Member member, HttpSession session, Model model) {
 		//입력된 아이디 비밀번호
 		System.out.println(member.toString() + "<--입력된 정보");
@@ -56,9 +56,15 @@ public class MemberController {
 		session.setAttribute("SID"		, loginMember.getLoginCd());
 		session.setAttribute("SLEVEL"	, loginMember.getMemLevNm());
 		session.setAttribute("SNAME"	, loginMember.getMemNm());
+		session.setAttribute("SPHONE"	, loginMember.getMemPhone());
 		
-		//로그인 성공 화면 index
-		return "redirect:/";
+		String nameseesion = (String) session.getAttribute("SNAME");
+		System.out.println(nameseesion + "<----nameseesion 값 login 메서드 MemberController.java----------");
+		model.addAttribute("Sname", nameseesion);
+		
+		
+		//로그인 성공 화면 mypage
+		return "redirect:/gukminview/member/myPageView";
 	}
 	
 	@GetMapping("/logout")

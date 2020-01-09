@@ -10,7 +10,7 @@ div{-webkit-overflow-scrolling: touch; }/*추가2019.08.29*/
 #wrap{width:100%; height:auto; }
 
 /*header*/
-header{position:fixed;top:0;width:100%; height:120px; background:#ff671f; z-index:40}/*수정2019.06.20*/
+header{position:fixed;top:0;width:100%; height:120px; background:DodgerBlue; z-index:40}/*수정2019.06.20*/
 header .rela{width:1200px;height:auto;margin:0 auto;position:relative;}
 header h1{float:left;overflow:hidden; margin:0; width:195px; height:120px; }
 header h1 a{display:block; width:100%; height:auto; overflow:hidden;}

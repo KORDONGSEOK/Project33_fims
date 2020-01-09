@@ -5,7 +5,7 @@
 	<div class="rela">
 		<h1>
 			<a href="/"><img
-				src="https://joyfesta.kr/include/img/etc/etc_logo.png" /></a>
+				src="/gukmin/images/gukminlog.jpg" /></a>
 		</h1>
 		<div class="totalBox">
 			<nav>
@@ -18,25 +18,22 @@
 					<li id="communityli"><a href="/gukminview/community/communityView"
 						id="communityhref">!커뮤니티</a>
 						<ul>
-							<li><a href="Event.festa">이벤트</a></li>
-							<li><a href="Notice.festa">공지사항</a></li>
-							<li><a href="Faq.festa">FAQ</a></li>
+							<li><a href="/gukminview/community/eventView">이벤트</a></li>
+							<li><a href="/gukminview/community/communityView">공지사항</a></li>
+							<li><a href="/gukminview/community/faqView">FAQ</a></li>
 						</ul></li>
 				</ul>
 			</nav>
 			<div class="etcRight">
 				<ul>
-					<li class="ico_spot"><a href="/adminview/adminMainView">!관리자홈페이지</a></li>
+					<li class="ico_spot"><a href="/adminview/adminMainView" th:if="${session.SLEVEL == '공무원' || session.SLEVEL == '거래처' || session.SLEVEL == 'SW개발사'}">!관리자홈페이지</a></li>
 					<li class="ico_spot"><a href="/gukminview/festival/hostSpotRegisterForm">!스팟등록하기</a></li>
 				</ul>
 					<a th:href="@{/gukminview/login/loginForm}" th:if="${session.SID eq null}" class="pLogout"><span>!로그인</span></a>
 			</div>
 			<th:block th:unless="${session.SID eq null}">
 			<div class="etcRight">
-				<ul>
-					<li class="ico_jjimList"><a href="#">#찜 목록</a></li>
-				</ul>
-					<a title="마이페이지 이동" href="MyPage.festa" class="pMy"><img
+					<a title="마이페이지 이동" href="/gukminview/member/myPageView" class="pMy"><img
 						src="https://joyfesta.kr/include/img/etc/etc_mimg.png" /><span class="t01">
 								[[${session.SNAME}]] 님 [[${session.SLEVEL}]] 권한
 					</span></a>
@@ -130,7 +127,7 @@
 			<!--스마트검색 -->
 			<div class="smartSearchBox">
 				<div class="desc">
-					<p class="t01">#조이페스타 스마트검색</p>
+					<p class="t01">#ALLFestMoa 스마트검색</p>
 					<p class="t02">#필요한 조건을 선택하여 검색해보세요! 원하는 검색결과를 더 쉽고 빠르게 얻으실 수
 						있습니다.</p>
 				</div>

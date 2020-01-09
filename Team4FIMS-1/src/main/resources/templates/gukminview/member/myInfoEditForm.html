@@ -2,9 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" 
 xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 layout:decorate="~{layout/gukmin/gukmindefault}">
-
 <th:block layout:fragment="gukminMainContents">
-
 <form id="registerform" name="registerform" action="/gukminview/member/myInfoEditForm" method="post">
 	<input type="hidden" name="myfestivaltypeseqs" value="" id="myfestivaltypeseqs"/>
 	<input type="hidden" name="mymarkettypeseqs" value="" id="mymarkettypeseqs"/>
@@ -17,7 +15,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 	<section>
 		<div class="mypDesc t01">
 			<p class="t01">회원정보</p>
-			<p class="t02">조이페스타에 오신것을 환영합니다!</p>
+			<p class="t02">ALLFestMoa에 오신것을 환영합니다!</p>
 		</div>
 		<div class="norBox">
 			<p class="mytit">필수 회원정보</p>
@@ -40,8 +38,7 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 							<td>
 								<div class="form">
 									<input type="text" id="membername" name="membername"
-										value="김동석"
-										
+										th:value="${session.SNAME}"
 										class="inp" />
 								</div>
 							</td>
@@ -51,12 +48,11 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 							<td>
 								<div class="form">
 									<input type="email" id="email" name="email"
-										value="chas0302@naver.com"
+										th:value="${session.SID}"
 										readonly="readonly" class="inp" />
 								</div>
 							</td>
 						</tr>
-						
 							<tr>
 								<th>비밀번호</th>
 								<td>
@@ -66,14 +62,13 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 									</div>
 								</td>
 							</tr>
-						
 						<tr>
 							<th>전화번호</th>
 							<td>
 								<div class="form">
 									<select class="select w60" id="contact01" name="contact01">
 										<option value="">선택</option>
-										<option value="010"
+										<option  th:value="${#strings.substring(SID,0,1)}"
 											selected>010</option>
 										<option value="011"
 											>011</option>
@@ -83,12 +78,16 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 											>017</option>
 										<option value="019"
 											>019</option>
-									</select> <span class="etxt">-</span> <input type="text" id="contact02"
+									</select> <span class="etxt">-</span> 
+									<input type="text" id="contact02" 
+										th:with="SPHONE = ${session.SPHONE}"
 										name="contact02"
-										value="8482"
-										class="inp w60" /> <span class="etxt">-</span> <input
+										th:value="${#strings.substring(SPHONE,4,8)}"
+										class="inp w60" /> <span class="etxt">-</span> 
+									<input
 										type="text" id="contact03" name="contact03"
-										value="5874"
+										th:with="SPHONET = ${session.SPHONE}"
+										th:value="${#strings.substring(SPHONET,9,13)}"
 										class="inp w60" />
 								</div>
 							</td>
@@ -146,51 +145,39 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 						<div class="radioBtn">
 							<a href="javascript:void(0)" id="allmyfestivaltypes"
 								onclick="setMyFestivalTypes('');">전체</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyFestivalTypes(23);">먹거리</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyFestivalTypes(24);">지역ㆍ특산물</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyFestivalTypes(25);">민속ㆍ전통문화</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyFestivalTypes(26);">미술ㆍ예술</a>
-							
 								<a href="javascript:void(0)"
 									class="on"
 									onclick="setMyFestivalTypes(27);">음악ㆍ공연</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyFestivalTypes(28);">생태계ㆍ자연</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyFestivalTypes(29);">레저ㆍ스포츠</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyFestivalTypes(30);">과학ㆍ기술</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyFestivalTypes(31);">교육ㆍ체험</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyFestivalTypes(32);">종교ㆍ역사</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyFestivalTypes(33);">기타</a>
-							
 						</div>
 					</td>
 				</tr>
@@ -200,35 +187,27 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 						<div class="radioBtn">
 							<a href="javascript:void(0)" id="allmymarkettypes"
 								onclick="setMyMarketTypes('');">전체</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyMarketTypes(1);">농수축산</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyMarketTypes(2);">패션의류</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyMarketTypes(3);">한약재</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyMarketTypes(4);">잡화</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyMarketTypes(5);">철물</a>
-							
 								<a href="javascript:void(0)"
 									class="on"
 									onclick="setMyMarketTypes(6);">전자</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyMarketTypes(7);">기타</a>
-							
 						</div>
 					</td>
 				</tr>
@@ -238,31 +217,24 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 						<div class="radioBtn">
 							<a href="javascript:void(0)" id="allmyopencycles"
 								onclick="setMyOpenCycles('');">전체</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyOpenCycles(1);">상설(매일)장</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyOpenCycles(2);">2일장</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyOpenCycles(3);">3일장</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyOpenCycles(4);">5일장</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyOpenCycles(5);">6일장</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyOpenCycles(6);">기타</a>
-							
 						</div>
 					</td>
 				</tr>
@@ -272,67 +244,51 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 						<div class="radioBtn">
 							<a href="javascript:void(0)" id="allmystoretypes"
 								onclick="setMyStoreTypes('');">전체</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyStoreTypes(8);">음식/식품</a>
-							
 								<a href="javascript:void(0)"
 									class="on"
 									onclick="setMyStoreTypes(9);">수산/횟집</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyStoreTypes(10);">축산물</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyStoreTypes(11);">농산물/반찬</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyStoreTypes(12);">제과/제빵/떡</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyStoreTypes(13);">마트/과일</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyStoreTypes(14);">방앗간</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyStoreTypes(15);">건강원</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyStoreTypes(16);">화장품</a>
-							
 								<a href="javascript:void(0)"
 									class="on"
 									onclick="setMyStoreTypes(17);">의류</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyStoreTypes(18);">분식</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyStoreTypes(19);">이불/가방/신발</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyStoreTypes(20);">건어물/젓갈</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyStoreTypes(21);">꽃집/귀금속</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyStoreTypes(22);">기타</a>
-							
 						</div>
 					</td>
 				</tr>
@@ -342,109 +298,47 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 						<div class="form">
 							<p class="item">국내</p>
 							<div class="radioBtn">
-								
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setMyRegions(1);">서울</a>
-									
-								
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setMyRegions(2);">경기</a>
-									
-								
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setMyRegions(3);">인천</a>
-									
-								
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setMyRegions(4);">대전/충청</a>
-									
-								
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setMyRegions(5);">부산/울산/경남</a>
-									
-								
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setMyRegions(6);">대구/경북</a>
-									
-								
-									
 										<a href="javascript:void(0)"
 											class="on"
 											onclick="setMyRegions(7);">광주/전라</a>
-									
-								
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setMyRegions(8);">강원/기타</a>
-									
-								
-									
-								
-									
-								
-									
-								
-									
-								
 							</div>
 						</div>
 						<div class="form">
 							<p class="item">해외</p>
 							<div class="radioBtn">
-								
-									
-								
-									
-								
-									
-								
-									
-								
-									
-								
-									
-								
-									
-								
-									
-								
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setMyRegions(101);">아시아ㆍ중동</a>
-									
-								
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setMyRegions(102);">아메리카</a>
-									
-								
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setMyRegions(103);">유럽</a>
-									
-								
-									
 										<a href="javascript:void(0)"
 											class=""
 											onclick="setMyRegions(104);">아프리카ㆍ오세아니아</a>
-									
-								
 							</div>
 						</div>
 					</td>
@@ -455,31 +349,24 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 						<div class="radioBtn">
 							<a href="javascript:void(0)" id="allmysituations"
 								onclick="setMySituations('');">전체</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMySituations(1);">나홀로</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMySituations(2);">친구</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMySituations(3);">연인</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMySituations(4);">가족</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMySituations(5);">비즈니스</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMySituations(6);">모임</a>
-							
 						</div>
 					</td>
 				</tr>
@@ -489,23 +376,18 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 						<div class="radioBtn">
 							<a href="javascript:void(0)" id="allmyseasons"
 								onclick="setMySeasons('');">전체</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMySeasons(1);">봄</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMySeasons(2);">여름</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMySeasons(3);">가을</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMySeasons(4);">겨울</a>
-							
 						</div>
 					</td>
 				</tr>
@@ -515,46 +397,36 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 						<div class="radioBtn">
 							<a href="javascript:void(0)" id="allmyterms"
 								onclick="setMyTerms('');">전체</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyTerms(1);">당일치기</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyTerms(2);">2일이상</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyTerms(3);">주말</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyTerms(4);">평일</a>
-							
 								<a href="javascript:void(0)"
 									class=""
 									onclick="setMyTerms(5);">연휴</a>
-							
 						</div>
 					</td>
 				</tr>
 			</table>
-
 			<div class="boardBtnBox ac t01">
 				<a href="javascript:void(0)" id="registerbutton" class="btnType03">#수정완료</a>
 				<a href="javascript:void(0)" class="btnType04"
 					onclick="window.history.back();">!취소</a>
 			</div>
-
 		</div>
 	</section>
 </form>
-
 <div class="dialog" id="passwordchangedialog"
 	style="display: none; z-index: 1000;">
 	<div class="popBox">
-
 		<div class="popHeader">
 			<h1>비밀번호 변경</h1>
 			<a href="javascript:void(0)"
@@ -587,7 +459,6 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 		$('#newpasswordconfirm').val('');
 		$('#passwordchangedialog').show();
 	}
-
 	$('#passwordchangebutton').click(function() {
 		resetCommonDialog();
 		indicatorOn();
@@ -624,7 +495,6 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 			}
 		});
 	});
-
 	$("#chk_all").change(function() {
 		if ($("#chk_all").is(":checked")) {
 			$('#chk_agree02').prop('checked', true);
@@ -634,19 +504,16 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 			$('#chk_agree04').prop('checked', false);
 		}
 	});
-
 	$("#chk_agree02").change(function() {
 		if ($("#chk_agree02").is(":checked") == false) {
 			$('#chk_all').prop('checked', false);
 		}
 	});
-
 	$("#chk_agree04").change(function() {
 		if ($("#chk_agree04").is(":checked") == false) {
 			$('#chk_all').prop('checked', false);
 		}
 	});
-
 	$("#chk_agree02").change(function() {
 		if ($("#chk_agree02").is(":checked") == true) {
 			if ($("#chk_agree04").is(":checked") == true) {
@@ -654,7 +521,6 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 			}
 		}
 	});
-
 	$("#chk_agree04").change(function() {
 		if ($("#chk_agree04").is(":checked") == true) {
 			if ($("#chk_agree02").is(":checked") == true) {
@@ -662,7 +528,6 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 			}
 		}
 	});
-
 	var myfestivaltypeseqs = [];
 	function setMyFestivalTypes(typeseq) {
 		if (typeseq == '') {
@@ -684,7 +549,6 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 			}
 		}
 	}
-
 	var mymarkettypeseqs = [];
 	function setMyMarketTypes(typeseq) {
 		if (typeseq == '') {
@@ -706,7 +570,6 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 			}
 		}
 	}
-
 	var myopencycleseqs = [];
 	function setMyOpenCycles(opencycleseq) {
 		if (opencycleseq == '') {
@@ -728,7 +591,6 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 			}
 		}
 	}
-
 	var mystoretypeseqs = [];
 	function setMyStoreTypes(typeseq) {
 		if (typeseq == '') {
@@ -749,7 +611,6 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 			}
 		}
 	}
-
 	var myregions = [];
 	function setMyRegions(region) {
 		if ($('#myregions').val() != '') {
@@ -763,7 +624,6 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 			$('#myregions').val(myregions);
 		}
 	}
-
 	var mysituationseqs = [];
 	function setMySituations(situationseq) {
 		if (situationseq == '') {
@@ -786,7 +646,6 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 			}
 		}
 	}
-
 	var myseasonseqs = [];
 	function setMySeasons(seasonseq) {
 		if (seasonseq == '') {
@@ -808,7 +667,6 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 			}
 		}
 	}
-
 	var mytermseqs = [];
 	function setMyTerms(termseq) {
 		if (termseq == '') {
@@ -829,10 +687,8 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 			}
 		}
 	}
-
 	function checkValue(value, arr) {
 		var status = 'Not exist';
-
 		for (var i = 0; i < arr.length; i++) {
 			var name = arr[i];
 			if (name == value) {
@@ -840,14 +696,11 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 				break;
 			}
 		}
-
 		return status;
 	}
-	
 	$('#registerbutton').click(function() {
 		resetCommonDialog();
 		indicatorOn();
-
 		var adinforeceiveflag = 'N';
 		if ($('#chk_agree02').is(':checked')) {
 			adinforeceiveflag = 'Y';
@@ -856,9 +709,8 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 		if ($('#chk_agree04').is(':checked')) {
 			accountactiveflag = 'Y';
 		}
-
 		$.ajax({
-			url : 'JSONMemberEdit.festa',
+			url : '/gukminview/member/myInfoEditForm',
 			type : 'POST',
 			data : {
 				membername : $('#membername').val(),
@@ -896,185 +748,28 @@ layout:decorate="~{layout/gukmin/gukmindefault}">
 			}
 		});
 	});
-
 	$(document).ready(function() {
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		myfestivaltypeseqs.push(27);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		$('#myfestivaltypeseqs').val(myfestivaltypeseqs);
 		if ($('#myfestivaltypeseqs').val() == '') $('#allmyfestivaltypes').addClass("on");
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		mymarkettypeseqs.push(6);
-		
-		
-		
-		
 		$('#mymarkettypeseqs').val(mymarkettypeseqs);
 		if ($('#mymarkettypeseqs').val() == '') $('#allmymarkettypes').addClass("on");
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		$('#myopencycleseqs').val(myopencycleseqs);
 		if ($('#myopencycleseqs').val() == '') $('#allmyopencycles').addClass("on");
-
-		
-		
-		
-		
 		mystoretypeseqs.push(9);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		mystoretypeseqs.push(17);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		$('#mystoretypeseqs').val(mystoretypeseqs);
 		if ($('#mystoretypeseqs').val() == '') $('#allmystoretypes').addClass("on");
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		myregions.push(7);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		$('#myregions').val(myregions);
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		$('#mysituationseqs').val(mysituationseqs);
 		if ($('#mysituationseqs').val() == '') $('#allmysituations').addClass("on");
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		$('#myseasonseqs').val(myseasonseqs);
 		if ($('#myseasonseqs').val() == '') $('#allmyseasons').addClass("on");
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		$('#mytermseqs').val(mytermseqs);
 		if ($('#mytermseqs').val() == '') $('#allmyterms').addClass("on");
 	});
-
 </script>
-
-
 </th:block>
-
 </html>
