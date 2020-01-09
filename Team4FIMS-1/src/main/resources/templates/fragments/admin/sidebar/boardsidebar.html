@@ -3,94 +3,28 @@
 
 
 <div class="panel " th:fragment="adminLeftmenuFragment">
-                    <div class="panel-heading menu-icon-minus active">!상품 관리</div>
+                    <div class="panel-heading menu-icon-minus active">게시판 관리</div>
                 <ul class="list-group">                    <li class="list-group-item active">
-                        <a href="/adminview/goods/goodsList">!상품 리스트</a>                     </li>
+                        <a href="board_list.php">게시판 리스트</a>                     </li>
                                         <li class="list-group-item ">
-                        <a href="/adminview/goods/goodsRegister">!상품 등록</a>                     </li>
+                        <a href="board_register.php">게시판 등록</a>                     </li>
                                         <li class="list-group-item ">
-                        <a href="/adminview/goods/goodsOptionList">!자주쓰는 옵션 관리</a>                     </li>
+                        <a href="article_list.php">게시글 관리</a>                     </li>
                                         <li class="list-group-item ">
-                        <a href="#">#상품 혜택 관리</a>                     </li>
+                        <a href="board_theme.php">게시판 스킨 관리</a>                     </li>
                                         <li class="list-group-item ">
-                        <a href="/adminview/goods/goodsIconList">!상품 아이콘 관리</a>                     </li>
+                        <a href="board_forbidden.php">게시판 금칙어 관리</a>                     </li>
                                         <li class="list-group-item ">
-                        <a href="/adminview/goods/goodsMustInfoList">!상품 필수정보 관리</a>                     </li>
+                        <a href=" template_list.php">게시글 양식 관리</a>                     </li>
                                         <li class="list-group-item ">
-                        <a href="/adminview/goods/goodsDeleteList">!삭제 상품 관리</a>                     </li>
-                                        <li class="list-group-item ">
-                        <a href="/adminview/goods/goodsRestock">!상품 재입고 알림 신청 관리</a>                     </li>
-                    </ul>                <div class="panel-heading menu-icon-minus ">!상품 일괄 관리</div>
+                        <a href="faq_list.php">FAQ 관리</a>                     </li>
+                    </ul>                <div class="panel-heading menu-icon-minus ">플러스리뷰 설정</div>
                 <ul class="list-group">                    <li class="list-group-item ">
-                        <a href="/adminview/goods/goodsBatchPrice">!상품 가격 관리</a>                     </li>
+                        <a href="plus_review_article_config.php">플러스리뷰 게시판 설정</a>                     </li>
                                         <li class="list-group-item ">
-                        <a href="/adminview/goods/goodsBatchMileage">!상품 마일리지/혜택 관리</a>                     </li>
+                        <a href="plus_review_display_config.php">플러스리뷰 노출 설정</a>                     </li>
                                         <li class="list-group-item ">
-                        <a href="/adminview/goods/goodsBatchStock">!상품 품절/노출/재고 관리</a>                     </li>
-                                        <li class="list-group-item ">
-                        <a href="/adminview/goods/goodsBatchLink">!상품 이동/복사/삭제 관리</a>                     </li>
-                                        <li class="list-group-item ">
-                        <a href="/adminview/goods/goodsBatchIcon">!상품 아이콘/대표색상 관리</a>                     </li>
-                                        <li class="list-group-item ">
-                        <a href="/adminview/goods/goodsBatchDelivery">!상품 배송비 관리</a>                     </li>
-                                        <li class="list-group-item ">
-                        <a href="/adminview/goods/goodsBatchImage">!상품 이미지 일괄 처리</a>                     </li>
-                                        <li class="list-group-item ">
-                        <a href="/adminview/goods/goodsBatchImageHostingReplace">!이미지호스팅 일괄전환</a>                     </li>
-                    </ul>                <div class="panel-heading menu-icon-minus ">!상품 진열 관리</div>
-                <ul class="list-group">                    <li class="list-group-item ">
-                        <a href="/adminview/goods/goodsDisplayMainList">!메인페이지 상품진열</a>                     </li>
-                                        <li class="list-group-item ">
-                        <a href="/adminview/goods/goodsDisplayCategory">!카테고리페이지 상품진열</a>                     </li>
-                                        <li class="list-group-item ">
-                        <a href="/adminview/goods/goodsDisplayBrand">!브랜드페이지 상품진열</a>                     </li>
-                                        <li class="list-group-item ">
-                        <a href="/adminview/goods/goodsDisplaySearch">!검색페이지 상품진열</a>                     </li>
-                                        <li class="list-group-item ">
-                        <a href="/adminview/goods/goodsDisplaySoldout">!품절상품 진열설정</a>                     </li>
-                    </ul>                <div class="panel-heading menu-icon-minus ">!상품 분류 관리</div>
-                <ul class="list-group">                    <li class="list-group-item ">
-                        <a href="/adminview/goods/goodsSortConfigNavi">!분류 설정 관리</a>                     </li>
-                                        <li class="list-group-item ">
-                        <a href="/adminview/goods/goodsSortCategoryTree">!카테고리 관리</a>                     </li>
-                                        <li class="list-group-item ">
-                        <a href="#">#브랜드 관리</a>                     </li>
-                                        <li class="list-group-item ">
-                        <a href="/adminview/goods/goodsSortPurchaseList">!매입처 관리</a>                     </li>
-                    </ul>                <div class="panel-heading menu-icon-minus ">!상품 노출형태 관리</div>
-                <ul class="list-group">                    <li class="list-group-item ">
-                        <a href="/adminview/goods/goodsExposureThemeList">!테마 관리</a>                     </li>
-                                        <li class="list-group-item ">
-                        <a href="#">#관련상품 노출 설정</a>                     </li>
-                                        <li class="list-group-item ">
-                        <a href="#">#상품상세 노출항목 설정</a>                     </li>
-                                        <li class="list-group-item ">
-                        <a href="#">#상품상세 공통정보 관리</a>                     </li>
-                                        <li class="list-group-item ">
-                        <a href="/adminview/goods/goodsExposureSearchSettings">!검색창 관련 설정</a>                     </li>
-                                        <li class="list-group-item ">
-                        <a href="#">#인기상품 노출 관리</a>                     </li>
-                                        <li class="list-group-item ">
-                        <a href="#">#검색창 추천상품 노출 설정</a>                     </li>
-                                        <li class="list-group-item ">
-                        <a href="#">#밴드왜건 푸시 설정</a>                     </li>
-                    </ul>                <div class="panel-heading menu-icon-minus ">!추가상품 관리</div>
-                <ul class="list-group">                    <li class="list-group-item ">
-                        <a href="#">#추가상품 관리</a>                     </li>
-                                        <li class="list-group-item ">
-                        <a href="#">#추가상품 그룹 관리</a>                     </li>
-                    </ul>                <div class="panel-heading menu-icon-minus ">!사은품 관리</div>
-                <ul class="list-group">                    <li class="list-group-item ">
-                        <a href="#">#사은품 지급 설정</a>                     </li>
-                                        <li class="list-group-item ">
-                        <a href="#">#사은품 관리</a>                     </li>
-                                        <li class="list-group-item ">
-                        <a href="#">#사은품 지급조건 관리</a>                     </li>
-                    </ul>                <div class="panel-heading menu-icon-minus ">!상품 엑셀 관리</div>
-                <ul class="list-group">                    <li class="list-group-item ">
-                        <a href="/adminview/goods/goodsExcelDown">!상품 다운로드</a>                     </li>
-                                        <li class="list-group-item ">
-                        <a href="/adminview/goods/goodsExcelUpload">!상품 업로드</a>                     </li>
+                        <a href="plus_review_list">플러스리뷰 게시글 관리</a>                     </li>
                         </ul>
     </div>
 
