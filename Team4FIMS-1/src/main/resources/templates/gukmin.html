@@ -20,7 +20,7 @@
 		
 		$('#searchKeyword').on('keyup',function(){
 			if(window.event.keyCode==13){
-				event.preventDefault();
+				
 				searchKeyword();
 			}
 			
@@ -29,7 +29,9 @@
 		
 	});
 	
-	
+	function gukminDetail(contentid){
+		
+	}
 	
 	function searchKeyword(){
 		var data={};
@@ -51,11 +53,11 @@
             $(data.response.body.items.item).each((index,item)=>{
             	
             	$('#homelist').append(
-            			"<div class='list'><div class='pic_area'><a href=''#' class='pic'><img src='"+item.firstimage+"'/><div class='sts_area'><span class='sts_be'>진행<br />중</span></div></a></div>"
+            			"<div class='list'><div class='pic_area'><a href=''#' class='pic'><img src='"+item.firstimage+"' onclick='gukminDetail("+item.contentid+")'/><div class='sts_area'><span class='sts_be'>진행<br />중</span></div></a></div>"
 						+"<div class='cont'><p class='t01'><a href='#'>"
-						+item.title.substring(item.title.indexOf('\(')+1,item.title.indexOf('\)'))//( )사이의 문자열만 추출
+						+item.title//( )사이의 문자열만 추출
 						+"</a></p><div class='t02'>"
-						+"</span><span class='gps'>"+item.addr1+"</span></div></div></div>"//영문 주소 를 한글로 바꾸려면..... 귀찮네... 		
+						+"</span><span class='gps'>"+item.addr1+"</span></div></div></div>"		
             	)	                   
             });
             
@@ -97,13 +99,13 @@
             	$('#homelist').append(
             			"<div class='list'><div class='pic_area'><a href=''#' class='pic'><img src='"+item.firstimage+"'/><div class='sts_area'><span class='sts_be'>진행<br />중</span></div></a></div>"
 						+"<div class='cont'><p class='t01'><a href='#'>"
-						+item.title.substring(item.title.indexOf('\(')+1,item.title.indexOf('\)'))//( )사이의 문자열만 추출
+						+item.title//( )사이의 문자열만 추출
 						+"</a></p><div class='t02'>"
 						+"<span class='date'>"
 						+item.eventstartdate.toString().replace(/(\d{4})(\d{2})(\d{2})/g, '$1.$2.$3')//날짜 yyyymmdd to yyyy.mm.dd 변환
 						+" ~ "
 						+item.eventenddate.toString().replace(/(\d{4})(\d{2})(\d{2})/g, '$1.$2.$3')
-						+"</span><span class='gps'>"+item.addr1+"</span></div></div></div>"//영문 주소 를 한글로 바꾸려면..... 귀찮네... 		
+						+"</span><span class='gps'>"+item.addr1+"</span></div></div></div>"	
             	)	                   
             });
             
@@ -143,7 +145,7 @@
 						<li class="ico_spot"><a href="/gukminview/festival/hostSpotRegisterForm">!스팟등록하기</a></li>
 				</ul>
 					<a href="/gukminview/login/loginForm" class="pLogout"><span>!로그인</span></a>
-			<form autocomplete="nope" method="post">
+			<form autocomplete="off" method="post">
 				<div class="searchBox">
 					<input type="text" autocomplete="nope" id="searchKeyword" name="searchKeyword" placeholder="검색 하고자 하는 키워드를 입력해주세요"/> 
 					<a href="javascript:void(0)" class="btnSearch">
