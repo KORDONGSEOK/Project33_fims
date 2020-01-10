@@ -45,8 +45,8 @@ public class APIService {
 		case "detailImage":// 이미지정보조회
 			System.out.println("detailImage이미지정보조회");
 			parameter = parameter + "&" + "contentId=" + apiVo.getContentId();
-			parameter = parameter + "&" + "imageYN=" + apiVo.getImageYN();
-			parameter = parameter + "&" + "subImageYN=" + apiVo.getSubImageYN();
+			parameter = parameter + "&" + "imageYN=" + (apiVo.getImageYN()!=null?apiVo.getImageYN():"Y");
+			parameter = parameter + "&" + "subImageYN=" + (apiVo.getSubImageYN()!=null?apiVo.getSubImageYN():"Y");
 			break;
 
 		case "detailIntro":// 소개정보조회

@@ -21,22 +21,20 @@
 		$('#searchKeyword').keydown(function (key){
 			if(key.keyCode==13)searchKeyword();
 		})
-			
-		
-		
+
 	});
 	
-	function gukminDetail(contentId,contentTypeId){
+	function gukminDetail(contentid,contenttypeid){
 		
-		if(contentTypeId!=15)return null;
+		if(contenttypeid!=15)return null;
 		
 		$('#homtitle').empty();//화면 초기화
 		$('#homelist').empty();
 		$('#homtitle').append('축제 <strong>상세 화면</strong>');
 		
 		var data={};
-		data.contentId = contentId;
-		data.contentTypeId = contentTypeId;
+		data.contentId = contentid;
+		data.contentTypeId = contenttypeid;
 		console.log(data);
 		
 		//상세 헤드
@@ -48,7 +46,7 @@
             type : "POST",
             async : false
         }).done(function(data) {
-        	
+        	console.log("/api/detailCommon");
         	console.log(data);
         	datas = data.response.body.items.item;
         	//타이틀
@@ -63,7 +61,7 @@
        				"<img class='vertical' src='"+datas.firstimage +"' width='780px' height='480px' />"
         	)
         	//간단내용
-			$('#detailInfo').empty()
+			$('#detailInfo').empty();
         	$('#detailInfo').append(
         			"<table><tr class='first'><th>행사기간</th><td>2019.11.16 ~ 2020.01.05</td></tr>"
         			+"<tr><th>위치</th><td>"+datas.addr1+"</td></tr>"
@@ -74,6 +72,68 @@
         			+"<div class='ctn_wrong'><a title='1:1문의하기로 이동'> <img src='https:\/\/joyfesta.kr/include/img/etc/btn_wrong.png' alt='잘못된 정보 제보'></a> <span> 이 페이지에 잘못된 정보 또는 새로운 정보가 있나요? <br /> 수정할 내용 또는 사진을 제보해주세요!</span></div>"
         			+"<p class='latestDate'>최근 정보 업데이트 "+datas.modifiedtime.toString().replace(/(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})/g, '$1.$2.$3 $4:')+" </p>"		
         	)
+        	
+        });
+		
+		//상세 메인
+		$('#detailBox').empty();
+		$('#detailBox').append(
+			"<ul class='detailTabs'><li><a class='on'>상세정보</a></li></ul>"
+			+"<div class='detaillArea' id='detailinfo'><p class='dSubj'>기본정보</p><div class='detNormal' id='detaillAreaNormal'></div></div>"
+		);
+		
+		//상세 기본정보 intro
+		$.ajax({
+            url : "/api/detailIntro",
+            dataType : "json",
+            contentType : "application/json;charset=UTF-8",
+            data : JSON.stringify(data),
+            type : "POST",
+            async : false
+        }).done(function(data) {
+        	console.log("/api/detailIntro");
+        	console.log(data);
+        	datas = data.response.body.items.item;
+        	$('#detaillAreaNormal').append(
+        			"<table><tr class='first'><th>주최</th><td>"+datas.sponsor1+"</td></tr>"
+					+(datas.sponsor2)?"<tr><th>주관</th><td>(사)부산기독교총연합회, 부산크리스마스트리문화축제조직위원회, 광복로문화포럼</td></tr>":""
+					+"<tr><th>기간</th><td>"+datas.playtime+"</td></tr></table>"
+        	);
+        });
+		//info
+		$.ajax({
+            url : "/api/detailInfo",
+            dataType : "json",
+            contentType : "application/json;charset=UTF-8",
+            data : JSON.stringify(data),
+            type : "POST",
+            async : false
+        }).done(function(data) {
+        	console.log("/api/detailInfo");
+        	console.log(data);
+        	datas = data.response.body.items.item;
+        	$(datas).each((index,item)=>{
+        		$('#detailinfo').append("<p class='dSubj'>"+item.infoname+"</p><div class='detIntroBox'>"+item.infotext+"</div>");
+        	})
+        	
+        });
+		
+		//img
+		$('#detailinfo').append("<p class='dSubj'>사진/영상</p><div class='detMovieBox'><div class='detMovieSlide' id='detailimgs'></div></div>");
+		$.ajax({
+            url : "/api/detailImage",
+            dataType : "json",
+            contentType : "application/json;charset=UTF-8",
+            data : JSON.stringify(data),
+            type : "POST",
+            async : false
+        }).done(function(data) {
+        	console.log("/api/detailImage");
+        	console.log(data);
+        	datas = data.response.body.items.item;
+        	$(datas).each((index,item)=>{
+        		$('#detailimgs').append("<div class='item'><img class='vertical' src='"+ item.originimgurl+"' /></div>");
+        	})
         	
         });
 		
@@ -91,8 +151,14 @@
             type : "POST",
             async : false
         }).done(function(data) {
-
-            console.log(data);
+			if(data.response.body.totalCount==0) return null; //검색결과 없을시 리턴
+			
+			console.log("/api/searchKeyword");
+			console.log(data);
+            
+            $('#detailInfo').empty()
+            $('#detailMainImg').empty();
+            $('#detailBox').empty();
             $('#homtitle').empty();
             $('#homtitle').append('키워드 <strong>검색 목록</strong>');
             $('#homelist').empty();
@@ -133,7 +199,8 @@
             type : "POST",
             async : false
         }).done(function(data) {
-
+        	
+        	console.log("/api/searchFestival");
             console.log(data);
             $('#homtitle').empty();
             $('#homtitle').append('이달의 <strong>축제 목록</strong>');
@@ -155,9 +222,7 @@
 						+"</span><span class='gps'>"+item.addr1+"</span></div></div></div>"	
             	)	                   
             });
-            
-            
-            
+
         });
 	}
 	
@@ -226,7 +291,8 @@
 		<div class="detailCont" id="detailInfo"></div>
 	</div>
 	
-	
+	<div id="detailBox"></div>
+	<!-- 디테일 끝 -->
 	
 </body>
 </html>
