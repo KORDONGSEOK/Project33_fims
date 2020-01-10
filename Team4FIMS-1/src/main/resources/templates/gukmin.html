@@ -18,18 +18,64 @@
 			searchKeyword();
 		})
 		
-		$('#searchKeyword').on('keyup',function(){
-			if(window.event.keyCode==13){
-				
-				searchKeyword();
-			}
-			
+		$('#searchKeyword').keydown(function (key){
+			if(key.keyCode==13)searchKeyword();
 		})
-
+			
+		
 		
 	});
 	
-	function gukminDetail(contentid){
+	function gukminDetail(contentId,contentTypeId){
+		
+		if(contentTypeId!=15)return null;
+		
+		$('#homtitle').empty();//화면 초기화
+		$('#homelist').empty();
+		$('#homtitle').append('축제 <strong>상세 화면</strong>');
+		
+		var data={};
+		data.contentId = contentId;
+		data.contentTypeId = contentTypeId;
+		console.log(data);
+		
+		//상세 헤드
+		$.ajax({
+            url : "/api/detailCommon",
+            dataType : "json",
+            contentType : "application/json;charset=UTF-8",
+            data : JSON.stringify(data),
+            type : "POST",
+            async : false
+        }).done(function(data) {
+        	
+        	console.log(data);
+        	datas = data.response.body.items.item;
+        	//타이틀
+        	$('#detailTitle').empty();
+        	$('#detailTitle').append(
+        		"<p class='t01'>"+datas.title+"</p>"
+    			+"<p class='t02'>"+datas.telname+"</p>"
+        	);
+        	//이미지
+        	$('#detailMainImg').empty();
+        	$('#detailMainImg').append(
+       				"<img class='vertical' src='"+datas.firstimage +"' width='780px' height='480px' />"
+        	)
+        	//간단내용
+			$('#detailInfo').empty()
+        	$('#detailInfo').append(
+        			"<table><tr class='first'><th>행사기간</th><td>2019.11.16 ~ 2020.01.05</td></tr>"
+        			+"<tr><th>위치</th><td>"+datas.addr1+"</td></tr>"
+        			+"<tr><th>행사장소</th><td>"+datas.overview+"</td></tr>"
+        			+"<tr><th>연락처</th><td><a href='tel:"+datas.tel+"'>"+datas.tel+"</a></td></tr>"
+        			+"<tr><th>홈페이지</th><td>"+datas.homepage+"</td></tr></table>"
+        			+"<div class='hostBar mt50'><div class='hostBar_btn'><a class='btn_storeView'>호스트 정보보기</a></div></div>"
+        			+"<div class='ctn_wrong'><a title='1:1문의하기로 이동'> <img src='https:\/\/joyfesta.kr/include/img/etc/btn_wrong.png' alt='잘못된 정보 제보'></a> <span> 이 페이지에 잘못된 정보 또는 새로운 정보가 있나요? <br /> 수정할 내용 또는 사진을 제보해주세요!</span></div>"
+        			+"<p class='latestDate'>최근 정보 업데이트 "+datas.modifiedtime.toString().replace(/(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})/g, '$1.$2.$3 $4:')+" </p>"		
+        	)
+        	
+        });
 		
 	}
 	
@@ -53,16 +99,14 @@
             $(data.response.body.items.item).each((index,item)=>{
             	
             	$('#homelist').append(
-            			"<div class='list'><div class='pic_area'><a href=''#' class='pic'><img src='"+item.firstimage+"' onclick='gukminDetail("+item.contentid+")'/><div class='sts_area'><span class='sts_be'>진행<br />중</span></div></a></div>"
+            			"<div class='list'><div class='pic_area'><a class='pic'><img src='"+item.firstimage+"'/><div class='sts_area'><span class='sts_be'>진행<br />중</span></div></a></div>"
 						+"<div class='cont'><p class='t01'><a href='#'>"
 						+item.title//( )사이의 문자열만 추출
 						+"</a></p><div class='t02'>"
 						+"</span><span class='gps'>"+item.addr1+"</span></div></div></div>"		
             	)	                   
             });
-            
-            
-            
+
         });
 	}
 	
@@ -97,9 +141,12 @@
             $(data.response.body.items.item).each((index,item)=>{
             	
             	$('#homelist').append(
-            			"<div class='list'><div class='pic_area'><a href=''#' class='pic'><img src='"+item.firstimage+"'/><div class='sts_area'><span class='sts_be'>진행<br />중</span></div></a></div>"
+            			"<div class='list'>"
+            			+"<div class='pic_area'>"
+            			+"<a class='pic'><img src='"+item.firstimage+"' onclick='gukminDetail("+item.contentid+","+item.contenttypeid+")'/>"
+            			+"<div class='sts_area'><span class='sts_be'>진행<br />중</span></div></a></div>"
 						+"<div class='cont'><p class='t01'><a href='#'>"
-						+item.title//( )사이의 문자열만 추출
+						+item.title
 						+"</a></p><div class='t02'>"
 						+"<span class='date'>"
 						+item.eventstartdate.toString().replace(/(\d{4})(\d{2})(\d{2})/g, '$1.$2.$3')//날짜 yyyymmdd to yyyy.mm.dd 변환
@@ -145,12 +192,10 @@
 						<li class="ico_spot"><a href="/gukminview/festival/hostSpotRegisterForm">!스팟등록하기</a></li>
 				</ul>
 					<a href="/gukminview/login/loginForm" class="pLogout"><span>!로그인</span></a>
-			<form autocomplete="off" method="post">
+			<form>
 				<div class="searchBox">
-					<input type="text" autocomplete="nope" id="searchKeyword" name="searchKeyword" placeholder="검색 하고자 하는 키워드를 입력해주세요"/> 
-					<a href="javascript:void(0)" class="btnSearch">
+					<input type="text" autocomplete="nope" id="searchKeyword" placeholder="검색 하고자 하는 키워드를 입력해주세요"/> 
 					<img src="https://joyfesta.kr/include/img/ico/ico_search.png" id="keywordsearchbutton" />
-					</a>
 				</div>
 			</form>
 			</div>
@@ -166,11 +211,22 @@
 		<h2 class="mtit" id='homtitle'></h2>
 		<div class="hotSlideBox">
 			<div class="hotSlide" >
-				<div class="item" id="homelist">
-
+				<div class="item" id="homelist"></div>
+			</div>
 		</div>
 	</div>
+	<!-- 디테일  -->
+	<div class="detailDesc" id="detailTitle"></div>
+	<div class="detailInfo">
+		<div class="mainSlideBox">
+			<div class="mainSlide">
+				<div class="item" id="detailMainImg"></div>
+			</div>
+		</div>
+		<div class="detailCont" id="detailInfo"></div>
 	</div>
-	</div>
+	
+	
+	
 </body>
 </html>
