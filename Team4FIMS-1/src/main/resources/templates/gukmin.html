@@ -24,7 +24,7 @@
 
 	});
 	
-	function gukminDetail(contentid,contenttypeid){
+	function gukminDetail(contentid,contenttypeid,eventstartdate,eventenddate){
 		
 		if(contenttypeid!=15)return null;
 		
@@ -36,6 +36,8 @@
 		data.contentId = contentid;
 		data.contentTypeId = contenttypeid;
 		console.log(data);
+		
+		playtimes = eventstartdate.toString().replace(/(\d{4})(\d{2})(\d{2})/g, '$1.$2.$3')+" ~ "+eventenddate.toString().replace(/(\d{4})(\d{2})(\d{2})/g, '$1.$2.$3');
 		
 		//상세 헤드
 		$.ajax({
@@ -96,8 +98,8 @@
         	datas = data.response.body.items.item;
         	$('#detaillAreaNormal').append(
         			"<table><tr class='first'><th>주최</th><td>"+datas.sponsor1+"</td></tr>"
-					+(datas.sponsor2)?"<tr><th>주관</th><td>(사)부산기독교총연합회, 부산크리스마스트리문화축제조직위원회, 광복로문화포럼</td></tr>":""
-					+"<tr><th>기간</th><td>"+datas.playtime+"</td></tr></table>"
+					+(datas.sponsor2?"<tr><th>주관</th><td>(사)"+datas.sponsor2+"</td></tr>":"")
+					+"<tr><th>기간</th><td>"+playtimes+" / "+(datas.playtime?datas.playtime:"")+"</td></tr></table>"
         	);
         });
 		//info
@@ -210,7 +212,7 @@
             	$('#homelist').append(
             			"<div class='list'>"
             			+"<div class='pic_area'>"
-            			+"<a class='pic'><img src='"+item.firstimage+"' onclick='gukminDetail("+item.contentid+","+item.contenttypeid+")'/>"
+            			+"<a class='pic'><img src='"+item.firstimage+"' onclick='gukminDetail("+item.contentid+","+item.contenttypeid+","+item.eventstartdate+","+item.eventenddate+")'/>"
             			+"<div class='sts_area'><span class='sts_be'>진행<br />중</span></div></a></div>"
 						+"<div class='cont'><p class='t01'><a href='#'>"
 						+item.title
